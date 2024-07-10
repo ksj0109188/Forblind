@@ -8,28 +8,20 @@
 import UIKit
 import AVFoundation
 import GoogleGenerativeAI
-import RxSwift
-import RxCocoa
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
     var captureSession: AVCaptureSession!
     var videoPreviewLayer: AVCaptureVideoPreviewLayer!
     var videoOutput: AVCaptureVideoDataOutput!
+    // APIKey는 https://aistudio.google.com/app/apikey 에서 발급 받아주세요!
     let model = GenerativeModel(name: "gemini-1.5-flash", apiKey: "AIzaSyDrUGLBXiCaEYT_3GYk8yU0zAQcS2klkd4")
-    let disposeBag = DisposeBag()
-    let imageSubject = PublishSubject<UIImage>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        configureCamera()
-        setupApiConnect()
-    }
-    
-    private func configureCamera() {
         // AVCaptureSession 초기화
         captureSession = AVCaptureSession()
-        captureSession.sessionPreset = .medium
+        captureSession.sessionPreset = .high
         
         // 카메라 장치 가져오기
         guard let videoDevice = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .back) else {
@@ -60,43 +52,17 @@ class ViewController: UIViewController {
             print("비디오 출력을 세션에 추가할 수 없습니다.")
             return
         }
-
-        DispatchQueue.global().async {
-            self.captureSession.startRunning()
-        }
+        
+        // 비디오 프리뷰 레이어 설정
+        //        videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
+        //        videoPreviewLayer.videoGravity = .resizeAspectFill
+        //        videoPreviewLayer.frame = view.layer.bounds
+        //        view.layer.addSublayer(videoPreviewLayer)
+        
+        // 세션 시작
+        captureSession.startRunning()
     }
     
-    private func setupApiConnect() {
-        imageSubject
-            .buffer(timeSpan: .seconds(5), count: Int.max, scheduler: MainScheduler.instance)
-            .subscribe(onNext: { [weak self] images in
-                Task {
-                    await self?.apiReqeust(images)
-                }
-            })
-            .disposed(by: disposeBag)
-    }
-    
-    private func apiReqeust(_ images: [UIImage]) async {
-        let prompt = "앞의 사진들을 비교해서 어떤 물체가 다가오고 있는지, 가장 가까운 물체의 거리가 대략 몇m인지 추측해서 알려줘"
-        var fullResponse = ""
-        
-        let contentStream2 = model.generateContentStream(prompt, images.compactMap({ $0}))
-        
-        do {
-            for try await chunk in contentStream2 {
-                if let text = chunk.text {
-                    fullResponse += text
-                }
-            }
-        } catch(let error) {
-            print(error)
-        }
-        print(fullResponse)
-    }
-}
-
-extension ViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
     // AVCaptureVideoDataOutputSampleBufferDelegate 메서드
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         
@@ -111,8 +77,33 @@ extension ViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
         let context = CIContext()
         if let cgImage = context.createCGImage(ciImage, from: ciImage.extent) {
             let uiImage = UIImage(cgImage: cgImage)
-            imageSubject.onNext(uiImage)
+            // UIImage로 변환된 결과를 여기서 사용할 수 있습니다.
+            Task {
+                await apiReqeust(image: uiImage)
+            }
         }
         
+        // 여기서 동영상 데이터를 처리합니다.
+        
     }
+    
+    func apiReqeust(image: UIImage) async {
+        let prompt = "앞의 사진들을 비교해서 어떤 물체가 다가오고 있는지, 가장 가까운 물체의 거리가 대략 몇m인지 추측해서 알려줘"
+        var fullResponse = ""
+        let contentStream = model.generateContentStream(prompt, image)
+        do {
+            for try await chunk in contentStream {
+                if let text = chunk.text {
+//                    print(text)
+                    fullResponse += text
+                }
+            }
+        } catch(let error) {
+//            print(error)
+        }
+        
+        print(fullResponse)
+    }
+
+    
 }

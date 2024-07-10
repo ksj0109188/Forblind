@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B4A72702C3D4CE2003B17F5 /* GoogleGenerativeAI in Frameworks */ = {isa = PBXBuildFile; productRef = 3B4A726F2C3D4CE2003B17F5 /* GoogleGenerativeAI */; };
+		3B4A72742C3D54A6003B17F5 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 3B4A72732C3D54A6003B17F5 /* RxCocoa */; };
+		3B4A72762C3D54A6003B17F5 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 3B4A72752C3D54A6003B17F5 /* RxSwift */; };
 		3BBFE89B2C3D0DCF00193B70 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBFE89A2C3D0DCF00193B70 /* AppDelegate.swift */; };
 		3BBFE89D2C3D0DCF00193B70 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBFE89C2C3D0DCF00193B70 /* SceneDelegate.swift */; };
 		3BBFE89F2C3D0DCF00193B70 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBFE89E2C3D0DCF00193B70 /* ViewController.swift */; };
@@ -29,6 +32,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B4A72762C3D54A6003B17F5 /* RxSwift in Frameworks */,
+				3B4A72742C3D54A6003B17F5 /* RxCocoa in Frameworks */,
+				3B4A72702C3D4CE2003B17F5 /* GoogleGenerativeAI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -184,6 +190,11 @@
 			dependencies = (
 			);
 			name = LuminaView;
+			packageProductDependencies = (
+				3B4A726F2C3D4CE2003B17F5 /* GoogleGenerativeAI */,
+				3B4A72732C3D54A6003B17F5 /* RxCocoa */,
+				3B4A72752C3D54A6003B17F5 /* RxSwift */,
+			);
 			productName = LuminaView;
 			productReference = 3BBFE8972C3D0DCF00193B70 /* LuminaView.app */;
 			productType = "com.apple.product-type.application";
@@ -212,6 +223,10 @@
 				Base,
 			);
 			mainGroup = 3BBFE88E2C3D0DCF00193B70;
+			packageReferences = (
+				3B4A726E2C3D4CE2003B17F5 /* XCRemoteSwiftPackageReference "generative-ai-swift" */,
+				3B4A72722C3D54A6003B17F5 /* XCRemoteSwiftPackageReference "RxSwift" */,
+			);
 			productRefGroup = 3BBFE8982C3D0DCF00193B70 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -386,7 +401,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = M7F7863UPY;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = LuminaView/Info.plist;
+				INFOPLIST_FILE = LuminaView/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -418,7 +433,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = M7F7863UPY;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = LuminaView/Info.plist;
+				INFOPLIST_FILE = LuminaView/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -463,6 +478,43 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		3B4A726E2C3D4CE2003B17F5 /* XCRemoteSwiftPackageReference "generative-ai-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/generative-ai-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.5.4;
+			};
+		};
+		3B4A72722C3D54A6003B17F5 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.7.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3B4A726F2C3D4CE2003B17F5 /* GoogleGenerativeAI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3B4A726E2C3D4CE2003B17F5 /* XCRemoteSwiftPackageReference "generative-ai-swift" */;
+			productName = GoogleGenerativeAI;
+		};
+		3B4A72732C3D54A6003B17F5 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3B4A72722C3D54A6003B17F5 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		3B4A72752C3D54A6003B17F5 /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3B4A72722C3D54A6003B17F5 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 3BBFE88F2C3D0DCF00193B70 /* Project object */;
 }
