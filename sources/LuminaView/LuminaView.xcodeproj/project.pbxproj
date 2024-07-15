@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2072837A151FD05FD8409099 /* Pods_LuminaView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA3194F4A8B068078E546D6 /* Pods_LuminaView.framework */; };
+		3B1EB4292C4532C2001A0F0A /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 3B1EB4282C4532C2001A0F0A /* RxCocoa */; };
+		3B1EB42B2C4532C2001A0F0A /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 3B1EB42A2C4532C2001A0F0A /* RxSwift */; };
+		3B1EB42E2C4539BD001A0F0A /* GoogleGenerativeAI in Frameworks */ = {isa = PBXBuildFile; productRef = 3B1EB42D2C4539BD001A0F0A /* GoogleGenerativeAI */; };
 		3BBFE89B2C3D0DCF00193B70 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBFE89A2C3D0DCF00193B70 /* AppDelegate.swift */; };
 		3BBFE89D2C3D0DCF00193B70 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBFE89C2C3D0DCF00193B70 /* SceneDelegate.swift */; };
 		3BBFE89F2C3D0DCF00193B70 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBFE89E2C3D0DCF00193B70 /* ViewController.swift */; };
@@ -15,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1221012790DFD4E6C7734FF0 /* Pods-LuminaView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LuminaView.release.xcconfig"; path = "Target Support Files/Pods-LuminaView/Pods-LuminaView.release.xcconfig"; sourceTree = "<group>"; };
 		3BBFE8972C3D0DCF00193B70 /* LuminaView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LuminaView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BBFE89A2C3D0DCF00193B70 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3BBFE89C2C3D0DCF00193B70 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -22,6 +27,8 @@
 		3BBFE8A32C3D0DD200193B70 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3BBFE8A62C3D0DD200193B70 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3BBFE8A82C3D0DD200193B70 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9AA3194F4A8B068078E546D6 /* Pods_LuminaView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LuminaView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EDEE937B43E69CA1977B2AE1 /* Pods-LuminaView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LuminaView.debug.xcconfig"; path = "Target Support Files/Pods-LuminaView/Pods-LuminaView.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +36,40 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B1EB42B2C4532C2001A0F0A /* RxSwift in Frameworks */,
+				3B1EB4292C4532C2001A0F0A /* RxCocoa in Frameworks */,
+				2072837A151FD05FD8409099 /* Pods_LuminaView.framework in Frameworks */,
+				3B1EB42E2C4539BD001A0F0A /* GoogleGenerativeAI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1B4A1645B99FE1990A02073C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				EDEE937B43E69CA1977B2AE1 /* Pods-LuminaView.debug.xcconfig */,
+				1221012790DFD4E6C7734FF0 /* Pods-LuminaView.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		20B503AD9D23E1C2262A9D0C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9AA3194F4A8B068078E546D6 /* Pods_LuminaView.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		3BBFE88E2C3D0DCF00193B70 = {
 			isa = PBXGroup;
 			children = (
 				3BBFE8992C3D0DCF00193B70 /* LuminaView */,
 				3BBFE8982C3D0DCF00193B70 /* Products */,
+				1B4A1645B99FE1990A02073C /* Pods */,
+				20B503AD9D23E1C2262A9D0C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -175,15 +205,23 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3BBFE8AB2C3D0DD200193B70 /* Build configuration list for PBXNativeTarget "LuminaView" */;
 			buildPhases = (
+				2E1773360E71BFB11C2488AF /* [CP] Check Pods Manifest.lock */,
 				3BBFE8932C3D0DCF00193B70 /* Sources */,
 				3BBFE8942C3D0DCF00193B70 /* Frameworks */,
 				3BBFE8952C3D0DCF00193B70 /* Resources */,
+				6642B4DEF6825AFCEB75A345 /* [CP] Embed Pods Frameworks */,
+				E5475081911B4B18630A3AC7 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = LuminaView;
+			packageProductDependencies = (
+				3B1EB4282C4532C2001A0F0A /* RxCocoa */,
+				3B1EB42A2C4532C2001A0F0A /* RxSwift */,
+				3B1EB42D2C4539BD001A0F0A /* GoogleGenerativeAI */,
+			);
 			productName = LuminaView;
 			productReference = 3BBFE8972C3D0DCF00193B70 /* LuminaView.app */;
 			productType = "com.apple.product-type.application";
@@ -212,6 +250,10 @@
 				Base,
 			);
 			mainGroup = 3BBFE88E2C3D0DCF00193B70;
+			packageReferences = (
+				3B1EB4272C4532C2001A0F0A /* XCRemoteSwiftPackageReference "RxSwift" */,
+				3B1EB42C2C4539BD001A0F0A /* XCRemoteSwiftPackageReference "generative-ai-swift" */,
+			);
 			productRefGroup = 3BBFE8982C3D0DCF00193B70 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -232,6 +274,65 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2E1773360E71BFB11C2488AF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LuminaView-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6642B4DEF6825AFCEB75A345 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LuminaView/Pods-LuminaView-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LuminaView/Pods-LuminaView-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LuminaView/Pods-LuminaView-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E5475081911B4B18630A3AC7 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LuminaView/Pods-LuminaView-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LuminaView/Pods-LuminaView-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LuminaView/Pods-LuminaView-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		3BBFE8932C3D0DCF00193B70 /* Sources */ = {
@@ -379,14 +480,16 @@
 		};
 		3BBFE8AC2C3D0DD200193B70 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EDEE937B43E69CA1977B2AE1 /* Pods-LuminaView.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = M7F7863UPY;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = LuminaView/Info.plist;
+				INFOPLIST_FILE = LuminaView/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -411,14 +514,16 @@
 		};
 		3BBFE8AD2C3D0DD200193B70 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1221012790DFD4E6C7734FF0 /* Pods-LuminaView.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = M7F7863UPY;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = LuminaView/Info.plist;
+				INFOPLIST_FILE = LuminaView/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -463,6 +568,43 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		3B1EB4272C4532C2001A0F0A /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.7.1;
+			};
+		};
+		3B1EB42C2C4539BD001A0F0A /* XCRemoteSwiftPackageReference "generative-ai-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/generative-ai-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.5.4;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3B1EB4282C4532C2001A0F0A /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3B1EB4272C4532C2001A0F0A /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		3B1EB42A2C4532C2001A0F0A /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3B1EB4272C4532C2001A0F0A /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+		3B1EB42D2C4539BD001A0F0A /* GoogleGenerativeAI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3B1EB42C2C4539BD001A0F0A /* XCRemoteSwiftPackageReference "generative-ai-swift" */;
+			productName = GoogleGenerativeAI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 3BBFE88F2C3D0DCF00193B70 /* Project object */;
 }

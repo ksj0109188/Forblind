@@ -1,0 +1,6 @@
+framework module Pods_LuminaView {
+  umbrella header "Pods-LuminaView-umbrella.h"
+
+  export *
+  module * { export * }
+}
