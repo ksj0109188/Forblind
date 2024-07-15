@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		2072837A151FD05FD8409099 /* Pods_LuminaView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA3194F4A8B068078E546D6 /* Pods_LuminaView.framework */; };
+		3B1EB4292C4532C2001A0F0A /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 3B1EB4282C4532C2001A0F0A /* RxCocoa */; };
+		3B1EB42B2C4532C2001A0F0A /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 3B1EB42A2C4532C2001A0F0A /* RxSwift */; };
+		3B1EB42E2C4539BD001A0F0A /* GoogleGenerativeAI in Frameworks */ = {isa = PBXBuildFile; productRef = 3B1EB42D2C4539BD001A0F0A /* GoogleGenerativeAI */; };
 		3BBFE89B2C3D0DCF00193B70 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBFE89A2C3D0DCF00193B70 /* AppDelegate.swift */; };
 		3BBFE89D2C3D0DCF00193B70 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBFE89C2C3D0DCF00193B70 /* SceneDelegate.swift */; };
 		3BBFE89F2C3D0DCF00193B70 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBFE89E2C3D0DCF00193B70 /* ViewController.swift */; };
@@ -33,7 +36,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B1EB42B2C4532C2001A0F0A /* RxSwift in Frameworks */,
+				3B1EB4292C4532C2001A0F0A /* RxCocoa in Frameworks */,
 				2072837A151FD05FD8409099 /* Pods_LuminaView.framework in Frameworks */,
+				3B1EB42E2C4539BD001A0F0A /* GoogleGenerativeAI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -212,6 +218,9 @@
 			);
 			name = LuminaView;
 			packageProductDependencies = (
+				3B1EB4282C4532C2001A0F0A /* RxCocoa */,
+				3B1EB42A2C4532C2001A0F0A /* RxSwift */,
+				3B1EB42D2C4539BD001A0F0A /* GoogleGenerativeAI */,
 			);
 			productName = LuminaView;
 			productReference = 3BBFE8972C3D0DCF00193B70 /* LuminaView.app */;
@@ -242,6 +251,8 @@
 			);
 			mainGroup = 3BBFE88E2C3D0DCF00193B70;
 			packageReferences = (
+				3B1EB4272C4532C2001A0F0A /* XCRemoteSwiftPackageReference "RxSwift" */,
+				3B1EB42C2C4539BD001A0F0A /* XCRemoteSwiftPackageReference "generative-ai-swift" */,
 			);
 			productRefGroup = 3BBFE8982C3D0DCF00193B70 /* Products */;
 			projectDirPath = "";
@@ -557,6 +568,43 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		3B1EB4272C4532C2001A0F0A /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.7.1;
+			};
+		};
+		3B1EB42C2C4539BD001A0F0A /* XCRemoteSwiftPackageReference "generative-ai-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/generative-ai-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.5.4;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3B1EB4282C4532C2001A0F0A /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3B1EB4272C4532C2001A0F0A /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		3B1EB42A2C4532C2001A0F0A /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3B1EB4272C4532C2001A0F0A /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+		3B1EB42D2C4539BD001A0F0A /* GoogleGenerativeAI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3B1EB42C2C4539BD001A0F0A /* XCRemoteSwiftPackageReference "generative-ai-swift" */;
+			productName = GoogleGenerativeAI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 3BBFE88F2C3D0DCF00193B70 /* Project object */;
 }
