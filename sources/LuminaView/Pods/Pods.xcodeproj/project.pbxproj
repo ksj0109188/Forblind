@@ -463,7 +463,7 @@
 		4ABCF05553B71A4D25D8E77C3951879C /* GTMSessionFetcherLogging.h in Headers */ = {isa = PBXBuildFile; fileRef = C07D82AEE4326F5606870C217257980B /* GTMSessionFetcherLogging.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4AFFD403A8B4401A6BF9D08B6E41FA3D /* GDTCORProductData.h in Headers */ = {isa = PBXBuildFile; fileRef = C7B4CD6CB98F1F5E293AA971C8F82D9C /* GDTCORProductData.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4CD444B843A969E33D6DA77F8F5237AE /* GULNetworkInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D89B3A8286233C19E71E0B94E53107A /* GULNetworkInfo.m */; };
-		4D5F45C5EB882A07E890C8A4141E5B6C /* nanopb-nanopb_Privacy in Resources */ = {isa = PBXBuildFile; fileRef = 3227F3FC45681D7CEE5D1355A532398A /* nanopb-nanopb_Privacy */; };
+		4D5F45C5EB882A07E890C8A4141E5B6C /* nanopb_Privacy.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3227F3FC45681D7CEE5D1355A532398A /* nanopb_Privacy.bundle */; };
 		4D9E94FD2B0996756D331FE32D5B3D02 /* fssd_25_8bit_gray_v1.tflite in Resources */ = {isa = PBXBuildFile; fileRef = CF6301CDF12EA39B7C40230EB026397E /* fssd_25_8bit_gray_v1.tflite */; };
 		4DA03FA425434119F8D2D455F22E4439 /* tflite_lstm_recognizer_latin_0.3.class_lst in Resources */ = {isa = PBXBuildFile; fileRef = 83AD59730E9DBC2F74D116084468CF51 /* tflite_lstm_recognizer_latin_0.3.class_lst */; };
 		4DF449A813122F611DA81BB6A043B95F /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = D072458A8534F867742764916F062459 /* PrivacyInfo.xcprivacy */; };
@@ -491,7 +491,7 @@
 		63843E192434F0A22575E77E011F0FE8 /* tflite_script_detector_0.3.lstm_model in Resources */ = {isa = PBXBuildFile; fileRef = 1B089F1B814CE698DF91F6EB5C755379 /* tflite_script_detector_0.3.lstm_model */; };
 		63D3595822AC80A428BC465EEB8E4B70 /* GULHeartbeatDateStorage.h in Headers */ = {isa = PBXBuildFile; fileRef = B7DBDB732B093D8F85976DC4C84DC6C8 /* GULHeartbeatDateStorage.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6488C74D068F51499BF9DA933CA91D3C /* GTMSessionFetcherService.m in Sources */ = {isa = PBXBuildFile; fileRef = B21CE320FFDFD6137DE5E575A8C14C84 /* GTMSessionFetcherService.m */; };
-		64D30AEB611EE6AE22F87AF0D654F9DC /* GoogleDataTransport-GoogleDataTransport_Privacy in Resources */ = {isa = PBXBuildFile; fileRef = F73AA961F4AEFF2B46B00AE435DF6BE3 /* GoogleDataTransport-GoogleDataTransport_Privacy */; };
+		64D30AEB611EE6AE22F87AF0D654F9DC /* GoogleDataTransport_Privacy.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F73AA961F4AEFF2B46B00AE435DF6BE3 /* GoogleDataTransport_Privacy.bundle */; };
 		64F438E20C0DD26B7DA61C620740F539 /* GDTCORReachability_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 25C40EFBF404B23F6923E1BEED8AC06B /* GDTCORReachability_Private.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		6518C4AD55D5870637C5590A4DC42238 /* Pods-LuminaView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4583BEF200548499866F0B648B6F8D57 /* Pods-LuminaView-dummy.m */; };
 		65383FDC63B27CB4DE3C0446CD838D68 /* GULCCComponent.h in Headers */ = {isa = PBXBuildFile; fileRef = 38FC711BEA0D139C5AAC46058BAE8702 /* GULCCComponent.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -499,7 +499,7 @@
 		655A06A3C62E7E2B7778C6DE72E055F4 /* external_privacy_context.nanopb.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B3532929F0D63ECE79D1A85077A9FDF /* external_privacy_context.nanopb.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		65DADDEBAAE7F5EBD3FA4CC48DA65ADA /* GDTCORUploadCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = 518519DF31A26178A4C8EB3813F79AA0 /* GDTCORUploadCoordinator.m */; };
 		66F3536DA1819F4B0F88B2D73266FF81 /* GULKeychainStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 209C8D0B334597EA92C857FF611FC69A /* GULKeychainStorage.m */; };
-		6780E305454A15B7F15F2536B9CD76C1 /* GoogleToolboxForMac-GoogleToolboxForMac_Logger_Privacy in Resources */ = {isa = PBXBuildFile; fileRef = AEBA8CB6AA4F3222AF152902B80CC166 /* GoogleToolboxForMac-GoogleToolboxForMac_Logger_Privacy */; };
+		6780E305454A15B7F15F2536B9CD76C1 /* GoogleToolboxForMac_Logger_Privacy.bundle in Resources */ = {isa = PBXBuildFile; fileRef = AEBA8CB6AA4F3222AF152902B80CC166 /* GoogleToolboxForMac_Logger_Privacy.bundle */; };
 		67890BDD72A2049CBAE413F9FF76D514 /* pb_common.h in Headers */ = {isa = PBXBuildFile; fileRef = C6A29200C9CC49D45F3FD5CBC17639E7 /* pb_common.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		68F88AC14DEE0A62EEDA608951DB53EA /* GDTCCTUploader.h in Headers */ = {isa = PBXBuildFile; fileRef = 25E2C85570289BBB0F6B9BC98BC6C4E4 /* GDTCCTUploader.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		68F8D33EFB6C70085F194F4E204E097A /* client_metrics.nanopb.c in Sources */ = {isa = PBXBuildFile; fileRef = 6B5C1A505A61F5D67A666DAA4BEF2514 /* client_metrics.nanopb.c */; };
@@ -551,7 +551,7 @@
 		871D552941E9A7EF7FDDF5D23CE1388A /* region_proposal_text_detector_tflite_gray_quantized.bincfg in Resources */ = {isa = PBXBuildFile; fileRef = 5712EF5CE6616D956A2FE466BF77098D /* region_proposal_text_detector_tflite_gray_quantized.bincfg */; };
 		87DCDE75C7AD8DC34A0AFEECF0C3C29E /* GDTCORAssert.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A20EA675381F4E9D0E809A23D83DF4E /* GDTCORAssert.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		883E02B32671FBAED2A0F7A5322CF18F /* tflite_lstm_recognizer_ja_0.1.conv_model in Resources */ = {isa = PBXBuildFile; fileRef = 8700917E7F681AD22BC4DE4E8510A6AE /* tflite_lstm_recognizer_ja_0.1.conv_model */; };
-		8985C26CA341D3CBC84877DCF0531AE5 /* PromisesObjC-FBLPromises_Privacy in Resources */ = {isa = PBXBuildFile; fileRef = 3F238BB22C5201CE689CAF2F766AED95 /* PromisesObjC-FBLPromises_Privacy */; };
+		8985C26CA341D3CBC84877DCF0531AE5 /* FBLPromises_Privacy.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3F238BB22C5201CE689CAF2F766AED95 /* FBLPromises_Privacy.bundle */; };
 		8B0ACF7C6C54F93414A6ADEED0ABD56C /* GDTCOREndpoints.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D70B28883B2435165FBF33F1A7BD886 /* GDTCOREndpoints.m */; };
 		8B65535118D72D4CE45E255C3B97B561 /* nanopb-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 44C391C73999522089110E0BBBF3DA4C /* nanopb-dummy.m */; };
 		8B71C8A58B3AF3414CE9EC6FBC729F8F /* GDTCCTCompressionHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = F93E860DCEC9FB480E15960B1A1D4054 /* GDTCCTCompressionHelper.h */; settings = {ATTRIBUTES = (Project, ); }; };
@@ -592,7 +592,7 @@
 		AAFC1327914F27ABCDBFEFE8D719698F /* GDTCORTransformer_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CED271012BE5AE933F0A4FD1D987B9C /* GDTCORTransformer_Private.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		ABE258AB0C9E2FD28CDD0F088AE79F66 /* IsAppEncrypted.h in Headers */ = {isa = PBXBuildFile; fileRef = F9B4860C160F3169C72E9AB3AA6EAE75 /* IsAppEncrypted.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		ABE7975E2486EC3E2201AED019E46B56 /* fssd_25_8bit_v1.tflite in Resources */ = {isa = PBXBuildFile; fileRef = 8EC0AF730B594F90E329C862C6BF7EF4 /* fssd_25_8bit_v1.tflite */; };
-		AD67A859C6ACD63371CFE7999EFD757F /* GoogleUtilities-GoogleUtilities_Privacy in Resources */ = {isa = PBXBuildFile; fileRef = 44E291D18340EAC3F761346198515323 /* GoogleUtilities-GoogleUtilities_Privacy */; };
+		AD67A859C6ACD63371CFE7999EFD757F /* GoogleUtilities_Privacy.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 44E291D18340EAC3F761346198515323 /* GoogleUtilities_Privacy.bundle */; };
 		AE04E7FDCA9B35367461418A0F3A6B54 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = D55B93D6642015E07DB227339713BA55 /* PrivacyInfo.xcprivacy */; };
 		AF073D530826E6F73902842216155DEC /* FBLPromise+All.h in Headers */ = {isa = PBXBuildFile; fileRef = D745808907E277DED0C1C77FC5B96236 /* FBLPromise+All.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AF4255ECFDF9FEB1F6B0E1407CFFD1D7 /* mobile_object_localizer_labelmap.binarypb in Resources */ = {isa = PBXBuildFile; fileRef = 97D2E4B5B26431DEE1E6913EA754520B /* mobile_object_localizer_labelmap.binarypb */; };
@@ -616,7 +616,7 @@
 		C5CFB3A1891F797D1DB87B9BD25D6659 /* tflite_lstm_recognizer_devanagari_0.1.bincfg in Resources */ = {isa = PBXBuildFile; fileRef = 9EAB33B77076743F6313DEB1E9655174 /* tflite_lstm_recognizer_devanagari_0.1.bincfg */; };
 		C618EB1CAB68F074FA3857FD58E81BA3 /* GULSecureCoding.h in Headers */ = {isa = PBXBuildFile; fileRef = F6278450023C5E33E765C02FE4FFEC90 /* GULSecureCoding.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C6AF245D08FED8EF82734F0E6ED38D6E /* NSURLSession+GULPromises.h in Headers */ = {isa = PBXBuildFile; fileRef = AB2E55EC5B5FFF39DFB988AAC40FE171 /* NSURLSession+GULPromises.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C6C6E2C106381906DE0DD0CB4185BC47 /* GTMSessionFetcher-GTMSessionFetcher_Core_Privacy in Resources */ = {isa = PBXBuildFile; fileRef = E826FA0DCB9AA6E7829C68391B323B78 /* GTMSessionFetcher-GTMSessionFetcher_Core_Privacy */; };
+		C6C6E2C106381906DE0DD0CB4185BC47 /* GTMSessionFetcher_Core_Privacy.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E826FA0DCB9AA6E7829C68391B323B78 /* GTMSessionFetcher_Core_Privacy.bundle */; };
 		C6D8B8A68FE195A3A5CBCD0CC965376B /* GULCCComponentContainer.h in Headers */ = {isa = PBXBuildFile; fileRef = C87AEFE5C5836A154C874F57DFE4CF5F /* GULCCComponentContainer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C7C338FB9F549A3B3C867DC979B92FCB /* GULLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 9755540A0B63A776E22CF1EA87D43A31 /* GULLogger.m */; };
 		CB5EA97C71E8E2A5DC62EE3D420F38EC /* FBLPromise+Delay.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E8711236F59259F96DAB6D18110B063 /* FBLPromise+Delay.m */; };
@@ -675,7 +675,7 @@
 		FDF2ED222711A1D657BE63EE2A51C0F0 /* PromisesObjC-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 14373EDE434962BB71C13F67F5C9B80F /* PromisesObjC-dummy.m */; };
 		FE8E416B86FBF395516EEA217CF50CAE /* GULHeartbeatDateStorable.h in Headers */ = {isa = PBXBuildFile; fileRef = C71205D24AA5BD6B4523ABC1414DB56F /* GULHeartbeatDateStorable.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FF41918F4CD3BD5EACF2058EE86FBF80 /* tflite_lstm_recognizer_devanagari_0.1.class_lst in Resources */ = {isa = PBXBuildFile; fileRef = 5D931C933AE5A9FA032AF0916C3BF320 /* tflite_lstm_recognizer_devanagari_0.1.class_lst */; };
-		FFFB8D12618298A5D7C0863D8250F8D1 /* GoogleToolboxForMac-GoogleToolboxForMac_Privacy in Resources */ = {isa = PBXBuildFile; fileRef = 9264683869DB03D368724585C52FFD0D /* GoogleToolboxForMac-GoogleToolboxForMac_Privacy */; };
+		FFFB8D12618298A5D7C0863D8250F8D1 /* GoogleToolboxForMac_Privacy.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9264683869DB03D368724585C52FFD0D /* GoogleToolboxForMac_Privacy.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1675,7 +1675,7 @@
 		04E7C9EF6B6657DB569E0A6EE1DCE1A9 /* GTMSessionUploadFetcher.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GTMSessionUploadFetcher.h; path = Sources/Core/Public/GTMSessionFetcher/GTMSessionUploadFetcher.h; sourceTree = "<group>"; };
 		06D6D49BB14E4FE618DF2BC56E83428F /* MLKitVision.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MLKitVision.framework; path = Frameworks/MLKitVision.framework; sourceTree = "<group>"; };
 		06F75724EEEC7DA026FAFF857E4753DE /* MLKitVisionKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MLKitVisionKit.debug.xcconfig; sourceTree = "<group>"; };
-		06FC5C9CF96D60C50FCD47D339C91951 /* nanopb */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = nanopb; path = nanopb.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		06FC5C9CF96D60C50FCD47D339C91951 /* nanopb.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = nanopb.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		075A14CD6AF854FADEA2DD7D081582BE /* cct.nanopb.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = cct.nanopb.h; path = GoogleDataTransport/GDTCCTLibrary/Protogen/nanopb/cct.nanopb.h; sourceTree = "<group>"; };
 		075A2082651C1D58358F492CCD432160 /* MLKitObjectDetectionCommon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MLKitObjectDetectionCommon.framework; path = Frameworks/MLKitObjectDetectionCommon.framework; sourceTree = "<group>"; };
 		0A20EA675381F4E9D0E809A23D83DF4E /* GDTCORAssert.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GDTCORAssert.h; path = GoogleDataTransport/GDTCORLibrary/Internal/GDTCORAssert.h; sourceTree = "<group>"; };
@@ -1733,7 +1733,7 @@
 		27E7DBF6F862A3307CFAFE968D22BEDB /* region_proposal_text_detector_tflite_vertical.bincfg */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file; name = region_proposal_text_detector_tflite_vertical.bincfg; path = Resources/ChineseOCRResources/region_proposal_text_detector_tflite_vertical.bincfg; sourceTree = "<group>"; };
 		28221936620EFEAE77B4D778AA6BAE80 /* GoogleToolboxForMac-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "GoogleToolboxForMac-Info.plist"; sourceTree = "<group>"; };
 		28A1A5F72DA381B919AF818BE9CABE68 /* GULCCComponentContainerInternal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GULCCComponentContainerInternal.h; path = GoogleUtilitiesComponents/Sources/Private/GULCCComponentContainerInternal.h; sourceTree = "<group>"; };
-		28A6DB952CEA79E3902D41748273A364 /* GoogleUtilitiesComponents */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = GoogleUtilitiesComponents; path = GoogleUtilitiesComponents.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		28A6DB952CEA79E3902D41748273A364 /* GoogleUtilitiesComponents.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GoogleUtilitiesComponents.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		299D68AA1A3AB337EA8E0A1E47BABF3D /* GDTCORFlatFileStorage+Promises.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "GDTCORFlatFileStorage+Promises.h"; path = "GoogleDataTransport/GDTCORLibrary/Private/GDTCORFlatFileStorage+Promises.h"; sourceTree = "<group>"; };
 		2B3532929F0D63ECE79D1A85077A9FDF /* external_privacy_context.nanopb.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = external_privacy_context.nanopb.h; path = GoogleDataTransport/GDTCCTLibrary/Protogen/nanopb/external_privacy_context.nanopb.h; sourceTree = "<group>"; };
 		2C9A6C46CCC0954164C02B1217C69951 /* GDTCORStorageMetadata.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GDTCORStorageMetadata.m; path = GoogleDataTransport/GDTCORLibrary/GDTCORStorageMetadata.m; sourceTree = "<group>"; };
@@ -1747,10 +1747,10 @@
 		2FCCF4E367D570B87771F4E74A795B44 /* BCLrighteyeclosed_200.emd */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file; name = BCLrighteyeclosed_200.emd; path = Resources/GoogleMVFaceDetectorResources/BCLrighteyeclosed_200.emd; sourceTree = "<group>"; };
 		30E9FDEB2CFDACB8A6979DD65DF41596 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
 		310F7C2D7C0C07A572CD9E7F99C38977 /* GDTCORConsoleLogger.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GDTCORConsoleLogger.m; path = GoogleDataTransport/GDTCORLibrary/GDTCORConsoleLogger.m; sourceTree = "<group>"; };
-		3227F3FC45681D7CEE5D1355A532398A /* nanopb-nanopb_Privacy */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "nanopb-nanopb_Privacy"; path = nanopb_Privacy.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		3227F3FC45681D7CEE5D1355A532398A /* nanopb_Privacy.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = nanopb_Privacy.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		3269C5CF99029737C5B821B1245E228D /* BCLjoy_200.emd */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file; name = BCLjoy_200.emd; path = Resources/GoogleMVFaceDetectorResources/BCLjoy_200.emd; sourceTree = "<group>"; };
 		32AF6587F1CFF3E596954F4DC51846D0 /* ResourceBundle-MLKitSegmentationSelfieResources-MLKitSegmentationSelfie-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-MLKitSegmentationSelfieResources-MLKitSegmentationSelfie-Info.plist"; sourceTree = "<group>"; };
-		3347A1AB6546F0A3977529B8F199DC41 /* PromisesObjC */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = PromisesObjC; path = FBLPromises.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3347A1AB6546F0A3977529B8F199DC41 /* FBLPromises.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FBLPromises.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		340A72091EA74F66E15BC4EF358FCDCB /* Pods-LuminaView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-LuminaView.release.xcconfig"; sourceTree = "<group>"; };
 		34346A66006410FBBFF5A4F68AC8057E /* tflite_lstm_recognizer_latin_0.3.class_lst */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = tflite_lstm_recognizer_latin_0.3.class_lst; path = Resources/LatinOCRResources/tflite_lstm_recognizer_latin_0.3.class_lst; sourceTree = "<group>"; };
 		34FB345992A2E5B8B753BFB670D94C46 /* GDTCORDirectorySizeTracker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GDTCORDirectorySizeTracker.h; path = GoogleDataTransport/GDTCORLibrary/Internal/GDTCORDirectorySizeTracker.h; sourceTree = "<group>"; };
@@ -1777,7 +1777,7 @@
 		3ED6597E65618E6B159636852EFC32F5 /* GoogleToolboxForMac-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "GoogleToolboxForMac-dummy.m"; sourceTree = "<group>"; };
 		3F09AA69FDBE8844F0C6B838FDD70D5C /* PromisesObjC-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PromisesObjC-umbrella.h"; sourceTree = "<group>"; };
 		3F2084F870BA33F5C353204BE0DE67C9 /* MLKitPoseDetectionAccurate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MLKitPoseDetectionAccurate.release.xcconfig; sourceTree = "<group>"; };
-		3F238BB22C5201CE689CAF2F766AED95 /* PromisesObjC-FBLPromises_Privacy */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "PromisesObjC-FBLPromises_Privacy"; path = FBLPromises_Privacy.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F238BB22C5201CE689CAF2F766AED95 /* FBLPromises_Privacy.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FBLPromises_Privacy.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FD7A5F242938BC89EBFAE95F05FDE7B /* rpn_lstm_engine_tflite_devanagari_la.bincfg */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file; name = rpn_lstm_engine_tflite_devanagari_la.bincfg; path = Resources/DevanagariOCRResources/rpn_lstm_engine_tflite_devanagari_la.bincfg; sourceTree = "<group>"; };
 		406520284E2DC8B40C0E0D7F33F29A2C /* GoogleDataTransport.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = GoogleDataTransport.release.xcconfig; sourceTree = "<group>"; };
 		41B7D6EF0B3A0B63B42078232E6BEF39 /* MLKitObjectDetectionCustom.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MLKitObjectDetectionCustom.debug.xcconfig; sourceTree = "<group>"; };
@@ -1787,7 +1787,7 @@
 		44C391C73999522089110E0BBBF3DA4C /* nanopb-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "nanopb-dummy.m"; sourceTree = "<group>"; };
 		44CF59E6F0E84A75B8F9B80EB4294A11 /* MLKitSegmentationSelfie.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MLKitSegmentationSelfie.framework; path = Frameworks/MLKitSegmentationSelfie.framework; sourceTree = "<group>"; };
 		44E064D95734062548F0107ACBC55D28 /* ResourceBundle-MLKitPoseDetectionFastResources-MLKitPoseDetection-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-MLKitPoseDetectionFastResources-MLKitPoseDetection-Info.plist"; sourceTree = "<group>"; };
-		44E291D18340EAC3F761346198515323 /* GoogleUtilities-GoogleUtilities_Privacy */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "GoogleUtilities-GoogleUtilities_Privacy"; path = GoogleUtilities_Privacy.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		44E291D18340EAC3F761346198515323 /* GoogleUtilities_Privacy.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GoogleUtilities_Privacy.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		4583BEF200548499866F0B648B6F8D57 /* Pods-LuminaView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-LuminaView-dummy.m"; sourceTree = "<group>"; };
 		4859C95FDA339A1D4D84F570FB00D87B /* PromisesObjC-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "PromisesObjC-Info.plist"; sourceTree = "<group>"; };
 		486448D50947FF7258113DF6316E4B95 /* GTMSessionFetcherService+Internal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "GTMSessionFetcherService+Internal.h"; path = "Sources/Core/GTMSessionFetcherService+Internal.h"; sourceTree = "<group>"; };
@@ -1922,7 +1922,7 @@
 		901FF3D9F95A96DB6C12424824EEB83E /* MFT_fssd_fastgray.pb */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file; name = MFT_fssd_fastgray.pb; path = Resources/GoogleMVFaceDetectorResources/MFT_fssd_fastgray.pb; sourceTree = "<group>"; };
 		902AA2101B160307E1EA935EB7B69762 /* GDTCOREndpoints.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GDTCOREndpoints.h; path = GoogleDataTransport/GDTCORLibrary/Public/GoogleDataTransport/GDTCOREndpoints.h; sourceTree = "<group>"; };
 		90DD387DEE2F75598BEDFBC531F31D66 /* GoogleUtilities.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = GoogleUtilities.release.xcconfig; sourceTree = "<group>"; };
-		9264683869DB03D368724585C52FFD0D /* GoogleToolboxForMac-GoogleToolboxForMac_Privacy */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "GoogleToolboxForMac-GoogleToolboxForMac_Privacy"; path = GoogleToolboxForMac_Privacy.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		9264683869DB03D368724585C52FFD0D /* GoogleToolboxForMac_Privacy.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GoogleToolboxForMac_Privacy.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		92D7D53F0FB712EF7AD6DB92269AA9B7 /* FBLPromise+Async.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "FBLPromise+Async.h"; path = "Sources/FBLPromises/include/FBLPromise+Async.h"; sourceTree = "<group>"; };
 		93048F63A9EACC56D28F52959D7B0A87 /* Pods-LuminaView-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-LuminaView-resources.sh"; sourceTree = "<group>"; };
 		9507E2BFD2D664254BDB58C3BC791053 /* tflite_script_detector_0.3.bincfg */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file; name = tflite_script_detector_0.3.bincfg; path = Resources/KoreanOCRResources/tflite_script_detector_0.3.bincfg; sourceTree = "<group>"; };
@@ -1969,7 +1969,7 @@
 		AC13B78638C4DD3E79F70BE3B0FE50FD /* MLKitObjectDetection.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MLKitObjectDetection.debug.xcconfig; sourceTree = "<group>"; };
 		AC1878D560B377BD2DDB92380EDF9C56 /* GoogleDataTransport.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GoogleDataTransport.h; path = GoogleDataTransport/GDTCORLibrary/Public/GoogleDataTransport/GoogleDataTransport.h; sourceTree = "<group>"; };
 		AC56F28071E95926D821A585D72E2F12 /* GULSecureCoding.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GULSecureCoding.m; path = GoogleUtilities/Environment/GULSecureCoding.m; sourceTree = "<group>"; };
-		AEBA8CB6AA4F3222AF152902B80CC166 /* GoogleToolboxForMac-GoogleToolboxForMac_Logger_Privacy */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "GoogleToolboxForMac-GoogleToolboxForMac_Logger_Privacy"; path = GoogleToolboxForMac_Logger_Privacy.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		AEBA8CB6AA4F3222AF152902B80CC166 /* GoogleToolboxForMac_Logger_Privacy.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GoogleToolboxForMac_Logger_Privacy.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEE581D015D2A248CFA36DCBC104DF6E /* GDTCORMetricsMetadata.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GDTCORMetricsMetadata.h; path = GoogleDataTransport/GDTCORLibrary/Private/GDTCORMetricsMetadata.h; sourceTree = "<group>"; };
 		AF0AFEEE4DFC15B818D222F46A304A5A /* MLKitTextRecognitionJapanese.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MLKitTextRecognitionJapanese.release.xcconfig; sourceTree = "<group>"; };
 		AF1C373A082C08C21B929EA1DF6C9D54 /* GDTCORPlatform.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GDTCORPlatform.m; path = GoogleDataTransport/GDTCORLibrary/GDTCORPlatform.m; sourceTree = "<group>"; };
@@ -1980,7 +1980,7 @@
 		B2C41250244C6E9DF18DC33905B1DF7D /* GDTCORPlatform.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GDTCORPlatform.h; path = GoogleDataTransport/GDTCORLibrary/Internal/GDTCORPlatform.h; sourceTree = "<group>"; };
 		B2DD2B6C248B990A1FC1F732E9FD17D1 /* seastar_lstm_recognizer_zh_0.2.class_lst */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = seastar_lstm_recognizer_zh_0.2.class_lst; path = Resources/ChineseOCRResources/seastar_lstm_recognizer_zh_0.2.class_lst; sourceTree = "<group>"; };
 		B34A62550EE5186FD5AFA56AD31D844E /* FBLPromise+Recover.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "FBLPromise+Recover.m"; path = "Sources/FBLPromises/FBLPromise+Recover.m"; sourceTree = "<group>"; };
-		B43874C6CBB50E7134FBEC24BABFE14F /* GoogleUtilities */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = GoogleUtilities; path = GoogleUtilities.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B43874C6CBB50E7134FBEC24BABFE14F /* GoogleUtilities.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GoogleUtilities.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B444AD39738393E5FE4A24A8EE79C37B /* FBLPromise+Race.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "FBLPromise+Race.m"; path = "Sources/FBLPromises/FBLPromise+Race.m"; sourceTree = "<group>"; };
 		B551D9F822218FFF1A47E549D9C8D4AA /* tflite_lstm_recognizer_ko_0.1.conv_model */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file; name = tflite_lstm_recognizer_ko_0.1.conv_model; path = Resources/KoreanOCRResources/tflite_lstm_recognizer_ko_0.1.conv_model; sourceTree = "<group>"; };
 		B6C5FB4765781D11ACA5D83CD01EB428 /* MLKitPoseDetectionCommon.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MLKitPoseDetectionCommon.release.xcconfig; sourceTree = "<group>"; };
@@ -2013,7 +2013,7 @@
 		C0A765132619042267E1F85182A3E621 /* tflite_lstm_recognizer_latin_0.3.conv_model */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file; name = tflite_lstm_recognizer_latin_0.3.conv_model; path = Resources/ChineseOCRResources/tflite_lstm_recognizer_latin_0.3.conv_model; sourceTree = "<group>"; };
 		C0C575E6FE45948B481BCC809B014ACF /* GULCCDependency.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GULCCDependency.m; path = GoogleUtilitiesComponents/Sources/GULCCDependency.m; sourceTree = "<group>"; };
 		C14522B92F901E5E43EE294B68F3C2E3 /* GDTCORClock.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GDTCORClock.h; path = GoogleDataTransport/GDTCORLibrary/Public/GoogleDataTransport/GDTCORClock.h; sourceTree = "<group>"; };
-		C1998E0D8085221AD87F89B614C10E52 /* GTMSessionFetcher */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = GTMSessionFetcher; path = GTMSessionFetcher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C1998E0D8085221AD87F89B614C10E52 /* GTMSessionFetcher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GTMSessionFetcher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1EA3BDA45814CAEB1F0C339BEAE17BF /* GDTCORMetricsController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GDTCORMetricsController.m; path = GoogleDataTransport/GDTCORLibrary/GDTCORMetricsController.m; sourceTree = "<group>"; };
 		C25E92D7AB94A595CAD6279C5967BFAD /* nanopb-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "nanopb-umbrella.h"; sourceTree = "<group>"; };
 		C2848A9CA167BE1C49ED02BAF60007EA /* FBLPromise+Async.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "FBLPromise+Async.m"; path = "Sources/FBLPromises/FBLPromise+Async.m"; sourceTree = "<group>"; };
@@ -2082,7 +2082,7 @@
 		E6E88DFD0FCDB55D6B20C8FE088E678B /* FBLPromise+Validate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "FBLPromise+Validate.h"; path = "Sources/FBLPromises/include/FBLPromise+Validate.h"; sourceTree = "<group>"; };
 		E761B850F19EF964621A33303853AE19 /* pose_tracking_graph.binarypb */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file; name = pose_tracking_graph.binarypb; path = Resources/MLKitPoseDetectionCommonResources/pose_tracking_graph.binarypb; sourceTree = "<group>"; };
 		E7C0FFA9A1BBA0864EB920F4C452A548 /* FBLPromise+Testing.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "FBLPromise+Testing.m"; path = "Sources/FBLPromises/FBLPromise+Testing.m"; sourceTree = "<group>"; };
-		E826FA0DCB9AA6E7829C68391B323B78 /* GTMSessionFetcher-GTMSessionFetcher_Core_Privacy */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "GTMSessionFetcher-GTMSessionFetcher_Core_Privacy"; path = GTMSessionFetcher_Core_Privacy.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		E826FA0DCB9AA6E7829C68391B323B78 /* GTMSessionFetcher_Core_Privacy.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GTMSessionFetcher_Core_Privacy.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		E86F86C22754C47979B42EF79F91ED6D /* PromisesObjC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = PromisesObjC.debug.xcconfig; sourceTree = "<group>"; };
 		E8CC9711BC8A0BA4F60B6FCA9D995512 /* nanopb-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "nanopb-Info.plist"; sourceTree = "<group>"; };
 		E90ADD2A756D4475E7FAE68F5A4EF498 /* GDTCORUploadBatch.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GDTCORUploadBatch.m; path = GoogleDataTransport/GDTCORLibrary/GDTCORUploadBatch.m; sourceTree = "<group>"; };
@@ -2122,7 +2122,7 @@
 		F6FB03D7FAAB863890FCCEBC29451120 /* FBLPromise+Timeout.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "FBLPromise+Timeout.m"; path = "Sources/FBLPromises/FBLPromise+Timeout.m"; sourceTree = "<group>"; };
 		F6FD2A8067EA6FAB7635428D75E05FE1 /* PromisesObjC.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = PromisesObjC.modulemap; sourceTree = "<group>"; };
 		F7333BBC3A44FAC8520FD3837EC1DC69 /* GTMSessionFetcher.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = GTMSessionFetcher.release.xcconfig; sourceTree = "<group>"; };
-		F73AA961F4AEFF2B46B00AE435DF6BE3 /* GoogleDataTransport-GoogleDataTransport_Privacy */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "GoogleDataTransport-GoogleDataTransport_Privacy"; path = GoogleDataTransport_Privacy.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		F73AA961F4AEFF2B46B00AE435DF6BE3 /* GoogleDataTransport_Privacy.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GoogleDataTransport_Privacy.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7A25D7DD25B9553D87036B7C78EEAEA /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/CoreTelephony.framework; sourceTree = DEVELOPER_DIR; };
 		F81D8B5B73FFB5470C3BFD0C1C54C0B4 /* GDTCOREventDropReason.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GDTCOREventDropReason.h; path = GoogleDataTransport/GDTCORLibrary/Internal/GDTCOREventDropReason.h; sourceTree = "<group>"; };
 		F8B66F1D31BCBC6C2E42E4E9264C9A9A /* ResourceBundle-MLKitImageLabelingResources-MLKitImageLabeling-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-MLKitImageLabelingResources-MLKitImageLabeling-Info.plist"; sourceTree = "<group>"; };
@@ -2861,15 +2861,15 @@
 			isa = PBXGroup;
 			children = (
 				856B5CD56F194FAD26EA91620B66D614 /* GoogleDataTransport.framework */,
-				F73AA961F4AEFF2B46B00AE435DF6BE3 /* GoogleDataTransport-GoogleDataTransport_Privacy */,
+				F73AA961F4AEFF2B46B00AE435DF6BE3 /* GoogleDataTransport_Privacy.bundle */,
 				251C6319AD50CB50F18D50CBF727F8B2 /* GoogleToolboxForMac.framework */,
-				AEBA8CB6AA4F3222AF152902B80CC166 /* GoogleToolboxForMac-GoogleToolboxForMac_Logger_Privacy */,
-				9264683869DB03D368724585C52FFD0D /* GoogleToolboxForMac-GoogleToolboxForMac_Privacy */,
-				B43874C6CBB50E7134FBEC24BABFE14F /* GoogleUtilities */,
-				44E291D18340EAC3F761346198515323 /* GoogleUtilities-GoogleUtilities_Privacy */,
-				28A6DB952CEA79E3902D41748273A364 /* GoogleUtilitiesComponents */,
-				C1998E0D8085221AD87F89B614C10E52 /* GTMSessionFetcher */,
-				E826FA0DCB9AA6E7829C68391B323B78 /* GTMSessionFetcher-GTMSessionFetcher_Core_Privacy */,
+				AEBA8CB6AA4F3222AF152902B80CC166 /* GoogleToolboxForMac_Logger_Privacy.bundle */,
+				9264683869DB03D368724585C52FFD0D /* GoogleToolboxForMac_Privacy.bundle */,
+				B43874C6CBB50E7134FBEC24BABFE14F /* GoogleUtilities.framework */,
+				44E291D18340EAC3F761346198515323 /* GoogleUtilities_Privacy.bundle */,
+				28A6DB952CEA79E3902D41748273A364 /* GoogleUtilitiesComponents.framework */,
+				C1998E0D8085221AD87F89B614C10E52 /* GTMSessionFetcher.framework */,
+				E826FA0DCB9AA6E7829C68391B323B78 /* GTMSessionFetcher_Core_Privacy.bundle */,
 				6BBB6C18B2CD3B5774C59C0EB3065D02 /* MLKitFaceDetection-GoogleMVFaceDetectorResources */,
 				3EABD6C8C9E7130F1CDF1AE77FCE131C /* MLKitImageLabeling-MLKitImageLabelingResources */,
 				B763C88884D7576E79175807380A222B /* MLKitObjectDetection-MLKitObjectDetectionResources */,
@@ -2885,11 +2885,11 @@
 				4243CFE1AC42C35EC275F7F58F9F8811 /* MLKitTextRecognitionJapanese-JapaneseOCRResources */,
 				BEC0F8B7F6AF84901F135C6927BD823B /* MLKitTextRecognitionKorean-KoreanOCRResources */,
 				7E4F6D7ABE68AB97F333CB8C67812EB8 /* MLKitXenoCommon-MLKitXenoResources */,
-				06FC5C9CF96D60C50FCD47D339C91951 /* nanopb */,
-				3227F3FC45681D7CEE5D1355A532398A /* nanopb-nanopb_Privacy */,
+				06FC5C9CF96D60C50FCD47D339C91951 /* nanopb.framework */,
+				3227F3FC45681D7CEE5D1355A532398A /* nanopb_Privacy.bundle */,
 				2D222ED32675C9CA05DAA36E798F4491 /* Pods-LuminaView */,
-				3347A1AB6546F0A3977529B8F199DC41 /* PromisesObjC */,
-				3F238BB22C5201CE689CAF2F766AED95 /* PromisesObjC-FBLPromises_Privacy */,
+				3347A1AB6546F0A3977529B8F199DC41 /* FBLPromises.framework */,
+				3F238BB22C5201CE689CAF2F766AED95 /* FBLPromises_Privacy.bundle */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -4147,7 +4147,7 @@
 			);
 			name = "PromisesObjC-FBLPromises_Privacy";
 			productName = FBLPromises_Privacy;
-			productReference = 3F238BB22C5201CE689CAF2F766AED95 /* PromisesObjC-FBLPromises_Privacy */;
+			productReference = 3F238BB22C5201CE689CAF2F766AED95 /* FBLPromises_Privacy.bundle */;
 			productType = "com.apple.product-type.bundle";
 		};
 		2696792BD2BF81C6E6F8CD8ABD530D77 /* MLKitPoseDetectionCommon-MLKitPoseDetectionCommonResources */ = {
@@ -4183,7 +4183,7 @@
 			);
 			name = PromisesObjC;
 			productName = FBLPromises;
-			productReference = 3347A1AB6546F0A3977529B8F199DC41 /* PromisesObjC */;
+			productReference = 3347A1AB6546F0A3977529B8F199DC41 /* FBLPromises.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		388369A189136CC548791A5B000F726F /* MLKitSegmentationCommon-MLKitSegmentationCommonResources */ = {
@@ -4217,7 +4217,7 @@
 			);
 			name = "GTMSessionFetcher-GTMSessionFetcher_Core_Privacy";
 			productName = GTMSessionFetcher_Core_Privacy;
-			productReference = E826FA0DCB9AA6E7829C68391B323B78 /* GTMSessionFetcher-GTMSessionFetcher_Core_Privacy */;
+			productReference = E826FA0DCB9AA6E7829C68391B323B78 /* GTMSessionFetcher_Core_Privacy.bundle */;
 			productType = "com.apple.product-type.bundle";
 		};
 		43514B1513970818946897CC39D22ED1 /* Pods-LuminaView */ = {
@@ -4318,7 +4318,7 @@
 			);
 			name = "nanopb-nanopb_Privacy";
 			productName = nanopb_Privacy;
-			productReference = 3227F3FC45681D7CEE5D1355A532398A /* nanopb-nanopb_Privacy */;
+			productReference = 3227F3FC45681D7CEE5D1355A532398A /* nanopb_Privacy.bundle */;
 			productType = "com.apple.product-type.bundle";
 		};
 		5C0371EE948D0357B8EE0E34ABB44BF0 /* GoogleDataTransport */ = {
@@ -4357,7 +4357,7 @@
 			);
 			name = "GoogleUtilities-GoogleUtilities_Privacy";
 			productName = GoogleUtilities_Privacy;
-			productReference = 44E291D18340EAC3F761346198515323 /* GoogleUtilities-GoogleUtilities_Privacy */;
+			productReference = 44E291D18340EAC3F761346198515323 /* GoogleUtilities_Privacy.bundle */;
 			productType = "com.apple.product-type.bundle";
 		};
 		7281374045546C83DFAF33C94F3825D3 /* MLKitTextRecognitionDevanagari-DevanagariOCRResources */ = {
@@ -4394,7 +4394,7 @@
 			);
 			name = GoogleUtilities;
 			productName = GoogleUtilities;
-			productReference = B43874C6CBB50E7134FBEC24BABFE14F /* GoogleUtilities */;
+			productReference = B43874C6CBB50E7134FBEC24BABFE14F /* GoogleUtilities.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		9CC46F9FA6BA4F71309A4A4ACA6F02C3 /* GoogleToolboxForMac-GoogleToolboxForMac_Logger_Privacy */ = {
@@ -4411,7 +4411,7 @@
 			);
 			name = "GoogleToolboxForMac-GoogleToolboxForMac_Logger_Privacy";
 			productName = GoogleToolboxForMac_Logger_Privacy;
-			productReference = AEBA8CB6AA4F3222AF152902B80CC166 /* GoogleToolboxForMac-GoogleToolboxForMac_Logger_Privacy */;
+			productReference = AEBA8CB6AA4F3222AF152902B80CC166 /* GoogleToolboxForMac_Logger_Privacy.bundle */;
 			productType = "com.apple.product-type.bundle";
 		};
 		A64F5725956770327D080E1EB31878EE /* GoogleUtilitiesComponents */ = {
@@ -4430,7 +4430,7 @@
 			);
 			name = GoogleUtilitiesComponents;
 			productName = GoogleUtilitiesComponents;
-			productReference = 28A6DB952CEA79E3902D41748273A364 /* GoogleUtilitiesComponents */;
+			productReference = 28A6DB952CEA79E3902D41748273A364 /* GoogleUtilitiesComponents.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		B261389A17E06B2008D7A7EE94835132 /* MLKitFaceDetection-GoogleMVFaceDetectorResources */ = {
@@ -4498,7 +4498,7 @@
 			);
 			name = "GoogleToolboxForMac-GoogleToolboxForMac_Privacy";
 			productName = GoogleToolboxForMac_Privacy;
-			productReference = 9264683869DB03D368724585C52FFD0D /* GoogleToolboxForMac-GoogleToolboxForMac_Privacy */;
+			productReference = 9264683869DB03D368724585C52FFD0D /* GoogleToolboxForMac_Privacy.bundle */;
 			productType = "com.apple.product-type.bundle";
 		};
 		D2B5E7DCCBBFB32341D857D01211A1A3 /* nanopb */ = {
@@ -4517,7 +4517,7 @@
 			);
 			name = nanopb;
 			productName = nanopb;
-			productReference = 06FC5C9CF96D60C50FCD47D339C91951 /* nanopb */;
+			productReference = 06FC5C9CF96D60C50FCD47D339C91951 /* nanopb.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		D47C581D39D227080F83B16A22A56664 /* GoogleToolboxForMac */ = {
@@ -4556,7 +4556,7 @@
 			);
 			name = GTMSessionFetcher;
 			productName = GTMSessionFetcher;
-			productReference = C1998E0D8085221AD87F89B614C10E52 /* GTMSessionFetcher */;
+			productReference = C1998E0D8085221AD87F89B614C10E52 /* GTMSessionFetcher.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		DCC954703E9926DF3723F9157722E197 /* MLKitObjectDetection-MLKitObjectDetectionResources */ = {
@@ -4590,7 +4590,7 @@
 			);
 			name = "GoogleDataTransport-GoogleDataTransport_Privacy";
 			productName = GoogleDataTransport_Privacy;
-			productReference = F73AA961F4AEFF2B46B00AE435DF6BE3 /* GoogleDataTransport-GoogleDataTransport_Privacy */;
+			productReference = F73AA961F4AEFF2B46B00AE435DF6BE3 /* GoogleDataTransport_Privacy.bundle */;
 			productType = "com.apple.product-type.bundle";
 		};
 		EFC1FB9AA811641FCE36D49C8B967A53 /* MLKitTextRecognitionJapanese-JapaneseOCRResources */ = {
@@ -4633,8 +4633,9 @@
 		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 1500;
-				LastUpgradeCheck = 1500;
+				LastUpgradeCheck = 1540;
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -4722,7 +4723,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AD67A859C6ACD63371CFE7999EFD757F /* GoogleUtilities-GoogleUtilities_Privacy in Resources */,
+				AD67A859C6ACD63371CFE7999EFD757F /* GoogleUtilities_Privacy.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4730,7 +4731,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				64D30AEB611EE6AE22F87AF0D654F9DC /* GoogleDataTransport-GoogleDataTransport_Privacy in Resources */,
+				64D30AEB611EE6AE22F87AF0D654F9DC /* GoogleDataTransport_Privacy.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4819,7 +4820,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4D5F45C5EB882A07E890C8A4141E5B6C /* nanopb-nanopb_Privacy in Resources */,
+				4D5F45C5EB882A07E890C8A4141E5B6C /* nanopb_Privacy.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4827,7 +4828,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8985C26CA341D3CBC84877DCF0531AE5 /* PromisesObjC-FBLPromises_Privacy in Resources */,
+				8985C26CA341D3CBC84877DCF0531AE5 /* FBLPromises_Privacy.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4872,8 +4873,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6780E305454A15B7F15F2536B9CD76C1 /* GoogleToolboxForMac-GoogleToolboxForMac_Logger_Privacy in Resources */,
-				FFFB8D12618298A5D7C0863D8250F8D1 /* GoogleToolboxForMac-GoogleToolboxForMac_Privacy in Resources */,
+				6780E305454A15B7F15F2536B9CD76C1 /* GoogleToolboxForMac_Logger_Privacy.bundle in Resources */,
+				FFFB8D12618298A5D7C0863D8250F8D1 /* GoogleToolboxForMac_Privacy.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4954,7 +4955,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C6C6E2C106381906DE0DD0CB4185BC47 /* GTMSessionFetcher-GTMSessionFetcher_Core_Privacy in Resources */,
+				C6C6E2C106381906DE0DD0CB4185BC47 /* GTMSessionFetcher_Core_Privacy.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6242,7 +6243,7 @@
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/GoogleUtilities";
 				IBSC_MODULE = GoogleUtilities;
 				INFOPLIST_FILE = "Target Support Files/GoogleUtilities/ResourceBundle-GoogleUtilities_Privacy-GoogleUtilities-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				PRODUCT_NAME = GoogleUtilities_Privacy;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -6259,7 +6260,7 @@
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/GTMSessionFetcher";
 				IBSC_MODULE = GTMSessionFetcher;
 				INFOPLIST_FILE = "Target Support Files/GTMSessionFetcher/ResourceBundle-GTMSessionFetcher_Core_Privacy-GTMSessionFetcher-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				PRODUCT_NAME = GTMSessionFetcher_Core_Privacy;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -6350,7 +6351,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/GTMSessionFetcher/GTMSessionFetcher-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -6384,7 +6385,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/GoogleUtilitiesComponents/GoogleUtilitiesComponents-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -6451,7 +6452,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/PromisesObjC/PromisesObjC-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -6580,7 +6581,7 @@
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/GoogleToolboxForMac";
 				IBSC_MODULE = GoogleToolboxForMac;
 				INFOPLIST_FILE = "Target Support Files/GoogleToolboxForMac/ResourceBundle-GoogleToolboxForMac_Logger_Privacy-GoogleToolboxForMac-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				PRODUCT_NAME = GoogleToolboxForMac_Logger_Privacy;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -6705,7 +6706,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/GTMSessionFetcher/GTMSessionFetcher-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -6805,7 +6806,7 @@
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/GoogleToolboxForMac";
 				IBSC_MODULE = GoogleToolboxForMac;
 				INFOPLIST_FILE = "Target Support Files/GoogleToolboxForMac/ResourceBundle-GoogleToolboxForMac_Privacy-GoogleToolboxForMac-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				PRODUCT_NAME = GoogleToolboxForMac_Privacy;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -6908,7 +6909,7 @@
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/GoogleDataTransport";
 				IBSC_MODULE = GoogleDataTransport;
 				INFOPLIST_FILE = "Target Support Files/GoogleDataTransport/ResourceBundle-GoogleDataTransport_Privacy-GoogleDataTransport-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				PRODUCT_NAME = GoogleDataTransport_Privacy;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -6948,7 +6949,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/GoogleDataTransport/GoogleDataTransport-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -7069,7 +7070,7 @@
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/nanopb";
 				IBSC_MODULE = nanopb;
 				INFOPLIST_FILE = "Target Support Files/nanopb/ResourceBundle-nanopb_Privacy-nanopb-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				PRODUCT_NAME = nanopb_Privacy;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -7190,7 +7191,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/GoogleUtilities/GoogleUtilities-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -7252,7 +7253,7 @@
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/nanopb";
 				IBSC_MODULE = nanopb;
 				INFOPLIST_FILE = "Target Support Files/nanopb/ResourceBundle-nanopb_Privacy-nanopb-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				PRODUCT_NAME = nanopb_Privacy;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -7276,7 +7277,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/GoogleUtilitiesComponents/GoogleUtilitiesComponents-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -7516,7 +7517,7 @@
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/GoogleToolboxForMac";
 				IBSC_MODULE = GoogleToolboxForMac;
 				INFOPLIST_FILE = "Target Support Files/GoogleToolboxForMac/ResourceBundle-GoogleToolboxForMac_Privacy-GoogleToolboxForMac-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				PRODUCT_NAME = GoogleToolboxForMac_Privacy;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -7602,7 +7603,7 @@
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/GoogleToolboxForMac";
 				IBSC_MODULE = GoogleToolboxForMac;
 				INFOPLIST_FILE = "Target Support Files/GoogleToolboxForMac/ResourceBundle-GoogleToolboxForMac_Logger_Privacy-GoogleToolboxForMac-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				PRODUCT_NAME = GoogleToolboxForMac_Logger_Privacy;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -7625,7 +7626,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/GoogleUtilities/GoogleUtilities-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -7761,7 +7762,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/GoogleDataTransport/GoogleDataTransport-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -7814,7 +7815,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/PromisesObjC/PromisesObjC-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -7842,7 +7843,7 @@
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/GoogleDataTransport";
 				IBSC_MODULE = GoogleDataTransport;
 				INFOPLIST_FILE = "Target Support Files/GoogleDataTransport/ResourceBundle-GoogleDataTransport_Privacy-GoogleDataTransport-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				PRODUCT_NAME = GoogleDataTransport_Privacy;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -7876,7 +7877,7 @@
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/GoogleUtilities";
 				IBSC_MODULE = GoogleUtilities;
 				INFOPLIST_FILE = "Target Support Files/GoogleUtilities/ResourceBundle-GoogleUtilities_Privacy-GoogleUtilities-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				PRODUCT_NAME = GoogleUtilities_Privacy;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -8014,7 +8015,7 @@
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/GTMSessionFetcher";
 				IBSC_MODULE = GTMSessionFetcher;
 				INFOPLIST_FILE = "Target Support Files/GTMSessionFetcher/ResourceBundle-GTMSessionFetcher_Core_Privacy-GTMSessionFetcher-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				PRODUCT_NAME = GTMSessionFetcher_Core_Privacy;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -8074,7 +8075,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/nanopb/nanopb-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/nanopb/nanopb-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -8119,7 +8120,7 @@
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/PromisesObjC";
 				IBSC_MODULE = FBLPromises;
 				INFOPLIST_FILE = "Target Support Files/PromisesObjC/ResourceBundle-FBLPromises_Privacy-PromisesObjC-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				PRODUCT_NAME = FBLPromises_Privacy;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -8177,7 +8178,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/nanopb/nanopb-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/nanopb/nanopb-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -8325,7 +8326,7 @@
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/PromisesObjC";
 				IBSC_MODULE = FBLPromises;
 				INFOPLIST_FILE = "Target Support Files/PromisesObjC/ResourceBundle-FBLPromises_Privacy-PromisesObjC-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				PRODUCT_NAME = FBLPromises_Privacy;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
