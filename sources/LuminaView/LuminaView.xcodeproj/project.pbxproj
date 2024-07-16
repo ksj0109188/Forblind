@@ -11,19 +11,36 @@
 		3B1EB4292C4532C2001A0F0A /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 3B1EB4282C4532C2001A0F0A /* RxCocoa */; };
 		3B1EB42B2C4532C2001A0F0A /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 3B1EB42A2C4532C2001A0F0A /* RxSwift */; };
 		3B1EB42E2C4539BD001A0F0A /* GoogleGenerativeAI in Frameworks */ = {isa = PBXBuildFile; productRef = 3B1EB42D2C4539BD001A0F0A /* GoogleGenerativeAI */; };
+		3B37926C2C467B8E00375767 /* AppDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B37926B2C467B8E00375767 /* AppDIContainer.swift */; };
+		3B37926E2C467BA300375767 /* AppConfigurations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B37926D2C467BA300375767 /* AppConfigurations.swift */; };
+		3B3792722C467F6600375767 /* DriveModeSceneDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3792712C467F6600375767 /* DriveModeSceneDIContainer.swift */; };
+		3B3792742C467FB500375767 /* DriveModeFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3792732C467FB500375767 /* DriveModeFlowCoordinator.swift */; };
+		3B3792792C4681C100375767 /* DriveModeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3792782C4681C100375767 /* DriveModeViewModel.swift */; };
+		3B37927C2C46884B00375767 /* CameraManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B37927B2C46884B00375767 /* CameraManger.swift */; };
+		3B37927F2C468E4200375767 /* AppFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B37927E2C468E4200375767 /* AppFlowCoordinator.swift */; };
+		3B3792812C469DFD00375767 /* GeminiWebRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3792802C469DFD00375767 /* GeminiWebRepository.swift */; };
 		3BBFE89B2C3D0DCF00193B70 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBFE89A2C3D0DCF00193B70 /* AppDelegate.swift */; };
 		3BBFE89D2C3D0DCF00193B70 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBFE89C2C3D0DCF00193B70 /* SceneDelegate.swift */; };
-		3BBFE89F2C3D0DCF00193B70 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBFE89E2C3D0DCF00193B70 /* ViewController.swift */; };
+		3BBFE89F2C3D0DCF00193B70 /* DriveModeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBFE89E2C3D0DCF00193B70 /* DriveModeViewController.swift */; };
 		3BBFE8A42C3D0DD200193B70 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3BBFE8A32C3D0DD200193B70 /* Assets.xcassets */; };
 		3BBFE8A72C3D0DD200193B70 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 3BBFE8A62C3D0DD200193B70 /* Base */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1221012790DFD4E6C7734FF0 /* Pods-LuminaView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LuminaView.release.xcconfig"; path = "Target Support Files/Pods-LuminaView/Pods-LuminaView.release.xcconfig"; sourceTree = "<group>"; };
+		3B37926B2C467B8E00375767 /* AppDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDIContainer.swift; sourceTree = "<group>"; };
+		3B37926D2C467BA300375767 /* AppConfigurations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfigurations.swift; sourceTree = "<group>"; };
+		3B37926F2C467BC900375767 /* DevConfig.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = DevConfig.xcconfig; sourceTree = "<group>"; };
+		3B3792712C467F6600375767 /* DriveModeSceneDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriveModeSceneDIContainer.swift; sourceTree = "<group>"; };
+		3B3792732C467FB500375767 /* DriveModeFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriveModeFlowCoordinator.swift; sourceTree = "<group>"; };
+		3B3792782C4681C100375767 /* DriveModeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriveModeViewModel.swift; sourceTree = "<group>"; };
+		3B37927B2C46884B00375767 /* CameraManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraManger.swift; sourceTree = "<group>"; };
+		3B37927E2C468E4200375767 /* AppFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlowCoordinator.swift; sourceTree = "<group>"; };
+		3B3792802C469DFD00375767 /* GeminiWebRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GeminiWebRepository.swift; path = LuminaView/App/GeminiWebRepository.swift; sourceTree = SOURCE_ROOT; };
 		3BBFE8972C3D0DCF00193B70 /* LuminaView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LuminaView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BBFE89A2C3D0DCF00193B70 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3BBFE89C2C3D0DCF00193B70 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		3BBFE89E2C3D0DCF00193B70 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		3BBFE89E2C3D0DCF00193B70 /* DriveModeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriveModeViewController.swift; sourceTree = "<group>"; };
 		3BBFE8A32C3D0DD200193B70 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3BBFE8A62C3D0DD200193B70 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3BBFE8A82C3D0DD200193B70 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -63,6 +80,56 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		3B3792702C467F2500375767 /* DIContainer */ = {
+			isa = PBXGroup;
+			children = (
+				3B37926B2C467B8E00375767 /* AppDIContainer.swift */,
+				3B3792712C467F6600375767 /* DriveModeSceneDIContainer.swift */,
+			);
+			path = DIContainer;
+			sourceTree = "<group>";
+		};
+		3B3792752C467FBA00375767 /* Flow */ = {
+			isa = PBXGroup;
+			children = (
+				3B3792732C467FB500375767 /* DriveModeFlowCoordinator.swift */,
+			);
+			path = Flow;
+			sourceTree = "<group>";
+		};
+		3B3792762C46819A00375767 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3BBFE89E2C3D0DCF00193B70 /* DriveModeViewController.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		3B3792772C4681A100375767 /* DriveModeScene */ = {
+			isa = PBXGroup;
+			children = (
+				3B37927A2C4681C500375767 /* ViewModel */,
+				3B3792762C46819A00375767 /* Views */,
+			);
+			path = DriveModeScene;
+			sourceTree = "<group>";
+		};
+		3B37927A2C4681C500375767 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				3B3792782C4681C100375767 /* DriveModeViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		3B37927D2C46885100375767 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				3B37927B2C46884B00375767 /* CameraManger.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		3BBFE88E2C3D0DCF00193B70 = {
 			isa = PBXGroup;
 			children = (
@@ -96,8 +163,12 @@
 		96586BDE2C3D19EB007039FB /* App */ = {
 			isa = PBXGroup;
 			children = (
+				3B3792702C467F2500375767 /* DIContainer */,
 				3BBFE89A2C3D0DCF00193B70 /* AppDelegate.swift */,
+				3B37926D2C467BA300375767 /* AppConfigurations.swift */,
+				3B37927E2C468E4200375767 /* AppFlowCoordinator.swift */,
 				3BBFE89C2C3D0DCF00193B70 /* SceneDelegate.swift */,
+				3B37927D2C46885100375767 /* Utilities */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -105,6 +176,8 @@
 		96586BDF2C3D19F8007039FB /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				3B3792752C467FBA00375767 /* Flow */,
+				3B3792772C4681A100375767 /* DriveModeScene */,
 				96586BE12C3D1A0B007039FB /* ViewModels */,
 				96586BE02C3D1A07007039FB /* Views */,
 			);
@@ -114,7 +187,6 @@
 		96586BE02C3D1A07007039FB /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				3BBFE89E2C3D0DCF00193B70 /* ViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -161,6 +233,7 @@
 		96586BE62C3D1A3F007039FB /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
+				3B3792802C469DFD00375767 /* GeminiWebRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -193,6 +266,7 @@
 			children = (
 				3BBFE8A52C3D0DD200193B70 /* LaunchScreen.storyboard */,
 				3BBFE8A32C3D0DD200193B70 /* Assets.xcassets */,
+				3B37926F2C467BC900375767 /* DevConfig.xcconfig */,
 				3BBFE8A82C3D0DD200193B70 /* Info.plist */,
 			);
 			path = Resources;
@@ -339,8 +413,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3BBFE89F2C3D0DCF00193B70 /* ViewController.swift in Sources */,
+				3B37926E2C467BA300375767 /* AppConfigurations.swift in Sources */,
+				3B37927C2C46884B00375767 /* CameraManger.swift in Sources */,
+				3B37927F2C468E4200375767 /* AppFlowCoordinator.swift in Sources */,
+				3B37926C2C467B8E00375767 /* AppDIContainer.swift in Sources */,
+				3B3792812C469DFD00375767 /* GeminiWebRepository.swift in Sources */,
+				3BBFE89F2C3D0DCF00193B70 /* DriveModeViewController.swift in Sources */,
+				3B3792742C467FB500375767 /* DriveModeFlowCoordinator.swift in Sources */,
+				3B3792722C467F6600375767 /* DriveModeSceneDIContainer.swift in Sources */,
 				3BBFE89B2C3D0DCF00193B70 /* AppDelegate.swift in Sources */,
+				3B3792792C4681C100375767 /* DriveModeViewModel.swift in Sources */,
 				3BBFE89D2C3D0DCF00193B70 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -361,6 +443,7 @@
 /* Begin XCBuildConfiguration section */
 		3BBFE8A92C3D0DD200193B70 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3B37926F2C467BC900375767 /* DevConfig.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;

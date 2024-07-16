@@ -1,29 +1,23 @@
 //
-//  ViewController.swift
+//  CameraManger.swift
 //  LuminaView
 //
-//  Created by 김성준 on 7/9/24.
+//  Created by 김성준 on 7/16/24.
 //
 
 import UIKit
 import AVFoundation
-import GoogleGenerativeAI
-import RxSwift
-import RxCocoa
 
-class ViewController: UIViewController {
+class CameraManger: NSObject {
     var captureSession: AVCaptureSession!
     var videoPreviewLayer: AVCaptureVideoPreviewLayer!
     var videoOutput: AVCaptureVideoDataOutput!
-    let model = GenerativeModel(name: "gemini-1.5-flash", apiKey: "Tempkey")
-    let disposeBag = DisposeBag()
-    let imageSubject = PublishSubject<UIImage>()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    init(captureSession: AVCaptureSession!, videoPreviewLayer: AVCaptureVideoPreviewLayer!, videoOutput: AVCaptureVideoDataOutput!) {
+        self.captureSession = captureSession
+        self.videoPreviewLayer = videoPreviewLayer
+        self.videoOutput = videoOutput
         
-        configureCamera()
-        setupApiConnect()
     }
     
     private func configureCamera() {
@@ -65,38 +59,9 @@ class ViewController: UIViewController {
             self.captureSession.startRunning()
         }
     }
-    
-    private func setupApiConnect() {
-        imageSubject
-            .buffer(timeSpan: .seconds(5), count: Int.max, scheduler: MainScheduler.instance)
-            .subscribe(onNext: { [weak self] images in
-                Task {
-                    await self?.apiReqeust(images)
-                }
-            })
-            .disposed(by: disposeBag)
-    }
-    
-    private func apiReqeust(_ images: [UIImage]) async {
-        let prompt = "앞의 사진들을 비교해서 어떤 물체가 다가오고 있는지, 가장 가까운 물체의 거리가 대략 몇m인지 추측해서 알려줘"
-        var fullResponse = ""
-        
-        let contentStream2 = model.generateContentStream(prompt, images.compactMap({ $0}))
-        
-        do {
-            for try await chunk in contentStream2 {
-                if let text = chunk.text {
-                    fullResponse += text
-                }
-            }
-        } catch(let error) {
-            print(error)
-        }
-        print(fullResponse)
-    }
 }
 
-extension ViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
+extension CameraManger: AVCaptureVideoDataOutputSampleBufferDelegate {
     // AVCaptureVideoDataOutputSampleBufferDelegate 메서드
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         
@@ -111,7 +76,8 @@ extension ViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
         let context = CIContext()
         if let cgImage = context.createCGImage(ciImage, from: ciImage.extent) {
             let uiImage = UIImage(cgImage: cgImage)
-            imageSubject.onNext(uiImage)
+//            이벤트를 전달할 subject 필요
+//            imageSubject.onNext(uiImage)
         }
         
     }
