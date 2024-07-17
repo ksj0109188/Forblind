@@ -24,6 +24,7 @@
 		3BBFE89F2C3D0DCF00193B70 /* DriveModeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBFE89E2C3D0DCF00193B70 /* DriveModeViewController.swift */; };
 		3BBFE8A42C3D0DD200193B70 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3BBFE8A32C3D0DD200193B70 /* Assets.xcassets */; };
 		3BBFE8A72C3D0DD200193B70 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 3BBFE8A62C3D0DD200193B70 /* Base */; };
+		3BE1CBCB2C47FA22003E7C62 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE1CBCA2C47FA22003E7C62 /* UIView+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		3BBFE8A32C3D0DD200193B70 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3BBFE8A62C3D0DD200193B70 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3BBFE8A82C3D0DD200193B70 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3BE1CBCA2C47FA22003E7C62 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		9AA3194F4A8B068078E546D6 /* Pods_LuminaView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LuminaView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDEE937B43E69CA1977B2AE1 /* Pods-LuminaView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LuminaView.debug.xcconfig"; path = "Target Support Files/Pods-LuminaView/Pods-LuminaView.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -125,6 +127,7 @@
 		3B37927D2C46885100375767 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				3BE1CBCC2C47FB16003E7C62 /* Extensions */,
 				3B37927B2C46884B00375767 /* CameraManger.swift */,
 			);
 			path = Utilities;
@@ -158,6 +161,14 @@
 				96586BDE2C3D19EB007039FB /* App */,
 			);
 			path = LuminaView;
+			sourceTree = "<group>";
+		};
+		3BE1CBCC2C47FB16003E7C62 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				3BE1CBCA2C47FA22003E7C62 /* UIView+.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		96586BDE2C3D19EB007039FB /* App */ = {
@@ -413,6 +424,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3BE1CBCB2C47FA22003E7C62 /* UIView+.swift in Sources */,
 				3B37926E2C467BA300375767 /* AppConfigurations.swift in Sources */,
 				3B37927C2C46884B00375767 /* CameraManger.swift in Sources */,
 				3B37927F2C468E4200375767 /* AppFlowCoordinator.swift in Sources */,
