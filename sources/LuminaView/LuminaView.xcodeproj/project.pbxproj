@@ -17,6 +17,9 @@
 		3BBFE8A42C3D0DD200193B70 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3BBFE8A32C3D0DD200193B70 /* Assets.xcassets */; };
 		3BBFE8A72C3D0DD200193B70 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 3BBFE8A62C3D0DD200193B70 /* Base */; };
 		960BE5A32C492E330060DD72 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 960BE5A22C492E330060DD72 /* Lottie */; };
+		96BD02562C49449500CBEE58 /* RecognitionProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BD02552C49449500CBEE58 /* RecognitionProgressView.swift */; };
+		96BD02582C49458300CBEE58 /* CommonCustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BD02572C49458300CBEE58 /* CommonCustomLabel.swift */; };
+		96BD025A2C4945A100CBEE58 /* CommonCustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BD02592C4945A100CBEE58 /* CommonCustomButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +31,9 @@
 		3BBFE8A32C3D0DD200193B70 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3BBFE8A62C3D0DD200193B70 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3BBFE8A82C3D0DD200193B70 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		96BD02552C49449500CBEE58 /* RecognitionProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecognitionProgressView.swift; sourceTree = "<group>"; };
+		96BD02572C49458300CBEE58 /* CommonCustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonCustomLabel.swift; sourceTree = "<group>"; };
+		96BD02592C4945A100CBEE58 /* CommonCustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonCustomButton.swift; sourceTree = "<group>"; };
 		9AA3194F4A8B068078E546D6 /* Pods_LuminaView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LuminaView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDEE937B43E69CA1977B2AE1 /* Pods-LuminaView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LuminaView.debug.xcconfig"; path = "Target Support Files/Pods-LuminaView/Pods-LuminaView.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -91,6 +97,8 @@
 				96586BE22C3D1A15007039FB /* Domain */,
 				96586BDF2C3D19F8007039FB /* Presentation */,
 				96586BDE2C3D19EB007039FB /* App */,
+				96BD02572C49458300CBEE58 /* CommonCustomLabel.swift */,
+				96BD02592C4945A100CBEE58 /* CommonCustomButton.swift */,
 			);
 			path = LuminaView;
 			sourceTree = "<group>";
@@ -117,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				3BBFE89E2C3D0DCF00193B70 /* ViewController.swift */,
+				96BD02552C49449500CBEE58 /* RecognitionProgressView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -344,7 +353,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				3BBFE89F2C3D0DCF00193B70 /* ViewController.swift in Sources */,
+				96BD025A2C4945A100CBEE58 /* CommonCustomButton.swift in Sources */,
+				96BD02562C49449500CBEE58 /* RecognitionProgressView.swift in Sources */,
 				3BBFE89B2C3D0DCF00193B70 /* AppDelegate.swift in Sources */,
+				96BD02582C49458300CBEE58 /* CommonCustomLabel.swift in Sources */,
 				3BBFE89D2C3D0DCF00193B70 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -401,6 +413,8 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				EXCLUDED_ARCHS = "";
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -464,6 +478,8 @@
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				EXCLUDED_ARCHS = "";
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -476,6 +492,7 @@
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				VALIDATE_PRODUCT = YES;
@@ -490,7 +507,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = M7F7863UPY;
+				DEVELOPMENT_TEAM = 3Y6A97YBJQ;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = LuminaView/Resources/Info.plist;
@@ -524,7 +541,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = M7F7863UPY;
+				DEVELOPMENT_TEAM = 3Y6A97YBJQ;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = LuminaView/Resources/Info.plist;
