@@ -16,6 +16,7 @@
 		3BBFE89F2C3D0DCF00193B70 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBFE89E2C3D0DCF00193B70 /* ViewController.swift */; };
 		3BBFE8A42C3D0DD200193B70 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3BBFE8A32C3D0DD200193B70 /* Assets.xcassets */; };
 		3BBFE8A72C3D0DD200193B70 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 3BBFE8A62C3D0DD200193B70 /* Base */; };
+		960BE5A32C492E330060DD72 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 960BE5A22C492E330060DD72 /* Lottie */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				960BE5A32C492E330060DD72 /* Lottie in Frameworks */,
 				3B1EB42B2C4532C2001A0F0A /* RxSwift in Frameworks */,
 				3B1EB4292C4532C2001A0F0A /* RxCocoa in Frameworks */,
 				2072837A151FD05FD8409099 /* Pods_LuminaView.framework in Frameworks */,
@@ -221,6 +223,7 @@
 				3B1EB4282C4532C2001A0F0A /* RxCocoa */,
 				3B1EB42A2C4532C2001A0F0A /* RxSwift */,
 				3B1EB42D2C4539BD001A0F0A /* GoogleGenerativeAI */,
+				960BE5A22C492E330060DD72 /* Lottie */,
 			);
 			productName = LuminaView;
 			productReference = 3BBFE8972C3D0DCF00193B70 /* LuminaView.app */;
@@ -253,6 +256,7 @@
 			packageReferences = (
 				3B1EB4272C4532C2001A0F0A /* XCRemoteSwiftPackageReference "RxSwift" */,
 				3B1EB42C2C4539BD001A0F0A /* XCRemoteSwiftPackageReference "generative-ai-swift" */,
+				960BE5A12C492E330060DD72 /* XCRemoteSwiftPackageReference "lottie-spm" */,
 			);
 			productRefGroup = 3BBFE8982C3D0DCF00193B70 /* Products */;
 			projectDirPath = "";
@@ -586,6 +590,14 @@
 				minimumVersion = 0.5.4;
 			};
 		};
+		960BE5A12C492E330060DD72 /* XCRemoteSwiftPackageReference "lottie-spm" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-spm.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.5.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -603,6 +615,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 3B1EB42C2C4539BD001A0F0A /* XCRemoteSwiftPackageReference "generative-ai-swift" */;
 			productName = GoogleGenerativeAI;
+		};
+		960BE5A22C492E330060DD72 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 960BE5A12C492E330060DD72 /* XCRemoteSwiftPackageReference "lottie-spm" */;
+			productName = Lottie;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
