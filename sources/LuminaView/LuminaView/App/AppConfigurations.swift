@@ -14,4 +14,11 @@ final class AppConfigurations {
         }
         return key
     }()
+    
+    lazy var geminiModelName: String = {
+        guard let modelName = Bundle.main.object(forInfoDictionaryKey: "geminiModelName") as? String else {
+            fatalError("modelName is nil")
+        }
+        return modelName
+    }()
 }

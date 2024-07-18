@@ -10,7 +10,8 @@ import UIKit
 final class DriveModeSceneDIContainer: DriveModeFlowCoordinatorDependencies {
     
     struct Dependencies {
-        // MARK: API Service
+        let guideAPIWebRepository: GuideAPIWebRepository
+        let cameraManager: Recodable
     }
     
     private let dependencies: Dependencies
@@ -20,9 +21,13 @@ final class DriveModeSceneDIContainer: DriveModeFlowCoordinatorDependencies {
     }
     
     // MARK: UseCase
+    func makeDriveModeUsecase() -> FetchGuideUseCase{
+        FetchGuideUseCase(guideAPIWebRepository: dependencies.guideAPIWebRepository)
+    }
+    
     // MARK: ViewModel
     func makeDriveModeViewModel() -> DriveModeViewModel {
-        let viewModel = DriveModeViewModel(cameraManager: CameraManger(), actions: DriveModeViewModel.DriveModeViewModelActions())
+        let viewModel = DriveModeViewModel(useCase: makeDriveModeUsecase(), cameraManager: dependencies.cameraManager, actions: DriveModeViewModel.DriveModeViewModelActions())
         
         return viewModel
     }
@@ -30,6 +35,7 @@ final class DriveModeSceneDIContainer: DriveModeFlowCoordinatorDependencies {
     // MARK: Presentation
     func makeDriveModeViewController() -> DriveModeViewController {
         let vc = DriveModeViewController()
+        vc.create(viewModel: makeDriveModeViewModel())
         
         return vc
     }

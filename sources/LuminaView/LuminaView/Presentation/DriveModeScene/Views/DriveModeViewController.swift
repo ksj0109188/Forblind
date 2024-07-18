@@ -24,8 +24,17 @@ class DriveModeViewController: UIViewController {
     private lazy var acitivityIndicator: UIActivityIndicatorView = {
         let view = UIActivityIndicatorView()
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.startAnimating()
         
         return view
+    }()
+    
+    private lazy var playButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Play", for: .normal)
+        button.target(forAction: #selector(playRecord), withSender: nil)
+        
+        return button
     }()
         
     
@@ -40,7 +49,7 @@ class DriveModeViewController: UIViewController {
     }
     
     private func setupViews() {
-        view.addSubviews(statusLabel, acitivityIndicator)
+        view.addSubviews(statusLabel, acitivityIndicator, playButton)
     }
     
     private func setupConstraints() {
@@ -61,6 +70,17 @@ class DriveModeViewController: UIViewController {
             statusLabel.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: padding),
             statusLabel.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor)
         ])
+        
+        NSLayoutConstraint.activate([
+            playButton.topAnchor.constraint(equalTo: statusLabel.bottomAnchor),
+            playButton.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: padding),
+            playButton.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: padding),
+            playButton.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor)
+        ])
+    }
+    
+    @objc private func playRecord() {
+        viewModel.startRecord()
     }
     
 }

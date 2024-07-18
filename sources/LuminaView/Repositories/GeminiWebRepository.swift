@@ -9,12 +9,20 @@ import UIKit
 import GoogleGenerativeAI
 import RxSwift
 
-final class GeminiWebRepository {
-    let model = GenerativeModel(name: "gemini-1.5-flash", apiKey: "Tempkey")
+protocol GuideAPIWebRepository {
+    func setupApiConnect() -> PublishSubject<UIImage>
+}
+
+final class GeminiWebRepository: GuideAPIWebRepository {
+    var model: GenerativeModel!
     let imageSubject = PublishSubject<UIImage>()
     let disposeBag = DisposeBag()
     
-    private func setupApiConnect() {
+    func configure(config: GeminiAPIConfig) {
+        model = GenerativeModel(name: config.modelName, apiKey: config.apiKey)
+    }
+    
+    func setupApiConnect() -> PublishSubject<UIImage> {
         imageSubject
             .buffer(timeSpan: .seconds(5), count: Int.max, scheduler: MainScheduler.instance)
             .subscribe(onNext: { images in
@@ -24,6 +32,8 @@ final class GeminiWebRepository {
                 }
             })
             .disposed(by: disposeBag)
+            
+        return imageSubject
     }
     
     private func apiReqeust(_ images: [UIImage]) async {

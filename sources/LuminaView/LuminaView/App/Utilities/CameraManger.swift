@@ -7,17 +7,21 @@
 
 import UIKit
 import AVFoundation
+import RxSwift
 
-class CameraManger: NSObject {
-    var captureSession: AVCaptureSession!
-    var videoPreviewLayer: AVCaptureVideoPreviewLayer!
-    var videoOutput: AVCaptureVideoDataOutput!
+protocol Recodable {
+    func startRecord(stream: PublishSubject<UIImage>)
+}
+
+final class CameraManger: NSObject, Recodable {
+    var captureSession: AVCaptureSession = AVCaptureSession()
+    var videoPreviewLayer: AVCaptureVideoPreviewLayer?
+    var videoOutput: AVCaptureVideoDataOutput = AVCaptureVideoDataOutput()
+    var subject: PublishSubject<UIImage>?
     
-    init(captureSession: AVCaptureSession!, videoPreviewLayer: AVCaptureVideoPreviewLayer!, videoOutput: AVCaptureVideoDataOutput!) {
-        self.captureSession = captureSession
-        self.videoPreviewLayer = videoPreviewLayer
-        self.videoOutput = videoOutput
-        
+    override init() {
+        super.init()
+        self.configureCamera()
     }
     
     private func configureCamera() {
@@ -46,7 +50,7 @@ class CameraManger: NSObject {
         }
         
         // AVCaptureVideoDataOutput 설정
-        videoOutput = AVCaptureVideoDataOutput()
+        
         videoOutput.setSampleBufferDelegate(self, queue: DispatchQueue(label: "videoQueue"))
         if captureSession.canAddOutput(videoOutput) {
             captureSession.addOutput(videoOutput)
@@ -54,7 +58,10 @@ class CameraManger: NSObject {
             print("비디오 출력을 세션에 추가할 수 없습니다.")
             return
         }
-
+    }
+    
+    func startRecord(stream: PublishSubject<UIImage>) {
+        subject = stream
         DispatchQueue.global().async {
             self.captureSession.startRunning()
         }
@@ -76,8 +83,7 @@ extension CameraManger: AVCaptureVideoDataOutputSampleBufferDelegate {
         let context = CIContext()
         if let cgImage = context.createCGImage(ciImage, from: ciImage.extent) {
             let uiImage = UIImage(cgImage: cgImage)
-//            이벤트를 전달할 subject 필요
-//            imageSubject.onNext(uiImage)
+            subject?.onNext(uiImage)
         }
         
     }

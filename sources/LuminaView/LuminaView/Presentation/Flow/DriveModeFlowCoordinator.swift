@@ -22,7 +22,6 @@ final class DriveModeFlowCoordinator {
     }
     
     func start() {
-        let actions = DriveModeViewModel.DriveModeViewModelActions()
         let vc = dependencies.makeDriveModeViewController()
         
         navigationController?.pushViewController(vc, animated: false)

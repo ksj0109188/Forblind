@@ -25,6 +25,8 @@
 		3BBFE8A42C3D0DD200193B70 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3BBFE8A32C3D0DD200193B70 /* Assets.xcassets */; };
 		3BBFE8A72C3D0DD200193B70 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 3BBFE8A62C3D0DD200193B70 /* Base */; };
 		3BE1CBCB2C47FA22003E7C62 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE1CBCA2C47FA22003E7C62 /* UIView+.swift */; };
+		3BE1CBD02C48F84A003E7C62 /* GeminiAPIConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE1CBCF2C48F84A003E7C62 /* GeminiAPIConfig.swift */; };
+		3BE1CBD42C490D50003E7C62 /* FetchGuideUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE1CBD32C490D50003E7C62 /* FetchGuideUseCase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,7 +39,7 @@
 		3B3792782C4681C100375767 /* DriveModeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriveModeViewModel.swift; sourceTree = "<group>"; };
 		3B37927B2C46884B00375767 /* CameraManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraManger.swift; sourceTree = "<group>"; };
 		3B37927E2C468E4200375767 /* AppFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlowCoordinator.swift; sourceTree = "<group>"; };
-		3B3792802C469DFD00375767 /* GeminiWebRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GeminiWebRepository.swift; path = LuminaView/App/GeminiWebRepository.swift; sourceTree = SOURCE_ROOT; };
+		3B3792802C469DFD00375767 /* GeminiWebRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GeminiWebRepository.swift; path = Repositories/GeminiWebRepository.swift; sourceTree = SOURCE_ROOT; };
 		3BBFE8972C3D0DCF00193B70 /* LuminaView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LuminaView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BBFE89A2C3D0DCF00193B70 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3BBFE89C2C3D0DCF00193B70 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -46,6 +48,8 @@
 		3BBFE8A62C3D0DD200193B70 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3BBFE8A82C3D0DD200193B70 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3BE1CBCA2C47FA22003E7C62 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
+		3BE1CBCF2C48F84A003E7C62 /* GeminiAPIConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeminiAPIConfig.swift; sourceTree = "<group>"; };
+		3BE1CBD32C490D50003E7C62 /* FetchGuideUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchGuideUseCase.swift; sourceTree = "<group>"; };
 		9AA3194F4A8B068078E546D6 /* Pods_LuminaView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LuminaView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDEE937B43E69CA1977B2AE1 /* Pods-LuminaView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LuminaView.debug.xcconfig"; path = "Target Support Files/Pods-LuminaView/Pods-LuminaView.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -189,24 +193,8 @@
 			children = (
 				3B3792752C467FBA00375767 /* Flow */,
 				3B3792772C4681A100375767 /* DriveModeScene */,
-				96586BE12C3D1A0B007039FB /* ViewModels */,
-				96586BE02C3D1A07007039FB /* Views */,
 			);
 			path = Presentation;
-			sourceTree = "<group>";
-		};
-		96586BE02C3D1A07007039FB /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		96586BE12C3D1A0B007039FB /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		96586BE22C3D1A15007039FB /* Domain */ = {
@@ -228,6 +216,7 @@
 		96586BE42C3D1A2B007039FB /* UseCase */ = {
 			isa = PBXGroup;
 			children = (
+				3BE1CBD32C490D50003E7C62 /* FetchGuideUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -279,6 +268,7 @@
 				3BBFE8A32C3D0DD200193B70 /* Assets.xcassets */,
 				3B37926F2C467BC900375767 /* DevConfig.xcconfig */,
 				3BBFE8A82C3D0DD200193B70 /* Info.plist */,
+				3BE1CBCF2C48F84A003E7C62 /* GeminiAPIConfig.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -425,6 +415,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3BE1CBCB2C47FA22003E7C62 /* UIView+.swift in Sources */,
+				3BE1CBD02C48F84A003E7C62 /* GeminiAPIConfig.swift in Sources */,
 				3B37926E2C467BA300375767 /* AppConfigurations.swift in Sources */,
 				3B37927C2C46884B00375767 /* CameraManger.swift in Sources */,
 				3B37927F2C468E4200375767 /* AppFlowCoordinator.swift in Sources */,
@@ -432,6 +423,7 @@
 				3B3792812C469DFD00375767 /* GeminiWebRepository.swift in Sources */,
 				3BBFE89F2C3D0DCF00193B70 /* DriveModeViewController.swift in Sources */,
 				3B3792742C467FB500375767 /* DriveModeFlowCoordinator.swift in Sources */,
+				3BE1CBD42C490D50003E7C62 /* FetchGuideUseCase.swift in Sources */,
 				3B3792722C467F6600375767 /* DriveModeSceneDIContainer.swift in Sources */,
 				3BBFE89B2C3D0DCF00193B70 /* AppDelegate.swift in Sources */,
 				3B3792792C4681C100375767 /* DriveModeViewModel.swift in Sources */,
