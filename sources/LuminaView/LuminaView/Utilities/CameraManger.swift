@@ -11,6 +11,8 @@ import RxSwift
 
 protocol Recodable {
     func startRecord(stream: PublishSubject<UIImage>)
+    func setPreview(view: UIView)
+    func stopPreview()
 }
 
 final class CameraManger: NSObject, Recodable {
@@ -25,37 +27,33 @@ final class CameraManger: NSObject, Recodable {
     }
     
     private func configureCamera() {
-        // AVCaptureSession 초기화
         captureSession = AVCaptureSession()
         captureSession.sessionPreset = .medium
         
         // 카메라 장치 가져오기
         guard let videoDevice = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .back) else {
-            print("카메라 장치를 찾을 수 없습니다.")
+            debugPrint("카메라 장치를 찾을 수 없습니다.")
             return
         }
         
-        // AVCaptureDeviceInput 설정
         do {
             let videoInput = try AVCaptureDeviceInput(device: videoDevice)
             if captureSession.canAddInput(videoInput) {
                 captureSession.addInput(videoInput)
             } else {
-                print("비디오 입력을 세션에 추가할 수 없습니다.")
+                debugPrint("비디오 입력을 세션에 추가할 수 없습니다.")
                 return
             }
         } catch {
-            print("비디오 입력 생성 중 오류 발생: \(error)")
+            debugPrint("비디오 입력 생성 중 오류 발생: \(error)")
             return
         }
-        
-        // AVCaptureVideoDataOutput 설정
         
         videoOutput.setSampleBufferDelegate(self, queue: DispatchQueue(label: "videoQueue"))
         if captureSession.canAddOutput(videoOutput) {
             captureSession.addOutput(videoOutput)
         } else {
-            print("비디오 출력을 세션에 추가할 수 없습니다.")
+            debugPrint("비디오 출력을 세션에 추가할 수 없습니다.")
             return
         }
     }
@@ -66,10 +64,22 @@ final class CameraManger: NSObject, Recodable {
             self.captureSession.startRunning()
         }
     }
+    
+    func setPreview(view: UIView) {
+        videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
+        videoPreviewLayer!.videoGravity = .resizeAspectFill
+        videoPreviewLayer!.frame = view.layer.bounds
+     
+        view.layer.addSublayer(videoPreviewLayer!)
+    }
+    
+    func stopPreview() {
+        videoPreviewLayer?.removeFromSuperlayer()
+    }
 }
 
 extension CameraManger: AVCaptureVideoDataOutputSampleBufferDelegate {
-    // AVCaptureVideoDataOutputSampleBufferDelegate 메서드
+    ///note:  AVCaptureVideoDataOutputSampleBufferDelegate 메서드로 출력데이터를 핸들링 할 수 있음
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         
         guard let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else {
@@ -85,6 +95,5 @@ extension CameraManger: AVCaptureVideoDataOutputSampleBufferDelegate {
             let uiImage = UIImage(cgImage: cgImage)
             subject?.onNext(uiImage)
         }
-        
     }
 }

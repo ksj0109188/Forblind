@@ -12,7 +12,8 @@ import Lottie
 
 class DriveModeViewController: UIViewController {
     private var viewModel: DriveModeViewModel!
-    
+    private var isShowCameraPreview: Bool = false
+    private var isRecording: Bool = false
     private lazy var statusLabel: CommonCustomLabel = {
         let label = CommonCustomLabel(label: "Ready To Start", textAlignment: .center, fontSize: 20.0, weight: .bold, textColor: .blue)
         
@@ -38,6 +39,7 @@ class DriveModeViewController: UIViewController {
         super.viewDidLoad()
         setupViews()
         setupConstraints()
+        setupGesture()
     }
     
     func create(viewModel: DriveModeViewModel) {
@@ -75,8 +77,31 @@ class DriveModeViewController: UIViewController {
         ])
     }
     
-    @objc private func playRecord() {
-        viewModel.startRecord()
+    private func setupGesture() {
+        let doubleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleDoubleTap(_:)))
+        doubleTapGestureRecognizer.numberOfTapsRequired = 2
+
+        // 제스처 인식기를 뷰에 추가
+        self.view.addGestureRecognizer(doubleTapGestureRecognizer)
     }
     
+    @objc private func playRecord() {
+        debugPrint("Button Tapped")
+        if !isRecording {
+            viewModel.startRecord()
+            isRecording = true
+        }
+    }
+    
+    @objc func handleDoubleTap(_ gesture: UITapGestureRecognizer) {
+        let touchLocation = gesture.location(in: self.view)
+        
+        if touchLocation.x > self.view.bounds.midX && !isShowCameraPreview {
+            viewModel.setCameraPreview(view: view)
+            isShowCameraPreview = true
+        } else if touchLocation.x < self.view.bounds.midX && isShowCameraPreview {
+            viewModel.stopCameraPreview()
+            isShowCameraPreview = false
+        }
+    }
 }
