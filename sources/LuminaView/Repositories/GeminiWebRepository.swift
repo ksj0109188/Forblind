@@ -40,17 +40,19 @@ final class GeminiWebRepository: GuideAPIWebRepository {
         let prompt = "앞의 사진들을 비교해서 어떤 물체가 다가오고 있는지, 가장 가까운 물체의 거리가 대략 몇m인지 추측해서 알려줘"
         var fullResponse = ""
         
-        let contentStream2 = model.generateContentStream(prompt, images.compactMap({ $0}))
-        
-        do {
-            for try await chunk in contentStream2 {
-                if let text = chunk.text {
-                    fullResponse += text
+        if !images.isEmpty {
+            let contentStream2 = model.generateContentStream(prompt, images.compactMap({ $0}))
+            
+            do {
+                for try await chunk in contentStream2 {
+                    if let text = chunk.text {
+                        fullResponse += text
+                    }
                 }
+            } catch(let error) {
+                print(error)
             }
-        } catch(let error) {
-            print(error)
+            print(fullResponse)
         }
-        print(fullResponse)
     }
 }
