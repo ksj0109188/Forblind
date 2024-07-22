@@ -1,5 +1,5 @@
 {
-  "originHash" : "057c36cfd13849cf7dc318ac1062ae7cb47a79d25987749645a2a5040f44c6e7",
+  "originHash" : "12a15e3529b42a407d5f1db6aa43511cc123c10a2ec78b743b8677bbdd4f3591",
   "pins" : [
     {
       "identity" : "generative-ai-swift",
@@ -26,6 +26,15 @@
       "state" : {
         "revision" : "b06a8c8596e4c3e8e7788e08e720e3248563ce6a",
         "version" : "6.7.1"
+      }
+    },
+    {
+      "identity" : "snapkit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/SnapKit/SnapKit.git",
+      "state" : {
+        "revision" : "2842e6e84e82eb9a8dac0100ca90d9444b0307f4",
+        "version" : "5.7.1"
       }
     }
   ],
