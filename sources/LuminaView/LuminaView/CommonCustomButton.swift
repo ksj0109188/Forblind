@@ -8,7 +8,8 @@
 import UIKit
 
 class CommonCustomButton: UIButton {
-
+    private var actionHandler: (() -> Void)?
+    
 	override init(frame: CGRect) {
 		super.init(frame: frame)
 		configure()
@@ -37,6 +38,7 @@ class CommonCustomButton: UIButton {
 		self.setTitleColor(.white, for: .normal)
 		self.titleLabel?.font = UIFont.preferredFont(forTextStyle: .headline)
 		self.translatesAutoresizingMaskIntoConstraints = false
+        self.addTarget(self, action: #selector(handleAction), for: .touchUpInside)
 	}
 	
 	func set(
@@ -44,11 +46,17 @@ class CommonCustomButton: UIButton {
 		title: String = "",
 		fontSize: CGFloat,
 		weight: UIFont.Weight,
-		cornerRadius: CGFloat
+		cornerRadius: CGFloat,
+        action: @escaping () -> Void
 	) {
 		self.backgroundColor = backgroundColor
 		self.setTitle(title, for: .normal)
 		self.titleLabel?.font = UIFont.systemFont(ofSize: fontSize, weight: weight)
 		self.layer.cornerRadius = cornerRadius
+        self.actionHandler = action
 	}
+    
+    @objc private func handleAction() {
+        actionHandler?()
+    }
 }

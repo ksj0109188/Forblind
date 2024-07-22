@@ -44,22 +44,21 @@ class RecognitionProgressView: UIViewController {
 	
 	//MARK: - 상태에 따른 애니메이션 진행
 	
-	/*
 	enum ProgressKeyFrames: CGFloat {
 		case start = 0
 		case end = 60
 	}
 	
-	private func progress(to progress: CGFloat) {
+	func progress(to progress: CGFloat) {
 		setProgressView()
 
 		let progressRange = ProgressKeyFrames.start.rawValue - ProgressKeyFrames.end.rawValue
 		let progressFrame = progressRange * progress
 		let currentFrame = progressFrame + ProgressKeyFrames.start.rawValue
-
+        print("currentFrame", currentFrame)
 		progressView.currentFrame = currentFrame
 		print("Downloading \((progress * 100).rounded())%")
 		progressView.play()
 	}
-	*/
+
 }

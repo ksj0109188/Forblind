@@ -139,6 +139,7 @@
 		3B37927D2C46885100375767 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				96BD02552C49449500CBEE58 /* RecognitionProgressView.swift */,
 				3BE1CBCC2C47FB16003E7C62 /* Extensions */,
 				3B37927B2C46884B00375767 /* CameraManger.swift */,
 			);
@@ -166,6 +167,7 @@
 		3BBFE8992C3D0DCF00193B70 /* LuminaView */ = {
 			isa = PBXGroup;
 			children = (
+				3B37927D2C46885100375767 /* Utilities */,
 				96586BEA2C3D1A82007039FB /* Resources */,
 				96586BE52C3D1A37007039FB /* Data */,
 				96586BE22C3D1A15007039FB /* Domain */,
@@ -193,7 +195,6 @@
 				3B37926D2C467BA300375767 /* AppConfigurations.swift */,
 				3B37927E2C468E4200375767 /* AppFlowCoordinator.swift */,
 				3BBFE89C2C3D0DCF00193B70 /* SceneDelegate.swift */,
-				3B37927D2C46885100375767 /* Utilities */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -205,22 +206,6 @@
 				3B3792772C4681A100375767 /* DriveModeScene */,
 			);
 			path = Presentation;
-			sourceTree = "<group>";
-		};
-		96586BE02C3D1A07007039FB /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				3BBFE89E2C3D0DCF00193B70 /* ViewController.swift */,
-				96BD02552C49449500CBEE58 /* RecognitionProgressView.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		96586BE12C3D1A0B007039FB /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		96586BE22C3D1A15007039FB /* Domain */ = {
@@ -455,7 +440,7 @@
 				3B3792722C467F6600375767 /* DriveModeSceneDIContainer.swift in Sources */,
 				3BBFE89B2C3D0DCF00193B70 /* AppDelegate.swift in Sources */,
 				3B3792792C4681C100375767 /* DriveModeViewModel.swift in Sources */,
-				3BBFE89F2C3D0DCF00193B70 /* ViewController.swift in Sources */,
+				3BBFE89F2C3D0DCF00193B70 /* DriveModeViewController.swift in Sources */,
 				96BD025A2C4945A100CBEE58 /* CommonCustomButton.swift in Sources */,
 				96BD02562C49449500CBEE58 /* RecognitionProgressView.swift in Sources */,
 				3BBFE89B2C3D0DCF00193B70 /* AppDelegate.swift in Sources */,
@@ -611,7 +596,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 3Y6A97YBJQ;
+				DEVELOPMENT_TEAM = M7F7863UPY;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = LuminaView/Resources/Info.plist;

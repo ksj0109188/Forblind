@@ -8,35 +8,31 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import Lottie
 
 class DriveModeViewController: UIViewController {
     private var viewModel: DriveModeViewModel!
     
-    private lazy var statusLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Ready To Start"
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.tintColor = .label
+    private lazy var statusLabel: CommonCustomLabel = {
+        let label = CommonCustomLabel(label: "Ready To Start", textAlignment: .center, fontSize: 20.0, weight: .bold, textColor: .blue)
         
         return label
     }()
     
-    private lazy var acitivityIndicator: UIActivityIndicatorView = {
-        let view = UIActivityIndicatorView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.startAnimating()
+    private lazy var progressView: RecognitionProgressView = {
+        let view = RecognitionProgressView()
+        view.progress(to: 5)
+        view.view.translatesAutoresizingMaskIntoConstraints = false
         
         return view
     }()
     
-    private lazy var playButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("Play", for: .normal)
-        button.target(forAction: #selector(playRecord), withSender: nil)
+    private lazy var playButton: CommonCustomButton = {
+        let button = CommonCustomButton()
+        button.set(backgroundColor: .blue, title: "Play", fontSize: 20, weight: .bold, cornerRadius: 16, action: playRecord)
         
         return button
     }()
-        
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,32 +45,32 @@ class DriveModeViewController: UIViewController {
     }
     
     private func setupViews() {
-        view.addSubviews(statusLabel, acitivityIndicator, playButton)
+        view.addSubviews(statusLabel, playButton)
     }
     
     private func setupConstraints() {
         let safeArea = view.safeAreaLayoutGuide
         let padding = 20.0
-        let frame = view.frame
+//        let frame = view.frame
+        
+//        NSLayoutConstraint.activate([
+//            progressView.view.topAnchor.constraint(equalTo: safeArea.topAnchor),
+//            progressView.view.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
+//            progressView.view.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
+//            progressView.view.heightAnchor.constraint(equalToConstant: frame.height / 2)
+//            progressView.view.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor)
+//        ])
         
         NSLayoutConstraint.activate([
-            acitivityIndicator.topAnchor.constraint(equalTo: safeArea.topAnchor),
-            acitivityIndicator.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
-            acitivityIndicator.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
-            acitivityIndicator.heightAnchor.constraint(equalToConstant: frame.height / 2)
-        ])
-        
-        NSLayoutConstraint.activate([
-            statusLabel.topAnchor.constraint(equalTo: acitivityIndicator.bottomAnchor),
-            statusLabel.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: padding),
-            statusLabel.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: padding),
-            statusLabel.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor)
+            statusLabel.topAnchor.constraint(equalTo: safeArea.topAnchor),
+            statusLabel.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
+            statusLabel.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
         ])
         
         NSLayoutConstraint.activate([
             playButton.topAnchor.constraint(equalTo: statusLabel.bottomAnchor),
-            playButton.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: padding),
-            playButton.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: padding),
+            playButton.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
+            playButton.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
             playButton.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor)
         ])
     }
