@@ -50,9 +50,10 @@ final class GeminiWebRepository: GuideAPIWebRepository {
                     }
                 }
             } catch(let error) {
-                print(error)
+                debugPrint(error)
             }
-            print(fullResponse)
+            
+            UIAccessibility.post(notification: .announcement, argument: fullResponse)
         }
     }
 }
