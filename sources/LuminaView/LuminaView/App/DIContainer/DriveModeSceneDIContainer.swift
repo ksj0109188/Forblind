@@ -8,7 +8,6 @@
 import UIKit
 
 final class DriveModeSceneDIContainer: DriveModeFlowCoordinatorDependencies {
-    
     struct Dependencies {
         let guideAPIWebRepository: GuideAPIWebRepository
         let cameraManager: Recodable
@@ -26,16 +25,23 @@ final class DriveModeSceneDIContainer: DriveModeFlowCoordinatorDependencies {
     }
     
     // MARK: ViewModel
-    func makeDriveModeViewModel() -> DriveModeViewModel {
-        let viewModel = DriveModeViewModel(useCase: makeDriveModeUsecase(), cameraManager: dependencies.cameraManager, actions: DriveModeViewModel.DriveModeViewModelActions())
+    func makeDriveModeViewModel(actions: DriveModeViewModelActions) -> DriveModeViewModel {
+        let viewModel = DriveModeViewModel(useCase: makeDriveModeUsecase(), cameraManager: dependencies.cameraManager, actions: actions)
         
         return viewModel
     }
     
     // MARK: Presentation
-    func makeDriveModeViewController() -> DriveModeViewController {
+    func makeDriveModeViewController(actions: DriveModeViewModelActions) -> DriveModeViewController {
         let vc = DriveModeViewController()
-        vc.create(viewModel: makeDriveModeViewModel())
+        vc.create(viewModel: makeDriveModeViewModel(actions: actions))
+        
+        return vc
+    }
+    
+    func makeCameraPreviewViewController(viewModel: DriveModeViewModel) -> DriveModeCameraPreviewViewController {
+        let vc = DriveModeCameraPreviewViewController()
+        vc.create(viewModel: viewModel)
         
         return vc
     }

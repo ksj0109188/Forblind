@@ -8,7 +8,8 @@
 import UIKit
 
 protocol DriveModeFlowCoordinatorDependencies {
-    func makeDriveModeViewController() -> DriveModeViewController
+    func makeDriveModeViewController(actions: DriveModeViewModelActions) -> DriveModeViewController
+    func makeCameraPreviewViewController(viewModel: DriveModeViewModel) -> DriveModeCameraPreviewViewController
 }
 
 ///note DriveMode의 화면 흐름을 정의한다.
@@ -22,8 +23,20 @@ final class DriveModeFlowCoordinator {
     }
     
     func start() {
-        let vc = dependencies.makeDriveModeViewController()
+        let actions = DriveModeViewModelActions(showCameraPreview: showCameraPreview, dismissCameraPreview: dismissCameraPreviewScene)
+        let vc = dependencies.makeDriveModeViewController(actions: actions)
         
         navigationController?.pushViewController(vc, animated: false)
     }
+    
+    private func showCameraPreview(viewModel: DriveModeViewModel) {
+        let vc = dependencies.makeCameraPreviewViewController(viewModel: viewModel)
+        
+        navigationController?.present(vc, animated: false)
+    }
+    
+    private func dismissCameraPreviewScene() {
+        navigationController?.popViewController(animated: true)
+    }
+    
 }

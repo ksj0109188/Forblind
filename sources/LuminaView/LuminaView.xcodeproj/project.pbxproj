@@ -19,6 +19,7 @@
 		3B37927C2C46884B00375767 /* CameraManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B37927B2C46884B00375767 /* CameraManger.swift */; };
 		3B37927F2C468E4200375767 /* AppFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B37927E2C468E4200375767 /* AppFlowCoordinator.swift */; };
 		3B3792812C469DFD00375767 /* GeminiWebRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3792802C469DFD00375767 /* GeminiWebRepository.swift */; };
+		3B482DD12C4FC93A00D435ED /* DriveModeCameraPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B482DD02C4FC93A00D435ED /* DriveModeCameraPreviewViewController.swift */; };
 		3BBFE89B2C3D0DCF00193B70 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBFE89A2C3D0DCF00193B70 /* AppDelegate.swift */; };
 		3BBFE89D2C3D0DCF00193B70 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBFE89C2C3D0DCF00193B70 /* SceneDelegate.swift */; };
 		3BBFE89F2C3D0DCF00193B70 /* DriveModeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBFE89E2C3D0DCF00193B70 /* DriveModeViewController.swift */; };
@@ -44,6 +45,7 @@
 		3B37927B2C46884B00375767 /* CameraManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraManger.swift; sourceTree = "<group>"; };
 		3B37927E2C468E4200375767 /* AppFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlowCoordinator.swift; sourceTree = "<group>"; };
 		3B3792802C469DFD00375767 /* GeminiWebRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GeminiWebRepository.swift; path = Repositories/GeminiWebRepository.swift; sourceTree = SOURCE_ROOT; };
+		3B482DD02C4FC93A00D435ED /* DriveModeCameraPreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriveModeCameraPreviewViewController.swift; sourceTree = "<group>"; };
 		3BBFE8972C3D0DCF00193B70 /* LuminaView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LuminaView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BBFE89A2C3D0DCF00193B70 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3BBFE89C2C3D0DCF00193B70 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				3BBFE89E2C3D0DCF00193B70 /* DriveModeViewController.swift */,
+				3B482DD02C4FC93A00D435ED /* DriveModeCameraPreviewViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -433,6 +436,7 @@
 				3B37927C2C46884B00375767 /* CameraManger.swift in Sources */,
 				3B37927F2C468E4200375767 /* AppFlowCoordinator.swift in Sources */,
 				3B37926C2C467B8E00375767 /* AppDIContainer.swift in Sources */,
+				3B482DD12C4FC93A00D435ED /* DriveModeCameraPreviewViewController.swift in Sources */,
 				3B3792812C469DFD00375767 /* GeminiWebRepository.swift in Sources */,
 				3BBFE89F2C3D0DCF00193B70 /* DriveModeViewController.swift in Sources */,
 				3B3792742C467FB500375767 /* DriveModeFlowCoordinator.swift in Sources */,
