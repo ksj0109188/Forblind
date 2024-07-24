@@ -40,6 +40,7 @@ final class CameraManger: NSObject, Recodable {
             let videoInput = try AVCaptureDeviceInput(device: videoDevice)
             if captureSession.canAddInput(videoInput) {
                 captureSession.addInput(videoInput)
+                videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
             } else {
                 debugPrint("비디오 입력을 세션에 추가할 수 없습니다.")
                 return
@@ -66,10 +67,9 @@ final class CameraManger: NSObject, Recodable {
     }
     
     func setPreview(view: UIView) {
-        videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
         videoPreviewLayer!.videoGravity = .resizeAspectFill
         videoPreviewLayer!.frame = view.layer.bounds
-     
+
         view.layer.addSublayer(videoPreviewLayer!)
     }
     
