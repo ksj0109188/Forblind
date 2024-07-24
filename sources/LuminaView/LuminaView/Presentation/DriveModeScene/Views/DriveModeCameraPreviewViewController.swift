@@ -13,6 +13,9 @@ final class DriveModeCameraPreviewViewController: UIViewController {
     private lazy var cameraView: UIView = {
         let view = UIView()
         
+        view.backgroundColor = .blue
+        view.translatesAutoresizingMaskIntoConstraints = false
+        
         return view
     }()
     
@@ -21,8 +24,9 @@ final class DriveModeCameraPreviewViewController: UIViewController {
         let configuration = UIImage.SymbolConfiguration(font: .systemFont(ofSize: 24.0))
         let image = UIImage(systemName: "xmark", withConfiguration: configuration)?.withTintColor(.white, renderingMode: .alwaysOriginal)
         
+        button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(image, for: .normal)
-        button.addTarget(self, action: #selector(dismissCameraPreview), for: .touchDown)
+        button.addTarget(self, action: #selector(dismissCameraPreview), for: .touchUpInside)
         
         return button
     }()
@@ -31,15 +35,20 @@ final class DriveModeCameraPreviewViewController: UIViewController {
         self.viewModel = viewModel
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
         setupConstraints()
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        viewModel.setCameraPreview(view: cameraView)
+    }
+    
     private func setupViews() {
-        view.addSubviews(cameraView, dismissButton)
+//        view.addSubviews(cameraView, dismissButton)
+        view.addSubviews(dismissButton, cameraView)
     }
     
     private func setupConstraints() {
@@ -47,15 +56,15 @@ final class DriveModeCameraPreviewViewController: UIViewController {
         let padding = 20.0
             
         NSLayoutConstraint.activate([
-            dismissButton.topAnchor.constraint(equalTo: safeArea.topAnchor),
-            dismissButton.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
-        ])
-        
-        NSLayoutConstraint.activate([
-            cameraView.topAnchor.constraint(equalTo: safeArea.topAnchor),
+            cameraView.topAnchor.constraint(equalTo: dismissButton.bottomAnchor),
             cameraView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor),
             cameraView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
             cameraView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor)
+        ])
+        
+        NSLayoutConstraint.activate([
+            dismissButton.topAnchor.constraint(equalTo: safeArea.topAnchor),
+            dismissButton.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
         ])
     }
     

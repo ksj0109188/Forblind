@@ -39,7 +39,7 @@ final class DriveModeViewModel {
     }
     
     func stopCameraPreview() {
-        cameraManager.stopPreview()
+        actions.dismissCameraPreview()
     }
     
 }

@@ -47,7 +47,7 @@ class CommonCustomButton: UIButton {
 		fontSize: CGFloat,
 		weight: UIFont.Weight,
 		cornerRadius: CGFloat,
-        action: @escaping () -> Void
+        action: (() -> Void)?
 	) {
 		self.backgroundColor = backgroundColor
 		self.setTitle(title, for: .normal)
@@ -57,6 +57,7 @@ class CommonCustomButton: UIButton {
 	}
     
     @objc private func handleAction() {
+        print("button Tapped")
         actionHandler?()
     }
 }

@@ -53,6 +53,7 @@ final class GeminiWebRepository: GuideAPIWebRepository {
                 debugPrint(error)
             }
             
+            print(fullResponse)
             UIAccessibility.post(notification: .announcement, argument: fullResponse)
         }
     }

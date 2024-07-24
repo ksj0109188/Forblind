@@ -36,7 +36,7 @@ final class DriveModeFlowCoordinator {
     }
     
     private func dismissCameraPreviewScene() {
-        navigationController?.popViewController(animated: true)
+        navigationController?.dismiss(animated: false)
     }
-    
+
 }

@@ -444,10 +444,8 @@
 				3B3792722C467F6600375767 /* DriveModeSceneDIContainer.swift in Sources */,
 				3BBFE89B2C3D0DCF00193B70 /* AppDelegate.swift in Sources */,
 				3B3792792C4681C100375767 /* DriveModeViewModel.swift in Sources */,
-				3BBFE89F2C3D0DCF00193B70 /* DriveModeViewController.swift in Sources */,
 				96BD025A2C4945A100CBEE58 /* CommonCustomButton.swift in Sources */,
 				96BD02562C49449500CBEE58 /* RecognitionProgressView.swift in Sources */,
-				3BBFE89B2C3D0DCF00193B70 /* AppDelegate.swift in Sources */,
 				96BD02582C49458300CBEE58 /* CommonCustomLabel.swift in Sources */,
 				3BBFE89D2C3D0DCF00193B70 /* SceneDelegate.swift in Sources */,
 			);
@@ -604,6 +602,7 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = LuminaView/Resources/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "To enable the app to recognize the user's situation, the camera settings need to be activated.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -638,6 +637,7 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = LuminaView/Resources/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "To enable the app to recognize the user's situation, the camera settings need to be activated.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

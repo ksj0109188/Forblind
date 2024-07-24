@@ -37,7 +37,7 @@ class DriveModeViewController: UIViewController {
     
     private lazy var showCameraPreviewButton: CommonCustomButton = {
         let button = CommonCustomButton()
-        button.set(backgroundColor: .blue, title: "show", fontSize: 20, weight: .bold, cornerRadius: 16, action: playRecord)
+        button.set(backgroundColor: .blue, title: "show", fontSize: 20, weight: .bold, cornerRadius: 16, action: nil)
         button.addTarget(self, action: #selector(showCameraPreview), for: .touchUpInside)
         
         return button
@@ -83,6 +83,11 @@ class DriveModeViewController: UIViewController {
             playButton.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor)
         ])
         
+        NSLayoutConstraint.activate([
+            showCameraPreviewButton.topAnchor.constraint(equalTo: safeArea.topAnchor),
+            showCameraPreviewButton.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
+            
+        ])
     }
     
     @objc private func playRecord() {
