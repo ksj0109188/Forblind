@@ -14,7 +14,7 @@ struct DriveModeViewModelActions {
 }
 
 final class DriveModeViewModel {
-    var subject: PublishSubject<UIImage>?
+    var isRecording: PublishSubject<Bool>
     let useCase: FetchGuideUseCase
     let cameraManager: Recodable
     private let actions: DriveModeViewModelActions
@@ -23,15 +23,20 @@ final class DriveModeViewModel {
         self.useCase = useCase
         self.cameraManager = cameraManager
         self.actions = actions
+        self.isRecording = PublishSubject()
     }
     
     func startRecord() {
         let stream = useCase.setupApiConnect()
-        cameraManager.startRecord(stream: stream)
+        cameraManager.startRecord(subject: stream)
     }
     
     func setCameraPreview(view: UIView) {
         cameraManager.setPreview(view: view)
+    }
+    
+    func getCameraStatusStream() -> PublishSubject<Bool> {
+        return cameraManager.getCameraStatusStream()
     }
     
     func showCameraPreview() {

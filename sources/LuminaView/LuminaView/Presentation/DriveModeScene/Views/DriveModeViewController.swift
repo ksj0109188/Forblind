@@ -13,6 +13,7 @@ import Lottie
 class DriveModeViewController: UIViewController {
     private var viewModel: DriveModeViewModel!
     private var isRecording: Bool = false
+    private let disposeBag = DisposeBag()
     
     private lazy var statusLabel: CommonCustomLabel = {
         let label = CommonCustomLabel(label: "Ready To Start", textAlignment: .center, fontSize: 20.0, weight: .bold, textColor: .blue)
@@ -51,6 +52,9 @@ class DriveModeViewController: UIViewController {
     
     func create(viewModel: DriveModeViewModel) {
         self.viewModel = viewModel
+        
+        viewModel.getCameraStatusStream().subscribe { print($0) }
+            .disposed(by: disposeBag)
     }
     
     private func setupViews() {
@@ -60,13 +64,13 @@ class DriveModeViewController: UIViewController {
     private func setupConstraints() {
         let safeArea = view.safeAreaLayoutGuide
         let padding = 20.0
-//        let frame = view.frame
+        let frame = view.frame
         
 //        NSLayoutConstraint.activate([
 //            progressView.view.topAnchor.constraint(equalTo: safeArea.topAnchor),
 //            progressView.view.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
 //            progressView.view.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
-//            progressView.view.heightAnchor.constraint(equalToConstant: frame.height / 2)
+//            progressView.view.heightAnchor.constraint(equalToConstant: frame.height / 2),
 //            progressView.view.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor)
 //        ])
         
