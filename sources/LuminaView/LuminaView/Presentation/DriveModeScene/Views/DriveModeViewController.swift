@@ -16,14 +16,14 @@ class DriveModeViewController: UIViewController {
     private let disposeBag = DisposeBag()
     
     private lazy var statusLabel: CommonCustomLabel = {
-        let label = CommonCustomLabel(label: "Ready To Start", textAlignment: .center, fontSize: 20.0, weight: .bold, textColor: .blue)
+        let label = CommonCustomLabel(label: "대기중...", textAlignment: .center, fontSize: 20.0, weight: .bold, textColor: .blue)
         
         return label
     }()
     
     private lazy var progressView: RecognitionProgressView = {
         let view = RecognitionProgressView()
-        view.progress(to: 5)
+        view.progress(to: 0)
         view.view.translatesAutoresizingMaskIntoConstraints = false
         
         return view
@@ -36,9 +36,13 @@ class DriveModeViewController: UIViewController {
         return button
     }()
     
-    private lazy var showCameraPreviewButton: CommonCustomButton = {
-        let button = CommonCustomButton()
-        button.set(backgroundColor: .blue, title: "show", fontSize: 20, weight: .bold, cornerRadius: 16, action: nil)
+    private lazy var showCameraPreviewButton: UIButton = {
+        let button = UIButton()
+        let configuration = UIImage.SymbolConfiguration(font: .systemFont(ofSize: 24.0))
+        let image = UIImage(systemName: "eye.circle", withConfiguration: configuration)?.withTintColor(.white, renderingMode: .alwaysOriginal)
+        
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setImage(image, for: .normal)
         button.addTarget(self, action: #selector(showCameraPreview), for: .touchUpInside)
         
         return button
@@ -53,12 +57,17 @@ class DriveModeViewController: UIViewController {
     func create(viewModel: DriveModeViewModel) {
         self.viewModel = viewModel
         
-        viewModel.getCameraStatusStream().subscribe { print($0) }
+        viewModel
+            .getCameraStatusStream()
+            .subscribe { [weak self] in
+                print($0)
+                self?.isRecording = $0
+            }
             .disposed(by: disposeBag)
     }
     
     private func setupViews() {
-        view.addSubviews(statusLabel, playButton, showCameraPreviewButton)
+        view.addSubviews(statusLabel, playButton, showCameraPreviewButton, progressView.view)
     }
     
     private func setupConstraints() {
@@ -66,31 +75,28 @@ class DriveModeViewController: UIViewController {
         let padding = 20.0
         let frame = view.frame
         
-//        NSLayoutConstraint.activate([
-//            progressView.view.topAnchor.constraint(equalTo: safeArea.topAnchor),
-//            progressView.view.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
-//            progressView.view.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
-//            progressView.view.heightAnchor.constraint(equalToConstant: frame.height / 2),
-//            progressView.view.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor)
-//        ])
+        NSLayoutConstraint.activate([
+            progressView.view.topAnchor.constraint(equalTo: safeArea.topAnchor),
+            progressView.view.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
+            progressView.view.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
+            progressView.view.heightAnchor.constraint(equalToConstant: frame.height / 2),
+        ])
         
         NSLayoutConstraint.activate([
-            statusLabel.topAnchor.constraint(equalTo: safeArea.topAnchor),
-            statusLabel.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
-            statusLabel.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
+            statusLabel.topAnchor.constraint(equalTo: progressView.view.bottomAnchor),
+            statusLabel.centerXAnchor.constraint(equalTo: progressView.view.centerXAnchor)
         ])
         
         NSLayoutConstraint.activate([
             playButton.topAnchor.constraint(equalTo: statusLabel.bottomAnchor),
-            playButton.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
-            playButton.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
-            playButton.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor)
+            playButton.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor),
+            playButton.centerXAnchor.constraint(equalTo: statusLabel.centerXAnchor),
+            
         ])
         
         NSLayoutConstraint.activate([
             showCameraPreviewButton.topAnchor.constraint(equalTo: safeArea.topAnchor),
             showCameraPreviewButton.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
-            
         ])
     }
     
