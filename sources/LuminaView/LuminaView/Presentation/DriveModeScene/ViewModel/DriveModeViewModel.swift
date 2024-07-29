@@ -31,6 +31,10 @@ final class DriveModeViewModel {
         cameraManager.startRecord(subject: stream)
     }
     
+    func stopRecord() {
+        cameraManager.stopRecord()
+    }
+    
     func setCameraPreview(view: UIView) {
         cameraManager.setPreview(view: view)
     }

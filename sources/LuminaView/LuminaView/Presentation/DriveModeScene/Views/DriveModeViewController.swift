@@ -12,28 +12,53 @@ import Lottie
 
 class DriveModeViewController: UIViewController {
     private var viewModel: DriveModeViewModel!
-    private var isRecording: Bool = false
     private let disposeBag = DisposeBag()
-    
-    private lazy var statusLabel: CommonCustomLabel = {
-        let label = CommonCustomLabel(label: "대기중...", textAlignment: .center, fontSize: 20.0, weight: .bold, textColor: .blue)
-        
-        return label
-    }()
+    private var isRecording: Bool = false {
+        didSet {
+            DispatchQueue.main.async { [weak self] in
+                self?.updatePlayButtonImage()
+                self?.updateStatusLabel()
+                self?.updateProgressView()
+            }
+        }
+    }
     
     private lazy var progressView: RecognitionProgressView = {
         let view = RecognitionProgressView()
-        view.progress(to: 0)
         view.view.translatesAutoresizingMaskIntoConstraints = false
+        view.progressStop()
         
         return view
     }()
     
-    private lazy var playButton: CommonCustomButton = {
-        let button = CommonCustomButton()
-        button.set(backgroundColor: .blue, title: "Play", fontSize: 20, weight: .bold, cornerRadius: 16, action: playRecord)
+    private lazy var statusLabel: CommonCustomLabel = {
+        let label = CommonCustomLabel(label: "대기중", textAlignment: .center, fontSize: 20.0, weight: .bold, textColor: .white)
+        
+        return label
+    }()
+    
+    private lazy var playButton: UIButton = {
+        let button = UIButton()
+        
+        button.addTarget(self, action: #selector(toggleRecordButton), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setImage(playImage, for: .normal)
         
         return button
+    }()
+    
+    private lazy var playImage: UIImage = {
+        let configuration = UIImage.SymbolConfiguration(pointSize: 30, weight: .medium, scale: .medium)
+        let image = UIImage(systemName: "play.fill", withConfiguration: configuration)?.withTintColor(.white, renderingMode: .alwaysOriginal)
+        
+        return image!
+    }()
+    
+    private lazy var pauseImage: UIImage = {
+        let configuration = UIImage.SymbolConfiguration(pointSize: 30, weight: .medium, scale: .medium)
+        let image = UIImage(systemName: "pause.fill", withConfiguration: configuration)?.withTintColor(.white, renderingMode: .alwaysOriginal)
+        
+        return image!
     }()
     
     private lazy var showCameraPreviewButton: UIButton = {
@@ -60,7 +85,6 @@ class DriveModeViewController: UIViewController {
         viewModel
             .getCameraStatusStream()
             .subscribe { [weak self] in
-                print($0)
                 self?.isRecording = $0
             }
             .disposed(by: disposeBag)
@@ -84,14 +108,14 @@ class DriveModeViewController: UIViewController {
         
         NSLayoutConstraint.activate([
             statusLabel.topAnchor.constraint(equalTo: progressView.view.bottomAnchor),
-            statusLabel.centerXAnchor.constraint(equalTo: progressView.view.centerXAnchor)
+            statusLabel.centerXAnchor.constraint(equalTo: progressView.view.centerXAnchor),
+            statusLabel.bottomAnchor.constraint(equalTo: playButton.topAnchor),
         ])
         
         NSLayoutConstraint.activate([
             playButton.topAnchor.constraint(equalTo: statusLabel.bottomAnchor),
-            playButton.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor),
             playButton.centerXAnchor.constraint(equalTo: statusLabel.centerXAnchor),
-            
+            playButton.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor),
         ])
         
         NSLayoutConstraint.activate([
@@ -100,15 +124,40 @@ class DriveModeViewController: UIViewController {
         ])
     }
     
-    @objc private func playRecord() {
-        if !isRecording {
+    private func updatePlayButtonImage() {
+        let image = isRecording ? pauseImage : playImage
+        
+        playButton.setImage(image, for: .normal)
+    }
+    
+    private func updateStatusLabel() {
+        if isRecording {
+            statusLabel.text = "실행중"
+        } else {
+            statusLabel.text = "대기중"
+        }
+    }
+    
+    private func updateProgressView() {
+        if isRecording {
+            progressView.progress(to: 0)
+        } else {
+            progressView.progressStop()
+        }
+    }
+    
+    @objc private func toggleRecordButton() {
+        if isRecording {
+            viewModel.stopRecord()
+            isRecording = false
+        } else {
             viewModel.startRecord()
             isRecording = true
         }
     }
     
     @objc private func showCameraPreview() {
+        print("show camera button tapped")
         viewModel.showCameraPreview()
     }
-    
 }

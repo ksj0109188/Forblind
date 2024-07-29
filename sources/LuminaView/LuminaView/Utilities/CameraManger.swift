@@ -11,6 +11,7 @@ import RxSwift
 
 protocol Recodable {
     func startRecord(subject: PublishSubject<UIImage>)
+    func stopRecord()
     func setPreview(view: UIView)
     func stopPreview()
     func getCameraStatusStream() -> PublishSubject<Bool>
@@ -20,7 +21,7 @@ final class CameraManger: NSObject, Recodable {
     private var captureSession: AVCaptureSession = AVCaptureSession()
     private var videoPreviewLayer: AVCaptureVideoPreviewLayer?
     private var videoOutput: AVCaptureVideoDataOutput = AVCaptureVideoDataOutput()
-    private var cameraDataSubject: PublishSubject<UIImage>!
+    private var cameraDataSubject: PublishSubject<UIImage>?
     private var cameraRecodingCheckSubject: PublishSubject<Bool>!
     private let disposeBag = DisposeBag()
     
@@ -73,6 +74,15 @@ final class CameraManger: NSObject, Recodable {
         }
     }
     
+    func stopRecord() {
+        cameraDataSubject = nil
+        
+        DispatchQueue.global().async {
+            self.captureSession.stopRunning()
+            self.isRecording()
+        }
+    }
+    
     func setPreview(view: UIView) {
         videoPreviewLayer!.videoGravity = .resizeAspectFill
         videoPreviewLayer!.frame = view.layer.bounds
@@ -107,6 +117,7 @@ extension CameraManger: AVCaptureVideoDataOutputSampleBufferDelegate {
         
         // CIImage를 UIImage로 변환
         let context = CIContext()
+        
         if let cgImage = context.createCGImage(ciImage, from: ciImage.extent) {
             let uiImage = UIImage(cgImage: cgImage)
             cameraDataSubject?.onNext(uiImage)

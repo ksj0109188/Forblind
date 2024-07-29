@@ -72,5 +72,9 @@ class RecognitionProgressView: UIViewController {
 		print("Downloading \((progress * 100).rounded())%")
 		progressView.play()
 	}
+    
+    func progressStop() {
+        progressView.stop()
+    }
 
 }
