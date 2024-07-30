@@ -66,9 +66,9 @@ class DriveModeViewController: UIViewController {
         let configuration = UIImage.SymbolConfiguration(font: .systemFont(ofSize: 24.0))
         let image = UIImage(systemName: "eye.circle", withConfiguration: configuration)?.withTintColor(.white, renderingMode: .alwaysOriginal)
         
+        button.addTarget(self, action: #selector(showCameraPreview), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(image, for: .normal)
-        button.addTarget(self, action: #selector(showCameraPreview), for: .touchUpInside)
         
         return button
     }()
@@ -98,9 +98,9 @@ class DriveModeViewController: UIViewController {
         let safeArea = view.safeAreaLayoutGuide
         let padding = 20.0
         let frame = view.frame
-        
+
         NSLayoutConstraint.activate([
-            progressView.view.topAnchor.constraint(equalTo: safeArea.topAnchor),
+            progressView.view.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: frame.height / 10),
             progressView.view.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
             progressView.view.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
             progressView.view.heightAnchor.constraint(equalToConstant: frame.height / 2),
@@ -110,12 +110,13 @@ class DriveModeViewController: UIViewController {
             statusLabel.topAnchor.constraint(equalTo: progressView.view.bottomAnchor),
             statusLabel.centerXAnchor.constraint(equalTo: progressView.view.centerXAnchor),
             statusLabel.bottomAnchor.constraint(equalTo: playButton.topAnchor),
+            statusLabel.heightAnchor.constraint(equalToConstant: view.frame.height / 10)
         ])
         
         NSLayoutConstraint.activate([
             playButton.topAnchor.constraint(equalTo: statusLabel.bottomAnchor),
             playButton.centerXAnchor.constraint(equalTo: statusLabel.centerXAnchor),
-            playButton.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor),
+            playButton.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: padding),
         ])
         
         NSLayoutConstraint.activate([
