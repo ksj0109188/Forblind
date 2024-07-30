@@ -13,7 +13,7 @@ protocol Recodable {
     func startRecord(subject: PublishSubject<UIImage>)
     func stopRecord()
     func setPreview(view: UIView)
-    func stopPreview()
+    func removePreview()
     func getCameraStatusStream() -> PublishSubject<Bool>
 }
 
@@ -90,7 +90,7 @@ final class CameraManger: NSObject, Recodable {
         view.layer.addSublayer(videoPreviewLayer!)
     }
     
-    func stopPreview() {
+    func removePreview() {
         videoPreviewLayer?.removeFromSuperlayer()
     }
     
