@@ -10,16 +10,20 @@ import AVFoundation
 import RxSwift
 
 protocol Recodable {
-    func startRecord(stream: PublishSubject<UIImage>)
+    func startRecord(subject: PublishSubject<UIImage>)
+    func stopRecord()
     func setPreview(view: UIView)
-    func stopPreview()
+    func removePreview()
+    func getCameraStatusStream() -> PublishSubject<Bool>
 }
 
 final class CameraManger: NSObject, Recodable {
-    var captureSession: AVCaptureSession = AVCaptureSession()
-    var videoPreviewLayer: AVCaptureVideoPreviewLayer?
-    var videoOutput: AVCaptureVideoDataOutput = AVCaptureVideoDataOutput()
-    var subject: PublishSubject<UIImage>?
+    private var captureSession: AVCaptureSession = AVCaptureSession()
+    private var videoPreviewLayer: AVCaptureVideoPreviewLayer?
+    private var videoOutput: AVCaptureVideoDataOutput = AVCaptureVideoDataOutput()
+    private var cameraDataSubject: PublishSubject<UIImage>?
+    private var cameraRecodingCheckSubject: PublishSubject<Bool>!
+    private let disposeBag = DisposeBag()
     
     override init() {
         super.init()
@@ -29,6 +33,8 @@ final class CameraManger: NSObject, Recodable {
     private func configureCamera() {
         captureSession = AVCaptureSession()
         captureSession.sessionPreset = .medium
+        cameraRecodingCheckSubject = PublishSubject<Bool>()
+        cameraRecodingCheckSubject.disposed(by: disposeBag)
         
         // 카메라 장치 가져오기
         guard let videoDevice = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .back) else {
@@ -59,23 +65,43 @@ final class CameraManger: NSObject, Recodable {
         }
     }
     
-    func startRecord(stream: PublishSubject<UIImage>) {
-        subject = stream
+    func startRecord(subject: PublishSubject<UIImage>) {
+        cameraDataSubject = subject
+        
         DispatchQueue.global().async {
             self.captureSession.startRunning()
+            self.isRecording()
+        }
+    }
+    
+    func stopRecord() {
+        cameraDataSubject = nil
+        
+        DispatchQueue.global().async {
+            self.captureSession.stopRunning()
+            self.isRecording()
         }
     }
     
     func setPreview(view: UIView) {
         videoPreviewLayer!.videoGravity = .resizeAspectFill
         videoPreviewLayer!.frame = view.layer.bounds
-
+        
         view.layer.addSublayer(videoPreviewLayer!)
     }
     
-    func stopPreview() {
+    func removePreview() {
         videoPreviewLayer?.removeFromSuperlayer()
     }
+    
+    func isRecording()  {
+        cameraRecodingCheckSubject.onNext(self.captureSession.isRunning)
+    }
+    
+    func getCameraStatusStream() -> PublishSubject<Bool> {
+        self.cameraRecodingCheckSubject
+    }
+    
 }
 
 extension CameraManger: AVCaptureVideoDataOutputSampleBufferDelegate {
@@ -91,9 +117,10 @@ extension CameraManger: AVCaptureVideoDataOutputSampleBufferDelegate {
         
         // CIImage를 UIImage로 변환
         let context = CIContext()
+        
         if let cgImage = context.createCGImage(ciImage, from: ciImage.extent) {
             let uiImage = UIImage(cgImage: cgImage)
-            subject?.onNext(uiImage)
+            cameraDataSubject?.onNext(uiImage)
         }
     }
 }

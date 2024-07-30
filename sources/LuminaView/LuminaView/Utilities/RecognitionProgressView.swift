@@ -19,16 +19,17 @@ class RecognitionProgressView: UIViewController {
 		fontSize: 24,
 		weight: .bold,
 		textColor: .white
-	)
+    )
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		setProgressView()
-		
+        setupConstraints()
 	}
 	///2. animation 세팅
 	private func setProgressView() {
 		progressView.loopMode = .loop
+        progressView.translatesAutoresizingMaskIntoConstraints = false
 		progressView.contentMode = .scaleAspectFit
 		progressView.animationSpeed = 0.5
 		progressView.frame = view.bounds
@@ -41,6 +42,17 @@ class RecognitionProgressView: UIViewController {
 		}
 		view.addSubview(progressView)
 	}
+    
+    private func setupConstraints() {
+        let safeArea = view.safeAreaLayoutGuide
+        
+        NSLayoutConstraint.activate([
+            progressView.topAnchor.constraint(equalTo: safeArea.topAnchor),
+            progressView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
+            progressView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
+            progressView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor),
+        ])
+    }
 	
 	//MARK: - 상태에 따른 애니메이션 진행
 	
@@ -60,5 +72,9 @@ class RecognitionProgressView: UIViewController {
 		print("Downloading \((progress * 100).rounded())%")
 		progressView.play()
 	}
+    
+    func progressStop() {
+        progressView.stop()
+    }
 
 }

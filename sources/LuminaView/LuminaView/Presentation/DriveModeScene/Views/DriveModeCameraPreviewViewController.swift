@@ -12,8 +12,7 @@ final class DriveModeCameraPreviewViewController: UIViewController {
     
     private lazy var cameraView: UIView = {
         let view = UIView()
-        
-        view.backgroundColor = .blue
+
         view.translatesAutoresizingMaskIntoConstraints = false
         
         return view
