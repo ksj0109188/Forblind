@@ -16,7 +16,7 @@ class DriveModeViewController: UIViewController {
     private var isRecording: Bool = false {
         didSet {
             DispatchQueue.main.async { [weak self] in
-                self?.updatePlayButtonImage()
+                self?.updatePlayButton()
                 self?.updateStatusLabel()
                 self?.updateProgressView()
             }
@@ -44,8 +44,7 @@ class DriveModeViewController: UIViewController {
         button.addTarget(self, action: #selector(toggleRecordButton), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(playImage, for: .normal)
-        button.accessibilityLabel = "Play guide button"
-        button.accessibilityHint = "Play guide mode"
+        button.accessibilityLabel = String(localized: "PlayGuide")
         
         return button
     }()
@@ -72,8 +71,7 @@ class DriveModeViewController: UIViewController {
         button.addTarget(self, action: #selector(showCameraPreview), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(image, for: .normal)
-        button.accessibilityLabel = "Preivew button"
-        button.accessibilityHint = "Show current camera view"
+        button.accessibilityLabel = String(localized: "showCameraPreview")
         
         return button
     }()
@@ -135,9 +133,11 @@ class DriveModeViewController: UIViewController {
         ])
     }
     
-    private func updatePlayButtonImage() {
+    private func updatePlayButton() {
         let image = isRecording ? pauseImage : playImage
+        let voiceOverHint = isRecording ? String(localized: "PauseGuide") : String(localized: "PlayGuide")
         
+        playButton.accessibilityLabel = voiceOverHint
         playButton.setImage(image, for: .normal)
     }
     
@@ -168,7 +168,6 @@ class DriveModeViewController: UIViewController {
     }
     
     @objc private func showCameraPreview() {
-        print("show camera button tapped")
         viewModel.showCameraPreview()
     }
 }
