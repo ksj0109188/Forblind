@@ -16,7 +16,7 @@ class DriveModeViewController: UIViewController {
     private var isRecording: Bool = false {
         didSet {
             DispatchQueue.main.async { [weak self] in
-                self?.updatePlayButtonImage()
+                self?.updatePlayButton()
                 self?.updateStatusLabel()
                 self?.updateProgressView()
             }
@@ -33,6 +33,7 @@ class DriveModeViewController: UIViewController {
     
     private lazy var statusLabel: CommonCustomLabel = {
         let label = CommonCustomLabel(label: "대기중", textAlignment: .center, fontSize: 20.0, weight: .bold, textColor: .white)
+        label.isAccessibilityElement = false
         
         return label
     }()
@@ -43,6 +44,7 @@ class DriveModeViewController: UIViewController {
         button.addTarget(self, action: #selector(toggleRecordButton), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(playImage, for: .normal)
+        button.accessibilityLabel = String(localized: "PlayGuide")
         
         return button
     }()
@@ -69,6 +71,7 @@ class DriveModeViewController: UIViewController {
         button.addTarget(self, action: #selector(showCameraPreview), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(image, for: .normal)
+        button.accessibilityLabel = String(localized: "showCameraPreview")
         
         return button
     }()
@@ -77,6 +80,7 @@ class DriveModeViewController: UIViewController {
         super.viewDidLoad()
         setupViews()
         setupConstraints()
+        setVoiceOverAccessConfig()
     }
     
     func create(viewModel: DriveModeViewModel) {
@@ -92,6 +96,10 @@ class DriveModeViewController: UIViewController {
     
     private func setupViews() {
         view.addSubviews(statusLabel, playButton, showCameraPreviewButton, progressView.view)
+    }
+    
+    private func setVoiceOverAccessConfig() {
+        view.accessibilityElements = [showCameraPreviewButton, playButton]
     }
     
     private func setupConstraints() {
@@ -125,9 +133,11 @@ class DriveModeViewController: UIViewController {
         ])
     }
     
-    private func updatePlayButtonImage() {
+    private func updatePlayButton() {
         let image = isRecording ? pauseImage : playImage
+        let voiceOverHint = isRecording ? String(localized: "PauseGuide") : String(localized: "PlayGuide")
         
+        playButton.accessibilityLabel = voiceOverHint
         playButton.setImage(image, for: .normal)
     }
     
@@ -158,7 +168,6 @@ class DriveModeViewController: UIViewController {
     }
     
     @objc private func showCameraPreview() {
-        print("show camera button tapped")
         viewModel.showCameraPreview()
     }
 }

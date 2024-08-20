@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2072837A151FD05FD8409099 /* Pods_LuminaView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA3194F4A8B068078E546D6 /* Pods_LuminaView.framework */; };
+		3B1A49C92C5CD501000E21B0 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 3B1A49C82C5CD501000E21B0 /* Localizable.xcstrings */; };
 		3B1EB4292C4532C2001A0F0A /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 3B1EB4282C4532C2001A0F0A /* RxCocoa */; };
 		3B1EB42B2C4532C2001A0F0A /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 3B1EB42A2C4532C2001A0F0A /* RxSwift */; };
 		3B1EB42E2C4539BD001A0F0A /* GoogleGenerativeAI in Frameworks */ = {isa = PBXBuildFile; productRef = 3B1EB42D2C4539BD001A0F0A /* GoogleGenerativeAI */; };
@@ -50,6 +51,7 @@
 
 /* Begin PBXFileReference section */
 		1221012790DFD4E6C7734FF0 /* Pods-LuminaView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LuminaView.release.xcconfig"; path = "Target Support Files/Pods-LuminaView/Pods-LuminaView.release.xcconfig"; sourceTree = "<group>"; };
+		3B1A49C82C5CD501000E21B0 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		3B37926B2C467B8E00375767 /* AppDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDIContainer.swift; sourceTree = "<group>"; };
 		3B37926D2C467BA300375767 /* AppConfigurations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfigurations.swift; sourceTree = "<group>"; };
 		3B37926F2C467BC900375767 /* DevConfig.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = DevConfig.xcconfig; sourceTree = "<group>"; };
@@ -298,6 +300,7 @@
 				3B37926F2C467BC900375767 /* DevConfig.xcconfig */,
 				3BBFE8A82C3D0DD200193B70 /* Info.plist */,
 				3BE1CBCF2C48F84A003E7C62 /* GeminiAPIConfig.swift */,
+				3B1A49C82C5CD501000E21B0 /* Localizable.xcstrings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -355,6 +358,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ko,
 			);
 			mainGroup = 3BBFE88E2C3D0DCF00193B70;
 			packageReferences = (
@@ -378,6 +382,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3BBFE8A42C3D0DD200193B70 /* Assets.xcassets in Resources */,
+				3B1A49C92C5CD501000E21B0 /* Localizable.xcstrings in Resources */,
 				3BBFE8A72C3D0DD200193B70 /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -489,6 +494,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -554,6 +560,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";

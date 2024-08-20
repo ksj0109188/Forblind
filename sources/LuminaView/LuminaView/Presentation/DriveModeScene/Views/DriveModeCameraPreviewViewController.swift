@@ -26,6 +26,8 @@ final class DriveModeCameraPreviewViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(image, for: .normal)
         button.addTarget(self, action: #selector(dismissCameraPreview), for: .touchUpInside)
+        button.accessibilityLabel = String(localized: "CloseCameraPreview")
+        button.accessibilityHint = String(localized: "ReturnToDriveMode")
         
         return button
     }()
@@ -46,13 +48,11 @@ final class DriveModeCameraPreviewViewController: UIViewController {
     }
     
     private func setupViews() {
-//        view.addSubviews(cameraView, dismissButton)
         view.addSubviews(dismissButton, cameraView)
     }
     
     private func setupConstraints() {
         let safeArea = view.safeAreaLayoutGuide
-        let padding = 20.0
             
         NSLayoutConstraint.activate([
             cameraView.topAnchor.constraint(equalTo: dismissButton.bottomAnchor),
