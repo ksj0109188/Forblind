@@ -24,7 +24,7 @@ final class GeminiWebRepository: GuideAPIWebRepository {
     
     func setupApiConnect() -> PublishSubject<UIImage> {
         imageSubject
-            .buffer(timeSpan: .seconds(5), count: Int.max, scheduler: MainScheduler.instance)
+            .buffer(timeSpan: .seconds(3), count: Int.max, scheduler: MainScheduler.instance)
             .subscribe(onNext: { images in
                 //TODO: 약한참조가 필요한지 체크 필요
                 Task {

@@ -112,6 +112,17 @@ extension CameraManger: AVCaptureVideoDataOutputSampleBufferDelegate {
             return
         }
         
+        let width = CVPixelBufferGetWidth(pixelBuffer)
+        let height = CVPixelBufferGetHeight(pixelBuffer)
+        let bytesPerRow = CVPixelBufferGetBytesPerRow(pixelBuffer)
+        let totalBytes = bytesPerRow * height
+        
+        print("비디오 프레임 크기:")
+        print("너비: \(width) 픽셀")
+        print("높이: \(height) 픽셀")
+        print("총 바이트 수: \(totalBytes) 바이트")
+        print("대략적인 크기: \(Double(totalBytes) / 1024.0 / 1024.0) MB")
+        
         // CVPixelBuffer를 CIImage로 변환
         let ciImage = CIImage(cvPixelBuffer: pixelBuffer)
         
