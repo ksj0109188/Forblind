@@ -8,9 +8,10 @@
 import UIKit
 import AVFoundation
 import RxSwift
+import Starscream
 
 protocol Recodable {
-    func startRecord(subject: PublishSubject<UIImage>)
+    func startRecord(subject: PublishSubject<CMSampleBuffer>)
     func stopRecord()
     func setPreview(view: UIView)
     func removePreview()
@@ -21,7 +22,7 @@ final class CameraManger: NSObject, Recodable {
     private var captureSession: AVCaptureSession = AVCaptureSession()
     private var videoPreviewLayer: AVCaptureVideoPreviewLayer?
     private var videoOutput: AVCaptureVideoDataOutput = AVCaptureVideoDataOutput()
-    private var cameraDataSubject: PublishSubject<UIImage>?
+    private var cameraDataOutputSubject: PublishSubject<CMSampleBuffer>?
     private var cameraRecodingCheckSubject: PublishSubject<Bool>!
     private let disposeBag = DisposeBag()
     
@@ -65,8 +66,8 @@ final class CameraManger: NSObject, Recodable {
         }
     }
     
-    func startRecord(subject: PublishSubject<UIImage>) {
-        cameraDataSubject = subject
+    func startRecord(subject: PublishSubject<CMSampleBuffer>) {
+        cameraDataOutputSubject = subject
         
         DispatchQueue.global().async {
             self.captureSession.startRunning()
@@ -75,7 +76,7 @@ final class CameraManger: NSObject, Recodable {
     }
     
     func stopRecord() {
-        cameraDataSubject = nil
+        cameraDataOutputSubject = nil
         
         DispatchQueue.global().async {
             self.captureSession.stopRunning()
@@ -101,7 +102,6 @@ final class CameraManger: NSObject, Recodable {
     func getCameraStatusStream() -> PublishSubject<Bool> {
         self.cameraRecodingCheckSubject
     }
-    
 }
 
 extension CameraManger: AVCaptureVideoDataOutputSampleBufferDelegate {
@@ -117,21 +117,22 @@ extension CameraManger: AVCaptureVideoDataOutputSampleBufferDelegate {
         let bytesPerRow = CVPixelBufferGetBytesPerRow(pixelBuffer)
         let totalBytes = bytesPerRow * height
         
-        print("비디오 프레임 크기:")
-        print("너비: \(width) 픽셀")
-        print("높이: \(height) 픽셀")
-        print("총 바이트 수: \(totalBytes) 바이트")
-        print("대략적인 크기: \(Double(totalBytes) / 1024.0 / 1024.0) MB")
+//        debugPrint("비디오 프레임 크기:")
+//        debugPrint("너비: \(width) 픽셀")
+//        debugPrint("높이: \(height) 픽셀")
+//        debugPrint("총 바이트 수: \(totalBytes) 바이트")
+//        debugPrint("대략적인 크기: \(Double(totalBytes) / 1024.0 / 1024.0) MB")
         
-        // CVPixelBuffer를 CIImage로 변환
-        let ciImage = CIImage(cvPixelBuffer: pixelBuffer)
-        
-        // CIImage를 UIImage로 변환
-        let context = CIContext()
-        
-        if let cgImage = context.createCGImage(ciImage, from: ciImage.extent) {
-            let uiImage = UIImage(cgImage: cgImage)
-            cameraDataSubject?.onNext(uiImage)
-        }
+//        // CVPixelBuffer를 CIImage로 변환
+//        let ciImage = CIImage(cvPixelBuffer: pixelBuffer)
+//        
+//        // CIImage를 UIImage로 변환
+//        let context = CIContext()
+//        
+//        if let cgImage = context.createCGImage(ciImage, from: ciImage.extent) {
+//            let uiImage = UIImage(cgImage: cgImage)
+//            cameraDataSubject?.onNext(uiImage)
+//        }
+        cameraDataOutputSubject?.onNext(sampleBuffer)
     }
 }

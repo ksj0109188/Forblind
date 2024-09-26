@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -17,10 +17,11 @@
 		3B3792722C467F6600375767 /* DriveModeSceneDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3792712C467F6600375767 /* DriveModeSceneDIContainer.swift */; };
 		3B3792742C467FB500375767 /* DriveModeFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3792732C467FB500375767 /* DriveModeFlowCoordinator.swift */; };
 		3B3792792C4681C100375767 /* DriveModeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3792782C4681C100375767 /* DriveModeViewModel.swift */; };
-		3B37927C2C46884B00375767 /* CameraManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B37927B2C46884B00375767 /* CameraManger.swift */; };
 		3B37927F2C468E4200375767 /* AppFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B37927E2C468E4200375767 /* AppFlowCoordinator.swift */; };
 		3B3792812C469DFD00375767 /* GeminiWebRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3792802C469DFD00375767 /* GeminiWebRepository.swift */; };
 		3B482DD12C4FC93A00D435ED /* DriveModeCameraPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B482DD02C4FC93A00D435ED /* DriveModeCameraPreviewViewController.swift */; };
+		3B73535D2C9C60F000202CB5 /* WebSocketRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B73535C2C9C60F000202CB5 /* WebSocketRepository.swift */; };
+		3B8F1E332C9C369400A54EC4 /* WebSocketAPIConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8F1E322C9C369400A54EC4 /* WebSocketAPIConfig.swift */; };
 		3BBFE89B2C3D0DCF00193B70 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBFE89A2C3D0DCF00193B70 /* AppDelegate.swift */; };
 		3BBFE89D2C3D0DCF00193B70 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBFE89C2C3D0DCF00193B70 /* SceneDelegate.swift */; };
 		3BBFE89F2C3D0DCF00193B70 /* DriveModeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBFE89E2C3D0DCF00193B70 /* DriveModeViewController.swift */; };
@@ -31,7 +32,6 @@
 		3BE1CBD42C490D50003E7C62 /* FetchGuideUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE1CBD32C490D50003E7C62 /* FetchGuideUseCase.swift */; };
 		3BE77B062C51309E003FED2D /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3BE77B052C51309E003FED2D /* SnapKit */; };
 		960BE5A32C492E330060DD72 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 960BE5A22C492E330060DD72 /* Lottie */; };
-		96BD02562C49449500CBEE58 /* RecognitionProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BD02552C49449500CBEE58 /* RecognitionProgressView.swift */; };
 		96BD02582C49458300CBEE58 /* CommonCustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BD02572C49458300CBEE58 /* CommonCustomLabel.swift */; };
 		96BD025A2C4945A100CBEE58 /* CommonCustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BD02592C4945A100CBEE58 /* CommonCustomButton.swift */; };
 /* End PBXBuildFile section */
@@ -58,10 +58,11 @@
 		3B3792712C467F6600375767 /* DriveModeSceneDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriveModeSceneDIContainer.swift; sourceTree = "<group>"; };
 		3B3792732C467FB500375767 /* DriveModeFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriveModeFlowCoordinator.swift; sourceTree = "<group>"; };
 		3B3792782C4681C100375767 /* DriveModeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriveModeViewModel.swift; sourceTree = "<group>"; };
-		3B37927B2C46884B00375767 /* CameraManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraManger.swift; sourceTree = "<group>"; };
 		3B37927E2C468E4200375767 /* AppFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlowCoordinator.swift; sourceTree = "<group>"; };
 		3B3792802C469DFD00375767 /* GeminiWebRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GeminiWebRepository.swift; path = Repositories/GeminiWebRepository.swift; sourceTree = SOURCE_ROOT; };
 		3B482DD02C4FC93A00D435ED /* DriveModeCameraPreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriveModeCameraPreviewViewController.swift; sourceTree = "<group>"; };
+		3B73535C2C9C60F000202CB5 /* WebSocketRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSocketRepository.swift; sourceTree = "<group>"; };
+		3B8F1E322C9C369400A54EC4 /* WebSocketAPIConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSocketAPIConfig.swift; sourceTree = "<group>"; };
 		3BBFE8972C3D0DCF00193B70 /* LuminaView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LuminaView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BBFE89A2C3D0DCF00193B70 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3BBFE89C2C3D0DCF00193B70 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -72,12 +73,16 @@
 		3BE1CBCA2C47FA22003E7C62 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		3BE1CBCF2C48F84A003E7C62 /* GeminiAPIConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeminiAPIConfig.swift; sourceTree = "<group>"; };
 		3BE1CBD32C490D50003E7C62 /* FetchGuideUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchGuideUseCase.swift; sourceTree = "<group>"; };
-		96BD02552C49449500CBEE58 /* RecognitionProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecognitionProgressView.swift; sourceTree = "<group>"; };
 		96BD02572C49458300CBEE58 /* CommonCustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonCustomLabel.swift; sourceTree = "<group>"; };
 		96BD02592C4945A100CBEE58 /* CommonCustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonCustomButton.swift; sourceTree = "<group>"; };
 		9AA3194F4A8B068078E546D6 /* Pods_LuminaView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LuminaView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDEE937B43E69CA1977B2AE1 /* Pods-LuminaView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LuminaView.debug.xcconfig"; path = "Target Support Files/Pods-LuminaView/Pods-LuminaView.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		3B8F1E342C9C542200A54EC4 /* View */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = View; sourceTree = "<group>"; };
+		3B8F1E352C9C542A00A54EC4 /* Camera */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Camera; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		3BBFE8942C3D0DCF00193B70 /* Frameworks */ = {
@@ -159,9 +164,9 @@
 		3B37927D2C46885100375767 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				96BD02552C49449500CBEE58 /* RecognitionProgressView.swift */,
+				3B8F1E342C9C542200A54EC4 /* View */,
 				3BE1CBCC2C47FB16003E7C62 /* Extensions */,
-				3B37927B2C46884B00375767 /* CameraManger.swift */,
+				3B8F1E352C9C542A00A54EC4 /* Camera */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -189,6 +194,7 @@
 			children = (
 				3B37927D2C46885100375767 /* Utilities */,
 				96586BEA2C3D1A82007039FB /* Resources */,
+				96586BE62C3D1A3F007039FB /* Repositories */,
 				96586BE52C3D1A37007039FB /* Data */,
 				96586BE22C3D1A15007039FB /* Domain */,
 				96586BDF2C3D19F8007039FB /* Presentation */,
@@ -256,7 +262,6 @@
 			isa = PBXGroup;
 			children = (
 				96586BE72C3D1A49007039FB /* DataSources */,
-				96586BE62C3D1A3F007039FB /* Repositories */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -265,8 +270,10 @@
 			isa = PBXGroup;
 			children = (
 				3B3792802C469DFD00375767 /* GeminiWebRepository.swift */,
+				3B73535C2C9C60F000202CB5 /* WebSocketRepository.swift */,
 			);
-			path = Repositories;
+			name = Repositories;
+			path = ../Repositories;
 			sourceTree = "<group>";
 		};
 		96586BE72C3D1A49007039FB /* DataSources */ = {
@@ -300,6 +307,7 @@
 				3B37926F2C467BC900375767 /* DevConfig.xcconfig */,
 				3BBFE8A82C3D0DD200193B70 /* Info.plist */,
 				3BE1CBCF2C48F84A003E7C62 /* GeminiAPIConfig.swift */,
+				3B8F1E322C9C369400A54EC4 /* WebSocketAPIConfig.swift */,
 				3B1A49C82C5CD501000E21B0 /* Localizable.xcstrings */,
 			);
 			path = Resources;
@@ -323,6 +331,10 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				3B8F1E342C9C542200A54EC4 /* View */,
+				3B8F1E352C9C542A00A54EC4 /* Camera */,
 			);
 			name = LuminaView;
 			packageProductDependencies = (
@@ -456,7 +468,7 @@
 				3BE1CBCB2C47FA22003E7C62 /* UIView+.swift in Sources */,
 				3BE1CBD02C48F84A003E7C62 /* GeminiAPIConfig.swift in Sources */,
 				3B37926E2C467BA300375767 /* AppConfigurations.swift in Sources */,
-				3B37927C2C46884B00375767 /* CameraManger.swift in Sources */,
+				3B8F1E332C9C369400A54EC4 /* WebSocketAPIConfig.swift in Sources */,
 				3B37927F2C468E4200375767 /* AppFlowCoordinator.swift in Sources */,
 				3B37926C2C467B8E00375767 /* AppDIContainer.swift in Sources */,
 				3B482DD12C4FC93A00D435ED /* DriveModeCameraPreviewViewController.swift in Sources */,
@@ -464,11 +476,11 @@
 				3BBFE89F2C3D0DCF00193B70 /* DriveModeViewController.swift in Sources */,
 				3B3792742C467FB500375767 /* DriveModeFlowCoordinator.swift in Sources */,
 				3BE1CBD42C490D50003E7C62 /* FetchGuideUseCase.swift in Sources */,
+				3B73535D2C9C60F000202CB5 /* WebSocketRepository.swift in Sources */,
 				3B3792722C467F6600375767 /* DriveModeSceneDIContainer.swift in Sources */,
 				3BBFE89B2C3D0DCF00193B70 /* AppDelegate.swift in Sources */,
 				3B3792792C4681C100375767 /* DriveModeViewModel.swift in Sources */,
 				96BD025A2C4945A100CBEE58 /* CommonCustomButton.swift in Sources */,
-				96BD02562C49449500CBEE58 /* RecognitionProgressView.swift in Sources */,
 				96BD02582C49458300CBEE58 /* CommonCustomLabel.swift in Sources */,
 				3BBFE89D2C3D0DCF00193B70 /* SceneDelegate.swift in Sources */,
 			);

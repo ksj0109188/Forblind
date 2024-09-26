@@ -21,4 +21,11 @@ final class AppConfigurations {
         }
         return modelName
     }()
+    
+    lazy var webSocketURL: String = {
+        guard let url = Bundle.main.object(forInfoDictionaryKey: "webSocketURL") as? String else {
+            fatalError("modelName is nil")
+        }
+        return url
+    }()
 }

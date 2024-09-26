@@ -19,4 +19,5 @@ pod 'GoogleMLKit/TextRecognitionChinese', '6.0.0'
 pod 'GoogleMLKit/TextRecognitionDevanagari', '6.0.0'
 pod 'GoogleMLKit/TextRecognitionJapanese', '6.0.0'
 pod 'GoogleMLKit/TextRecognitionKorean', '6.0.0'
+pod 'Starscream', '~> 4.0.0'
 end

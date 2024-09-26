@@ -10,14 +10,9 @@ import Foundation
 final class AppDIContainer {
     lazy var appConfigurations = AppConfigurations()
     lazy var guideService: GuideAPIWebRepository = {
-        let config = GeminiAPIConfig(
-            apiKey: appConfigurations.geminiAPIKey,
-            modelName: appConfigurations.geminiModelName)
-        let geminiWebRepository = GeminiWebRepository()
+        let config = WebSocketAPIConfig(url: appConfigurations.webSocketURL)
         
-        geminiWebRepository.configure(config: config)
-        
-        return geminiWebRepository
+        return WebSocketRepository(config: config)
     }()
     
     func makeDriveModeSceneDIContainer() -> DriveModeSceneDIContainer {

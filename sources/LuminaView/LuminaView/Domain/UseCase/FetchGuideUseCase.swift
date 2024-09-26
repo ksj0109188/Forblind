@@ -7,6 +7,7 @@
 
 import UIKit
 import RxSwift
+import CoreMedia
 
 final class FetchGuideUseCase {
     let guideAPIWebRepository: GuideAPIWebRepository
@@ -15,7 +16,7 @@ final class FetchGuideUseCase {
         self.guideAPIWebRepository = guideAPIWebRepository
     }
     
-    func setupApiConnect() -> PublishSubject<UIImage> {
+    func setupApiConnect() -> PublishSubject<CMSampleBuffer> {
         guideAPIWebRepository.setupApiConnect()
     }
 }
