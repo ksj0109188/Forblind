@@ -27,7 +27,7 @@ class WebSocketRepository: GuideAPIWebRepository, SendableWebSocket {
     
     init(config: WebSocketAPIConfig) {
         //        let url = URL(string: config.url)!
-        let url = URL(string: "ws://loacalhost:8080/data-upload")!
+        let url = URL(string: "ws://192.168.45.157:8080/data-upload")!
         var request = URLRequest(url: url)
         
         request.timeoutInterval = 10
@@ -42,17 +42,24 @@ class WebSocketRepository: GuideAPIWebRepository, SendableWebSocket {
         requestAPISubject
             .buffer(timeSpan: .seconds(3), count: Int.max, scheduler: MainScheduler.instance)
             .subscribe(onNext: { buffers in
+                if self.isWorked {
+                    return
+                }
                 var mergedData = Data()
                 
-                for buffer in buffers {
-                    self.encoder.encodeAndReturnData(sampleBuffer: buffer) { encodedData in
-                        if let encodedData = encodedData {
-                            mergedData.append(encodedData)
+                Task {
+                    for buffer in buffers {
+                        await self.encoder.encodeAndReturnData(sampleBuffer: buffer) { encodedData in
+                            if let encodedData = encodedData {
+                                mergedData.append(encodedData)
+                            }
+                            
+//                            print("For ",mergedData)
                         }
                     }
+                    
+                    self.sendToWebSocket(data: mergedData)
                 }
-
-                self.sendToWebSocket(data: mergedData)
             })
             .disposed(by: disposeBag)
         
@@ -60,6 +67,7 @@ class WebSocketRepository: GuideAPIWebRepository, SendableWebSocket {
     }
     
     func sendToWebSocket(data: Data) {
+        print("sendToWebSocket", data)
         if isWorked {
             return
         }
