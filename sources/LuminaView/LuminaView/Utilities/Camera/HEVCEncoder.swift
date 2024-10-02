@@ -14,6 +14,7 @@ protocol CameraEncodable {
 
 class HEVCEncoder: CameraEncodable {
     private var compressionSession: VTCompressionSession?
+    private var vps: Data?
     private var sps: Data?
     private var pps: Data?
     
@@ -39,15 +40,17 @@ class HEVCEncoder: CameraEncodable {
             compressionSessionOut: &compressionSession
         )
         
-      
+        
         VTSessionSetProperty(compressionSession!, key: kVTCompressionPropertyKey_RealTime, value: kCFBooleanTrue)
-               VTSessionSetProperty(compressionSession!, key: kVTCompressionPropertyKey_ProfileLevel, value: kVTProfileLevel_HEVC_Main_AutoLevel)
-               VTSessionSetProperty(compressionSession!, key: kVTCompressionPropertyKey_AverageBitRate, value: bitrate as CFTypeRef)
-               VTSessionSetProperty(compressionSession!, key: kVTCompressionPropertyKey_AllowFrameReordering, value: kCFBooleanFalse)
-               VTSessionSetProperty(compressionSession!, key: kVTCompressionPropertyKey_ExpectedFrameRate, value: 30 as CFTypeRef)
-
-           
-           VTCompressionSessionPrepareToEncodeFrames(compressionSession!)
+        VTSessionSetProperty(compressionSession!, key: kVTCompressionPropertyKey_ProfileLevel, value: kVTProfileLevel_HEVC_Main_AutoLevel)
+        VTSessionSetProperty(compressionSession!, key: kVTCompressionPropertyKey_AverageBitRate, value: bitrate as CFTypeRef)
+        VTSessionSetProperty(compressionSession!, key: kVTCompressionPropertyKey_AllowFrameReordering, value: kCFBooleanFalse)
+        VTSessionSetProperty(compressionSession!, key: kVTCompressionPropertyKey_ExpectedFrameRate, value: 30 as CFTypeRef)
+        VTSessionSetProperty(compressionSession!, key: kVTCompressionPropertyKey_MaxKeyFrameInterval, value: 60 as CFTypeRef)
+        VTSessionSetProperty(compressionSession!, key: kVTCompressionPropertyKey_MaxKeyFrameIntervalDuration, value: 2 as CFTypeRef)
+        
+        
+        VTCompressionSessionPrepareToEncodeFrames(compressionSession!)
         
         if status != noErr {
             debugPrint("Failed to create compression session: \(status)")
@@ -58,55 +61,85 @@ class HEVCEncoder: CameraEncodable {
     }
     
     func sendCompressedData(sampleBuffer: CMSampleBuffer) -> Data? {
-        guard let blockBuffer = CMSampleBufferGetDataBuffer(sampleBuffer) else {
+        guard let dataBuffer = CMSampleBufferGetDataBuffer(sampleBuffer) else {
+            print("Failed to get data buffer from sample buffer")
+            return nil
+        }
+
+        var totalLength: Int = 0
+        var dataPointerRef: UnsafeMutablePointer<Int8>?
+        
+        let lockFlags = CMBlockBufferGetTypeID()
+        let status = CMBlockBufferGetDataPointer(dataBuffer,
+                                                 atOffset: 0,
+                                                 lengthAtOffsetOut: nil,
+                                                 totalLengthOut: &totalLength,
+                                                 dataPointerOut: &dataPointerRef)
+        
+        guard status == kCMBlockBufferNoErr else {
+            print("Error getting data pointer: \(status)")
             return nil
         }
         
-        // 블록의 총 길이를 가져옴
-        var totalLength = CMBlockBufferGetDataLength(blockBuffer)
-        var dataPointer: UnsafeMutablePointer<CChar>?
-        
-        // 압축된 데이터의 포인터를 가져옴
-        let status = CMBlockBufferGetDataPointer(blockBuffer, atOffset: 0, lengthAtOffsetOut: nil, totalLengthOut: &totalLength, dataPointerOut: &dataPointer)
-        
-        guard status == noErr, let dataPointer = dataPointer else {
+        guard let dataPointer = dataPointerRef else {
+            print("Data pointer is nil")
             return nil
         }
         
-        let data = Data(bytes: dataPointer, count: totalLength)
+        let bufferData = Data(bytes: dataPointer, count: totalLength)
+        
         var nalUnitData = Data()
         let startCode: [UInt8] = [0x00, 0x00, 0x00, 0x01]
-//        return data
-        var offset = 0
         
-        while offset < data.count {
-            var nalUnitLength: UInt32 = 0
-            memcpy(&nalUnitLength, dataPointer + offset, MemoryLayout<UInt32>.size)
-            nalUnitLength = CFSwapInt32(nalUnitLength)
-
-            let nalUnitStart = offset + MemoryLayout<UInt32>.size
-            let nalUnitEnd = nalUnitStart + Int(nalUnitLength)
-
-            if nalUnitEnd <= data.count {
-                let nalUnitHeader = data[nalUnitStart]
-                let nalUnitType = nalUnitHeader & 0x7E >> 1 // NAL unit type 추출
-                // SPS와 PPS 검사
-                if nalUnitType == 33 {
-                    // SPS 처리
-                    print("33 checked")
-                } else if nalUnitType == 34 {
-                    // PPS 처리
-                    print("34 checked")
-                }
-
+        // VPS, SPS, PPS를 키 프레임에만 추가
+        if isKeyFrame(sampleBuffer) {
+            print("Key frame detected, adding VPS, SPS, PPS")
+            if let vps = self.vps {
                 nalUnitData.append(contentsOf: startCode)
-                nalUnitData.append(data[nalUnitStart..<nalUnitEnd])
+                nalUnitData.append(vps)
             }
-
+            if let sps = self.sps {
+                nalUnitData.append(contentsOf: startCode)
+                nalUnitData.append(sps)
+            }
+            if let pps = self.pps {
+                nalUnitData.append(contentsOf: startCode)
+                nalUnitData.append(pps)
+            }
+        }
+        
+        // 인코딩된 프레임 데이터 추가
+        var offset = 0
+        while offset < totalLength {
+            // 안전하게 NAL 유닛 길이 읽기
+            guard offset + 4 <= totalLength else { break }
+            let nalUnitLength = UInt32(bufferData[offset]) << 24 |
+                                UInt32(bufferData[offset + 1]) << 16 |
+                                UInt32(bufferData[offset + 2]) << 8 |
+                                UInt32(bufferData[offset + 3])
+            
+            let nalUnitStart = offset + 4 // 4바이트 길이 필드 이후
+            let nalUnitEnd = nalUnitStart + Int(nalUnitLength)
+            
+            guard nalUnitEnd <= totalLength else { break }
+            
+            nalUnitData.append(contentsOf: startCode)
+            nalUnitData.append(bufferData[nalUnitStart..<nalUnitEnd])
+            
             offset = nalUnitEnd
         }
         
+        print("Encoded frame size: \(nalUnitData.count) bytes")
         return nalUnitData
+    }
+    
+    func isKeyFrame(_ sampleBuffer: CMSampleBuffer) -> Bool {
+        guard let attachments = CMSampleBufferGetSampleAttachmentsArray(sampleBuffer, createIfNecessary: false) as? [[CFString: Any]],
+              let attachment = attachments.first,
+              let dependsOnOthers = attachment[kCMSampleAttachmentKey_DependsOnOthers] as? Bool else {
+            return false
+        }
+        return !dependsOnOthers
     }
     
     // CMSampleBuffer를 받아 H.265로 인코딩하는 함수
@@ -131,22 +164,105 @@ class HEVCEncoder: CameraEncodable {
             duration: duration,
             frameProperties: nil,
             infoFlagsOut: nil,
-            outputHandler: { status, flags, buffer in
-                if let buffer = buffer {
-                    // NAL 유닛 데이터 추출
-                    let encodedData = self.sendCompressedData(sampleBuffer: buffer)
-                    
-                    // SPS 및 PPS를 전송할 데이터가 있는지 확인
-                    if let attachments = CMSampleBufferGetSampleAttachmentsArray(buffer, createIfNecessary: false) {
-                        for attachment in attachments as! [[String: Any]] {
-                            print(attachment)
-                        }
-                    }
-                    
-                    // 필요에 따라 추가적인 작업을 할 수 있습니다
-                    completion(nil)  // 최종적으로 nil을 반환하여 호출자를 알림
+            outputHandler: { [weak self] status, flags, buffer in
+                guard let self = self, let buffer = buffer else {
+                    completion(nil)
+                    return
+                }
+                
+                if let formatDescription = CMSampleBufferGetFormatDescription(buffer) {
+                    self.extractParameterSets(from: formatDescription)
+                }
+                
+                if let encodedData = self.sendCompressedData(sampleBuffer: buffer) {
+//                    print("Encoded data size: \(encodedData.count) bytes")
+                    self.analyzeNALUnits(encodedData)
+                    completion(encodedData)
+                } else {
+                    print("Failed to encode data")
+                    completion(nil)
                 }
             }
         )
+    }
+}
+
+extension HEVCEncoder {
+    func analyzeNALUnits(_ data: Data) {
+        let startCode: [UInt8] = [0x00, 0x00, 0x00, 0x01]
+        var offset = 0
+        
+        while offset < data.count - 4 {
+            if data[offset..<offset+4] == Data(startCode) {
+                let nalUnitType = (data[offset + 4] & 0x7E) >> 1
+                print("NAL Unit Type: \(nalUnitType)")
+                
+                
+                switch nalUnitType {
+                    case 32:
+                        print("VPS (Video Parameter Set)")
+                        self.vps = data[offset..<data.count]
+                    case 33:
+                        print("SPS (Sequence Parameter Set)")
+                        self.sps = data[offset..<data.count]
+                    case 34:
+                        print("PPS (Picture Parameter Set)")
+                        self.pps = data[offset..<data.count]
+                    case 39:
+                        print("SEI (Supplemental Enhancement Information)")
+                    case 0...9:
+                        print("Coded slice of a non-IDR picture")
+                    case 16...21:
+                        print("Coded slice of an IDR picture")
+                    default:
+                        print("Other NAL unit type")
+                }
+                
+                offset += 4
+            } else {
+                offset += 1
+            }
+        }
+    }
+    
+    private func extractParameterSets(from formatDescription: CMFormatDescription) {
+        var parameterSetCount = 0
+        CMVideoFormatDescriptionGetHEVCParameterSetAtIndex(formatDescription,
+                                                           parameterSetIndex: 0,
+                                                           parameterSetPointerOut: nil,
+                                                           parameterSetSizeOut: nil,
+                                                           parameterSetCountOut: &parameterSetCount,
+                                                           nalUnitHeaderLengthOut: nil)
+        
+        for i in 0..<parameterSetCount {
+            var parameterSetPointer: UnsafePointer<UInt8>?
+            var parameterSetSize: Int = 0
+            
+            CMVideoFormatDescriptionGetHEVCParameterSetAtIndex(formatDescription,
+                                                               parameterSetIndex: i,
+                                                               parameterSetPointerOut: &parameterSetPointer,
+                                                               parameterSetSizeOut: &parameterSetSize,
+                                                               parameterSetCountOut: nil,
+                                                               nalUnitHeaderLengthOut: nil)
+            
+            if let pointer = parameterSetPointer {
+                let data = Data(bytes: pointer, count: parameterSetSize)
+                let nalUnitType = (data[0] & 0x7E) >> 1
+                
+                switch nalUnitType {
+                    case 32:
+                        self.vps = data
+                        print("VPS extracted")
+                    case 33:
+                        self.sps = data
+                        print("SPS extracted")
+                    case 34:
+                        self.pps = data
+                        print("PPS extracted")
+                    default:
+                        break
+                }
+            }
+        }
     }
 }

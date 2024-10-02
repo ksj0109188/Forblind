@@ -40,11 +40,11 @@ class WebSocketRepository: GuideAPIWebRepository, SendableWebSocket {
     
     func setupApiConnect() -> PublishSubject<CMSampleBuffer> {
         requestAPISubject
-            .buffer(timeSpan: .seconds(3), count: Int.max, scheduler: MainScheduler.instance)
+            .buffer(timeSpan: .seconds(5), count: Int.max, scheduler: MainScheduler.instance)
             .subscribe(onNext: { buffers in
-                if self.isWorked {
-                    return
-                }
+//                if self.isWorked {
+//                    return
+//                }
                 var mergedData = Data()
                 
                 Task {
@@ -53,8 +53,6 @@ class WebSocketRepository: GuideAPIWebRepository, SendableWebSocket {
                             if let encodedData = encodedData {
                                 mergedData.append(encodedData)
                             }
-                            
-//                            print("For ",mergedData)
                         }
                     }
                     
@@ -71,7 +69,7 @@ class WebSocketRepository: GuideAPIWebRepository, SendableWebSocket {
         if isWorked {
             return
         }
-        let chunkSize = 4192  // 청크 크기를 WebSocket의 버퍼 크기보다 작게 설정
+        let chunkSize = 8192  // 청크 크기를 WebSocket의 버퍼 크기보다 작게 설정
         var offset = 0
         let totalChunks = (data.count + chunkSize - 1) / chunkSize  // 전체 청크 수 계산
         
@@ -84,7 +82,7 @@ class WebSocketRepository: GuideAPIWebRepository, SendableWebSocket {
             let metadata: [String: Any] = [
                 "chunkIndex": chunkIndex,
                 "totalChunks": totalChunks,
-                "chunkSize": chunk.count,
+                "chunkSize": chunk.count - 1,
                 "isLastChunk": isLastChunk,
                 "data": chunk.base64EncodedString() // 청크를 Base64로 인코딩
             ]
@@ -127,3 +125,4 @@ extension WebSocketRepository: WebSocketDelegate {
         }
     }
 }
+
