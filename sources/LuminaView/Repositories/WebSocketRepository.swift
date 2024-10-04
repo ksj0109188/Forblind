@@ -27,7 +27,7 @@ class WebSocketRepository: GuideAPIWebRepository, SendableWebSocket {
     
     init(config: WebSocketAPIConfig) {
         //        let url = URL(string: config.url)!
-        let url = URL(string: "ws://192.168.45.157:8080/data-upload")!
+        let url = URL(string: "ws://192.168.45.196:8080/data-upload")!
         var request = URLRequest(url: url)
         
         request.timeoutInterval = 10
@@ -39,28 +39,34 @@ class WebSocketRepository: GuideAPIWebRepository, SendableWebSocket {
     }
     
     func setupApiConnect() -> PublishSubject<CMSampleBuffer> {
+        let encodingSubject = PublishSubject<Data>()
+        //
         requestAPISubject
-            .buffer(timeSpan: .seconds(5), count: Int.max, scheduler: MainScheduler.instance)
-            .subscribe(onNext: { buffers in
-//                if self.isWorked {
-//                    return
-//                }
-                var mergedData = Data()
-                
-                Task {
-                    for buffer in buffers {
-                        await self.encoder.encodeAndReturnData(sampleBuffer: buffer) { encodedData in
-                            if let encodedData = encodedData {
-                                mergedData.append(encodedData)
-                            }
+            .observeOn(ConcurrentDispatchQueueScheduler(qos: .userInitiated))
+            .flatMap { [weak self] buffer -> Observable<Data> in
+                guard let self = self else { return Observable.empty() }
+                return Observable.create { observer in
+                    self.encoder.encodeAndReturnData(sampleBuffer: buffer) { encodedData in
+                        if let data = encodedData {
+                            observer.onNext(data)
                         }
+                        observer.onCompleted()
                     }
-                    
-                    self.sendToWebSocket(data: mergedData)
+                    return Disposables.create()
                 }
+            }
+            .subscribe(onNext: { encodingSubject.onNext($0) })
+            .disposed(by: disposeBag)
+
+        encodingSubject
+            .buffer(timeSpan: .seconds(5), count: Int.max, scheduler: ConcurrentDispatchQueueScheduler(qos: .userInitiated))
+            .subscribe(onNext: { [weak self] encodedChunks in
+                guard let self = self else { return }
+                let mergedData = Data(encodedChunks.joined())
+                self.sendToWebSocket(data: mergedData)
             })
             .disposed(by: disposeBag)
-        
+
         return requestAPISubject
     }
     
@@ -69,7 +75,8 @@ class WebSocketRepository: GuideAPIWebRepository, SendableWebSocket {
         if isWorked {
             return
         }
-        let chunkSize = 8192  // 청크 크기를 WebSocket의 버퍼 크기보다 작게 설정
+        
+        let chunkSize = 4000  // 청크 크기를 WebSocket의 버퍼 크기보다 작게 설정
         var offset = 0
         let totalChunks = (data.count + chunkSize - 1) / chunkSize  // 전체 청크 수 계산
         
@@ -125,4 +132,3 @@ extension WebSocketRepository: WebSocketDelegate {
         }
     }
 }
-

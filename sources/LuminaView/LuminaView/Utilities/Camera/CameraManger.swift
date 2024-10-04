@@ -25,6 +25,7 @@ final class CameraManger: NSObject, Recodable {
     private var cameraDataOutputSubject: PublishSubject<CMSampleBuffer>?
     private var cameraRecodingCheckSubject: PublishSubject<Bool>!
     private let disposeBag = DisposeBag()
+    private var frameCount = 0
     
     override init() {
         super.init()
@@ -107,6 +108,8 @@ final class CameraManger: NSObject, Recodable {
 extension CameraManger: AVCaptureVideoDataOutputSampleBufferDelegate {
     ///note:  AVCaptureVideoDataOutputSampleBufferDelegate 메서드로 출력데이터를 핸들링 할 수 있음
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
+        frameCount += 1
+        print("Frame count: \(frameCount)")
         
         guard let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else {
             return
@@ -116,23 +119,8 @@ extension CameraManger: AVCaptureVideoDataOutputSampleBufferDelegate {
         let height = CVPixelBufferGetHeight(pixelBuffer)
         let bytesPerRow = CVPixelBufferGetBytesPerRow(pixelBuffer)
         let totalBytes = bytesPerRow * height
-        
-//        debugPrint("비디오 프레임 크기:")
-//        debugPrint("너비: \(width) 픽셀")
-//        debugPrint("높이: \(height) 픽셀")
-//        debugPrint("총 바이트 수: \(totalBytes) 바이트")
-//        debugPrint("대략적인 크기: \(Double(totalBytes) / 1024.0 / 1024.0) MB")
-        
-//        // CVPixelBuffer를 CIImage로 변환
-//        let ciImage = CIImage(cvPixelBuffer: pixelBuffer)
-//        
-//        // CIImage를 UIImage로 변환
-//        let context = CIContext()
-//        
-//        if let cgImage = context.createCGImage(ciImage, from: ciImage.extent) {
-//            let uiImage = UIImage(cgImage: cgImage)
-//            cameraDataSubject?.onNext(uiImage)
-//        }
+        let timestamp = CMSampleBufferGetPresentationTimeStamp(sampleBuffer)
+        print("Frame timestamp: \(timestamp.seconds)")
         cameraDataOutputSubject?.onNext(sampleBuffer)
     }
 }

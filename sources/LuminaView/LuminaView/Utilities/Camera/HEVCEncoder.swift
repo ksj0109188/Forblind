@@ -9,7 +9,7 @@ import VideoToolbox
 import Foundation
 
 protocol CameraEncodable {
-    func encodeAndReturnData(sampleBuffer: CMSampleBuffer, completion: @escaping (Data?) -> Void) async
+    func encodeAndReturnData(sampleBuffer: CMSampleBuffer, completion: @escaping (Data?) -> Void)
 }
 
 class HEVCEncoder: CameraEncodable {
@@ -17,6 +17,7 @@ class HEVCEncoder: CameraEncodable {
     private var vps: Data?
     private var sps: Data?
     private var pps: Data?
+    private var frameCount: Int = 0  // 인코딩된 프레임 수를 추적하기 위한 변수
     
     init() {
         setupCompressionSession()
@@ -93,7 +94,6 @@ class HEVCEncoder: CameraEncodable {
         
         // VPS, SPS, PPS를 키 프레임에만 추가
         if isKeyFrame(sampleBuffer) {
-            print("Key frame detected, adding VPS, SPS, PPS")
             if let vps = self.vps {
                 nalUnitData.append(contentsOf: startCode)
                 nalUnitData.append(vps)
@@ -129,7 +129,6 @@ class HEVCEncoder: CameraEncodable {
             offset = nalUnitEnd
         }
         
-        print("Encoded frame size: \(nalUnitData.count) bytes")
         return nalUnitData
     }
     
@@ -143,19 +142,22 @@ class HEVCEncoder: CameraEncodable {
     }
     
     // CMSampleBuffer를 받아 H.265로 인코딩하는 함수
-    func encodeAndReturnData(sampleBuffer: CMSampleBuffer, completion: @escaping (Data?) -> Void) async {
+    func encodeAndReturnData(sampleBuffer: CMSampleBuffer, completion: @escaping (Data?) -> Void) {
         guard let compressionSession = compressionSession else {
             completion(nil)
             return
         }
         
         let presentationTimeStamp = CMSampleBufferGetPresentationTimeStamp(sampleBuffer)
+//        let duration = CMTime(value: 1, timescale: 30) // 30fps 기준
         let duration = CMSampleBufferGetDuration(sampleBuffer)
-        
         guard let imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else {
             completion(nil)
             return
         }
+        
+        print("Encoding frame \(frameCount + 1) with PTS: \(presentationTimeStamp.seconds), duration: \(duration.seconds)")
+              
         
         VTCompressionSessionEncodeFrame(
             compressionSession,
@@ -166,6 +168,13 @@ class HEVCEncoder: CameraEncodable {
             infoFlagsOut: nil,
             outputHandler: { [weak self] status, flags, buffer in
                 guard let self = self, let buffer = buffer else {
+                    print("Encoding failed: no buffer or self is nil")
+                    completion(nil)
+                    return
+                }
+                
+                if status != noErr {
+                    print("Encoding failed with status: \(status)")
                     completion(nil)
                     return
                 }
@@ -175,11 +184,12 @@ class HEVCEncoder: CameraEncodable {
                 }
                 
                 if let encodedData = self.sendCompressedData(sampleBuffer: buffer) {
-//                    print("Encoded data size: \(encodedData.count) bytes")
+                    self.frameCount += 1
+                    print("Successfully encoded frame \(self.frameCount). Encoded data size: \(encodedData.count) bytes")
                     self.analyzeNALUnits(encodedData)
                     completion(encodedData)
                 } else {
-                    print("Failed to encode data")
+                    print("Failed to encode data for frame \(self.frameCount + 1)")
                     completion(nil)
                 }
             }
@@ -195,27 +205,22 @@ extension HEVCEncoder {
         while offset < data.count - 4 {
             if data[offset..<offset+4] == Data(startCode) {
                 let nalUnitType = (data[offset + 4] & 0x7E) >> 1
-                print("NAL Unit Type: \(nalUnitType)")
-                
-                
+
                 switch nalUnitType {
                     case 32:
-                        print("VPS (Video Parameter Set)")
                         self.vps = data[offset..<data.count]
                     case 33:
-                        print("SPS (Sequence Parameter Set)")
                         self.sps = data[offset..<data.count]
                     case 34:
-                        print("PPS (Picture Parameter Set)")
                         self.pps = data[offset..<data.count]
                     case 39:
-                        print("SEI (Supplemental Enhancement Information)")
+                        break
                     case 0...9:
-                        print("Coded slice of a non-IDR picture")
+                        break
                     case 16...21:
-                        print("Coded slice of an IDR picture")
+                        break
                     default:
-                        print("Other NAL unit type")
+                        break
                 }
                 
                 offset += 4
@@ -252,13 +257,10 @@ extension HEVCEncoder {
                 switch nalUnitType {
                     case 32:
                         self.vps = data
-                        print("VPS extracted")
                     case 33:
                         self.sps = data
-                        print("SPS extracted")
                     case 34:
                         self.pps = data
-                        print("PPS extracted")
                     default:
                         break
                 }
