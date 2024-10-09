@@ -17,7 +17,6 @@ class HEVCEncoder: CameraEncodable {
     private var vps: Data?
     private var sps: Data?
     private var pps: Data?
-    private var frameCount: Int = 0  // 인코딩된 프레임 수를 추적하기 위한 변수
     
     init() {
         setupCompressionSession()
@@ -70,7 +69,6 @@ class HEVCEncoder: CameraEncodable {
         var totalLength: Int = 0
         var dataPointerRef: UnsafeMutablePointer<Int8>?
         
-        let lockFlags = CMBlockBufferGetTypeID()
         let status = CMBlockBufferGetDataPointer(dataBuffer,
                                                  atOffset: 0,
                                                  lengthAtOffsetOut: nil,
@@ -149,15 +147,11 @@ class HEVCEncoder: CameraEncodable {
         }
         
         let presentationTimeStamp = CMSampleBufferGetPresentationTimeStamp(sampleBuffer)
-//        let duration = CMTime(value: 1, timescale: 30) // 30fps 기준
         let duration = CMSampleBufferGetDuration(sampleBuffer)
         guard let imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else {
             completion(nil)
             return
         }
-        
-        print("Encoding frame \(frameCount + 1) with PTS: \(presentationTimeStamp.seconds), duration: \(duration.seconds)")
-              
         
         VTCompressionSessionEncodeFrame(
             compressionSession,
@@ -184,12 +178,9 @@ class HEVCEncoder: CameraEncodable {
                 }
                 
                 if let encodedData = self.sendCompressedData(sampleBuffer: buffer) {
-                    self.frameCount += 1
-                    print("Successfully encoded frame \(self.frameCount). Encoded data size: \(encodedData.count) bytes")
                     self.analyzeNALUnits(encodedData)
                     completion(encodedData)
                 } else {
-                    print("Failed to encode data for frame \(self.frameCount + 1)")
                     completion(nil)
                 }
             }

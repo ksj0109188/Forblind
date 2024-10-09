@@ -9,6 +9,7 @@ import Foundation
 import RxSwift
 import Starscream
 import CoreMedia
+import AVFAudio
 
 protocol GuideAPIWebRepository {
     func setupApiConnect() -> PublishSubject<CMSampleBuffer>
@@ -27,7 +28,7 @@ class WebSocketRepository: GuideAPIWebRepository, SendableWebSocket {
     
     init(config: WebSocketAPIConfig) {
         //        let url = URL(string: config.url)!
-        let url = URL(string: "ws://192.168.45.196:8080/data-upload")!
+        let url = URL(string: "ws://192.168.45.219:8080/data-upload")!
         var request = URLRequest(url: url)
         
         request.timeoutInterval = 10
@@ -42,7 +43,7 @@ class WebSocketRepository: GuideAPIWebRepository, SendableWebSocket {
         let encodingSubject = PublishSubject<Data>()
         //
         requestAPISubject
-            .observeOn(ConcurrentDispatchQueueScheduler(qos: .userInitiated))
+            .observe(on: ConcurrentDispatchQueueScheduler(qos: .userInitiated))
             .flatMap { [weak self] buffer -> Observable<Data> in
                 guard let self = self else { return Observable.empty() }
                 return Observable.create { observer in
@@ -104,18 +105,10 @@ class WebSocketRepository: GuideAPIWebRepository, SendableWebSocket {
         
         isWorked = true
     }
-    
 }
 
 extension WebSocketRepository: WebSocketDelegate {
     func didReceive(event: Starscream.WebSocketEvent, client: any Starscream.WebSocketClient) {
-        print(event)
-        print(client)
-        //        print(fullResponse)
-        //        UIAccessibility.post(notification: .announcement, argument: fullResponse)
-    }
-    
-    func didReceive(event: WebSocketEvent, client: WebSocket) {
         switch event {
             case .connected(let headers):
                 print("WebSocket is connected: \(headers)")
@@ -123,6 +116,10 @@ extension WebSocketRepository: WebSocketDelegate {
                 print("WebSocket is disconnected: \(reason) with code: \(code)")
             case .text(let string):
                 print("Received text: \(string)")
+                let utterance = AVSpeechUtterance(string: string)
+                let synthesizer = AVSpeechSynthesizer()
+                
+                synthesizer.speak(utterance)
             case .binary(let data):
                 print("Received data: \(data)")
             case .error(let error):

@@ -25,7 +25,6 @@ final class CameraManger: NSObject, Recodable {
     private var cameraDataOutputSubject: PublishSubject<CMSampleBuffer>?
     private var cameraRecodingCheckSubject: PublishSubject<Bool>!
     private let disposeBag = DisposeBag()
-    private var frameCount = 0
     
     override init() {
         super.init()
@@ -108,8 +107,6 @@ final class CameraManger: NSObject, Recodable {
 extension CameraManger: AVCaptureVideoDataOutputSampleBufferDelegate {
     ///note:  AVCaptureVideoDataOutputSampleBufferDelegate 메서드로 출력데이터를 핸들링 할 수 있음
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
-        frameCount += 1
-        print("Frame count: \(frameCount)")
         
         guard let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else {
             return
@@ -120,7 +117,7 @@ extension CameraManger: AVCaptureVideoDataOutputSampleBufferDelegate {
         let bytesPerRow = CVPixelBufferGetBytesPerRow(pixelBuffer)
         let totalBytes = bytesPerRow * height
         let timestamp = CMSampleBufferGetPresentationTimeStamp(sampleBuffer)
-        print("Frame timestamp: \(timestamp.seconds)")
+        
         cameraDataOutputSubject?.onNext(sampleBuffer)
     }
 }
