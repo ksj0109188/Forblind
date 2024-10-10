@@ -12,7 +12,7 @@ protocol CameraEncodable {
     func encodeAndReturnData(sampleBuffer: CMSampleBuffer, completion: @escaping (Data?) -> Void)
 }
 
-class HEVCEncoder: CameraEncodable {
+final class HEVCEncoder: CameraEncodable {
     private var compressionSession: VTCompressionSession?
     private var vps: Data?
     private var sps: Data?
@@ -36,7 +36,7 @@ class HEVCEncoder: CameraEncodable {
             imageBufferAttributes: nil,
             compressedDataAllocator: nil,
             outputCallback: nil,
-            refcon: UnsafeMutableRawPointer(Unmanaged.passUnretained(self).toOpaque()),  // HEVCEncoder 인스턴스를 refcon에 설정
+            refcon: UnsafeMutableRawPointer(Unmanaged.passUnretained(self).toOpaque()),
             compressionSessionOut: &compressionSession
         )
         

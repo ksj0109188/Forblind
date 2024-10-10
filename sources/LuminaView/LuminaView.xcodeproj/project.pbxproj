@@ -21,6 +21,11 @@
 		3B3792812C469DFD00375767 /* GeminiWebRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3792802C469DFD00375767 /* GeminiWebRepository.swift */; };
 		3B482DD12C4FC93A00D435ED /* DriveModeCameraPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B482DD02C4FC93A00D435ED /* DriveModeCameraPreviewViewController.swift */; };
 		3B73535D2C9C60F000202CB5 /* WebSocketRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B73535C2C9C60F000202CB5 /* WebSocketRepository.swift */; };
+		3B81DEF82CB69027004819C3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B81DEF72CB69027004819C3 /* GoogleService-Info.plist */; };
+		3B81DEFB2CB69275004819C3 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 3B81DEFA2CB69275004819C3 /* FirebaseAnalytics */; };
+		3B81DEFD2CB69275004819C3 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 3B81DEFC2CB69275004819C3 /* FirebaseAuth */; };
+		3B81DEFF2CB69275004819C3 /* FirebaseAuthCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 3B81DEFE2CB69275004819C3 /* FirebaseAuthCombine-Community */; };
+		3B81DF012CB69275004819C3 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 3B81DF002CB69275004819C3 /* FirebaseFirestore */; };
 		3B8F1E332C9C369400A54EC4 /* WebSocketAPIConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8F1E322C9C369400A54EC4 /* WebSocketAPIConfig.swift */; };
 		3BBFE89B2C3D0DCF00193B70 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBFE89A2C3D0DCF00193B70 /* AppDelegate.swift */; };
 		3BBFE89D2C3D0DCF00193B70 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBFE89C2C3D0DCF00193B70 /* SceneDelegate.swift */; };
@@ -52,6 +57,7 @@
 /* Begin PBXFileReference section */
 		1221012790DFD4E6C7734FF0 /* Pods-LuminaView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LuminaView.release.xcconfig"; path = "Target Support Files/Pods-LuminaView/Pods-LuminaView.release.xcconfig"; sourceTree = "<group>"; };
 		3B1A49C82C5CD501000E21B0 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		3B2C819D2CB7DC2500E79FA1 /* LuminaViewDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LuminaViewDebug.entitlements; sourceTree = "<group>"; };
 		3B37926B2C467B8E00375767 /* AppDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDIContainer.swift; sourceTree = "<group>"; };
 		3B37926D2C467BA300375767 /* AppConfigurations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfigurations.swift; sourceTree = "<group>"; };
 		3B37926F2C467BC900375767 /* DevConfig.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = DevConfig.xcconfig; sourceTree = "<group>"; };
@@ -62,6 +68,7 @@
 		3B3792802C469DFD00375767 /* GeminiWebRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GeminiWebRepository.swift; path = Repositories/GeminiWebRepository.swift; sourceTree = SOURCE_ROOT; };
 		3B482DD02C4FC93A00D435ED /* DriveModeCameraPreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriveModeCameraPreviewViewController.swift; sourceTree = "<group>"; };
 		3B73535C2C9C60F000202CB5 /* WebSocketRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSocketRepository.swift; sourceTree = "<group>"; };
+		3B81DEF72CB69027004819C3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3B8F1E322C9C369400A54EC4 /* WebSocketAPIConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSocketAPIConfig.swift; sourceTree = "<group>"; };
 		3BBFE8972C3D0DCF00193B70 /* LuminaView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LuminaView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BBFE89A2C3D0DCF00193B70 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -80,6 +87,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		3B2C81A02CB7E8FC00E79FA1 /* Login */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Login; sourceTree = "<group>"; };
 		3B8F1E342C9C542200A54EC4 /* View */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = View; sourceTree = "<group>"; };
 		3B8F1E352C9C542A00A54EC4 /* Camera */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Camera; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -89,12 +97,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B81DEFB2CB69275004819C3 /* FirebaseAnalytics in Frameworks */,
+				3B81DEFF2CB69275004819C3 /* FirebaseAuthCombine-Community in Frameworks */,
 				960BE5A32C492E330060DD72 /* Lottie in Frameworks */,
+				3B81DF012CB69275004819C3 /* FirebaseFirestore in Frameworks */,
 				3B1EB42B2C4532C2001A0F0A /* RxSwift in Frameworks */,
 				3B1EB4292C4532C2001A0F0A /* RxCocoa in Frameworks */,
 				3BE77B062C51309E003FED2D /* SnapKit in Frameworks */,
 				2072837A151FD05FD8409099 /* Pods_LuminaView.framework in Frameworks */,
 				3B1EB42E2C4539BD001A0F0A /* GoogleGenerativeAI in Frameworks */,
+				3B81DEFD2CB69275004819C3 /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -164,6 +176,7 @@
 		3B37927D2C46885100375767 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				3B2C81A02CB7E8FC00E79FA1 /* Login */,
 				3B8F1E342C9C542200A54EC4 /* View */,
 				3BE1CBCC2C47FB16003E7C62 /* Extensions */,
 				3B8F1E352C9C542A00A54EC4 /* Camera */,
@@ -192,6 +205,7 @@
 		3BBFE8992C3D0DCF00193B70 /* LuminaView */ = {
 			isa = PBXGroup;
 			children = (
+				3B2C819D2CB7DC2500E79FA1 /* LuminaViewDebug.entitlements */,
 				3B37927D2C46885100375767 /* Utilities */,
 				96586BEA2C3D1A82007039FB /* Resources */,
 				96586BE62C3D1A3F007039FB /* Repositories */,
@@ -201,6 +215,7 @@
 				96586BDE2C3D19EB007039FB /* App */,
 				96BD02572C49458300CBEE58 /* CommonCustomLabel.swift */,
 				96BD02592C4945A100CBEE58 /* CommonCustomButton.swift */,
+				3B81DEF72CB69027004819C3 /* GoogleService-Info.plist */,
 			);
 			path = LuminaView;
 			sourceTree = "<group>";
@@ -333,6 +348,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
+				3B2C81A02CB7E8FC00E79FA1 /* Login */,
 				3B8F1E342C9C542200A54EC4 /* View */,
 				3B8F1E352C9C542A00A54EC4 /* Camera */,
 			);
@@ -343,6 +359,10 @@
 				3B1EB42D2C4539BD001A0F0A /* GoogleGenerativeAI */,
 				960BE5A22C492E330060DD72 /* Lottie */,
 				3BE77B052C51309E003FED2D /* SnapKit */,
+				3B81DEFA2CB69275004819C3 /* FirebaseAnalytics */,
+				3B81DEFC2CB69275004819C3 /* FirebaseAuth */,
+				3B81DEFE2CB69275004819C3 /* FirebaseAuthCombine-Community */,
+				3B81DF002CB69275004819C3 /* FirebaseFirestore */,
 			);
 			productName = LuminaView;
 			productReference = 3BBFE8972C3D0DCF00193B70 /* LuminaView.app */;
@@ -378,6 +398,7 @@
 				3B1EB42C2C4539BD001A0F0A /* XCRemoteSwiftPackageReference "generative-ai-swift" */,
 				960BE5A12C492E330060DD72 /* XCRemoteSwiftPackageReference "lottie-spm" */,
 				96B0BCC92C4E8C6500BE4552 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				3B81DEF92CB69275004819C3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 3BBFE8982C3D0DCF00193B70 /* Products */;
 			projectDirPath = "";
@@ -394,6 +415,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3BBFE8A42C3D0DD200193B70 /* Assets.xcassets in Resources */,
+				3B81DEF82CB69027004819C3 /* GoogleService-Info.plist in Resources */,
 				3B1A49C92C5CD501000E21B0 /* Localizable.xcstrings in Resources */,
 				3BBFE8A72C3D0DD200193B70 /* Base in Resources */,
 			);
@@ -633,6 +655,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = LuminaView/LuminaViewDebug.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = M7F7863UPY;
@@ -737,6 +760,14 @@
 				minimumVersion = 0.5.4;
 			};
 		};
+		3B81DEF92CB69275004819C3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.3.0;
+			};
+		};
 		960BE5A12C492E330060DD72 /* XCRemoteSwiftPackageReference "lottie-spm" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/airbnb/lottie-spm.git";
@@ -770,6 +801,26 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 3B1EB42C2C4539BD001A0F0A /* XCRemoteSwiftPackageReference "generative-ai-swift" */;
 			productName = GoogleGenerativeAI;
+		};
+		3B81DEFA2CB69275004819C3 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3B81DEF92CB69275004819C3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		3B81DEFC2CB69275004819C3 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3B81DEF92CB69275004819C3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		3B81DEFE2CB69275004819C3 /* FirebaseAuthCombine-Community */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3B81DEF92CB69275004819C3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseAuthCombine-Community";
+		};
+		3B81DF002CB69275004819C3 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3B81DEF92CB69275004819C3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
 		};
 		3BE77B052C51309E003FED2D /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
