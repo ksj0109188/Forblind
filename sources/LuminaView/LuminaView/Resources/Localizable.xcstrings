@@ -1,0 +1,64 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "CloseCameraPreview" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "카메라프리뷰닫기"
+          }
+        }
+      }
+    },
+    "PauseGuide" : {
+      "comment" : "주행모드 정지 버튼시 안내",
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "주행모드정지"
+          }
+        }
+      }
+    },
+    "PlayGuide" : {
+      "comment" : "주행모드 시작 버튼시 안내",
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "주행모드시작"
+          }
+        }
+      }
+    },
+    "ReturnToDriveMode" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "주행모드 되돌아가기"
+          }
+        }
+      }
+    },
+    "showCameraPreview" : {
+      "comment" : "현재 카메라 상황을 출력하는 Preview 표출 버튼",
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "카메라프리뷰표출"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

@@ -3,43 +3,194 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2072837A151FD05FD8409099 /* Pods_LuminaView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA3194F4A8B068078E546D6 /* Pods_LuminaView.framework */; };
+		3B1A49C92C5CD501000E21B0 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 3B1A49C82C5CD501000E21B0 /* Localizable.xcstrings */; };
+		3B1EB4292C4532C2001A0F0A /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 3B1EB4282C4532C2001A0F0A /* RxCocoa */; };
+		3B1EB42B2C4532C2001A0F0A /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 3B1EB42A2C4532C2001A0F0A /* RxSwift */; };
+		3B1EB42E2C4539BD001A0F0A /* GoogleGenerativeAI in Frameworks */ = {isa = PBXBuildFile; productRef = 3B1EB42D2C4539BD001A0F0A /* GoogleGenerativeAI */; };
+		3B37926C2C467B8E00375767 /* AppDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B37926B2C467B8E00375767 /* AppDIContainer.swift */; };
+		3B37926E2C467BA300375767 /* AppConfigurations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B37926D2C467BA300375767 /* AppConfigurations.swift */; };
+		3B3792722C467F6600375767 /* DriveModeSceneDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3792712C467F6600375767 /* DriveModeSceneDIContainer.swift */; };
+		3B3792742C467FB500375767 /* DriveModeFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3792732C467FB500375767 /* DriveModeFlowCoordinator.swift */; };
+		3B3792792C4681C100375767 /* DriveModeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3792782C4681C100375767 /* DriveModeViewModel.swift */; };
+		3B37927F2C468E4200375767 /* AppFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B37927E2C468E4200375767 /* AppFlowCoordinator.swift */; };
+		3B3792812C469DFD00375767 /* GeminiWebRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3792802C469DFD00375767 /* GeminiWebRepository.swift */; };
+		3B482DD12C4FC93A00D435ED /* DriveModeCameraPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B482DD02C4FC93A00D435ED /* DriveModeCameraPreviewViewController.swift */; };
+		3B73535D2C9C60F000202CB5 /* WebSocketRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B73535C2C9C60F000202CB5 /* WebSocketRepository.swift */; };
+		3B81DEF82CB69027004819C3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B81DEF72CB69027004819C3 /* GoogleService-Info.plist */; };
+		3B81DEFB2CB69275004819C3 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 3B81DEFA2CB69275004819C3 /* FirebaseAnalytics */; };
+		3B81DEFD2CB69275004819C3 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 3B81DEFC2CB69275004819C3 /* FirebaseAuth */; };
+		3B81DEFF2CB69275004819C3 /* FirebaseAuthCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 3B81DEFE2CB69275004819C3 /* FirebaseAuthCombine-Community */; };
+		3B81DF012CB69275004819C3 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 3B81DF002CB69275004819C3 /* FirebaseFirestore */; };
+		3B8F1E332C9C369400A54EC4 /* WebSocketAPIConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8F1E322C9C369400A54EC4 /* WebSocketAPIConfig.swift */; };
 		3BBFE89B2C3D0DCF00193B70 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBFE89A2C3D0DCF00193B70 /* AppDelegate.swift */; };
 		3BBFE89D2C3D0DCF00193B70 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBFE89C2C3D0DCF00193B70 /* SceneDelegate.swift */; };
-		3BBFE89F2C3D0DCF00193B70 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBFE89E2C3D0DCF00193B70 /* ViewController.swift */; };
+		3BBFE89F2C3D0DCF00193B70 /* DriveModeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBFE89E2C3D0DCF00193B70 /* DriveModeViewController.swift */; };
 		3BBFE8A42C3D0DD200193B70 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3BBFE8A32C3D0DD200193B70 /* Assets.xcassets */; };
 		3BBFE8A72C3D0DD200193B70 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 3BBFE8A62C3D0DD200193B70 /* Base */; };
+		3BE1CBCB2C47FA22003E7C62 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE1CBCA2C47FA22003E7C62 /* UIView+.swift */; };
+		3BE1CBD02C48F84A003E7C62 /* GeminiAPIConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE1CBCF2C48F84A003E7C62 /* GeminiAPIConfig.swift */; };
+		3BE1CBD42C490D50003E7C62 /* FetchGuideUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE1CBD32C490D50003E7C62 /* FetchGuideUseCase.swift */; };
+		3BE77B062C51309E003FED2D /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3BE77B052C51309E003FED2D /* SnapKit */; };
+		960BE5A32C492E330060DD72 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 960BE5A22C492E330060DD72 /* Lottie */; };
+		96BD02582C49458300CBEE58 /* CommonCustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BD02572C49458300CBEE58 /* CommonCustomLabel.swift */; };
+		96BD025A2C4945A100CBEE58 /* CommonCustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BD02592C4945A100CBEE58 /* CommonCustomButton.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		3BE77B0A2C51309E003FED2D /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		1221012790DFD4E6C7734FF0 /* Pods-LuminaView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LuminaView.release.xcconfig"; path = "Target Support Files/Pods-LuminaView/Pods-LuminaView.release.xcconfig"; sourceTree = "<group>"; };
+		3B1A49C82C5CD501000E21B0 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		3B2C819D2CB7DC2500E79FA1 /* LuminaViewDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LuminaViewDebug.entitlements; sourceTree = "<group>"; };
+		3B37926B2C467B8E00375767 /* AppDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDIContainer.swift; sourceTree = "<group>"; };
+		3B37926D2C467BA300375767 /* AppConfigurations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfigurations.swift; sourceTree = "<group>"; };
+		3B37926F2C467BC900375767 /* DevConfig.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = DevConfig.xcconfig; sourceTree = "<group>"; };
+		3B3792712C467F6600375767 /* DriveModeSceneDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriveModeSceneDIContainer.swift; sourceTree = "<group>"; };
+		3B3792732C467FB500375767 /* DriveModeFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriveModeFlowCoordinator.swift; sourceTree = "<group>"; };
+		3B3792782C4681C100375767 /* DriveModeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriveModeViewModel.swift; sourceTree = "<group>"; };
+		3B37927E2C468E4200375767 /* AppFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlowCoordinator.swift; sourceTree = "<group>"; };
+		3B3792802C469DFD00375767 /* GeminiWebRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GeminiWebRepository.swift; path = Repositories/GeminiWebRepository.swift; sourceTree = SOURCE_ROOT; };
+		3B482DD02C4FC93A00D435ED /* DriveModeCameraPreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriveModeCameraPreviewViewController.swift; sourceTree = "<group>"; };
+		3B73535C2C9C60F000202CB5 /* WebSocketRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSocketRepository.swift; sourceTree = "<group>"; };
+		3B81DEF72CB69027004819C3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		3B8F1E322C9C369400A54EC4 /* WebSocketAPIConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSocketAPIConfig.swift; sourceTree = "<group>"; };
 		3BBFE8972C3D0DCF00193B70 /* LuminaView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LuminaView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BBFE89A2C3D0DCF00193B70 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3BBFE89C2C3D0DCF00193B70 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		3BBFE89E2C3D0DCF00193B70 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		3BBFE89E2C3D0DCF00193B70 /* DriveModeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriveModeViewController.swift; sourceTree = "<group>"; };
 		3BBFE8A32C3D0DD200193B70 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3BBFE8A62C3D0DD200193B70 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3BBFE8A82C3D0DD200193B70 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3BE1CBCA2C47FA22003E7C62 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
+		3BE1CBCF2C48F84A003E7C62 /* GeminiAPIConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeminiAPIConfig.swift; sourceTree = "<group>"; };
+		3BE1CBD32C490D50003E7C62 /* FetchGuideUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchGuideUseCase.swift; sourceTree = "<group>"; };
+		96BD02572C49458300CBEE58 /* CommonCustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonCustomLabel.swift; sourceTree = "<group>"; };
+		96BD02592C4945A100CBEE58 /* CommonCustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonCustomButton.swift; sourceTree = "<group>"; };
+		9AA3194F4A8B068078E546D6 /* Pods_LuminaView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LuminaView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EDEE937B43E69CA1977B2AE1 /* Pods-LuminaView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LuminaView.debug.xcconfig"; path = "Target Support Files/Pods-LuminaView/Pods-LuminaView.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		3B2C81A02CB7E8FC00E79FA1 /* Login */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Login; sourceTree = "<group>"; };
+		3B8F1E342C9C542200A54EC4 /* View */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = View; sourceTree = "<group>"; };
+		3B8F1E352C9C542A00A54EC4 /* Camera */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Camera; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		3BBFE8942C3D0DCF00193B70 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B81DEFB2CB69275004819C3 /* FirebaseAnalytics in Frameworks */,
+				3B81DEFF2CB69275004819C3 /* FirebaseAuthCombine-Community in Frameworks */,
+				960BE5A32C492E330060DD72 /* Lottie in Frameworks */,
+				3B81DF012CB69275004819C3 /* FirebaseFirestore in Frameworks */,
+				3B1EB42B2C4532C2001A0F0A /* RxSwift in Frameworks */,
+				3B1EB4292C4532C2001A0F0A /* RxCocoa in Frameworks */,
+				3BE77B062C51309E003FED2D /* SnapKit in Frameworks */,
+				2072837A151FD05FD8409099 /* Pods_LuminaView.framework in Frameworks */,
+				3B1EB42E2C4539BD001A0F0A /* GoogleGenerativeAI in Frameworks */,
+				3B81DEFD2CB69275004819C3 /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1B4A1645B99FE1990A02073C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				EDEE937B43E69CA1977B2AE1 /* Pods-LuminaView.debug.xcconfig */,
+				1221012790DFD4E6C7734FF0 /* Pods-LuminaView.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		20B503AD9D23E1C2262A9D0C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9AA3194F4A8B068078E546D6 /* Pods_LuminaView.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3B3792702C467F2500375767 /* DIContainer */ = {
+			isa = PBXGroup;
+			children = (
+				3B37926B2C467B8E00375767 /* AppDIContainer.swift */,
+				3B3792712C467F6600375767 /* DriveModeSceneDIContainer.swift */,
+			);
+			path = DIContainer;
+			sourceTree = "<group>";
+		};
+		3B3792752C467FBA00375767 /* Flow */ = {
+			isa = PBXGroup;
+			children = (
+				3B3792732C467FB500375767 /* DriveModeFlowCoordinator.swift */,
+			);
+			path = Flow;
+			sourceTree = "<group>";
+		};
+		3B3792762C46819A00375767 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3BBFE89E2C3D0DCF00193B70 /* DriveModeViewController.swift */,
+				3B482DD02C4FC93A00D435ED /* DriveModeCameraPreviewViewController.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		3B3792772C4681A100375767 /* DriveModeScene */ = {
+			isa = PBXGroup;
+			children = (
+				3B37927A2C4681C500375767 /* ViewModel */,
+				3B3792762C46819A00375767 /* Views */,
+			);
+			path = DriveModeScene;
+			sourceTree = "<group>";
+		};
+		3B37927A2C4681C500375767 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				3B3792782C4681C100375767 /* DriveModeViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		3B37927D2C46885100375767 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				3B2C81A02CB7E8FC00E79FA1 /* Login */,
+				3B8F1E342C9C542200A54EC4 /* View */,
+				3BE1CBCC2C47FB16003E7C62 /* Extensions */,
+				3B8F1E352C9C542A00A54EC4 /* Camera */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		3BBFE88E2C3D0DCF00193B70 = {
 			isa = PBXGroup;
 			children = (
 				3BBFE8992C3D0DCF00193B70 /* LuminaView */,
 				3BBFE8982C3D0DCF00193B70 /* Products */,
+				1B4A1645B99FE1990A02073C /* Pods */,
+				20B503AD9D23E1C2262A9D0C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,19 +205,36 @@
 		3BBFE8992C3D0DCF00193B70 /* LuminaView */ = {
 			isa = PBXGroup;
 			children = (
+				3B2C819D2CB7DC2500E79FA1 /* LuminaViewDebug.entitlements */,
+				3B37927D2C46885100375767 /* Utilities */,
 				96586BEA2C3D1A82007039FB /* Resources */,
+				96586BE62C3D1A3F007039FB /* Repositories */,
 				96586BE52C3D1A37007039FB /* Data */,
 				96586BE22C3D1A15007039FB /* Domain */,
 				96586BDF2C3D19F8007039FB /* Presentation */,
 				96586BDE2C3D19EB007039FB /* App */,
+				96BD02572C49458300CBEE58 /* CommonCustomLabel.swift */,
+				96BD02592C4945A100CBEE58 /* CommonCustomButton.swift */,
+				3B81DEF72CB69027004819C3 /* GoogleService-Info.plist */,
 			);
 			path = LuminaView;
+			sourceTree = "<group>";
+		};
+		3BE1CBCC2C47FB16003E7C62 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				3BE1CBCA2C47FA22003E7C62 /* UIView+.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		96586BDE2C3D19EB007039FB /* App */ = {
 			isa = PBXGroup;
 			children = (
+				3B3792702C467F2500375767 /* DIContainer */,
 				3BBFE89A2C3D0DCF00193B70 /* AppDelegate.swift */,
+				3B37926D2C467BA300375767 /* AppConfigurations.swift */,
+				3B37927E2C468E4200375767 /* AppFlowCoordinator.swift */,
 				3BBFE89C2C3D0DCF00193B70 /* SceneDelegate.swift */,
 			);
 			path = App;
@@ -75,25 +243,10 @@
 		96586BDF2C3D19F8007039FB /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				96586BE12C3D1A0B007039FB /* ViewModels */,
-				96586BE02C3D1A07007039FB /* Views */,
+				3B3792752C467FBA00375767 /* Flow */,
+				3B3792772C4681A100375767 /* DriveModeScene */,
 			);
 			path = Presentation;
-			sourceTree = "<group>";
-		};
-		96586BE02C3D1A07007039FB /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				3BBFE89E2C3D0DCF00193B70 /* ViewController.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		96586BE12C3D1A0B007039FB /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		96586BE22C3D1A15007039FB /* Domain */ = {
@@ -115,6 +268,7 @@
 		96586BE42C3D1A2B007039FB /* UseCase */ = {
 			isa = PBXGroup;
 			children = (
+				3BE1CBD32C490D50003E7C62 /* FetchGuideUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -123,7 +277,6 @@
 			isa = PBXGroup;
 			children = (
 				96586BE72C3D1A49007039FB /* DataSources */,
-				96586BE62C3D1A3F007039FB /* Repositories */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -131,15 +284,17 @@
 		96586BE62C3D1A3F007039FB /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
+				3B3792802C469DFD00375767 /* GeminiWebRepository.swift */,
+				3B73535C2C9C60F000202CB5 /* WebSocketRepository.swift */,
 			);
-			path = Repositories;
+			name = Repositories;
+			path = ../Repositories;
 			sourceTree = "<group>";
 		};
 		96586BE72C3D1A49007039FB /* DataSources */ = {
 			isa = PBXGroup;
 			children = (
 				96586BE92C3D1A5F007039FB /* Local */,
-				96586BE82C3D1A59007039FB /* Remote */,
 			);
 			path = DataSources;
 			sourceTree = "<group>";
@@ -154,6 +309,7 @@
 		96586BE92C3D1A5F007039FB /* Local */ = {
 			isa = PBXGroup;
 			children = (
+				96586BE82C3D1A59007039FB /* Remote */,
 			);
 			path = Local;
 			sourceTree = "<group>";
@@ -163,7 +319,11 @@
 			children = (
 				3BBFE8A52C3D0DD200193B70 /* LaunchScreen.storyboard */,
 				3BBFE8A32C3D0DD200193B70 /* Assets.xcassets */,
+				3B37926F2C467BC900375767 /* DevConfig.xcconfig */,
 				3BBFE8A82C3D0DD200193B70 /* Info.plist */,
+				3BE1CBCF2C48F84A003E7C62 /* GeminiAPIConfig.swift */,
+				3B8F1E322C9C369400A54EC4 /* WebSocketAPIConfig.swift */,
+				3B1A49C82C5CD501000E21B0 /* Localizable.xcstrings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -175,15 +335,35 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3BBFE8AB2C3D0DD200193B70 /* Build configuration list for PBXNativeTarget "LuminaView" */;
 			buildPhases = (
+				2E1773360E71BFB11C2488AF /* [CP] Check Pods Manifest.lock */,
 				3BBFE8932C3D0DCF00193B70 /* Sources */,
 				3BBFE8942C3D0DCF00193B70 /* Frameworks */,
 				3BBFE8952C3D0DCF00193B70 /* Resources */,
+				6642B4DEF6825AFCEB75A345 /* [CP] Embed Pods Frameworks */,
+				E5475081911B4B18630A3AC7 /* [CP] Copy Pods Resources */,
+				3BE77B0A2C51309E003FED2D /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
+			fileSystemSynchronizedGroups = (
+				3B2C81A02CB7E8FC00E79FA1 /* Login */,
+				3B8F1E342C9C542200A54EC4 /* View */,
+				3B8F1E352C9C542A00A54EC4 /* Camera */,
+			);
 			name = LuminaView;
+			packageProductDependencies = (
+				3B1EB4282C4532C2001A0F0A /* RxCocoa */,
+				3B1EB42A2C4532C2001A0F0A /* RxSwift */,
+				3B1EB42D2C4539BD001A0F0A /* GoogleGenerativeAI */,
+				960BE5A22C492E330060DD72 /* Lottie */,
+				3BE77B052C51309E003FED2D /* SnapKit */,
+				3B81DEFA2CB69275004819C3 /* FirebaseAnalytics */,
+				3B81DEFC2CB69275004819C3 /* FirebaseAuth */,
+				3B81DEFE2CB69275004819C3 /* FirebaseAuthCombine-Community */,
+				3B81DF002CB69275004819C3 /* FirebaseFirestore */,
+			);
 			productName = LuminaView;
 			productReference = 3BBFE8972C3D0DCF00193B70 /* LuminaView.app */;
 			productType = "com.apple.product-type.application";
@@ -210,8 +390,16 @@
 			knownRegions = (
 				en,
 				Base,
+				ko,
 			);
 			mainGroup = 3BBFE88E2C3D0DCF00193B70;
+			packageReferences = (
+				3B1EB4272C4532C2001A0F0A /* XCRemoteSwiftPackageReference "RxSwift" */,
+				3B1EB42C2C4539BD001A0F0A /* XCRemoteSwiftPackageReference "generative-ai-swift" */,
+				960BE5A12C492E330060DD72 /* XCRemoteSwiftPackageReference "lottie-spm" */,
+				96B0BCC92C4E8C6500BE4552 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				3B81DEF92CB69275004819C3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = 3BBFE8982C3D0DCF00193B70 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -227,19 +415,95 @@
 			buildActionMask = 2147483647;
 			files = (
 				3BBFE8A42C3D0DD200193B70 /* Assets.xcassets in Resources */,
+				3B81DEF82CB69027004819C3 /* GoogleService-Info.plist in Resources */,
+				3B1A49C92C5CD501000E21B0 /* Localizable.xcstrings in Resources */,
 				3BBFE8A72C3D0DD200193B70 /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		2E1773360E71BFB11C2488AF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LuminaView-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6642B4DEF6825AFCEB75A345 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LuminaView/Pods-LuminaView-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LuminaView/Pods-LuminaView-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LuminaView/Pods-LuminaView-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E5475081911B4B18630A3AC7 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LuminaView/Pods-LuminaView-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LuminaView/Pods-LuminaView-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LuminaView/Pods-LuminaView-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		3BBFE8932C3D0DCF00193B70 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3BBFE89F2C3D0DCF00193B70 /* ViewController.swift in Sources */,
+				3BE1CBCB2C47FA22003E7C62 /* UIView+.swift in Sources */,
+				3BE1CBD02C48F84A003E7C62 /* GeminiAPIConfig.swift in Sources */,
+				3B37926E2C467BA300375767 /* AppConfigurations.swift in Sources */,
+				3B8F1E332C9C369400A54EC4 /* WebSocketAPIConfig.swift in Sources */,
+				3B37927F2C468E4200375767 /* AppFlowCoordinator.swift in Sources */,
+				3B37926C2C467B8E00375767 /* AppDIContainer.swift in Sources */,
+				3B482DD12C4FC93A00D435ED /* DriveModeCameraPreviewViewController.swift in Sources */,
+				3B3792812C469DFD00375767 /* GeminiWebRepository.swift in Sources */,
+				3BBFE89F2C3D0DCF00193B70 /* DriveModeViewController.swift in Sources */,
+				3B3792742C467FB500375767 /* DriveModeFlowCoordinator.swift in Sources */,
+				3BE1CBD42C490D50003E7C62 /* FetchGuideUseCase.swift in Sources */,
+				3B73535D2C9C60F000202CB5 /* WebSocketRepository.swift in Sources */,
+				3B3792722C467F6600375767 /* DriveModeSceneDIContainer.swift in Sources */,
 				3BBFE89B2C3D0DCF00193B70 /* AppDelegate.swift in Sources */,
+				3B3792792C4681C100375767 /* DriveModeViewModel.swift in Sources */,
+				96BD025A2C4945A100CBEE58 /* CommonCustomButton.swift in Sources */,
+				96BD02582C49458300CBEE58 /* CommonCustomLabel.swift in Sources */,
 				3BBFE89D2C3D0DCF00193B70 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -260,9 +524,11 @@
 /* Begin XCBuildConfiguration section */
 		3BBFE8A92C3D0DD200193B70 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3B37926F2C467BC900375767 /* DevConfig.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -296,6 +562,8 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				EXCLUDED_ARCHS = "";
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -326,6 +594,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -359,6 +628,8 @@
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				EXCLUDED_ARCHS = "";
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -371,6 +642,7 @@
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				VALIDATE_PRODUCT = YES;
@@ -379,14 +651,18 @@
 		};
 		3BBFE8AC2C3D0DD200193B70 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EDEE937B43E69CA1977B2AE1 /* Pods-LuminaView.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = LuminaView/LuminaViewDebug.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = M7F7863UPY;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = LuminaView/Info.plist;
+				INFOPLIST_FILE = LuminaView/Resources/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "To enable the app to recognize the user's situation, the camera settings need to be activated.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -411,14 +687,17 @@
 		};
 		3BBFE8AD2C3D0DD200193B70 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1221012790DFD4E6C7734FF0 /* Pods-LuminaView.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = M7F7863UPY;
+				DEVELOPMENT_TEAM = 3Y6A97YBJQ;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = LuminaView/Info.plist;
+				INFOPLIST_FILE = LuminaView/Resources/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "To enable the app to recognize the user's situation, the camera settings need to be activated.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -463,6 +742,97 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		3B1EB4272C4532C2001A0F0A /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.7.1;
+			};
+		};
+		3B1EB42C2C4539BD001A0F0A /* XCRemoteSwiftPackageReference "generative-ai-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/generative-ai-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.5.4;
+			};
+		};
+		3B81DEF92CB69275004819C3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.3.0;
+			};
+		};
+		960BE5A12C492E330060DD72 /* XCRemoteSwiftPackageReference "lottie-spm" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-spm.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.5.0;
+			};
+		};
+		96B0BCC92C4E8C6500BE4552 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3B1EB4282C4532C2001A0F0A /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3B1EB4272C4532C2001A0F0A /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		3B1EB42A2C4532C2001A0F0A /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3B1EB4272C4532C2001A0F0A /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+		3B1EB42D2C4539BD001A0F0A /* GoogleGenerativeAI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3B1EB42C2C4539BD001A0F0A /* XCRemoteSwiftPackageReference "generative-ai-swift" */;
+			productName = GoogleGenerativeAI;
+		};
+		3B81DEFA2CB69275004819C3 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3B81DEF92CB69275004819C3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		3B81DEFC2CB69275004819C3 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3B81DEF92CB69275004819C3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		3B81DEFE2CB69275004819C3 /* FirebaseAuthCombine-Community */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3B81DEF92CB69275004819C3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseAuthCombine-Community";
+		};
+		3B81DF002CB69275004819C3 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3B81DEF92CB69275004819C3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		3BE77B052C51309E003FED2D /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 96B0BCC92C4E8C6500BE4552 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		960BE5A22C492E330060DD72 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 960BE5A12C492E330060DD72 /* XCRemoteSwiftPackageReference "lottie-spm" */;
+			productName = Lottie;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 3BBFE88F2C3D0DCF00193B70 /* Project object */;
 }
