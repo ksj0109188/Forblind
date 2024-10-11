@@ -88,6 +88,7 @@
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		3B2C81A02CB7E8FC00E79FA1 /* Login */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Login; sourceTree = "<group>"; };
+		3B2C81A52CB8070C00E79FA1 /* LoginScene */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = LoginScene; sourceTree = "<group>"; };
 		3B8F1E342C9C542200A54EC4 /* View */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = View; sourceTree = "<group>"; };
 		3B8F1E352C9C542A00A54EC4 /* Camera */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Camera; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -161,6 +162,7 @@
 			children = (
 				3B37927A2C4681C500375767 /* ViewModel */,
 				3B3792762C46819A00375767 /* Views */,
+				3B2C81A52CB8070C00E79FA1 /* LoginScene */,
 			);
 			path = DriveModeScene;
 			sourceTree = "<group>";
@@ -349,6 +351,7 @@
 			);
 			fileSystemSynchronizedGroups = (
 				3B2C81A02CB7E8FC00E79FA1 /* Login */,
+				3B2C81A52CB8070C00E79FA1 /* LoginScene */,
 				3B8F1E342C9C542200A54EC4 /* View */,
 				3B8F1E352C9C542A00A54EC4 /* Camera */,
 			);

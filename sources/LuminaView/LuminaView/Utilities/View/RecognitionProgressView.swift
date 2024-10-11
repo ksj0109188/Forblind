@@ -26,6 +26,7 @@ class RecognitionProgressView: UIViewController {
 		setProgressView()
         setupConstraints()
 	}
+    
 	///2. animation 세팅
 	private func setProgressView() {
 		progressView.loopMode = .loop
