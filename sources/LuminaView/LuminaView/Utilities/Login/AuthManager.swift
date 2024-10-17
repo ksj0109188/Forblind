@@ -51,7 +51,6 @@ final class AuthManager: NSObject {
         return hashString
     }
 
-
     @available(iOS 13, *)
     func startSignInWithAppleFlow() {
       let nonce = randomNonceString()

@@ -10,13 +10,13 @@ import RxSwift
 import CoreMedia
 
 final class FetchGuideUseCase {
-    let guideAPIWebRepository: GuideAPIWebRepository
+    let repository: GuideAPIWebRepository
     
     init(guideAPIWebRepository: GuideAPIWebRepository) {
-        self.guideAPIWebRepository = guideAPIWebRepository
+        self.repository = guideAPIWebRepository
     }
     
     func setupApiConnect() -> PublishSubject<CMSampleBuffer> {
-        guideAPIWebRepository.setupApiConnect()
+        repository.setupApiConnect()
     }
 }

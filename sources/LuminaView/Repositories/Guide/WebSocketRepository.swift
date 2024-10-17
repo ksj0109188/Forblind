@@ -11,10 +11,6 @@ import Starscream
 import CoreMedia
 import AVFAudio
 
-protocol GuideAPIWebRepository {
-    func setupApiConnect() -> PublishSubject<CMSampleBuffer>
-}
-
 protocol SendableWebSocket: AnyObject {
     func sendToWebSocket(data: Data)
 }

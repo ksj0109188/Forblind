@@ -8,19 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		2072837A151FD05FD8409099 /* Pods_LuminaView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA3194F4A8B068078E546D6 /* Pods_LuminaView.framework */; };
+		3B13999D2CC0F7B700E1292F /* FreeTrial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B13999C2CC0F7B700E1292F /* FreeTrial.swift */; };
 		3B1A49C92C5CD501000E21B0 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 3B1A49C82C5CD501000E21B0 /* Localizable.xcstrings */; };
 		3B1EB4292C4532C2001A0F0A /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 3B1EB4282C4532C2001A0F0A /* RxCocoa */; };
 		3B1EB42B2C4532C2001A0F0A /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 3B1EB42A2C4532C2001A0F0A /* RxSwift */; };
 		3B1EB42E2C4539BD001A0F0A /* GoogleGenerativeAI in Frameworks */ = {isa = PBXBuildFile; productRef = 3B1EB42D2C4539BD001A0F0A /* GoogleGenerativeAI */; };
+		3B2C81B92CB95DA900E79FA1 /* CheckFreeTrialUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B2C81B82CB95DA900E79FA1 /* CheckFreeTrialUseCase.swift */; };
 		3B37926C2C467B8E00375767 /* AppDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B37926B2C467B8E00375767 /* AppDIContainer.swift */; };
 		3B37926E2C467BA300375767 /* AppConfigurations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B37926D2C467BA300375767 /* AppConfigurations.swift */; };
 		3B3792722C467F6600375767 /* DriveModeSceneDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3792712C467F6600375767 /* DriveModeSceneDIContainer.swift */; };
 		3B3792742C467FB500375767 /* DriveModeFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3792732C467FB500375767 /* DriveModeFlowCoordinator.swift */; };
 		3B3792792C4681C100375767 /* DriveModeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3792782C4681C100375767 /* DriveModeViewModel.swift */; };
 		3B37927F2C468E4200375767 /* AppFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B37927E2C468E4200375767 /* AppFlowCoordinator.swift */; };
-		3B3792812C469DFD00375767 /* GeminiWebRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3792802C469DFD00375767 /* GeminiWebRepository.swift */; };
 		3B482DD12C4FC93A00D435ED /* DriveModeCameraPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B482DD02C4FC93A00D435ED /* DriveModeCameraPreviewViewController.swift */; };
-		3B73535D2C9C60F000202CB5 /* WebSocketRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B73535C2C9C60F000202CB5 /* WebSocketRepository.swift */; };
 		3B81DEF82CB69027004819C3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B81DEF72CB69027004819C3 /* GoogleService-Info.plist */; };
 		3B81DEFB2CB69275004819C3 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 3B81DEFA2CB69275004819C3 /* FirebaseAnalytics */; };
 		3B81DEFD2CB69275004819C3 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 3B81DEFC2CB69275004819C3 /* FirebaseAuth */; };
@@ -56,8 +56,10 @@
 
 /* Begin PBXFileReference section */
 		1221012790DFD4E6C7734FF0 /* Pods-LuminaView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LuminaView.release.xcconfig"; path = "Target Support Files/Pods-LuminaView/Pods-LuminaView.release.xcconfig"; sourceTree = "<group>"; };
+		3B13999C2CC0F7B700E1292F /* FreeTrial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreeTrial.swift; sourceTree = "<group>"; };
 		3B1A49C82C5CD501000E21B0 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		3B2C819D2CB7DC2500E79FA1 /* LuminaViewDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LuminaViewDebug.entitlements; sourceTree = "<group>"; };
+		3B2C81B82CB95DA900E79FA1 /* CheckFreeTrialUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckFreeTrialUseCase.swift; sourceTree = "<group>"; };
 		3B37926B2C467B8E00375767 /* AppDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDIContainer.swift; sourceTree = "<group>"; };
 		3B37926D2C467BA300375767 /* AppConfigurations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfigurations.swift; sourceTree = "<group>"; };
 		3B37926F2C467BC900375767 /* DevConfig.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = DevConfig.xcconfig; sourceTree = "<group>"; };
@@ -65,9 +67,7 @@
 		3B3792732C467FB500375767 /* DriveModeFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriveModeFlowCoordinator.swift; sourceTree = "<group>"; };
 		3B3792782C4681C100375767 /* DriveModeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriveModeViewModel.swift; sourceTree = "<group>"; };
 		3B37927E2C468E4200375767 /* AppFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlowCoordinator.swift; sourceTree = "<group>"; };
-		3B3792802C469DFD00375767 /* GeminiWebRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GeminiWebRepository.swift; path = Repositories/GeminiWebRepository.swift; sourceTree = SOURCE_ROOT; };
 		3B482DD02C4FC93A00D435ED /* DriveModeCameraPreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriveModeCameraPreviewViewController.swift; sourceTree = "<group>"; };
-		3B73535C2C9C60F000202CB5 /* WebSocketRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSocketRepository.swift; sourceTree = "<group>"; };
 		3B81DEF72CB69027004819C3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3B8F1E322C9C369400A54EC4 /* WebSocketAPIConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSocketAPIConfig.swift; sourceTree = "<group>"; };
 		3BBFE8972C3D0DCF00193B70 /* LuminaView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LuminaView.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -87,6 +87,8 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		3B1399962CC0F4D900E1292F /* FreeTrial */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = FreeTrial; sourceTree = "<group>"; };
+		3B1399972CC0F51F00E1292F /* Guide */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Guide; sourceTree = "<group>"; };
 		3B2C81A02CB7E8FC00E79FA1 /* Login */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Login; sourceTree = "<group>"; };
 		3B2C81A52CB8070C00E79FA1 /* LoginScene */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = LoginScene; sourceTree = "<group>"; };
 		3B8F1E342C9C542200A54EC4 /* View */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = View; sourceTree = "<group>"; };
@@ -263,6 +265,7 @@
 		96586BE32C3D1A22007039FB /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				3B13999C2CC0F7B700E1292F /* FreeTrial.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -271,6 +274,7 @@
 			isa = PBXGroup;
 			children = (
 				3BE1CBD32C490D50003E7C62 /* FetchGuideUseCase.swift */,
+				3B2C81B82CB95DA900E79FA1 /* CheckFreeTrialUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -286,8 +290,8 @@
 		96586BE62C3D1A3F007039FB /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
-				3B3792802C469DFD00375767 /* GeminiWebRepository.swift */,
-				3B73535C2C9C60F000202CB5 /* WebSocketRepository.swift */,
+				3B1399972CC0F51F00E1292F /* Guide */,
+				3B1399962CC0F4D900E1292F /* FreeTrial */,
 			);
 			name = Repositories;
 			path = ../Repositories;
@@ -350,6 +354,8 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
+				3B1399962CC0F4D900E1292F /* FreeTrial */,
+				3B1399972CC0F51F00E1292F /* Guide */,
 				3B2C81A02CB7E8FC00E79FA1 /* Login */,
 				3B2C81A52CB8070C00E79FA1 /* LoginScene */,
 				3B8F1E342C9C542200A54EC4 /* View */,
@@ -490,6 +496,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B13999D2CC0F7B700E1292F /* FreeTrial.swift in Sources */,
 				3BE1CBCB2C47FA22003E7C62 /* UIView+.swift in Sources */,
 				3BE1CBD02C48F84A003E7C62 /* GeminiAPIConfig.swift in Sources */,
 				3B37926E2C467BA300375767 /* AppConfigurations.swift in Sources */,
@@ -497,11 +504,10 @@
 				3B37927F2C468E4200375767 /* AppFlowCoordinator.swift in Sources */,
 				3B37926C2C467B8E00375767 /* AppDIContainer.swift in Sources */,
 				3B482DD12C4FC93A00D435ED /* DriveModeCameraPreviewViewController.swift in Sources */,
-				3B3792812C469DFD00375767 /* GeminiWebRepository.swift in Sources */,
 				3BBFE89F2C3D0DCF00193B70 /* DriveModeViewController.swift in Sources */,
+				3B2C81B92CB95DA900E79FA1 /* CheckFreeTrialUseCase.swift in Sources */,
 				3B3792742C467FB500375767 /* DriveModeFlowCoordinator.swift in Sources */,
 				3BE1CBD42C490D50003E7C62 /* FetchGuideUseCase.swift in Sources */,
-				3B73535D2C9C60F000202CB5 /* WebSocketRepository.swift in Sources */,
 				3B3792722C467F6600375767 /* DriveModeSceneDIContainer.swift in Sources */,
 				3BBFE89B2C3D0DCF00193B70 /* AppDelegate.swift in Sources */,
 				3B3792792C4681C100375767 /* DriveModeViewModel.swift in Sources */,
