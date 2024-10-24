@@ -65,7 +65,7 @@ final class HEVCEncoder: CameraEncodable {
             print("Failed to get data buffer from sample buffer")
             return nil
         }
-
+        
         var totalLength: Int = 0
         var dataPointerRef: UnsafeMutablePointer<Int8>?
         
@@ -112,9 +112,9 @@ final class HEVCEncoder: CameraEncodable {
             // 안전하게 NAL 유닛 길이 읽기
             guard offset + 4 <= totalLength else { break }
             let nalUnitLength = UInt32(bufferData[offset]) << 24 |
-                                UInt32(bufferData[offset + 1]) << 16 |
-                                UInt32(bufferData[offset + 2]) << 8 |
-                                UInt32(bufferData[offset + 3])
+            UInt32(bufferData[offset + 1]) << 16 |
+            UInt32(bufferData[offset + 2]) << 8 |
+            UInt32(bufferData[offset + 3])
             
             let nalUnitStart = offset + 4 // 4바이트 길이 필드 이후
             let nalUnitEnd = nalUnitStart + Int(nalUnitLength)
@@ -196,7 +196,7 @@ extension HEVCEncoder {
         while offset < data.count - 4 {
             if data[offset..<offset+4] == Data(startCode) {
                 let nalUnitType = (data[offset + 4] & 0x7E) >> 1
-
+                
                 switch nalUnitType {
                     case 32:
                         self.vps = data[offset..<data.count]

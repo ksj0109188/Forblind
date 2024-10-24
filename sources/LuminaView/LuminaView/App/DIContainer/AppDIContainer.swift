@@ -15,9 +15,14 @@ final class AppDIContainer {
         return WebSocketRepository(config: config)
     }()
     
+    lazy var freeTrialService: FreeTrialRepository = {
+        return DefaultFreeTrialRepository()
+    }()
+    
+    
     func makeDriveModeSceneDIContainer() -> DriveModeSceneDIContainer {
-        let dependencies = DriveModeSceneDIContainer.Dependencies(guideAPIWebRepository: guideService, cameraManager: CameraManger())
-
+        let dependencies = DriveModeSceneDIContainer.Dependencies(guideAPIWebRepository: guideService, freeTrialRepository: freeTrialService, updateFreeTrialRepository: freeTrialService, cameraManager: CameraManger())
+        
         return DriveModeSceneDIContainer(dependencies:  dependencies)
     }
 }
