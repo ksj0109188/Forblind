@@ -9,36 +9,21 @@ import Foundation
 import RxSwift
 import Starscream
 import CoreMedia
-import AVFAudio
 
 protocol SendableWebSocket: AnyObject {
     func sendToWebSocket(data: Data)
 }
 
-class WebSocketRepository: GuideAPIWebRepository, SendableWebSocket {
-    let requestAPISubject = PublishSubject<CMSampleBuffer>()
-    let disposeBag = DisposeBag()
+final class WebSocketRepository: GuideAPIWebRepository, SendableWebSocket {
+    private let disposeBag = DisposeBag()
     private var socket: WebSocket!
     let encoder: CameraEncodable = HEVCEncoder()
-    var isWorked: Bool = false
+    var resultStream: PublishSubject<Result<String, Error>>?
     
-    init(config: WebSocketAPIConfig) {
-        //        let url = URL(string: config.url)!
-        let url = URL(string: "ws://192.168.45.219:8080/data-upload")!
-        var request = URLRequest(url: url)
-        
-        request.timeoutInterval = 10
-        //TODO: Third party 말고 URLSession.websocket을 사용해 연결 하도록 처리히자.
-        socket = WebSocket(request: request)
-        socket.delegate = self
-        
-        socket.connect()
-    }
-    
-    func setupApiConnect() -> PublishSubject<CMSampleBuffer> {
+    func setupApiConnect(requestStream: RxSwift.PublishSubject<CMSampleBuffer>) {
         let encodingSubject = PublishSubject<Data>()
-        //
-        requestAPISubject
+        
+        requestStream
             .observe(on: ConcurrentDispatchQueueScheduler(qos: .userInitiated))
             .flatMap { [weak self] buffer -> Observable<Data> in
                 guard let self = self else { return Observable.empty() }
@@ -63,15 +48,27 @@ class WebSocketRepository: GuideAPIWebRepository, SendableWebSocket {
                 self.sendToWebSocket(data: mergedData)
             })
             .disposed(by: disposeBag)
-
-        return requestAPISubject
+    }
+    
+    func setupResultStream(resultStream: PublishSubject<Result<String, Error>>) {
+        self.resultStream = resultStream
+    }
+    
+    init(config: WebSocketAPIConfig) {
+        //        let url = URL(string: config.url)!
+        let url = URL(string: "ws://192.168.45.219:8080/data-upload")!
+        var request = URLRequest(url: url)
+        
+        request.timeoutInterval = 10
+        //TODO: Third party 말고 URLSession.websocket을 사용해 연결 하도록 처리히자.
+        socket = WebSocket(request: request)
+        socket.delegate = self
+        
+        socket.connect()
     }
     
     func sendToWebSocket(data: Data) {
         print("sendToWebSocket", data)
-        if isWorked {
-            return
-        }
         
         let chunkSize = 4000  // 청크 크기를 WebSocket의 버퍼 크기보다 작게 설정
         var offset = 0
@@ -98,8 +95,6 @@ class WebSocketRepository: GuideAPIWebRepository, SendableWebSocket {
             
             offset += chunkSize
         }
-        
-        isWorked = true
     }
 }
 
@@ -111,11 +106,11 @@ extension WebSocketRepository: WebSocketDelegate {
             case .disconnected(let reason, let code):
                 print("WebSocket is disconnected: \(reason) with code: \(code)")
             case .text(let string):
-                print("Received text: \(string)")
-                let utterance = AVSpeechUtterance(string: string)
-                let synthesizer = AVSpeechSynthesizer()
+                guard let resultStream = resultStream else { return }
                 
-                synthesizer.speak(utterance)
+                resultStream.onNext(.success(string))
+                
+                
             case .binary(let data):
                 print("Received data: \(data)")
             case .error(let error):

@@ -16,7 +16,9 @@ final class FetchGuideUseCase {
         self.repository = guideAPIWebRepository
     }
     
-    func setupApiConnect() -> PublishSubject<CMSampleBuffer> {
-        repository.setupApiConnect()
+    func execute(requestStream: PublishSubject<CMSampleBuffer>, resultStream: PublishSubject<Result<String, Error>>) {
+        repository.setupApiConnect(requestStream: requestStream)
+        repository.setupResultStream(resultStream: resultStream)
     }
+
 }

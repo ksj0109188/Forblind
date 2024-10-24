@@ -11,17 +11,17 @@ import RxSwift
 final class CheckFreeTrialUseCase {
     let repository: FreeTrialRepository
     
-    init(repository: FreeTrialRepository, entity: FreeTrial) {
+    init(repository: FreeTrialRepository) {
         self.repository = repository
     }
     
-    func execute(requestValue: CheckFreeTrialUseCaseRequestValue) -> Bool {
+    func execute(requestValue: FreeTrialUseCaseRequestValue) -> Bool {
         repository.isFreeTrial(request: requestValue)
     }
     
 }
 
-struct CheckFreeTrialUseCaseRequestValue {
+struct FreeTrialUseCaseRequestValue {
     let entity: FreeTrial
     let limitCount: Int
 }

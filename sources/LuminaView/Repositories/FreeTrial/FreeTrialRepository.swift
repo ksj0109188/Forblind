@@ -8,6 +8,6 @@
 import Foundation
 
 protocol FreeTrialRepository {
-    func isFreeTrial(request: CheckFreeTrialUseCaseRequestValue) -> Bool
-    func increaseRespondCount(request: CheckFreeTrialUseCaseRequestValue)
+    func isFreeTrial(request: FreeTrialUseCaseRequestValue) -> Bool
+    func increaseRespondCount(request: FreeTrialUseCaseRequestValue)
 }

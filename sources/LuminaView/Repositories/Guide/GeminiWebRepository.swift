@@ -11,5 +11,11 @@ import RxSwift
 import CoreMedia
 
 protocol GuideAPIWebRepository {
-    func setupApiConnect() -> PublishSubject<CMSampleBuffer>
+    func setupApiConnect(requestStream: PublishSubject<CMSampleBuffer>)
+    func setupResultStream(resultStream: PublishSubject<Result<String, Error>>) 
+}
+
+
+enum ServerStateEnumType {
+    
 }

@@ -10,13 +10,13 @@ import Foundation
 final class DefaultFreeTrialRepository: FreeTrialRepository {
     private let userDefaults = UserDefaults.standard
     
-    func isFreeTrial(request: CheckFreeTrialUseCaseRequestValue) -> Bool {
+    func isFreeTrial(request: FreeTrialUseCaseRequestValue) -> Bool {
         let key = request.entity.fetchId()
         guard let currentCount = userDefaults.object(forKey: key) as? Int else {
             userDefaults.set(1, forKey: key)
             return true
         }
-        
+        debugPrint(currentCount)
         if currentCount <= request.limitCount {
             return true
         } else {
@@ -24,13 +24,13 @@ final class DefaultFreeTrialRepository: FreeTrialRepository {
         }
     }
     
-    func increaseRespondCount(request: CheckFreeTrialUseCaseRequestValue) {
+    func increaseRespondCount(request: FreeTrialUseCaseRequestValue) {
         let key = request.entity.fetchId()
         guard let currentCount = userDefaults.object(forKey: key) as? Int else {
             userDefaults.set(1, forKey: key)
             return
         }
-        
+        debugPrint(currentCount)
         userDefaults.set(currentCount + 1, forKey: key)
     }
 }

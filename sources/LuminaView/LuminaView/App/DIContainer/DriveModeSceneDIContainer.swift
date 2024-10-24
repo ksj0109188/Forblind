@@ -10,6 +10,8 @@ import UIKit
 final class DriveModeSceneDIContainer: DriveModeFlowCoordinatorDependencies {
     struct Dependencies {
         let guideAPIWebRepository: GuideAPIWebRepository
+        let freeTrialRepository: FreeTrialRepository
+        let updateFreeTrialRepository: FreeTrialRepository
         let cameraManager: Recodable
     }
     
@@ -20,13 +22,21 @@ final class DriveModeSceneDIContainer: DriveModeFlowCoordinatorDependencies {
     }
     
     // MARK: UseCase
-    func makeDriveModeUsecase() -> FetchGuideUseCase{
+    func makeDriveModeUsecase() -> FetchGuideUseCase {
         FetchGuideUseCase(guideAPIWebRepository: dependencies.guideAPIWebRepository)
+    }
+    
+    func makeCheckFreeTrialUsecase() -> CheckFreeTrialUseCase {
+        CheckFreeTrialUseCase(repository: dependencies.freeTrialRepository)
+    }
+    
+    func makeCheckFreeTrialUsecase() -> UpdateFreeTrialUseCase {
+        UpdateFreeTrialUseCase(repository: dependencies.freeTrialRepository)
     }
     
     // MARK: ViewModel
     func makeDriveModeViewModel(actions: DriveModeViewModelActions) -> DriveModeViewModel {
-        let viewModel = DriveModeViewModel(useCase: makeDriveModeUsecase(), cameraManager: dependencies.cameraManager, actions: actions)
+        let viewModel = DriveModeViewModel(useCase: makeDriveModeUsecase(), freeTrialUsecase: makeCheckFreeTrialUsecase(), updateFreeTrialUseCase: makeCheckFreeTrialUsecase(), cameraManager: dependencies.cameraManager, actions: actions)
         
         return viewModel
     }
