@@ -20,6 +20,8 @@ final class AuthManager: NSObject {
         startSignInWithAppleFlow()
     }
     
+    
+    
     private func randomNonceString(length: Int = 32) -> String {
         precondition(length > 0)
         var randomBytes = [UInt8](repeating: 0, count: length)
@@ -64,6 +66,10 @@ final class AuthManager: NSObject {
       authorizationController.delegate = self
       authorizationController.presentationContextProvider = self
       authorizationController.performRequests()
+    }
+    
+    func fetchUid() -> String? {
+        return Auth.auth().currentUser?.uid
     }
 }
 

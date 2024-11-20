@@ -13,7 +13,6 @@
 		3B1EB4292C4532C2001A0F0A /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 3B1EB4282C4532C2001A0F0A /* RxCocoa */; };
 		3B1EB42B2C4532C2001A0F0A /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 3B1EB42A2C4532C2001A0F0A /* RxSwift */; };
 		3B1EB42E2C4539BD001A0F0A /* GoogleGenerativeAI in Frameworks */ = {isa = PBXBuildFile; productRef = 3B1EB42D2C4539BD001A0F0A /* GoogleGenerativeAI */; };
-		3B2C81B92CB95DA900E79FA1 /* CheckFreeTrialUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B2C81B82CB95DA900E79FA1 /* CheckFreeTrialUseCase.swift */; };
 		3B37926C2C467B8E00375767 /* AppDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B37926B2C467B8E00375767 /* AppDIContainer.swift */; };
 		3B37926E2C467BA300375767 /* AppConfigurations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B37926D2C467BA300375767 /* AppConfigurations.swift */; };
 		3B3792722C467F6600375767 /* DriveModeSceneDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3792712C467F6600375767 /* DriveModeSceneDIContainer.swift */; };
@@ -21,8 +20,6 @@
 		3B3792792C4681C100375767 /* DriveModeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3792782C4681C100375767 /* DriveModeViewModel.swift */; };
 		3B37927F2C468E4200375767 /* AppFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B37927E2C468E4200375767 /* AppFlowCoordinator.swift */; };
 		3B482DD12C4FC93A00D435ED /* DriveModeCameraPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B482DD02C4FC93A00D435ED /* DriveModeCameraPreviewViewController.swift */; };
-		3B75CF012CC2979F004487A6 /* UpdateFreeTrialUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B75CF002CC2979F004487A6 /* UpdateFreeTrialUseCase.swift */; };
-		3B81DEF82CB69027004819C3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B81DEF72CB69027004819C3 /* GoogleService-Info.plist */; };
 		3B81DEFB2CB69275004819C3 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 3B81DEFA2CB69275004819C3 /* FirebaseAnalytics */; };
 		3B81DEFD2CB69275004819C3 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 3B81DEFC2CB69275004819C3 /* FirebaseAuth */; };
 		3B81DEFF2CB69275004819C3 /* FirebaseAuthCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 3B81DEFE2CB69275004819C3 /* FirebaseAuthCombine-Community */; };
@@ -35,11 +32,13 @@
 		3BBFE8A72C3D0DD200193B70 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 3BBFE8A62C3D0DD200193B70 /* Base */; };
 		3BE1CBCB2C47FA22003E7C62 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE1CBCA2C47FA22003E7C62 /* UIView+.swift */; };
 		3BE1CBD02C48F84A003E7C62 /* GeminiAPIConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE1CBCF2C48F84A003E7C62 /* GeminiAPIConfig.swift */; };
-		3BE1CBD42C490D50003E7C62 /* FetchGuideUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE1CBD32C490D50003E7C62 /* FetchGuideUseCase.swift */; };
 		3BE77B062C51309E003FED2D /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3BE77B052C51309E003FED2D /* SnapKit */; };
 		960BE5A32C492E330060DD72 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 960BE5A22C492E330060DD72 /* Lottie */; };
 		96BD02582C49458300CBEE58 /* CommonCustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BD02572C49458300CBEE58 /* CommonCustomLabel.swift */; };
 		96BD025A2C4945A100CBEE58 /* CommonCustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BD02592C4945A100CBEE58 /* CommonCustomButton.swift */; };
+		AED660EC2CEDBB8B00DA7EBC /* DevConfig.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = AED660EB2CEDBB8B00DA7EBC /* DevConfig.xcconfig */; };
+		AED660F02CEDBBD400DA7EBC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AED660EF2CEDBBD400DA7EBC /* GoogleService-Info.plist */; };
+		AEF36E172CEDC1870044D4D3 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF36E162CEDC1870044D4D3 /* UserInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -60,17 +59,13 @@
 		3B13999C2CC0F7B700E1292F /* FreeTrial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreeTrial.swift; sourceTree = "<group>"; };
 		3B1A49C82C5CD501000E21B0 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		3B2C819D2CB7DC2500E79FA1 /* LuminaViewDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LuminaViewDebug.entitlements; sourceTree = "<group>"; };
-		3B2C81B82CB95DA900E79FA1 /* CheckFreeTrialUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckFreeTrialUseCase.swift; sourceTree = "<group>"; };
 		3B37926B2C467B8E00375767 /* AppDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDIContainer.swift; sourceTree = "<group>"; };
 		3B37926D2C467BA300375767 /* AppConfigurations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfigurations.swift; sourceTree = "<group>"; };
-		3B37926F2C467BC900375767 /* DevConfig.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = DevConfig.xcconfig; sourceTree = "<group>"; };
 		3B3792712C467F6600375767 /* DriveModeSceneDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriveModeSceneDIContainer.swift; sourceTree = "<group>"; };
 		3B3792732C467FB500375767 /* DriveModeFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriveModeFlowCoordinator.swift; sourceTree = "<group>"; };
 		3B3792782C4681C100375767 /* DriveModeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriveModeViewModel.swift; sourceTree = "<group>"; };
 		3B37927E2C468E4200375767 /* AppFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlowCoordinator.swift; sourceTree = "<group>"; };
 		3B482DD02C4FC93A00D435ED /* DriveModeCameraPreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriveModeCameraPreviewViewController.swift; sourceTree = "<group>"; };
-		3B75CF002CC2979F004487A6 /* UpdateFreeTrialUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateFreeTrialUseCase.swift; sourceTree = "<group>"; };
-		3B81DEF72CB69027004819C3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3B8F1E322C9C369400A54EC4 /* WebSocketAPIConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSocketAPIConfig.swift; sourceTree = "<group>"; };
 		3BBFE8972C3D0DCF00193B70 /* LuminaView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LuminaView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BBFE89A2C3D0DCF00193B70 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -81,10 +76,13 @@
 		3BBFE8A82C3D0DD200193B70 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3BE1CBCA2C47FA22003E7C62 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		3BE1CBCF2C48F84A003E7C62 /* GeminiAPIConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeminiAPIConfig.swift; sourceTree = "<group>"; };
-		3BE1CBD32C490D50003E7C62 /* FetchGuideUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchGuideUseCase.swift; sourceTree = "<group>"; };
 		96BD02572C49458300CBEE58 /* CommonCustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonCustomLabel.swift; sourceTree = "<group>"; };
 		96BD02592C4945A100CBEE58 /* CommonCustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonCustomButton.swift; sourceTree = "<group>"; };
 		9AA3194F4A8B068078E546D6 /* Pods_LuminaView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LuminaView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AED660E02CEDB8D300DA7EBC /* LuminaViewRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LuminaViewRelease.entitlements; sourceTree = "<group>"; };
+		AED660EB2CEDBB8B00DA7EBC /* DevConfig.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = DevConfig.xcconfig; sourceTree = "<group>"; };
+		AED660EF2CEDBBD400DA7EBC /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		AEF36E162CEDC1870044D4D3 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		EDEE937B43E69CA1977B2AE1 /* Pods-LuminaView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LuminaView.debug.xcconfig"; path = "Target Support Files/Pods-LuminaView/Pods-LuminaView.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -95,6 +93,10 @@
 		3B2C81A52CB8070C00E79FA1 /* LoginScene */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = LoginScene; sourceTree = "<group>"; };
 		3B8F1E342C9C542200A54EC4 /* View */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = View; sourceTree = "<group>"; };
 		3B8F1E352C9C542A00A54EC4 /* Camera */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Camera; sourceTree = "<group>"; };
+		AED660E72CEDBAA400DA7EBC /* UserInfo */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = UserInfo; sourceTree = "<group>"; };
+		AEF36E182CEDEF6D0044D4D3 /* Guide */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Guide; sourceTree = "<group>"; };
+		AEF36E192CEDEF750044D4D3 /* FreeTrial */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = FreeTrial; sourceTree = "<group>"; };
+		AEF36E1C2CEDEFB20044D4D3 /* UserInfo */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = UserInfo; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -211,6 +213,7 @@
 		3BBFE8992C3D0DCF00193B70 /* LuminaView */ = {
 			isa = PBXGroup;
 			children = (
+				AED660E02CEDB8D300DA7EBC /* LuminaViewRelease.entitlements */,
 				3B2C819D2CB7DC2500E79FA1 /* LuminaViewDebug.entitlements */,
 				3B37927D2C46885100375767 /* Utilities */,
 				96586BEA2C3D1A82007039FB /* Resources */,
@@ -219,8 +222,8 @@
 				96586BDF2C3D19F8007039FB /* Presentation */,
 				96586BDE2C3D19EB007039FB /* App */,
 				96BD02572C49458300CBEE58 /* CommonCustomLabel.swift */,
+				AED660EF2CEDBBD400DA7EBC /* GoogleService-Info.plist */,
 				96BD02592C4945A100CBEE58 /* CommonCustomButton.swift */,
-				3B81DEF72CB69027004819C3 /* GoogleService-Info.plist */,
 			);
 			path = LuminaView;
 			sourceTree = "<group>";
@@ -267,6 +270,7 @@
 			isa = PBXGroup;
 			children = (
 				3B13999C2CC0F7B700E1292F /* FreeTrial.swift */,
+				AEF36E162CEDC1870044D4D3 /* UserInfo.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -274,9 +278,9 @@
 		96586BE42C3D1A2B007039FB /* UseCase */ = {
 			isa = PBXGroup;
 			children = (
-				3BE1CBD32C490D50003E7C62 /* FetchGuideUseCase.swift */,
-				3B2C81B82CB95DA900E79FA1 /* CheckFreeTrialUseCase.swift */,
-				3B75CF002CC2979F004487A6 /* UpdateFreeTrialUseCase.swift */,
+				AEF36E182CEDEF6D0044D4D3 /* Guide */,
+				AEF36E192CEDEF750044D4D3 /* FreeTrial */,
+				AEF36E1C2CEDEFB20044D4D3 /* UserInfo */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -284,6 +288,7 @@
 		96586BE62C3D1A3F007039FB /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
+				AED660E72CEDBAA400DA7EBC /* UserInfo */,
 				3B1399972CC0F51F00E1292F /* Guide */,
 				3B1399962CC0F4D900E1292F /* FreeTrial */,
 			);
@@ -296,7 +301,7 @@
 			children = (
 				3BBFE8A52C3D0DD200193B70 /* LaunchScreen.storyboard */,
 				3BBFE8A32C3D0DD200193B70 /* Assets.xcassets */,
-				3B37926F2C467BC900375767 /* DevConfig.xcconfig */,
+				AED660EB2CEDBB8B00DA7EBC /* DevConfig.xcconfig */,
 				3BBFE8A82C3D0DD200193B70 /* Info.plist */,
 				3BE1CBCF2C48F84A003E7C62 /* GeminiAPIConfig.swift */,
 				3B8F1E322C9C369400A54EC4 /* WebSocketAPIConfig.swift */,
@@ -331,6 +336,10 @@
 				3B2C81A52CB8070C00E79FA1 /* LoginScene */,
 				3B8F1E342C9C542200A54EC4 /* View */,
 				3B8F1E352C9C542A00A54EC4 /* Camera */,
+				AED660E72CEDBAA400DA7EBC /* UserInfo */,
+				AEF36E182CEDEF6D0044D4D3 /* Guide */,
+				AEF36E192CEDEF750044D4D3 /* FreeTrial */,
+				AEF36E1C2CEDEFB20044D4D3 /* UserInfo */,
 			);
 			name = LuminaView;
 			packageProductDependencies = (
@@ -395,7 +404,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				3BBFE8A42C3D0DD200193B70 /* Assets.xcassets in Resources */,
-				3B81DEF82CB69027004819C3 /* GoogleService-Info.plist in Resources */,
+				AED660EC2CEDBB8B00DA7EBC /* DevConfig.xcconfig in Resources */,
+				AED660F02CEDBBD400DA7EBC /* GoogleService-Info.plist in Resources */,
 				3B1A49C92C5CD501000E21B0 /* Localizable.xcstrings in Resources */,
 				3BBFE8A72C3D0DD200193B70 /* Base in Resources */,
 			);
@@ -476,10 +486,8 @@
 				3B37926C2C467B8E00375767 /* AppDIContainer.swift in Sources */,
 				3B482DD12C4FC93A00D435ED /* DriveModeCameraPreviewViewController.swift in Sources */,
 				3BBFE89F2C3D0DCF00193B70 /* DriveModeViewController.swift in Sources */,
-				3B2C81B92CB95DA900E79FA1 /* CheckFreeTrialUseCase.swift in Sources */,
-				3B75CF012CC2979F004487A6 /* UpdateFreeTrialUseCase.swift in Sources */,
 				3B3792742C467FB500375767 /* DriveModeFlowCoordinator.swift in Sources */,
-				3BE1CBD42C490D50003E7C62 /* FetchGuideUseCase.swift in Sources */,
+				AEF36E172CEDC1870044D4D3 /* UserInfo.swift in Sources */,
 				3B3792722C467F6600375767 /* DriveModeSceneDIContainer.swift in Sources */,
 				3BBFE89B2C3D0DCF00193B70 /* AppDelegate.swift in Sources */,
 				3B3792792C4681C100375767 /* DriveModeViewModel.swift in Sources */,
@@ -505,7 +513,6 @@
 /* Begin XCBuildConfiguration section */
 		3BBFE8A92C3D0DD200193B70 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3B37926F2C467BC900375767 /* DevConfig.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -672,9 +679,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = LuminaView/LuminaViewRelease.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 3Y6A97YBJQ;
+				DEVELOPMENT_TEAM = M7F7863UPY;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = LuminaView/Resources/Info.plist;

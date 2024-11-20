@@ -8,7 +8,7 @@
 import UIKit
 import AVFoundation
 import RxSwift
-import Starscream
+//import Starscream
 
 protocol Recodable {
     func startRecord(subject: PublishSubject<CMSampleBuffer>)

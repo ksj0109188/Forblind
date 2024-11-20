@@ -13,7 +13,8 @@ final class LoginViewController: UIViewController {
         let button = UIButton()
         let image = UIImage(named: "LoginButton/appleLogin_button")
         
-        button.target(forAction: #selector(signIn), withSender: nil)
+        button.addTarget(self, action: #selector(signIn), for: .touchUpInside)
+//        button.target(forAction: #selector(signIn), withSender: nil)
         button.setImage(image, for: .normal)
         button.imageView?.contentMode = .scaleAspectFit
         button.translatesAutoresizingMaskIntoConstraints = false

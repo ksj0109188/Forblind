@@ -6,17 +6,31 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 final class LoginViewModel: ObservableObject {
     private let authManger: AuthManager = AuthManager()
+    private let firebae = FirebaseUserInfoRepository()
     
     func configure(controller: UIViewController) {
         authManger.cofigure(controller: controller)
     }
     
+//    func signIn() {
+//        authManger.startSignInWithAppleFlow()
+//    }
     func signIn() {
-        authManger.startSignInWithAppleFlow()
+        
+        if let uid = authManger.fetchUid() {
+            firebae.fetchUserInfo(uid: uid) { result in
+                switch result {
+                case .success(let success):
+                    print(success)
+                case .failure(let failure):
+                    print(failure)
+                }
+            }
+        }
     }
-    
     
 }

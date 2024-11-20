@@ -24,10 +24,6 @@
 			</array>
 		</dict>
 	</dict>
-	<key>geminiAPIKey</key>
-	<string>$(geminiAPIKey)</string>
-	<key>geminiModelName</key>
-	<string>$(geminiModelName)</string>
 	<key>webSocketURL</key>
 	<string>$(webSocketURL)</string>
 </dict>
