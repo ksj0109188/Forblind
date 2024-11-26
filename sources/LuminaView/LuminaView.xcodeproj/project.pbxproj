@@ -95,6 +95,8 @@
 		3B2C81A52CB8070C00E79FA1 /* LoginScene */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = LoginScene; sourceTree = "<group>"; };
 		3B8F1E342C9C542200A54EC4 /* View */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = View; sourceTree = "<group>"; };
 		3B8F1E352C9C542A00A54EC4 /* Camera */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Camera; sourceTree = "<group>"; };
+		AEA89F582CF5AC6400B0E5FD /* Login */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Login; sourceTree = "<group>"; };
+		AEA89F622CF5AE2F00B0E5FD /* Login */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Login; sourceTree = "<group>"; };
 		AED660E72CEDBAA400DA7EBC /* UserInfo */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = UserInfo; sourceTree = "<group>"; };
 		AEF36E182CEDEF6D0044D4D3 /* Guide */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Guide; sourceTree = "<group>"; };
 		AEF36E192CEDEF750044D4D3 /* FreeTrial */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = FreeTrial; sourceTree = "<group>"; };
@@ -281,6 +283,7 @@
 		96586BE42C3D1A2B007039FB /* UseCase */ = {
 			isa = PBXGroup;
 			children = (
+				AEA89F622CF5AE2F00B0E5FD /* Login */,
 				AEF36E182CEDEF6D0044D4D3 /* Guide */,
 				AEF36E192CEDEF750044D4D3 /* FreeTrial */,
 				AEF36E1C2CEDEFB20044D4D3 /* UserInfo */,
@@ -291,6 +294,7 @@
 		96586BE62C3D1A3F007039FB /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
+				AEA89F582CF5AC6400B0E5FD /* Login */,
 				AED660E72CEDBAA400DA7EBC /* UserInfo */,
 				3B1399972CC0F51F00E1292F /* Guide */,
 				3B1399962CC0F4D900E1292F /* FreeTrial */,
@@ -339,6 +343,8 @@
 				3B2C81A52CB8070C00E79FA1 /* LoginScene */,
 				3B8F1E342C9C542200A54EC4 /* View */,
 				3B8F1E352C9C542A00A54EC4 /* Camera */,
+				AEA89F582CF5AC6400B0E5FD /* Login */,
+				AEA89F622CF5AE2F00B0E5FD /* Login */,
 				AED660E72CEDBAA400DA7EBC /* UserInfo */,
 				AEF36E182CEDEF6D0044D4D3 /* Guide */,
 				AEF36E192CEDEF750044D4D3 /* FreeTrial */,

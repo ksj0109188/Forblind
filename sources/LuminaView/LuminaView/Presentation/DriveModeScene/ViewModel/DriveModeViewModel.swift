@@ -24,15 +24,17 @@ final class DriveModeViewModel {
     let checkFreeTrialUseCase: CheckFreeTrialUseCase
     let updateFreeTrialUseCase: UpdateFreeTrialUseCase
     let fetchUserInfoUseCase: FetchUserInfoUseCase
+    let checkLoginUseCase: CheckLoginUseCase
     let cameraManager: Recodable
     private let disposeBag = DisposeBag()
     private let actions: DriveModeViewModelActions
     
-    init(fetchGuideUseCase: FetchGuideUseCase, checkFreeTrialUseCase: CheckFreeTrialUseCase, updateFreeTrialUseCase: UpdateFreeTrialUseCase, fetchUserInfoUseCase: FetchUserInfoUseCase, cameraManager: Recodable, actions: DriveModeViewModelActions) {
+    init(fetchGuideUseCase: FetchGuideUseCase, checkFreeTrialUseCase: CheckFreeTrialUseCase, updateFreeTrialUseCase: UpdateFreeTrialUseCase, fetchUserInfoUseCase: FetchUserInfoUseCase, checkLoginUseCase: CheckLoginUseCase, cameraManager: Recodable, actions: DriveModeViewModelActions) {
         self.fetchGuideUseCase = fetchGuideUseCase
         self.checkFreeTrialUseCase = checkFreeTrialUseCase
         self.updateFreeTrialUseCase = updateFreeTrialUseCase
         self.fetchUserInfoUseCase = fetchUserInfoUseCase
+        self.checkLoginUseCase = checkLoginUseCase
         self.cameraManager = cameraManager
         self.actions = actions
     }
@@ -42,10 +44,6 @@ final class DriveModeViewModel {
             .subscribe(onNext: { result in
                 switch result {
                     case .success(let content):
-                        if !self.isFreeTrial() {
-                            self.cameraManager.stopRecord()
-                        }
-                        
                         //TODO: 별도의 Uitility Manager로 해당 기능을 관리해야함
                         let utterance = AVSpeechUtterance(string: content)
                         let synthesizer = AVSpeechSynthesizer()
@@ -71,17 +69,19 @@ final class DriveModeViewModel {
     
         let sampleUID = "hNJNPsWCkecp4qvGBoO7YjrmKBu1"
         
-        fetchUserInfoUseCase.execute(uid: sampleUID) {[weak self] result in
-            switch result {
-            case .success(let userInfo):
-                if userInfo.remainUsageSeconds > 0 {
-                    self?.startRecord()
-                } else {
-                    // checkLoginUser
-                    self?.actions.presetionLoginView()
+        if let uid = checkLoginUseCase.exec() {
+            fetchUserInfoUseCase.execute(uid: uid) {[weak self] result in
+                switch result {
+                case .success(let userInfo):
+                    if userInfo.remainUsageSeconds > 0 {
+                        self?.startRecord()
+                    } else {
+                        self?.stopRecord()
+                        // payment 안내
+                    }
+                case .failure(let failure):
+                    debugPrint(failure)
                 }
-            case .failure(let failure):
-                debugPrint(failure)
             }
         }
         
@@ -92,6 +92,7 @@ final class DriveModeViewModel {
     
     private func startRecord() {
         // 무료 사용량이 얼마나 남아 있는지
+        
         let requestStream = PublishSubject<CMSampleBuffer>()
         let resultStream = PublishSubject<Result<String, Error>>()
         
