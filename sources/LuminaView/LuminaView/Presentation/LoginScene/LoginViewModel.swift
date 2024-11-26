@@ -9,28 +9,18 @@ import UIKit
 import FirebaseAuth
 
 final class LoginViewModel: ObservableObject {
-    private let authManger: AuthManager = AuthManager()
-    private let firebae = FirebaseUserInfoRepository()
+    private let authManger: AuthManager
+    private let nonce: String? = nil
     
-    func configure(controller: UIViewController) {
-        authManger.cofigure(controller: controller)
+    init(authManger: AuthManager) {
+        self.authManger = authManger
     }
     
-//    func signIn() {
-//        authManger.startSignInWithAppleFlow()
-//    }
-    func signIn() {
-        
-        if let uid = authManger.fetchUid() {
-            firebae.fetchUserInfo(uid: uid) { result in
-                switch result {
-                case .success(let success):
-                    print(success)
-                case .failure(let failure):
-                    print(failure)
-                }
-            }
+    func fetchNonce() -> String {
+        if let nonce = nonce {
+            return nonce
+        } else {
+            return authManger.randomNonceString()
         }
     }
-    
 }
