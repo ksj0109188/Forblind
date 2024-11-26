@@ -16,16 +16,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = scene as? UIWindowScene else { return }
 
         let navigationController = UINavigationController()
-//        appFlowCoordinator = AppFlowCoordinator(
-//            navigationController: navigationController,
-//            appDIContainer: appDIContainer
-//        )
-//        
-//        appFlowCoordinator?.start()
+        appFlowCoordinator = AppFlowCoordinator(
+            navigationController: navigationController,
+            appDIContainer: appDIContainer
+        )
+        
+        appFlowCoordinator?.start(animated: false, onDismissed: nil)
         
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
-        window?.rootViewController = LoginViewController()
+        window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
         
         guard let _ = (scene as? UIWindowScene) else { return }

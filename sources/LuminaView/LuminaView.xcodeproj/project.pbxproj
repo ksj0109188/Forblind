@@ -39,6 +39,7 @@
 		AED660EC2CEDBB8B00DA7EBC /* DevConfig.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = AED660EB2CEDBB8B00DA7EBC /* DevConfig.xcconfig */; };
 		AED660F02CEDBBD400DA7EBC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AED660EF2CEDBBD400DA7EBC /* GoogleService-Info.plist */; };
 		AEF36E172CEDC1870044D4D3 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF36E162CEDC1870044D4D3 /* UserInfo.swift */; };
+		AEF36E222CEDF2070044D4D3 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF36E212CEDF2070044D4D3 /* Coordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -83,6 +84,7 @@
 		AED660EB2CEDBB8B00DA7EBC /* DevConfig.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = DevConfig.xcconfig; sourceTree = "<group>"; };
 		AED660EF2CEDBBD400DA7EBC /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AEF36E162CEDC1870044D4D3 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		AEF36E212CEDF2070044D4D3 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		EDEE937B43E69CA1977B2AE1 /* Pods-LuminaView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LuminaView.debug.xcconfig"; path = "Target Support Files/Pods-LuminaView/Pods-LuminaView.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -149,6 +151,8 @@
 		3B3792752C467FBA00375767 /* Flow */ = {
 			isa = PBXGroup;
 			children = (
+				3B37927E2C468E4200375767 /* AppFlowCoordinator.swift */,
+				AEF36E212CEDF2070044D4D3 /* Coordinator.swift */,
 				3B3792732C467FB500375767 /* DriveModeFlowCoordinator.swift */,
 			);
 			path = Flow;
@@ -168,7 +172,6 @@
 			children = (
 				3B37927A2C4681C500375767 /* ViewModel */,
 				3B3792762C46819A00375767 /* Views */,
-				3B2C81A52CB8070C00E79FA1 /* LoginScene */,
 			);
 			path = DriveModeScene;
 			sourceTree = "<group>";
@@ -242,7 +245,6 @@
 				3B3792702C467F2500375767 /* DIContainer */,
 				3BBFE89A2C3D0DCF00193B70 /* AppDelegate.swift */,
 				3B37926D2C467BA300375767 /* AppConfigurations.swift */,
-				3B37927E2C468E4200375767 /* AppFlowCoordinator.swift */,
 				3BBFE89C2C3D0DCF00193B70 /* SceneDelegate.swift */,
 			);
 			path = App;
@@ -252,6 +254,7 @@
 			isa = PBXGroup;
 			children = (
 				3B3792752C467FBA00375767 /* Flow */,
+				3B2C81A52CB8070C00E79FA1 /* LoginScene */,
 				3B3792772C4681A100375767 /* DriveModeScene */,
 			);
 			path = Presentation;
@@ -490,6 +493,7 @@
 				AEF36E172CEDC1870044D4D3 /* UserInfo.swift in Sources */,
 				3B3792722C467F6600375767 /* DriveModeSceneDIContainer.swift in Sources */,
 				3BBFE89B2C3D0DCF00193B70 /* AppDelegate.swift in Sources */,
+				AEF36E222CEDF2070044D4D3 /* Coordinator.swift in Sources */,
 				3B3792792C4681C100375767 /* DriveModeViewModel.swift in Sources */,
 				96BD025A2C4945A100CBEE58 /* CommonCustomButton.swift in Sources */,
 				96BD02582C49458300CBEE58 /* CommonCustomLabel.swift in Sources */,
