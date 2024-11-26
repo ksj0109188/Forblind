@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class FetchUserInfo {
+final class FetchUserInfoUseCase {
     let repository: UserInfoRepository
     
     init(repository: UserInfoRepository) {

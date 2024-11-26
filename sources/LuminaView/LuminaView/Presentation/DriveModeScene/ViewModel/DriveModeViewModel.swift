@@ -18,18 +18,17 @@ struct DriveModeViewModelActions {
 }
 
 final class DriveModeViewModel {
-    var isRecording: PublishSubject<Bool>
+    var isRecording: PublishSubject<Bool> = PublishSubject()
     //TODO: 네이밍 다시 생각해보기
     let fetchGuideUseCase: FetchGuideUseCase
     let checkFreeTrialUseCase: CheckFreeTrialUseCase
     let updateFreeTrialUseCase: UpdateFreeTrialUseCase
-    let fetchUserInfoUseCase: FetchUserInfo
+    let fetchUserInfoUseCase: FetchUserInfoUseCase
     let cameraManager: Recodable
     private let disposeBag = DisposeBag()
     private let actions: DriveModeViewModelActions
     
-    init(isRecording: PublishSubject<Bool>, fetchGuideUseCase: FetchGuideUseCase, checkFreeTrialUseCase: CheckFreeTrialUseCase, updateFreeTrialUseCase: UpdateFreeTrialUseCase, fetchUserInfoUseCase: FetchUserInfo, cameraManager: Recodable, actions: DriveModeViewModelActions) {
-        self.isRecording = PublishSubject()
+    init(fetchGuideUseCase: FetchGuideUseCase, checkFreeTrialUseCase: CheckFreeTrialUseCase, updateFreeTrialUseCase: UpdateFreeTrialUseCase, fetchUserInfoUseCase: FetchUserInfoUseCase, cameraManager: Recodable, actions: DriveModeViewModelActions) {
         self.fetchGuideUseCase = fetchGuideUseCase
         self.checkFreeTrialUseCase = checkFreeTrialUseCase
         self.updateFreeTrialUseCase = updateFreeTrialUseCase

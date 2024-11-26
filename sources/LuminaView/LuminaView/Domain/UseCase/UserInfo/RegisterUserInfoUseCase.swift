@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class RegisterUserInfo {
+final class RegisterUserInfoUseCase {
     let repository: UserInfoRepository
     
     init(repository: UserInfoRepository) {

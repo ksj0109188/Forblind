@@ -19,9 +19,13 @@ final class AppDIContainer {
         return DefaultFreeTrialRepository()
     }()
     
+    lazy var userInfoService: UserInfoRepository = {
+        return FirebaseUserInfoRepository()
+    }()
+    
     
     func makeDriveModeSceneDIContainer() -> DriveModeSceneDIContainer {
-        let dependencies = DriveModeSceneDIContainer.Dependencies(guideAPIWebRepository: guideService, freeTrialRepository: freeTrialService, updateFreeTrialRepository: freeTrialService, cameraManager: CameraManger())
+        let dependencies = DriveModeSceneDIContainer.Dependencies(guideAPIWebRepository: guideService, freeTrialRepository: freeTrialService, userInfoRepository: userInfoService, cameraManager: CameraManger())
         
         return DriveModeSceneDIContainer(dependencies:  dependencies)
     }

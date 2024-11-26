@@ -24,7 +24,7 @@ final class AppFlowCoordinator: Coordinator, DriveModeFlowCoordinatorDelegate {
     
     func presentDriveModeScene() {
         let driveModeSceneDIContainer = appDIContainer.makeDriveModeSceneDIContainer()
-        let coordinator = driveModeSceneDIContainer.makeDriveModeSceneFlowCoordinator(navigationController: navigationController)
+        let coordinator = driveModeSceneDIContainer.makeDriveModeSceneFlowCoordinator(navigationController: navigationController,parentCoordinator: self)
         children?.append(coordinator)
         
         presentChild(coordinator, animated: false)

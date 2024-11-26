@@ -26,7 +26,7 @@ final class DriveModeFlowCoordinator: Coordinator {
     
     init(navigationController: UINavigationController? = nil,
          dependencies: DriveModeFlowCoordinatorDependencies,
-         parentDelegate: DriveModeFlowCoordinatorDelegate) {
+         parentDelegate: DriveModeFlowCoordinatorDelegate?) {
         self.navigationController = navigationController
         self.dependencies = dependencies
         self.delegate = parentDelegate
