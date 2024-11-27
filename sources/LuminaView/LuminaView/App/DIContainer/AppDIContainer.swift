@@ -23,10 +23,27 @@ final class AppDIContainer {
         return FirebaseUserInfoRepository()
     }()
     
+    lazy var loginService: LoginRepository = {
+        return FirebaseLoginRepository()
+    }()
+    
+    lazy var authManager: AuthManager = {
+        return AuthManager()
+    }()
     
     func makeDriveModeSceneDIContainer() -> DriveModeSceneDIContainer {
-        let dependencies = DriveModeSceneDIContainer.Dependencies(guideAPIWebRepository: guideService, freeTrialRepository: freeTrialService, userInfoRepository: userInfoService, cameraManager: CameraManger())
+        let dependencies = DriveModeSceneDIContainer.Dependencies(guideAPIWebRepository: guideService,
+                                                                  freeTrialRepository: freeTrialService,
+                                                                  userInfoRepository: userInfoService,
+                                                                  loginRepository: loginService,
+                                                                  cameraManager: CameraManger())
         
         return DriveModeSceneDIContainer(dependencies:  dependencies)
+    }
+    
+    func makeLoginSceneDIContainer() -> LoginSceneDIContainer {
+        let dependencies = LoginSceneDIContainer.Dependencies(authManager: authManager)
+        
+        return LoginSceneDIContainer(dependencies: dependencies)
     }
 }

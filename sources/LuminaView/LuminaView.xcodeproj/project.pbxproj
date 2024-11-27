@@ -36,6 +36,8 @@
 		960BE5A32C492E330060DD72 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 960BE5A22C492E330060DD72 /* Lottie */; };
 		96BD02582C49458300CBEE58 /* CommonCustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BD02572C49458300CBEE58 /* CommonCustomLabel.swift */; };
 		96BD025A2C4945A100CBEE58 /* CommonCustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BD02592C4945A100CBEE58 /* CommonCustomButton.swift */; };
+		AEA8A0392CF72CF600B0E5FD /* LoginSceneDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA8A0382CF72CF600B0E5FD /* LoginSceneDIContainer.swift */; };
+		AEA8A03B2CF7340900B0E5FD /* LoginSceneFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA8A03A2CF7340900B0E5FD /* LoginSceneFlowCoordinator.swift */; };
 		AED660EC2CEDBB8B00DA7EBC /* DevConfig.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = AED660EB2CEDBB8B00DA7EBC /* DevConfig.xcconfig */; };
 		AED660F02CEDBBD400DA7EBC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AED660EF2CEDBBD400DA7EBC /* GoogleService-Info.plist */; };
 		AEF36E172CEDC1870044D4D3 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF36E162CEDC1870044D4D3 /* UserInfo.swift */; };
@@ -80,6 +82,8 @@
 		96BD02572C49458300CBEE58 /* CommonCustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonCustomLabel.swift; sourceTree = "<group>"; };
 		96BD02592C4945A100CBEE58 /* CommonCustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonCustomButton.swift; sourceTree = "<group>"; };
 		9AA3194F4A8B068078E546D6 /* Pods_LuminaView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LuminaView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AEA8A0382CF72CF600B0E5FD /* LoginSceneDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSceneDIContainer.swift; sourceTree = "<group>"; };
+		AEA8A03A2CF7340900B0E5FD /* LoginSceneFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSceneFlowCoordinator.swift; sourceTree = "<group>"; };
 		AED660E02CEDB8D300DA7EBC /* LuminaViewRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LuminaViewRelease.entitlements; sourceTree = "<group>"; };
 		AED660EB2CEDBB8B00DA7EBC /* DevConfig.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = DevConfig.xcconfig; sourceTree = "<group>"; };
 		AED660EF2CEDBBD400DA7EBC /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -146,6 +150,7 @@
 			children = (
 				3B37926B2C467B8E00375767 /* AppDIContainer.swift */,
 				3B3792712C467F6600375767 /* DriveModeSceneDIContainer.swift */,
+				AEA8A0382CF72CF600B0E5FD /* LoginSceneDIContainer.swift */,
 			);
 			path = DIContainer;
 			sourceTree = "<group>";
@@ -156,6 +161,7 @@
 				3B37927E2C468E4200375767 /* AppFlowCoordinator.swift */,
 				AEF36E212CEDF2070044D4D3 /* Coordinator.swift */,
 				3B3792732C467FB500375767 /* DriveModeFlowCoordinator.swift */,
+				AEA8A03A2CF7340900B0E5FD /* LoginSceneFlowCoordinator.swift */,
 			);
 			path = Flow;
 			sourceTree = "<group>";
@@ -494,6 +500,7 @@
 				3B37927F2C468E4200375767 /* AppFlowCoordinator.swift in Sources */,
 				3B37926C2C467B8E00375767 /* AppDIContainer.swift in Sources */,
 				3B482DD12C4FC93A00D435ED /* DriveModeCameraPreviewViewController.swift in Sources */,
+				AEA8A03B2CF7340900B0E5FD /* LoginSceneFlowCoordinator.swift in Sources */,
 				3BBFE89F2C3D0DCF00193B70 /* DriveModeViewController.swift in Sources */,
 				3B3792742C467FB500375767 /* DriveModeFlowCoordinator.swift in Sources */,
 				AEF36E172CEDC1870044D4D3 /* UserInfo.swift in Sources */,
@@ -503,6 +510,7 @@
 				3B3792792C4681C100375767 /* DriveModeViewModel.swift in Sources */,
 				96BD025A2C4945A100CBEE58 /* CommonCustomButton.swift in Sources */,
 				96BD02582C49458300CBEE58 /* CommonCustomLabel.swift in Sources */,
+				AEA8A0392CF72CF600B0E5FD /* LoginSceneDIContainer.swift in Sources */,
 				3BBFE89D2C3D0DCF00193B70 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

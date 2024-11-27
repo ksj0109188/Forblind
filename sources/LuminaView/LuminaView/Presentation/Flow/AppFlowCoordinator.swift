@@ -8,7 +8,7 @@
 import UIKit
 
 ///note: FlowCoordinator들을 관리
-final class AppFlowCoordinator: Coordinator, DriveModeFlowCoordinatorDelegate {
+final class AppFlowCoordinator: Coordinator, DriveModeFlowCoordinatorDelegate, LoginSceneFlowCoordinatorDelegate {
     var children: [Coordinator]?
     var navigationController: UINavigationController
     private let appDIContainer: AppDIContainer
@@ -30,7 +30,15 @@ final class AppFlowCoordinator: Coordinator, DriveModeFlowCoordinatorDelegate {
         presentChild(coordinator, animated: false)
     }
     
-    func showLoginScene() {
+    func presentLoginScene() {
+        let loginSceneDIContainer = appDIContainer.makeLoginSceneDIContainer()
+        let coordinator = loginSceneDIContainer.makeLoginSceneFlowCoordinator(navigationController: navigationController, parentCoordinator: self)
+        children?.append(coordinator)
+        
+        presentChild(coordinator, animated: false)
+    }
+    
+    func showPaymentScene() {
         
     }
 }

@@ -22,7 +22,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         )
         
         appFlowCoordinator?.start(animated: false, onDismissed: nil)
-        
+//        let vc = LoginViewController()
+//        vc.create(viewModel: LoginViewModel(authManger: AuthManager()))
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
         window?.rootViewController = navigationController

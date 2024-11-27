@@ -8,6 +8,9 @@
 import UIKit
 import FirebaseAuth
 
+
+struct LoginViewModelActions {}
+
 final class LoginViewModel: ObservableObject {
     private let authManger: AuthManager
     private let nonce: String? = nil

@@ -81,7 +81,6 @@ final class DriveModeViewModel {
                         self?.startRecord()
                     } else {
                         self?.stopRecord()
-                        self?.actions.dismiss(viewController)
                         self?.actions.presetionLoginView()
                     }
                 case .failure(let failure):

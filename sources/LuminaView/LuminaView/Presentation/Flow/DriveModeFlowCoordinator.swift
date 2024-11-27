@@ -13,7 +13,7 @@ protocol DriveModeFlowCoordinatorDependencies {
 }
 
 protocol DriveModeFlowCoordinatorDelegate: AnyObject {
-    func showLoginScene()
+    func presentLoginScene()
 }
 
 ///note DriveMode의 화면 흐름을 정의한다.
@@ -51,7 +51,6 @@ final class DriveModeFlowCoordinator: Coordinator {
         navigationController?.dismiss(animated: false)
     }
     
-    //MARK: ViewController가 제거될 때 호출해서 부모 Coordinator에서 자기 자신을 없앤다.
     private func dismiss(for viewController: UIViewController) {
         guard let onDismiss = onDismissForViewController[viewController] else { return }
         onDismiss()
@@ -59,6 +58,6 @@ final class DriveModeFlowCoordinator: Coordinator {
     }
     
     func presentLoginView() {
-        delegate?.showLoginScene()
+        delegate?.presentLoginScene()
     }
 }

@@ -10,7 +10,8 @@ import AuthenticationServices
 import FirebaseAuth
 
 final class LoginViewController: UIViewController {
-    private var viewModel: LoginViewModel = LoginViewModel(authManger: AuthManager())
+    private var viewModel: LoginViewModel!
+    
     private var appleLoginButton: UIButton = {
         let button = UIButton()
         let image = UIImage(named: "LoginButton/appleLogin_button")
@@ -22,6 +23,10 @@ final class LoginViewController: UIViewController {
         
         return button
     }()
+    
+    func create(viewModel: LoginViewModel) {
+        self.viewModel = viewModel
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
