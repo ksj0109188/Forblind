@@ -45,7 +45,12 @@ final class DriveModeSceneDIContainer: DriveModeFlowCoordinatorDependencies {
     
     // MARK: ViewModel
     func makeDriveModeViewModel(actions: DriveModeViewModelActions) -> DriveModeViewModel {
-        let viewModel = DriveModeViewModel(fetchGuideUseCase: makeDriveModeUsecase(), checkFreeTrialUseCase: makeCheckFreeTrialUsecase(), updateFreeTrialUseCase: makeUpdateFreeTrialUsecase(), fetchUserInfoUseCase: makefetchUserInfoUseCase(), cameraManager: makeCameraManager(), actions: actions)
+        let viewModel = DriveModeViewModel(fetchGuideUseCase: makeDriveModeUsecase(),
+                                           checkFreeTrialUseCase: makeCheckFreeTrialUsecase(),
+                                           updateFreeTrialUseCase: makeUpdateFreeTrialUsecase(),
+                                           fetchUserInfoUseCase: makefetchUserInfoUseCase(),
+                                           cameraManager: makeCameraManager(),
+                                           actions: actions)
         
         return viewModel
     }

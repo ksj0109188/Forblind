@@ -66,8 +66,8 @@ final class DriveModeViewModel {
         updateFreeTrialUseCase.execute(requestValue: FreeTrialUseCaseRequestValue(entity: .init(remainCount: 10), limitCount: 10))
     }
     
-    private func checkUsage() -> Bool {
-        guard !isFreeTrial() else { return true }
+    func startRecordFlow() {
+        guard !isFreeTrial() else { return }
     
         let sampleUID = "hNJNPsWCkecp4qvGBoO7YjrmKBu1"
         
@@ -88,10 +88,9 @@ final class DriveModeViewModel {
         // 무료 사용량이 남아 있지 않고 로그인이 되어 있는지,
         // 로그인이 되어 있다면 사용량이 0이 아닌지
 //        actions.dismiss(viewController)
-        return true
     }
     
-    func startRecord() {
+    private func startRecord() {
         // 무료 사용량이 얼마나 남아 있는지
         let requestStream = PublishSubject<CMSampleBuffer>()
         let resultStream = PublishSubject<Result<String, Error>>()
