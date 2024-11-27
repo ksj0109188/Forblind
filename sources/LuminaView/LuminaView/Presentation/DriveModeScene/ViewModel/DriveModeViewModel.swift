@@ -64,8 +64,12 @@ final class DriveModeViewModel {
         updateFreeTrialUseCase.execute(requestValue: FreeTrialUseCaseRequestValue(entity: .init(remainCount: 10), limitCount: 10))
     }
     
-    func startRecordFlow() {
-        guard !isFreeTrial() else { return }
+    func startRecordFlow(viewController: UIViewController) {
+        guard !isFreeTrial() else {
+            debugPrint("is Free Trial")
+            startRecord()
+            return
+        }
     
         let sampleUID = "hNJNPsWCkecp4qvGBoO7YjrmKBu1"
         
@@ -77,7 +81,8 @@ final class DriveModeViewModel {
                         self?.startRecord()
                     } else {
                         self?.stopRecord()
-                        // payment 안내
+                        self?.actions.dismiss(viewController)
+                        self?.actions.presetionLoginView()
                     }
                 case .failure(let failure):
                     debugPrint(failure)
@@ -91,8 +96,6 @@ final class DriveModeViewModel {
     }
     
     private func startRecord() {
-        // 무료 사용량이 얼마나 남아 있는지
-        
         let requestStream = PublishSubject<CMSampleBuffer>()
         let resultStream = PublishSubject<Result<String, Error>>()
         

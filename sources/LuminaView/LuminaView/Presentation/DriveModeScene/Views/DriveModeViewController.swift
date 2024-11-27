@@ -162,7 +162,7 @@ class DriveModeViewController: UIViewController {
             viewModel.stopRecord()
             isRecording = false
         } else {
-            viewModel.startRecordFlow()
+            viewModel.startRecordFlow(viewController: self)
             isRecording = true
         }
     }

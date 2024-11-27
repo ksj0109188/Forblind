@@ -12,6 +12,7 @@ final class DriveModeSceneDIContainer: DriveModeFlowCoordinatorDependencies {
         let guideAPIWebRepository: GuideAPIWebRepository
         let freeTrialRepository: FreeTrialRepository
         let userInfoRepository: UserInfoRepository
+        let loginRepository: LoginRepository
         let cameraManager: Recodable
     }
     
@@ -43,12 +44,16 @@ final class DriveModeSceneDIContainer: DriveModeFlowCoordinatorDependencies {
         FetchUserInfoUseCase(repository: dependencies.userInfoRepository)
     }
     
+    func makeCheckLoginUseCase() -> CheckLoginUseCase {
+        CheckLoginUseCase(repository: dependencies.loginRepository)
+    }
+    
     // MARK: ViewModel
     func makeDriveModeViewModel(actions: DriveModeViewModelActions) -> DriveModeViewModel {
         let viewModel = DriveModeViewModel(fetchGuideUseCase: makeDriveModeUsecase(),
                                            checkFreeTrialUseCase: makeCheckFreeTrialUsecase(),
                                            updateFreeTrialUseCase: makeUpdateFreeTrialUsecase(),
-                                           fetchUserInfoUseCase: makefetchUserInfoUseCase(),
+                                           fetchUserInfoUseCase: makefetchUserInfoUseCase(), checkLoginUseCase: makeCheckLoginUseCase(),
                                            cameraManager: makeCameraManager(),
                                            actions: actions)
         
