@@ -24,7 +24,13 @@
 			</array>
 		</dict>
 	</dict>
-	<key>webSocketURL</key>
-	<string>$(webSocketURL)</string>
+	<key>WEB_SOCKET_HOST</key>
+	<string>$(WEB_SOCKET_HOST)</string>
+	<key>WEB_SOCKET_PROTOCOL</key>
+	<string>$(WEB_SOCKET_PROTOCOL)</string>
+	<key>WEB_SOCKET_PORT</key>
+	<string>$(WEB_SOCKET_PORT)</string>
+	<key>WEB_SOCKET_PATH</key>
+	<string>$(WEB_SOCKET_PATH)</string>
 </dict>
 </plist>

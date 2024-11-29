@@ -77,12 +77,12 @@ final class DriveModeViewModel {
             fetchUserInfoUseCase.execute(uid: uid) {[weak self] result in
                 switch result {
                 case .success(let userInfo):
-                    if userInfo.remainUsageSeconds > 0 {
+//                    if userInfo.remainUsageSeconds > 0 {
                         self?.startRecord()
-                    } else {
-                        self?.stopRecord()
-                        self?.actions.presetionLoginView()
-                    }
+//                    } else {
+//                        self?.stopRecord()
+//                        self?.actions.presetionLoginView()
+//                    }
                 case .failure(let failure):
                     debugPrint(failure)
                 }

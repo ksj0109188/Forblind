@@ -55,8 +55,7 @@ final class WebSocketRepository: GuideAPIWebRepository, SendableWebSocket {
     }
     
     init(config: WebSocketAPIConfig) {
-        //        let url = URL(string: config.url)!
-        let url = URL(string: "ws://192.168.45.219:8080/data-upload")!
+        let url = URL(string: config.url)!
         var request = URLRequest(url: url)
         
         request.timeoutInterval = 10

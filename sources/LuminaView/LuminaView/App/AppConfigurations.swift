@@ -23,9 +23,12 @@ final class AppConfigurations {
     }()
     
     lazy var webSocketURL: String = {
-        guard let url = Bundle.main.object(forInfoDictionaryKey: "webSocketURL") as? String else {
-            fatalError("modelName is nil")
+        guard let requestProtocol = Bundle.main.infoDictionary?["WEB_SOCKET_PROTOCOL"] as? String,
+              let host = Bundle.main.infoDictionary?["WEB_SOCKET_HOST"] as? String,
+              let port = Bundle.main.infoDictionary?["WEB_SOCKET_PORT"] as? String,
+              let path = Bundle.main.infoDictionary?["WEB_SOCKET_PATH"] as? String  else {
+            fatalError("webSocketURL is nil")
         }
-        return url
+        return "\(requestProtocol)://\(host):\(port)/\(path)"
     }()
 }
