@@ -43,14 +43,15 @@ final class DriveModeViewModel {
         stream
             .subscribe(onNext: { result in
                 switch result {
-                    case .success(let content):
-                        //TODO: 별도의 Uitility Manager로 해당 기능을 관리해야함
-                        let utterance = AVSpeechUtterance(string: content)
-                        let synthesizer = AVSpeechSynthesizer()
-                        
-                        synthesizer.speak(utterance)
-                    case .failure(let error):
-                        debugPrint(error)
+                case .success(let content):
+                    debugPrint("result stream", content)
+                    //TODO: 별도의 Uitility Manager로 해당 기능을 관리해야함
+                    let utterance = AVSpeechUtterance(string: content)
+                    let synthesizer = AVSpeechSynthesizer()
+                    
+                    synthesizer.speak(utterance)
+                case .failure(let error):
+                    debugPrint(error)
                 }
             })
             .disposed(by: disposeBag)
@@ -70,19 +71,19 @@ final class DriveModeViewModel {
             startRecord()
             return
         }
-    
+        
         let sampleUID = "hNJNPsWCkecp4qvGBoO7YjrmKBu1"
         
         if let uid = checkLoginUseCase.exec() {
             fetchUserInfoUseCase.execute(uid: uid) {[weak self] result in
                 switch result {
                 case .success(let userInfo):
-//                    if userInfo.remainUsageSeconds > 0 {
-                        self?.startRecord()
-//                    } else {
-//                        self?.stopRecord()
-//                        self?.actions.presetionLoginView()
-//                    }
+                    //                    if userInfo.remainUsageSeconds > 0 {
+                    self?.startRecord()
+                    //                    } else {
+                    //                        self?.stopRecord()
+                    //                        self?.actions.presetionLoginView()
+                    //                    }
                 case .failure(let failure):
                     debugPrint(failure)
                 }
@@ -91,7 +92,7 @@ final class DriveModeViewModel {
         
         // 무료 사용량이 남아 있지 않고 로그인이 되어 있는지,
         // 로그인이 되어 있다면 사용량이 0이 아닌지
-//        actions.dismiss(viewController)
+        //        actions.dismiss(viewController)
     }
     
     private func startRecord() {

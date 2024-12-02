@@ -109,7 +109,6 @@ extension WebSocketRepository: WebSocketDelegate {
                 
                 resultStream.onNext(.success(string))
                 
-                
             case .binary(let data):
                 print("Received data: \(data)")
             case .error(let error):
