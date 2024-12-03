@@ -22,11 +22,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         )
         
         appFlowCoordinator?.start(animated: false, onDismissed: nil)
-//        let vc = LoginViewController()
-//        vc.create(viewModel: LoginViewModel(authManger: AuthManager()))
+
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
-        window?.rootViewController = navigationController
+        window?.rootViewController = PaymentViewController()
         window?.makeKeyAndVisible()
         
         guard let _ = (scene as? UIWindowScene) else { return }
