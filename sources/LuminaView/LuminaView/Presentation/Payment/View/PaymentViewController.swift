@@ -19,8 +19,6 @@ class PaymentViewController: UIViewController {
         tableView.register(ProductCell.self, forCellReuseIdentifier: ProductCell.reuseIdentifier)
         tableView.separatorStyle = .none
         tableView.backgroundColor = .black
-        tableView.delegate = self
-        tableView.dataSource = self
         tableView.indicatorStyle = .white
         
         return tableView
@@ -32,6 +30,7 @@ class PaymentViewController: UIViewController {
             viewModel.fetchProducts()
             setupViews()
             setupConstraints()
+            bindViewModel()
         }
     }
     
@@ -39,47 +38,39 @@ class PaymentViewController: UIViewController {
         viewModel.products
             .bind(to: tableView.rx.items(cellIdentifier: ProductCell.reuseIdentifier)) { [weak self] (index, product, cell) in
                 guard let cell = cell as? ProductCell else { return }
-                self?.configureCell(cell, with: product)
+                
+                cell.configure(
+                    title: product.displayName,
+                    description: product.description,
+                    price: product.displayPrice
+                ) { [weak self] in
+                    // 구매 버튼 클릭 이벤트 처리
+                    self?.handlePurchase(for: product)
+                }
             }
             .disposed(by: disposeBag)
     }
     
-    private func configureCell(_ cell: ProductCell, with product: Product) {
-          cell.configure(
-              title: product.displayName,
-              description: product.description,
-              price: product.displayPrice
-          )
-      }
-    
     private func setupViews() {
         view.addSubview(tableView)
-        
     }
     
     private func setupConstraints() {
         let safeArea = view.safeAreaLayoutGuide
-        let padding = 20.0
         
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            tableView.topAnchor.constraint(equalTo: safeArea.topAnchor),
+            tableView.heightAnchor.constraint(equalTo: view.heightAnchor),
+            tableView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
+            tableView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
         ])
     }
     
-}
-
-extension PaymentViewController: UITableViewDelegate {
-    
-}
-
-extension PaymentViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        <#code#>
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        <#code#>
+    private func handlePurchase(for product: Product) {
+        print("구매 요청: \(product.displayName)")
+        // ViewModel에 구매 이벤트 전달
+        Task {
+             try await viewModel.purchase(product: product)
+        }
     }
 }

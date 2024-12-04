@@ -39,7 +39,6 @@
 		AE0B95192CFF0D1900FBE47E /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE0B95182CFF0D1900FBE47E /* StoreKit.framework */; };
 		AEA8A0392CF72CF600B0E5FD /* LoginSceneDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA8A0382CF72CF600B0E5FD /* LoginSceneDIContainer.swift */; };
 		AEA8A03B2CF7340900B0E5FD /* LoginSceneFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA8A03A2CF7340900B0E5FD /* LoginSceneFlowCoordinator.swift */; };
-		AED660EC2CEDBB8B00DA7EBC /* DevConfig.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = AED660EB2CEDBB8B00DA7EBC /* DevConfig.xcconfig */; };
 		AED660F02CEDBBD400DA7EBC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AED660EF2CEDBBD400DA7EBC /* GoogleService-Info.plist */; };
 		AEF36E172CEDC1870044D4D3 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF36E162CEDC1870044D4D3 /* UserInfo.swift */; };
 		AEF36E222CEDF2070044D4D3 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF36E212CEDF2070044D4D3 /* Coordinator.swift */; };
@@ -390,7 +389,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1540;
-				LastUpgradeCheck = 1540;
+				LastUpgradeCheck = 1610;
 				TargetAttributes = {
 					3BBFE8962C3D0DCF00193B70 = {
 						CreatedOnToolsVersion = 15.4;
@@ -429,7 +428,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3BBFE8A42C3D0DD200193B70 /* Assets.xcassets in Resources */,
-				AED660EC2CEDBB8B00DA7EBC /* DevConfig.xcconfig in Resources */,
 				AED660F02CEDBBD400DA7EBC /* GoogleService-Info.plist in Resources */,
 				3B1A49C92C5CD501000E21B0 /* Localizable.xcstrings in Resources */,
 				3BBFE8A72C3D0DD200193B70 /* Base in Resources */,
