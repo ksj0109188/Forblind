@@ -7,20 +7,27 @@
 
 import RxSwift
 import StoreKit
+import RxRelay
 
 final class PaymentViewModel {
+    private let disposeBag = DisposeBag()
+    private let productsRelay = BehaviorRelay<[Product]>(value: [])
     
-    init() {
-        
+    var products: Observable<[Product]> {
+        return productsRelay.asObservable()
     }
     
-    func fetchProducts() async {
-        let products: [String] = ["LumaniaView_1H", "LumaniaView_7day"]
-        
-        do {
-            let products = try await Product.products(for: ProductIdentifier.allProductIDs)
-        } catch {
-            print("Error for loading on products ")
+    func fetchProducts() {
+        Task {
+            do {
+                let fetchedProducts = try await Product.products(for: ProductIdentifier.allProductIDs)
+                
+                DispatchQueue.main.async {
+                    self.productsRelay.accept(fetchedProducts)
+                }
+            } catch {
+                print("Error loading products: \(error)")
+            }
         }
     }
     
