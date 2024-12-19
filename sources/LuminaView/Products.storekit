@@ -25,8 +25,68 @@
           "locale" : "en_US"
         }
       ],
-      "productID" : "1Hour",
-      "referenceName" : "1Hour",
+      "productID" : "LumaniaView_1H",
+      "referenceName" : "LumaniaView_1H",
+      "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "210.00",
+      "familyShareable" : false,
+      "internalID" : "1AF8B768",
+      "localizations" : [
+        {
+          "description" : "",
+          "displayName" : "",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "LumaniaView_7Day",
+      "referenceName" : "LumaniaView_7Day",
+      "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "3.99",
+      "familyShareable" : false,
+      "internalID" : "6E69CD9E",
+      "localizations" : [
+        {
+          "description" : "",
+          "displayName" : "",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "LumaniaView_4H",
+      "referenceName" : "LumaniaView_4H",
+      "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "7.99",
+      "familyShareable" : false,
+      "internalID" : "01B96C85",
+      "localizations" : [
+        {
+          "description" : "",
+          "displayName" : "",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "LumaniaView_8H",
+      "referenceName" : "LumaniaView_8H",
+      "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "21",
+      "familyShareable" : false,
+      "internalID" : "7BF9F591",
+      "localizations" : [
+        {
+          "description" : "",
+          "displayName" : "",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "LumaniaView_1day",
+      "referenceName" : "LumaniaView_1day",
       "type" : "Consumable"
     }
   ],
