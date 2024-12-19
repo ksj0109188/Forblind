@@ -14,9 +14,18 @@ typealias Transaction = StoreKit.Transaction
 final class PaymentViewModel {
     private let disposeBag = DisposeBag()
     private let productsRelay = BehaviorRelay<[Product]>(value: [])
+    private var updateListenerTask: Task<Void, Error>? = nil
     
     var products: Observable<[Product]> {
         return productsRelay.asObservable()
+    }
+    
+    init() {
+        self.updateListenerTask = listenForTransactions()
+    }
+    
+    deinit {
+        updateListenerTask?.cancel()
     }
     
     func fetchProducts() {
@@ -33,9 +42,22 @@ final class PaymentViewModel {
         }
     }
     
-    func purchase(product: Product) async throws -> Transaction? {
+    func convertUIDToUUID(firebaseUID: String) -> UUID {
+        // Firebase UID를 해싱하여 UUID 형태로 변환
+        let hash = firebaseUID.hashValue
+        let uuidString = String(format: "%08X-%04X-%04X-%04X-%012X",
+                                (hash >> 96) & 0xFFFFFFFF,
+                                (hash >> 80) & 0xFFFF,
+                                ((hash >> 64) & 0x0FFF) | 0x4000, // UUID version 4
+                                ((hash >> 48) & 0x3FFF) | 0x8000, // UUID variant
+                                hash & 0xFFFFFFFFFFFF)
+        return UUID(uuidString: uuidString)!
+    }
     
-        let token = UUID(uuidString: "hNJNPsWCkecp4qvGBoO7YjrmKBu1")!
+    func purchase(product: Product) async throws -> Transaction? {
+        
+        let token = convertUIDToUUID(firebaseUID: "hNJNPsWCkecp4qvGBoO7YjrmKBu1")
+        
         let result = try await product.purchase(options: [.appAccountToken(token)])
         
         switch result {
@@ -70,6 +92,24 @@ final class PaymentViewModel {
             debugPrint("is verified")
             // The result is verified. Return the unwrapped value.
             return safe
+        }
+    }
+    
+    func listenForTransactions() -> Task<Void, Error> {
+        return Task.detached {
+            // Iterate through any transactions that don't come from a direct call to `purchase()`.
+            for await result in Transaction.updates {
+                do {
+                    let transaction = try self.checkVerified(result)
+
+                    print("Listen For Transactions")
+                    // Always finish a transaction.
+                    await transaction.finish()
+                } catch {
+                    // StoreKit has a transaction that fails verification. Don't deliver content to the user.
+                    print("Transaction failed verification.")
+                }
+            }
         }
     }
     

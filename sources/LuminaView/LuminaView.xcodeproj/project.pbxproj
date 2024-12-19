@@ -39,6 +39,7 @@
 		AE0B95192CFF0D1900FBE47E /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE0B95182CFF0D1900FBE47E /* StoreKit.framework */; };
 		AEA8A0392CF72CF600B0E5FD /* LoginSceneDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA8A0382CF72CF600B0E5FD /* LoginSceneDIContainer.swift */; };
 		AEA8A03B2CF7340900B0E5FD /* LoginSceneFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA8A03A2CF7340900B0E5FD /* LoginSceneFlowCoordinator.swift */; };
+		AEB4BA672D144E3600FF21F4 /* Products.storekit in Resources */ = {isa = PBXBuildFile; fileRef = AEB4BA662D144E3600FF21F4 /* Products.storekit */; };
 		AED660F02CEDBBD400DA7EBC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AED660EF2CEDBBD400DA7EBC /* GoogleService-Info.plist */; };
 		AEF36E172CEDC1870044D4D3 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF36E162CEDC1870044D4D3 /* UserInfo.swift */; };
 		AEF36E222CEDF2070044D4D3 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF36E212CEDF2070044D4D3 /* Coordinator.swift */; };
@@ -85,6 +86,7 @@
 		AE0B95182CFF0D1900FBE47E /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		AEA8A0382CF72CF600B0E5FD /* LoginSceneDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSceneDIContainer.swift; sourceTree = "<group>"; };
 		AEA8A03A2CF7340900B0E5FD /* LoginSceneFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSceneFlowCoordinator.swift; sourceTree = "<group>"; };
+		AEB4BA662D144E3600FF21F4 /* Products.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Products.storekit; sourceTree = "<group>"; };
 		AED660E02CEDB8D300DA7EBC /* LuminaViewRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LuminaViewRelease.entitlements; sourceTree = "<group>"; };
 		AED660EB2CEDBB8B00DA7EBC /* DevConfig.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = DevConfig.xcconfig; sourceTree = "<group>"; };
 		AED660EF2CEDBBD400DA7EBC /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -212,6 +214,7 @@
 		3BBFE88E2C3D0DCF00193B70 = {
 			isa = PBXGroup;
 			children = (
+				AEB4BA662D144E3600FF21F4 /* Products.storekit */,
 				3BBFE8992C3D0DCF00193B70 /* LuminaView */,
 				3BBFE8982C3D0DCF00193B70 /* Products */,
 				1B4A1645B99FE1990A02073C /* Pods */,
@@ -430,6 +433,7 @@
 				3BBFE8A42C3D0DD200193B70 /* Assets.xcassets in Resources */,
 				AED660F02CEDBBD400DA7EBC /* GoogleService-Info.plist in Resources */,
 				3B1A49C92C5CD501000E21B0 /* Localizable.xcstrings in Resources */,
+				AEB4BA672D144E3600FF21F4 /* Products.storekit in Resources */,
 				3BBFE8A72C3D0DD200193B70 /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
