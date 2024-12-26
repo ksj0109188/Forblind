@@ -53,10 +53,9 @@ final class FirebaseUserInfoRepository: UserInfoRepository {
     func updateUsage(paymentInfo: PaymentInfo, completion: @escaping (Result<Bool, any Error>) -> Void) {
         let documentRef = db.collection("User").document(paymentInfo.userUID)
            
-           // Firestore 업데이트 쿼리
            documentRef.updateData([
-            "payments": FieldValue.arrayUnion([paymentInfo.id]), // payments 배열에 새로운 값 추가
-            "remainUsageSeconds": FieldValue.increment(Double(paymentInfo.usageSeconds)) // remainUsageSeconds 값 증가
+            "payments": FieldValue.arrayUnion([paymentInfo.id]),
+            "remainUsageSeconds": FieldValue.increment(Double(paymentInfo.usageSeconds))
            ]) { error in
                if let error = error {
                    print("Error updating user data: \(error.localizedDescription)")

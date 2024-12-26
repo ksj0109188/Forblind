@@ -10,7 +10,8 @@ import RxSwift
 import StoreKit
 
 class PaymentViewController: UIViewController {
-    private let viewModel: PaymentViewModel = PaymentViewModel()
+    private let viewModel: PaymentViewModel = PaymentViewModel(
+        purchaseUseCase: InAppPurchaseUseCase(service: AppleInAppPurchaseService()), checkLogin: CheckLoginUseCase(repository: FirebaseLoginRepository()), createPaymentInfoUseCase: CreatePaymentInfoUseCase(repository: FirebasePaymentRepository()), updateUsageInfoUseCase: UpdateUsageInfoUseCase(repository: FirebaseUserInfoRepository()))
     private let disposeBag = DisposeBag()
     
     private lazy var tableView: UITableView = {
@@ -26,12 +27,11 @@ class PaymentViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        Task {
-            viewModel.fetchProducts()
-            setupViews()
-            setupConstraints()
-            bindViewModel()
-        }
+        
+        setupViews()
+        bindViewModel()
+        setupConstraints()
+        viewModel.fetchProducts()
     }
     
     private func bindViewModel() {
@@ -70,7 +70,7 @@ class PaymentViewController: UIViewController {
         debugPrint("구매 요청: \(product.displayName)")
         // ViewModel에 구매 이벤트 전달
         Task {
-            let _ = try await viewModel.purchase(product: product)
+            await viewModel.purchase(product: product)
         }
     }
 }

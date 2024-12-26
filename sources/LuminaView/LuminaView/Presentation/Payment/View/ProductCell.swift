@@ -12,31 +12,38 @@ class ProductCell: UITableViewCell {
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
+        
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .label
         label.font = .boldSystemFont(ofSize: 16)
+        
         return label
     }()
     
     private lazy var descriptionLabel: UILabel = {
         let label = UILabel()
+        
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .secondaryLabel
         label.font = .systemFont(ofSize: 14)
         label.numberOfLines = 2
+        
         return label
     }()
     
     private lazy var priceLabel: UILabel = {
         let label = UILabel()
+        
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .systemBlue
         label.font = .systemFont(ofSize: 16)
+        
         return label
     }()
     
     private lazy var purchaseButton: UIButton = {
         let button = UIButton(type: .system)
+        
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("구매하기", for: .normal)
         button.setTitleColor(.white, for: .normal)
@@ -44,6 +51,7 @@ class ProductCell: UITableViewCell {
         button.layer.cornerRadius = 5
         button.clipsToBounds = true
         button.titleLabel?.font = .systemFont(ofSize: 14, weight: .bold)
+        
         return button
     }()
     

@@ -28,6 +28,7 @@ final class AppleInAppPurchaseService: PaymentService {
                                 ((hash >> 64) & 0x0FFF) | 0x4000, // UUID version 4
                                 ((hash >> 48) & 0x3FFF) | 0x8000, // UUID variant
                                 hash & 0xFFFFFFFFFFFF)
+        
         return UUID(uuidString: uuidString)!
     }
     
