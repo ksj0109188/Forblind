@@ -9,7 +9,7 @@ import Foundation
 import Firebase
 
 final class FirebaseUserInfoRepository: UserInfoRepository {
-    let db = Firestore.firestore()
+    private let db = Firestore.firestore()
     
     func fetchUserInfo(uid: String, completion: @escaping (Result<UserInfo, Error>) -> Void) {
         db.collection("User").document(uid).getDocument { (document, error) in
@@ -36,7 +36,7 @@ final class FirebaseUserInfoRepository: UserInfoRepository {
     }
     
     func registerUserInfo(uid: String, completion: @escaping (Result<Bool, Error>) -> Void) {
-        let userInfo = UserInfo(remainUsageSeconds: 0)
+        let userInfo = UserInfo(id: uid, remainUsageSeconds: 0)
         
         do {
             try db.collection("User").document(uid).setData(from: userInfo) { error in
@@ -50,6 +50,23 @@ final class FirebaseUserInfoRepository: UserInfoRepository {
         }
     }
     
+    func updateUsage(paymentInfo: PaymentInfo, completion: @escaping (Result<Bool, any Error>) -> Void) {
+        let documentRef = db.collection("User").document(paymentInfo.userUID)
+           
+           // Firestore 업데이트 쿼리
+           documentRef.updateData([
+            "payments": FieldValue.arrayUnion([paymentInfo.id]), // payments 배열에 새로운 값 추가
+            "remainUsageSeconds": FieldValue.increment(Double(paymentInfo.usageSeconds)) // remainUsageSeconds 값 증가
+           ]) { error in
+               if let error = error {
+                   print("Error updating user data: \(error.localizedDescription)")
+                   completion(.failure(error))
+               } else {
+                   print("User data successfully updated!")
+                   completion(.success(true))
+               }
+           }
+    }
 }
 
 enum FirebaseError: Error {

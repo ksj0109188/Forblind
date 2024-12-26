@@ -67,10 +67,10 @@ class PaymentViewController: UIViewController {
     }
     
     private func handlePurchase(for product: Product) {
-        print("구매 요청: \(product.displayName)")
+        debugPrint("구매 요청: \(product.displayName)")
         // ViewModel에 구매 이벤트 전달
         Task {
-             try await viewModel.purchase(product: product)
+            let _ = try await viewModel.purchase(product: product)
         }
     }
 }

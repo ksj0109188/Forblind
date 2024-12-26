@@ -40,6 +40,7 @@
 		AEA8A0392CF72CF600B0E5FD /* LoginSceneDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA8A0382CF72CF600B0E5FD /* LoginSceneDIContainer.swift */; };
 		AEA8A03B2CF7340900B0E5FD /* LoginSceneFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA8A03A2CF7340900B0E5FD /* LoginSceneFlowCoordinator.swift */; };
 		AEB4BA672D144E3600FF21F4 /* Products.storekit in Resources */ = {isa = PBXBuildFile; fileRef = AEB4BA662D144E3600FF21F4 /* Products.storekit */; };
+		AEB4BB4F2D1B24DA00FF21F4 /* PaymentInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB4BB4E2D1B24DA00FF21F4 /* PaymentInfo.swift */; };
 		AED660F02CEDBBD400DA7EBC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AED660EF2CEDBBD400DA7EBC /* GoogleService-Info.plist */; };
 		AEF36E172CEDC1870044D4D3 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF36E162CEDC1870044D4D3 /* UserInfo.swift */; };
 		AEF36E222CEDF2070044D4D3 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF36E212CEDF2070044D4D3 /* Coordinator.swift */; };
@@ -87,6 +88,7 @@
 		AEA8A0382CF72CF600B0E5FD /* LoginSceneDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSceneDIContainer.swift; sourceTree = "<group>"; };
 		AEA8A03A2CF7340900B0E5FD /* LoginSceneFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSceneFlowCoordinator.swift; sourceTree = "<group>"; };
 		AEB4BA662D144E3600FF21F4 /* Products.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Products.storekit; sourceTree = "<group>"; };
+		AEB4BB4E2D1B24DA00FF21F4 /* PaymentInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentInfo.swift; sourceTree = "<group>"; };
 		AED660E02CEDB8D300DA7EBC /* LuminaViewRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LuminaViewRelease.entitlements; sourceTree = "<group>"; };
 		AED660EB2CEDBB8B00DA7EBC /* DevConfig.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = DevConfig.xcconfig; sourceTree = "<group>"; };
 		AED660EF2CEDBBD400DA7EBC /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -97,15 +99,16 @@
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		3B1399962CC0F4D900E1292F /* FreeTrial */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = FreeTrial; sourceTree = "<group>"; };
-		3B1399972CC0F51F00E1292F /* Guide */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Guide; sourceTree = "<group>"; };
 		3B2C81A02CB7E8FC00E79FA1 /* Login */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Login; sourceTree = "<group>"; };
 		3B2C81A52CB8070C00E79FA1 /* LoginScene */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = LoginScene; sourceTree = "<group>"; };
 		3B8F1E342C9C542200A54EC4 /* View */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = View; sourceTree = "<group>"; };
 		3B8F1E352C9C542A00A54EC4 /* Camera */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Camera; sourceTree = "<group>"; };
 		AE0B951C2CFF0D6400FBE47E /* Payment */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Payment; sourceTree = "<group>"; };
 		AE0B95292CFF3CAD00FBE47E /* Product */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Product; sourceTree = "<group>"; };
-		AEA89F582CF5AC6400B0E5FD /* Login */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Login; sourceTree = "<group>"; };
+		AE2B05FA2D1C76C1009709E3 /* Payment */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Payment; sourceTree = "<group>"; };
 		AEA89F622CF5AE2F00B0E5FD /* Login */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Login; sourceTree = "<group>"; };
+		AEB4BACA2D1582E600FF21F4 /* Payment */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Payment; sourceTree = "<group>"; };
+		AEB4BACE2D15849B00FF21F4 /* Infrastructure */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Infrastructure; sourceTree = "<group>"; };
 		AED660E72CEDBAA400DA7EBC /* UserInfo */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = UserInfo; sourceTree = "<group>"; };
 		AEF36E182CEDEF6D0044D4D3 /* Guide */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Guide; sourceTree = "<group>"; };
 		AEF36E192CEDEF750044D4D3 /* FreeTrial */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = FreeTrial; sourceTree = "<group>"; };
@@ -214,7 +217,6 @@
 		3BBFE88E2C3D0DCF00193B70 = {
 			isa = PBXGroup;
 			children = (
-				AEB4BA662D144E3600FF21F4 /* Products.storekit */,
 				3BBFE8992C3D0DCF00193B70 /* LuminaView */,
 				3BBFE8982C3D0DCF00193B70 /* Products */,
 				1B4A1645B99FE1990A02073C /* Pods */,
@@ -237,7 +239,7 @@
 				3B2C819D2CB7DC2500E79FA1 /* LuminaViewDebug.entitlements */,
 				3B37927D2C46885100375767 /* Utilities */,
 				96586BEA2C3D1A82007039FB /* Resources */,
-				96586BE62C3D1A3F007039FB /* Repositories */,
+				AEB4BACB2D15844200FF21F4 /* Network */,
 				96586BE22C3D1A15007039FB /* Domain */,
 				96586BDF2C3D19F8007039FB /* Presentation */,
 				96586BDE2C3D19EB007039FB /* App */,
@@ -292,6 +294,7 @@
 			children = (
 				3B13999C2CC0F7B700E1292F /* FreeTrial.swift */,
 				AEF36E162CEDC1870044D4D3 /* UserInfo.swift */,
+				AEB4BB4E2D1B24DA00FF21F4 /* PaymentInfo.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -299,6 +302,7 @@
 		96586BE42C3D1A2B007039FB /* UseCase */ = {
 			isa = PBXGroup;
 			children = (
+				AEB4BACA2D1582E600FF21F4 /* Payment */,
 				AEA89F622CF5AE2F00B0E5FD /* Login */,
 				AEF36E182CEDEF6D0044D4D3 /* Guide */,
 				AEF36E192CEDEF750044D4D3 /* FreeTrial */,
@@ -310,13 +314,12 @@
 		96586BE62C3D1A3F007039FB /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
-				AEA89F582CF5AC6400B0E5FD /* Login */,
 				AED660E72CEDBAA400DA7EBC /* UserInfo */,
-				3B1399972CC0F51F00E1292F /* Guide */,
 				3B1399962CC0F4D900E1292F /* FreeTrial */,
+				AE2B05FA2D1C76C1009709E3 /* Payment */,
 			);
 			name = Repositories;
-			path = ../Repositories;
+			path = ../../Repositories;
 			sourceTree = "<group>";
 		};
 		96586BEA2C3D1A82007039FB /* Resources */ = {
@@ -329,8 +332,18 @@
 				3BE1CBCF2C48F84A003E7C62 /* GeminiAPIConfig.swift */,
 				3B8F1E322C9C369400A54EC4 /* WebSocketAPIConfig.swift */,
 				3B1A49C82C5CD501000E21B0 /* Localizable.xcstrings */,
+				AEB4BA662D144E3600FF21F4 /* Products.storekit */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		AEB4BACB2D15844200FF21F4 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				96586BE62C3D1A3F007039FB /* Repositories */,
+				AEB4BACE2D15849B00FF21F4 /* Infrastructure */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -354,15 +367,16 @@
 			);
 			fileSystemSynchronizedGroups = (
 				3B1399962CC0F4D900E1292F /* FreeTrial */,
-				3B1399972CC0F51F00E1292F /* Guide */,
 				3B2C81A02CB7E8FC00E79FA1 /* Login */,
 				3B2C81A52CB8070C00E79FA1 /* LoginScene */,
 				3B8F1E342C9C542200A54EC4 /* View */,
 				3B8F1E352C9C542A00A54EC4 /* Camera */,
 				AE0B951C2CFF0D6400FBE47E /* Payment */,
 				AE0B95292CFF3CAD00FBE47E /* Product */,
-				AEA89F582CF5AC6400B0E5FD /* Login */,
+				AE2B05FA2D1C76C1009709E3 /* Payment */,
 				AEA89F622CF5AE2F00B0E5FD /* Login */,
+				AEB4BACA2D1582E600FF21F4 /* Payment */,
+				AEB4BACE2D15849B00FF21F4 /* Infrastructure */,
 				AED660E72CEDBAA400DA7EBC /* UserInfo */,
 				AEF36E182CEDEF6D0044D4D3 /* Guide */,
 				AEF36E192CEDEF750044D4D3 /* FreeTrial */,
@@ -524,6 +538,7 @@
 				96BD02582C49458300CBEE58 /* CommonCustomLabel.swift in Sources */,
 				AEA8A0392CF72CF600B0E5FD /* LoginSceneDIContainer.swift in Sources */,
 				3BBFE89D2C3D0DCF00193B70 /* SceneDelegate.swift in Sources */,
+				AEB4BB4F2D1B24DA00FF21F4 /* PaymentInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

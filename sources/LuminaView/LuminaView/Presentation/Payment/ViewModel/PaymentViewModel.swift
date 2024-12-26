@@ -14,24 +14,29 @@ typealias Transaction = StoreKit.Transaction
 final class PaymentViewModel {
     private let disposeBag = DisposeBag()
     private let productsRelay = BehaviorRelay<[Product]>(value: [])
-    private var updateListenerTask: Task<Void, Error>? = nil
+    private let purchaseUseCase: InAppPurchaseUseCase
+    private let checkLogin: CheckLoginUseCase
+    private let createPaymentInfoUseCase: CreatePaymentInfoUseCase
+    private let updateUsageInfoUseCase: UpdateUsageInfoUseCase
     
     var products: Observable<[Product]> {
         return productsRelay.asObservable()
     }
     
-    init() {
-        self.updateListenerTask = listenForTransactions()
-    }
-    
-    deinit {
-        updateListenerTask?.cancel()
+    init(purchaseUseCase: InAppPurchaseUseCase,
+         checkLogin: CheckLoginUseCase,
+         createPaymentInfoUseCase: CreatePaymentInfoUseCase,
+         updateUsageInfoUseCase: UpdateUsageInfoUseCase) {
+        self.purchaseUseCase = purchaseUseCase
+        self.checkLogin = checkLogin
+        self.createPaymentInfoUseCase = createPaymentInfoUseCase
+        self.updateUsageInfoUseCase = updateUsageInfoUseCase
     }
     
     func fetchProducts() {
         Task {
             do {
-                let fetchedProducts = try await Product.products(for: ProductIdentifier.allProductIDs)
+                let fetchedProducts = try await Product.products(for: Products.allProductIDs)
                 
                 DispatchQueue.main.async {
                     self.productsRelay.accept(fetchedProducts.sorted { $0.price < $1.price})
@@ -42,79 +47,26 @@ final class PaymentViewModel {
         }
     }
     
-    func convertUIDToUUID(firebaseUID: String) -> UUID {
-        // Firebase UID를 해싱하여 UUID 형태로 변환
-        let hash = firebaseUID.hashValue
-        let uuidString = String(format: "%08X-%04X-%04X-%04X-%012X",
-                                (hash >> 96) & 0xFFFFFFFF,
-                                (hash >> 80) & 0xFFFF,
-                                ((hash >> 64) & 0x0FFF) | 0x4000, // UUID version 4
-                                ((hash >> 48) & 0x3FFF) | 0x8000, // UUID variant
-                                hash & 0xFFFFFFFFFFFF)
-        return UUID(uuidString: uuidString)!
-    }
-    
-    func purchase(product: Product) async throws -> Transaction? {
+    func purchase(product: Product) async {
+        guard let userUID = checkLogin.exec() else { return }
+        guard let transcation = try? await purchaseUseCase.exec(product: product) else { return }
+        guard let usage = Products.duration(for: transcation.productID) else { return }
         
-        let token = convertUIDToUUID(firebaseUID: "hNJNPsWCkecp4qvGBoO7YjrmKBu1")
+        let paymentID = String(transcation.originalID)
+        let paymentInfo = PaymentInfo(id: paymentID,
+                                      productID: transcation.productID,
+                                      usageSeconds: usage,
+                                      userUID: userUID)
         
-        let result = try await product.purchase(options: [.appAccountToken(token)])
         
-        switch result {
-        case .success(let verification):
-            // Check whether the transaction is verified. If it isn't,
-            // this function rethrows the verification error.
-            let transaction = try checkVerified(verification)
-
-            // The transaction is verified. Deliver content to the user.
-//            await updateCustomerProductStatus()
-
-            // Always finish a transaction.
-            await transaction.finish()
-            print("purchase result is succed")
-            return transaction
-        case .userCancelled, .pending:
-            print("purchase result is pending and Canceeled")
-            return nil
-        default:
-            return nil
-        }
-    }
-    
-    func checkVerified<T>(_ result: VerificationResult<T>) throws -> T {
-        // Check whether the JWS passes StoreKit verification.
-        switch result {
-        case .unverified:
-            print("is unverified")
-            // StoreKit parses the JWS, but it fails verification.
-            throw StoreError.failedVerification
-        case .verified(let safe):
-            debugPrint("is verified")
-            // The result is verified. Return the unwrapped value.
-            return safe
-        }
-    }
-    
-    func listenForTransactions() -> Task<Void, Error> {
-        return Task.detached {
-            // Iterate through any transactions that don't come from a direct call to `purchase()`.
-            for await result in Transaction.updates {
-                do {
-                    let transaction = try self.checkVerified(result)
-
-                    print("Listen For Transactions")
-                    // Always finish a transaction.
-                    await transaction.finish()
-                } catch {
-                    // StoreKit has a transaction that fails verification. Don't deliver content to the user.
-                    print("Transaction failed verification.")
-                }
+        createPaymentInfoUseCase.execute(paymentInfo: paymentInfo) { result in
+            switch result {
+            case .success(let paymentInfo):
+                self.updateUsageInfoUseCase.execute(paymentInfo: paymentInfo) { _ in }
+            case .failure(let failure):
+                debugPrint(failure)
             }
         }
+            
     }
-    
-}
-
-public enum StoreError: Error {
-    case failedVerification
 }
