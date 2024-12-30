@@ -12,7 +12,7 @@ protocol LoginSceneFlowCoordinatorDependencies {
 }
 
 protocol LoginSceneFlowCoordinatorDelegate: AnyObject {
-    func showPaymentScene()
+    func presentPaymentScene()
     func presentDriveModeScene()
 }
 
@@ -45,7 +45,7 @@ final class LoginSceneFlowCoordinator: Coordinator {
     }
     
     func showPaymentScene() {
-        delegate?.showPaymentScene()
+        delegate?.presentPaymentScene()
     }
     
     func showDriveModeScene() {

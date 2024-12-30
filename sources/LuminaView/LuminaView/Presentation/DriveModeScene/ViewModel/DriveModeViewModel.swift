@@ -12,6 +12,7 @@ import AVFAudio
 
 struct DriveModeViewModelActions {
     let showCameraPreview: (_ viewModel: DriveModeViewModel) -> Void
+    let showPaymentScene: () -> Void
     let dismissCameraPreview: () -> Void
     let dismiss: (UIViewController) -> Void
     let presetionLoginView: () -> Void
@@ -67,32 +68,27 @@ final class DriveModeViewModel {
     
     func startRecordFlow(viewController: UIViewController) {
         guard !isFreeTrial() else {
-            debugPrint("is Free Trial")
             startRecord()
             return
         }
-        
-        let sampleUID = "hNJNPsWCkecp4qvGBoO7YjrmKBu1"
         
         if let uid = checkLoginUseCase.exec() {
             fetchUserInfoUseCase.execute(uid: uid) {[weak self] result in
                 switch result {
                 case .success(let userInfo):
-                    //                    if userInfo.remainUsageSeconds > 0 {
-                    self?.startRecord()
-                    //                    } else {
-                    //                        self?.stopRecord()
-                    //                        self?.actions.presetionLoginView()
-                    //                    }
+                    if userInfo.remainUsageSeconds > 0 {
+                        self?.startRecord()
+                    } else {
+                        self?.stopRecord()
+                        self?.actions.showPaymentScene()
+                    }
                 case .failure(let failure):
                     debugPrint(failure)
                 }
             }
+        } else {
+            actions.presetionLoginView()
         }
-        
-        // 무료 사용량이 남아 있지 않고 로그인이 되어 있는지,
-        // 로그인이 되어 있다면 사용량이 0이 아닌지
-        //        actions.dismiss(viewController)
     }
     
     private func startRecord() {

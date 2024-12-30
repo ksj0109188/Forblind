@@ -14,6 +14,7 @@ protocol DriveModeFlowCoordinatorDependencies {
 
 protocol DriveModeFlowCoordinatorDelegate: AnyObject {
     func presentLoginScene()
+    func presentPaymentScene()
 }
 
 ///note DriveMode의 화면 흐름을 정의한다.
@@ -34,6 +35,7 @@ final class DriveModeFlowCoordinator: Coordinator {
     
     func start(animated: Bool, onDismissed: (() -> Void)?) {
         let actions = DriveModeViewModelActions(showCameraPreview: showCameraPreview,
+                                                showPaymentScene: presentPaymentView,
                                                 dismissCameraPreview: dismissCameraPreviewScene,
                                                 dismiss: dismiss,
                                                 presetionLoginView: presentLoginView)
@@ -59,5 +61,9 @@ final class DriveModeFlowCoordinator: Coordinator {
     
     func presentLoginView() {
         delegate?.presentLoginScene()
+    }
+    
+    func presentPaymentView() {
+        delegate?.presentPaymentScene()
     }
 }

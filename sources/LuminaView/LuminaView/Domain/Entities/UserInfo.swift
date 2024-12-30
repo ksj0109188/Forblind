@@ -9,7 +9,7 @@ import Foundation
 import FirebaseFirestore
 
 struct UserInfo: Identifiable, Codable {
-    var id: String
+    @DocumentID var id: String?
     var payments: [String]?
     var remainUsageSeconds: Int
 }

@@ -38,7 +38,7 @@ final class AppFlowCoordinator: Coordinator, DriveModeFlowCoordinatorDelegate, L
         presentChild(coordinator, animated: false)
     }
     
-    func showPaymentScene() {
+    func presentPaymentScene() {
         let paymentDIContainer = appDIContainer.makePaymentDIContainer()
         let coordinaotr = paymentDIContainer.makePaymentSceneFlowCoordinator(navigationController: navigationController, parentCoordinator: self)
         children?.append(coordinaotr)
