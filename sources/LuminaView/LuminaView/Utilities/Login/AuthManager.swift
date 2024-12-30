@@ -35,7 +35,7 @@ final class AuthManager: NSObject {
     }
     
     @available(iOS 13, *)
-    private func sha256(_ input: String) -> String {
+    func sha256(_ input: String) -> String {
         let inputData = Data(input.utf8)
         let hashedData = SHA256.hash(data: inputData)
         let hashString = hashedData.compactMap {
@@ -60,7 +60,7 @@ final class AuthManager: NSObject {
 //      authorizationController.performRequests()
 //    }
     
-    func fetchUid() -> String? {
+    func fetchUID() -> String? {
         return Auth.auth().currentUser?.uid
     }
 }

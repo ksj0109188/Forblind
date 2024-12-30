@@ -50,7 +50,7 @@ final class LoginViewController: UIViewController {
         let appleIDProvider = ASAuthorizationAppleIDProvider()
         let request = appleIDProvider.createRequest()
         request.requestedScopes = [.fullName, .email]
-        request.nonce = viewModel.fetchNonce()
+        request.nonce = viewModel.fetchAppleNonce()
         
         let authorizationController = ASAuthorizationController(authorizationRequests: [request])
         authorizationController.delegate = self
@@ -75,17 +75,18 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
                                                            rawNonce: viewModel.fetchNonce(),
                                                            fullName: appleIDCredential.fullName)
          // Sign in with Firebase.
-         Auth.auth().signIn(with: credential) { (authResult, error) in
+           Auth.auth().signIn(with: credential) { [weak self] (authResult, error) in
              if (error != nil) {
              // Error. If error.code == .MissingOrInvalidNonce, make sure
              // you're sending the SHA256-hashed nonce as a hex string with
              // your request to Apple.
+                 print("========Firebase Auth Error========")
                  print(error?.localizedDescription)
                  return
            }
            // User is signed in to Firebase with Apple.
-           // ...
-             print(authResult)
+           
+             self?.viewModel.showDriveModeScene()
          }
        }
      }
