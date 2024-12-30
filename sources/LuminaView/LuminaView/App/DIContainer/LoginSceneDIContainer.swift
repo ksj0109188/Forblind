@@ -28,8 +28,6 @@ final class LoginSceneDIContainer: LoginSceneFlowCoordinatorDependencies {
     }
     
     // MARK: UseCase
-    
-    
     // MARK: ViewModel
     func makeLoginViewModel() -> LoginViewModel {
         LoginViewModel(authManger: makeAuthManager())

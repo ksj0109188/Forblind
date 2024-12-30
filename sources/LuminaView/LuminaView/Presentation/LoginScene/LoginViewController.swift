@@ -81,7 +81,7 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
              // you're sending the SHA256-hashed nonce as a hex string with
              // your request to Apple.
                  print(error?.localizedDescription)
-             return
+                 return
            }
            // User is signed in to Firebase with Apple.
            // ...

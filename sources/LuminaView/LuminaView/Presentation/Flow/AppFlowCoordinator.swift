@@ -7,8 +7,7 @@
 
 import UIKit
 
-///note: FlowCoordinator들을 관리
-final class AppFlowCoordinator: Coordinator, DriveModeFlowCoordinatorDelegate, LoginSceneFlowCoordinatorDelegate {
+final class AppFlowCoordinator: Coordinator, DriveModeFlowCoordinatorDelegate, LoginSceneFlowCoordinatorDelegate, PaymentSceneFlowCoordinatorDelegate {
     var children: [Coordinator]?
     var navigationController: UINavigationController
     private let appDIContainer: AppDIContainer
@@ -19,7 +18,8 @@ final class AppFlowCoordinator: Coordinator, DriveModeFlowCoordinatorDelegate, L
     }
     
     func start(animated: Bool, onDismissed: (() -> Void)?) {
-        presentDriveModeScene()
+//        presentDriveModeScene()
+        presentLoginScene()
     }
     
     func presentDriveModeScene() {
@@ -39,6 +39,10 @@ final class AppFlowCoordinator: Coordinator, DriveModeFlowCoordinatorDelegate, L
     }
     
     func showPaymentScene() {
+        let paymentDIContainer = appDIContainer.makePaymentDIContainer()
+        let coordinaotr = paymentDIContainer.makePaymentSceneFlowCoordinator(navigationController: navigationController, parentCoordinator: self)
+        children?.append(coordinaotr)
         
+        presentChild(coordinaotr, animated: false)
     }
 }

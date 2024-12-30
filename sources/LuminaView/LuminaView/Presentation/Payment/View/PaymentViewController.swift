@@ -10,8 +10,7 @@ import RxSwift
 import StoreKit
 
 class PaymentViewController: UIViewController {
-    private let viewModel: PaymentViewModel = PaymentViewModel(
-        purchaseUseCase: InAppPurchaseUseCase(service: AppleInAppPurchaseService()), checkLogin: CheckLoginUseCase(repository: FirebaseLoginRepository()), createPaymentInfoUseCase: CreatePaymentInfoUseCase(repository: FirebasePaymentRepository()), updateUsageInfoUseCase: UpdateUsageInfoUseCase(repository: FirebaseUserInfoRepository()))
+    private var viewModel: PaymentViewModel!
     private let disposeBag = DisposeBag()
     
     private lazy var tableView: UITableView = {
@@ -29,9 +28,13 @@ class PaymentViewController: UIViewController {
         super.viewDidLoad()
         
         setupViews()
-        bindViewModel()
         setupConstraints()
         viewModel.fetchProducts()
+    }
+    
+    func create(viewModel: PaymentViewModel) {
+        self.viewModel = viewModel
+        bindViewModel()
     }
     
     private func bindViewModel() {

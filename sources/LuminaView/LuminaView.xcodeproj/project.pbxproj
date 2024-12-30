@@ -37,6 +37,8 @@
 		96BD02582C49458300CBEE58 /* CommonCustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BD02572C49458300CBEE58 /* CommonCustomLabel.swift */; };
 		96BD025A2C4945A100CBEE58 /* CommonCustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BD02592C4945A100CBEE58 /* CommonCustomButton.swift */; };
 		AE0B95192CFF0D1900FBE47E /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE0B95182CFF0D1900FBE47E /* StoreKit.framework */; };
+		AE2B066A2D1D6EAF009709E3 /* PaymentSceneFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2B06692D1D6EAF009709E3 /* PaymentSceneFlowCoordinator.swift */; };
+		AE2B066C2D1D7B20009709E3 /* PaymentSceneDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2B066B2D1D7B20009709E3 /* PaymentSceneDIContainer.swift */; };
 		AEA8A0392CF72CF600B0E5FD /* LoginSceneDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA8A0382CF72CF600B0E5FD /* LoginSceneDIContainer.swift */; };
 		AEA8A03B2CF7340900B0E5FD /* LoginSceneFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA8A03A2CF7340900B0E5FD /* LoginSceneFlowCoordinator.swift */; };
 		AEB4BA672D144E3600FF21F4 /* Products.storekit in Resources */ = {isa = PBXBuildFile; fileRef = AEB4BA662D144E3600FF21F4 /* Products.storekit */; };
@@ -85,6 +87,8 @@
 		96BD02592C4945A100CBEE58 /* CommonCustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonCustomButton.swift; sourceTree = "<group>"; };
 		9AA3194F4A8B068078E546D6 /* Pods_LuminaView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LuminaView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE0B95182CFF0D1900FBE47E /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		AE2B06692D1D6EAF009709E3 /* PaymentSceneFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentSceneFlowCoordinator.swift; sourceTree = "<group>"; };
+		AE2B066B2D1D7B20009709E3 /* PaymentSceneDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentSceneDIContainer.swift; sourceTree = "<group>"; };
 		AEA8A0382CF72CF600B0E5FD /* LoginSceneDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSceneDIContainer.swift; sourceTree = "<group>"; };
 		AEA8A03A2CF7340900B0E5FD /* LoginSceneFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSceneFlowCoordinator.swift; sourceTree = "<group>"; };
 		AEB4BA662D144E3600FF21F4 /* Products.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Products.storekit; sourceTree = "<group>"; };
@@ -161,6 +165,7 @@
 				3B37926B2C467B8E00375767 /* AppDIContainer.swift */,
 				3B3792712C467F6600375767 /* DriveModeSceneDIContainer.swift */,
 				AEA8A0382CF72CF600B0E5FD /* LoginSceneDIContainer.swift */,
+				AE2B066B2D1D7B20009709E3 /* PaymentSceneDIContainer.swift */,
 			);
 			path = DIContainer;
 			sourceTree = "<group>";
@@ -172,6 +177,7 @@
 				AEF36E212CEDF2070044D4D3 /* Coordinator.swift */,
 				3B3792732C467FB500375767 /* DriveModeFlowCoordinator.swift */,
 				AEA8A03A2CF7340900B0E5FD /* LoginSceneFlowCoordinator.swift */,
+				AE2B06692D1D6EAF009709E3 /* PaymentSceneFlowCoordinator.swift */,
 			);
 			path = Flow;
 			sourceTree = "<group>";
@@ -532,10 +538,12 @@
 				AEF36E172CEDC1870044D4D3 /* UserInfo.swift in Sources */,
 				3B3792722C467F6600375767 /* DriveModeSceneDIContainer.swift in Sources */,
 				3BBFE89B2C3D0DCF00193B70 /* AppDelegate.swift in Sources */,
+				AE2B066A2D1D6EAF009709E3 /* PaymentSceneFlowCoordinator.swift in Sources */,
 				AEF36E222CEDF2070044D4D3 /* Coordinator.swift in Sources */,
 				3B3792792C4681C100375767 /* DriveModeViewModel.swift in Sources */,
 				96BD025A2C4945A100CBEE58 /* CommonCustomButton.swift in Sources */,
 				96BD02582C49458300CBEE58 /* CommonCustomLabel.swift in Sources */,
+				AE2B066C2D1D7B20009709E3 /* PaymentSceneDIContainer.swift in Sources */,
 				AEA8A0392CF72CF600B0E5FD /* LoginSceneDIContainer.swift in Sources */,
 				3BBFE89D2C3D0DCF00193B70 /* SceneDelegate.swift in Sources */,
 				AEB4BB4F2D1B24DA00FF21F4 /* PaymentInfo.swift in Sources */,

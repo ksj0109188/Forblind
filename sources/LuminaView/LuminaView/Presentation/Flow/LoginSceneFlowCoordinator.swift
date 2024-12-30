@@ -18,7 +18,10 @@ protocol LoginSceneFlowCoordinatorDelegate: AnyObject {
 
 final class LoginSceneFlowCoordinator: Coordinator {
     var children: [any Coordinator]?
+    //TODO:  이렇게 하위 coordinator에서 navigationcontroller를 조작하는 건 글로벌적으로 오류 발생 야기할 수 있을듯. 따라서 delegate 패턴 활용해서 appflowcoordinator 사용하는 거 한 번 생각해보자.
+
     private weak var navigationController: UINavigationController?
+    
     private weak var delegate: LoginSceneFlowCoordinatorDelegate?
     private let dependencies: LoginSceneFlowCoordinatorDependencies
     private var onDismissForViewController: [UIViewController: (()->Void)] = [:]

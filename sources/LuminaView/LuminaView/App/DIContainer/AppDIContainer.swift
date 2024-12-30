@@ -23,6 +23,14 @@ final class AppDIContainer {
         return FirebaseUserInfoRepository()
     }()
     
+    lazy var inAppPurchaseService: PaymentService = {
+        return AppleInAppPurchaseService()
+    }()
+    
+    lazy var paymentRepository: PaymentRepository = {
+       return FirebasePaymentRepository()
+    }()
+    
     lazy var loginService: LoginRepository = {
         return FirebaseLoginRepository()
     }()
@@ -45,5 +53,14 @@ final class AppDIContainer {
         let dependencies = LoginSceneDIContainer.Dependencies(authManager: authManager)
         
         return LoginSceneDIContainer(dependencies: dependencies)
+    }
+    
+    func makePaymentDIContainer() -> PaymentSceneDIContainer {
+        let dependencies = PaymentSceneDIContainer.Dependencies(inAppPurchaseService: inAppPurchaseService,
+                                                                loginRepository: loginService,
+                                                                paymentRepository: paymentRepository,
+                                                                userInfoRepository: userInfoService)
+        
+        return PaymentSceneDIContainer(dependencies: dependencies)
     }
 }
