@@ -21,13 +21,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             appDIContainer: appDIContainer
         )
         
-        appFlowCoordinator?.start()
-        
+        appFlowCoordinator?.start(animated: false, onDismissed: nil)
+
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
+        
         guard let _ = (scene as? UIWindowScene) else { return }
     }
 }
-

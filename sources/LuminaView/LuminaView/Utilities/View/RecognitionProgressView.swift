@@ -26,6 +26,7 @@ class RecognitionProgressView: UIViewController {
 		setProgressView()
         setupConstraints()
 	}
+    
 	///2. animation 세팅
 	private func setProgressView() {
 		progressView.loopMode = .loop
@@ -67,9 +68,8 @@ class RecognitionProgressView: UIViewController {
 		let progressRange = ProgressKeyFrames.start.rawValue - ProgressKeyFrames.end.rawValue
 		let progressFrame = progressRange * progress
 		let currentFrame = progressFrame + ProgressKeyFrames.start.rawValue
-        print("currentFrame", currentFrame)
+        
 		progressView.currentFrame = currentFrame
-		print("Downloading \((progress * 100).rounded())%")
 		progressView.play()
 	}
     

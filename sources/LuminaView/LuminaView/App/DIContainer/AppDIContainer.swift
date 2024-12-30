@@ -10,19 +10,57 @@ import Foundation
 final class AppDIContainer {
     lazy var appConfigurations = AppConfigurations()
     lazy var guideService: GuideAPIWebRepository = {
-        let config = GeminiAPIConfig(
-            apiKey: appConfigurations.geminiAPIKey,
-            modelName: appConfigurations.geminiModelName)
-        let geminiWebRepository = GeminiWebRepository()
+        let config = WebSocketAPIConfig(url: appConfigurations.webSocketURL)
         
-        geminiWebRepository.configure(config: config)
-        
-        return geminiWebRepository
+        return WebSocketRepository(config: config)
+    }()
+    
+    lazy var freeTrialService: FreeTrialRepository = {
+        return DefaultFreeTrialRepository()
+    }()
+    
+    lazy var userInfoService: UserInfoRepository = {
+        return FirebaseUserInfoRepository()
+    }()
+    
+    lazy var inAppPurchaseService: PaymentService = {
+        return AppleInAppPurchaseService()
+    }()
+    
+    lazy var paymentRepository: PaymentRepository = {
+       return FirebasePaymentRepository()
+    }()
+    
+    lazy var loginService: LoginRepository = {
+        return FirebaseLoginRepository()
+    }()
+    
+    lazy var authManager: AuthManager = {
+        return AuthManager()
     }()
     
     func makeDriveModeSceneDIContainer() -> DriveModeSceneDIContainer {
-        let dependencies = DriveModeSceneDIContainer.Dependencies(guideAPIWebRepository: guideService, cameraManager: CameraManger())
-
+        let dependencies = DriveModeSceneDIContainer.Dependencies(guideAPIWebRepository: guideService,
+                                                                  freeTrialRepository: freeTrialService,
+                                                                  userInfoRepository: userInfoService,
+                                                                  loginRepository: loginService,
+                                                                  cameraManager: CameraManger())
+        
         return DriveModeSceneDIContainer(dependencies:  dependencies)
+    }
+    
+    func makeLoginSceneDIContainer() -> LoginSceneDIContainer {
+        let dependencies = LoginSceneDIContainer.Dependencies(authManager: authManager)
+        
+        return LoginSceneDIContainer(dependencies: dependencies)
+    }
+    
+    func makePaymentDIContainer() -> PaymentSceneDIContainer {
+        let dependencies = PaymentSceneDIContainer.Dependencies(inAppPurchaseService: inAppPurchaseService,
+                                                                loginRepository: loginService,
+                                                                paymentRepository: paymentRepository,
+                                                                userInfoRepository: userInfoService)
+        
+        return PaymentSceneDIContainer(dependencies: dependencies)
     }
 }

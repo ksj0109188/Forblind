@@ -5,18 +5,5 @@ use_frameworks!
 project 'LuminaView.xcodeproj'
 
 target 'LuminaView' do
-pod 'GoogleMLKit/BarcodeScanning', '6.0.0'
-pod 'GoogleMLKit/FaceDetection', '6.0.0'
-pod 'GoogleMLKit/ImageLabeling', '6.0.0'
-pod 'GoogleMLKit/ImageLabelingCustom', '6.0.0'
-pod 'GoogleMLKit/ObjectDetection', '6.0.0'
-pod 'GoogleMLKit/ObjectDetectionCustom', '6.0.0'
-pod 'GoogleMLKit/PoseDetection', '6.0.0'
-pod 'GoogleMLKit/PoseDetectionAccurate', '6.0.0'
-pod 'GoogleMLKit/SegmentationSelfie', '6.0.0'
-pod 'GoogleMLKit/TextRecognition', '6.0.0'
-pod 'GoogleMLKit/TextRecognitionChinese', '6.0.0'
-pod 'GoogleMLKit/TextRecognitionDevanagari', '6.0.0'
-pod 'GoogleMLKit/TextRecognitionJapanese', '6.0.0'
-pod 'GoogleMLKit/TextRecognitionKorean', '6.0.0'
+pod 'Starscream', '~> 4.0.0'
 end

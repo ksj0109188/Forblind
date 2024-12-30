@@ -10,6 +10,9 @@ import UIKit
 final class DriveModeSceneDIContainer: DriveModeFlowCoordinatorDependencies {
     struct Dependencies {
         let guideAPIWebRepository: GuideAPIWebRepository
+        let freeTrialRepository: FreeTrialRepository
+        let userInfoRepository: UserInfoRepository
+        let loginRepository: LoginRepository
         let cameraManager: Recodable
     }
     
@@ -19,14 +22,40 @@ final class DriveModeSceneDIContainer: DriveModeFlowCoordinatorDependencies {
         self.dependencies = dependencies
     }
     
+    // MARK: Utilites
+    func makeCameraManager() -> Recodable {
+        return dependencies.cameraManager
+    }
+    
     // MARK: UseCase
-    func makeDriveModeUsecase() -> FetchGuideUseCase{
+    func makeDriveModeUsecase() -> FetchGuideUseCase {
         FetchGuideUseCase(guideAPIWebRepository: dependencies.guideAPIWebRepository)
+    }
+    
+    func makeCheckFreeTrialUsecase() -> CheckFreeTrialUseCase {
+        CheckFreeTrialUseCase(repository: dependencies.freeTrialRepository)
+    }
+    
+    func makeUpdateFreeTrialUsecase() -> UpdateFreeTrialUseCase {
+        UpdateFreeTrialUseCase(repository: dependencies.freeTrialRepository)
+    }
+    
+    func makefetchUserInfoUseCase() -> FetchUserInfoUseCase {
+        FetchUserInfoUseCase(repository: dependencies.userInfoRepository)
+    }
+    
+    func makeCheckLoginUseCase() -> CheckLoginUseCase {
+        CheckLoginUseCase(repository: dependencies.loginRepository)
     }
     
     // MARK: ViewModel
     func makeDriveModeViewModel(actions: DriveModeViewModelActions) -> DriveModeViewModel {
-        let viewModel = DriveModeViewModel(useCase: makeDriveModeUsecase(), cameraManager: dependencies.cameraManager, actions: actions)
+        let viewModel = DriveModeViewModel(fetchGuideUseCase: makeDriveModeUsecase(),
+                                           checkFreeTrialUseCase: makeCheckFreeTrialUsecase(),
+                                           updateFreeTrialUseCase: makeUpdateFreeTrialUsecase(),
+                                           fetchUserInfoUseCase: makefetchUserInfoUseCase(), checkLoginUseCase: makeCheckLoginUseCase(),
+                                           cameraManager: makeCameraManager(),
+                                           actions: actions)
         
         return viewModel
     }
@@ -46,7 +75,7 @@ final class DriveModeSceneDIContainer: DriveModeFlowCoordinatorDependencies {
         return vc
     }
     
-    func makeDriveModeSceneFlowCoordinator(navigationController: UINavigationController) -> DriveModeFlowCoordinator {
-        DriveModeFlowCoordinator(navigationController: navigationController, dependencies: self)
+    func makeDriveModeSceneFlowCoordinator(navigationController: UINavigationController, parentCoordinator: DriveModeFlowCoordinatorDelegate) -> DriveModeFlowCoordinator {
+        DriveModeFlowCoordinator(navigationController: navigationController, dependencies: self, parentDelegate: parentCoordinator)
     }
 }

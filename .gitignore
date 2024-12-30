@@ -89,3 +89,5 @@ fastlane/test_output
 
 iOSInjectionProject/
 DevConfig.xcconfig
+GoogleService-Info.plist
+*.DS_Store
