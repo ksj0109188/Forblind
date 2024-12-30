@@ -8,22 +8,38 @@
 import UIKit
 import FirebaseAuth
 
-
-struct LoginViewModelActions {}
+struct LoginViewModelActions {
+    let showDriveModeScene: () -> Void
+}
 
 final class LoginViewModel: ObservableObject {
     private let authManger: AuthManager
-    private let nonce: String? = nil
+    private var nonce: String? = nil
+    private let actions: LoginViewModelActions
     
-    init(authManger: AuthManager) {
+    init(authManger: AuthManager, actions: LoginViewModelActions) {
         self.authManger = authManger
+        self.actions = actions
     }
     
     func fetchNonce() -> String {
         if let nonce = nonce {
             return nonce
         } else {
-            return authManger.randomNonceString()
+            let nonce = authManger.randomNonceString()
+            self.nonce = nonce
+            
+            return nonce
         }
+    }
+    
+    func fetchAppleNonce() -> String {
+        let nonce = fetchNonce()
+        
+        return authManger.sha256(nonce)
+    }
+    
+    func showDriveModeScene() {
+        actions.showDriveModeScene()
     }
 }

@@ -14,19 +14,16 @@ final class FirebaseUserInfoRepository: UserInfoRepository {
     func fetchUserInfo(uid: String, completion: @escaping (Result<UserInfo, Error>) -> Void) {
         db.collection("User").document(uid).getDocument { (document, error) in
             if let error = error {
-                // 에러 발생 시 Completion으로 전달
                 completion(.failure(error))
                 return
             }
             
-            // 문서가 존재하는지 확인
             guard let document = document, document.exists else {
                 completion(.failure(NSError(domain: "FirestoreError", code: 404, userInfo: [NSLocalizedDescriptionKey: "Document not found"])))
                 return
             }
             
             do {
-                // do-catch로 Decoding 처리
                 let userInfo = try document.data(as: UserInfo.self)
                 completion(.success(userInfo))
             } catch {

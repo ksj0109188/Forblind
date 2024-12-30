@@ -29,14 +29,14 @@ final class LoginSceneDIContainer: LoginSceneFlowCoordinatorDependencies {
     
     // MARK: UseCase
     // MARK: ViewModel
-    func makeLoginViewModel() -> LoginViewModel {
-        LoginViewModel(authManger: makeAuthManager())
+    func makeLoginViewModel(actions: LoginViewModelActions) -> LoginViewModel {
+        LoginViewModel(authManger: makeAuthManager(), actions: actions)
     }
     
     // MARK: Presentation
-    func makeLoginViewController() -> LoginViewController {
+    func makeLoginViewController(actions: LoginViewModelActions) -> LoginViewController {
         let vc = LoginViewController()
-        vc.create(viewModel: makeLoginViewModel())
+        vc.create(viewModel: makeLoginViewModel(actions: actions))
         
         return vc
     }

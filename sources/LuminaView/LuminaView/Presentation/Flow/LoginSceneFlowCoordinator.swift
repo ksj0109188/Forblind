@@ -8,11 +8,11 @@
 import UIKit
 
 protocol LoginSceneFlowCoordinatorDependencies {
-    func makeLoginViewController() -> LoginViewController
+    func makeLoginViewController(actions: LoginViewModelActions) -> LoginViewController
 }
 
 protocol LoginSceneFlowCoordinatorDelegate: AnyObject {
-    func showPaymentScene()
+    func presentPaymentScene()
     func presentDriveModeScene()
 }
 
@@ -37,14 +37,15 @@ final class LoginSceneFlowCoordinator: Coordinator {
     }
     
     func start(animated: Bool, onDismissed: (() -> Void)?) {
-        let actions = LoginViewModelActions()
-        let vc = dependencies.makeLoginViewController()
+        let actions = LoginViewModelActions(showDriveModeScene: showDriveModeScene)
+        let vc = dependencies.makeLoginViewController(actions: actions)
+        
         onDismissForViewController[vc] = onDismissed
         navigationController?.pushViewController(vc, animated: false)
     }
     
     func showPaymentScene() {
-        delegate?.showPaymentScene()
+        delegate?.presentPaymentScene()
     }
     
     func showDriveModeScene() {
