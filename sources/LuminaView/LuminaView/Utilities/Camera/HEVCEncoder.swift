@@ -56,8 +56,6 @@ final class HEVCEncoder: CameraEncodable {
             debugPrint("Failed to create compression session: \(status)")
             return
         }
-        debugPrint("Compression session created successfully")
-        
     }
     
     func sendCompressedData(sampleBuffer: CMSampleBuffer) -> Data? {

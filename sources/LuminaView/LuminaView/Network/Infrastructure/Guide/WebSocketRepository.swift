@@ -16,9 +16,14 @@ protocol SendableWebSocket: AnyObject {
 
 final class WebSocketRepository: GuideAPIWebRepository, SendableWebSocket {
     private let disposeBag = DisposeBag()
-    private var socket: WebSocket!
+    private var socket: WebSocket
+    private var isSocketconnected: Bool = false
     let encoder: CameraEncodable = HEVCEncoder()
     var resultStream: PublishSubject<Result<String, Error>>?
+    
+    deinit {
+        debugPrint("WebSocketRepository is Deinited")
+    }
     
     func setupApiConnect(requestStream: RxSwift.PublishSubject<CMSampleBuffer>) {
         let encodingSubject = PublishSubject<Data>()
@@ -39,13 +44,15 @@ final class WebSocketRepository: GuideAPIWebRepository, SendableWebSocket {
             }
             .subscribe(onNext: { encodingSubject.onNext($0) })
             .disposed(by: disposeBag)
-
+        
         encodingSubject
             .buffer(timeSpan: .seconds(5), count: Int.max, scheduler: ConcurrentDispatchQueueScheduler(qos: .userInitiated))
             .subscribe(onNext: { [weak self] encodedChunks in
                 guard let self = self else { return }
                 let mergedData = Data(encodedChunks.joined())
-                self.sendToWebSocket(data: mergedData)
+                if isSocketconnected {
+                    self.sendToWebSocket(data: mergedData)
+                }
             })
             .disposed(by: disposeBag)
     }
@@ -68,7 +75,10 @@ final class WebSocketRepository: GuideAPIWebRepository, SendableWebSocket {
     
     func sendToWebSocket(data: Data) {
         print("sendToWebSocket", data)
-        
+        guard !isSocketconnected else {
+            debugPrint("isSocketconnected property is false")
+            return
+        }
         let chunkSize = 4000  // 청크 크기를 WebSocket의 버퍼 크기보다 작게 설정
         var offset = 0
         let totalChunks = (data.count + chunkSize - 1) / chunkSize  // 전체 청크 수 계산
@@ -87,10 +97,10 @@ final class WebSocketRepository: GuideAPIWebRepository, SendableWebSocket {
                 "data": chunk.base64EncodedString() // 청크를 Base64로 인코딩
             ]
             
-            // JSON으로 변환
+            
             let jsonData = try! JSONSerialization.data(withJSONObject: metadata)
-                // WebSocket으로 메타데이터 전송
-                socket.write(data: jsonData)
+            
+            socket.write(data: jsonData)
             
             offset += chunkSize
         }
@@ -100,21 +110,28 @@ final class WebSocketRepository: GuideAPIWebRepository, SendableWebSocket {
 extension WebSocketRepository: WebSocketDelegate {
     func didReceive(event: Starscream.WebSocketEvent, client: any Starscream.WebSocketClient) {
         switch event {
-            case .connected(let headers):
-                print("WebSocket is connected: \(headers)")
-            case .disconnected(let reason, let code):
-                print("WebSocket is disconnected: \(reason) with code: \(code)")
-            case .text(let string):
-                guard let resultStream = resultStream else { return }
-                
-                resultStream.onNext(.success(string))
-                
-            case .binary(let data):
-                print("Received data: \(data)")
-            case .error(let error):
-                print("WebSocket encountered an error: \(error?.localizedDescription ?? "")")
-            default:
-                break
+        case .connected(let headers):
+            isSocketconnected = true
+            print("WebSocket is connected: \(headers)")
+        case .disconnected(let reason, let code):
+            isSocketconnected = false
+            print("WebSocket is disconnected: \(reason) with code: \(code)")
+        case .text(let string):
+            guard let resultStream = resultStream else {
+                isSocketconnected = false
+                return
+            }
+            resultStream.onNext(.success(string))
+        case .binary(let data):
+            print("Received data: \(data)")
+        case .error(let error):
+            isSocketconnected = false
+            print("WebSocket encountered an error: \(error?.localizedDescription ?? "")")
+        default:
+            isSocketconnected = false
+            print("didReceive default case")
+            break
         }
     }
 }
+

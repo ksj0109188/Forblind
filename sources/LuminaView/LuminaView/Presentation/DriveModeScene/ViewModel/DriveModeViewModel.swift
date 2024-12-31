@@ -66,7 +66,7 @@ final class DriveModeViewModel {
         updateFreeTrialUseCase.execute(requestValue: FreeTrialUseCaseRequestValue(entity: .init(remainCount: 10), limitCount: 10))
     }
     
-    func startRecordFlow(viewController: UIViewController) {
+    func startRecordFlow() {
         guard !isFreeTrial() else {
             startRecord()
             return

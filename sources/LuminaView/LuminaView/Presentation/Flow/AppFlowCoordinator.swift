@@ -18,8 +18,7 @@ final class AppFlowCoordinator: Coordinator, DriveModeFlowCoordinatorDelegate, L
     }
     
     func start(animated: Bool, onDismissed: (() -> Void)?) {
-//        presentDriveModeScene()
-        presentLoginScene()
+        presentDriveModeScene()
     }
     
     func presentDriveModeScene() {
