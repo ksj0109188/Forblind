@@ -32,7 +32,7 @@ class DriveModeViewController: UIViewController {
     }()
     
     private lazy var statusLabel: CommonCustomLabel = {
-        let label = CommonCustomLabel(label: "대기중", textAlignment: .center, fontSize: 20.0, weight: .bold, textColor: .white)
+        let label = CommonCustomLabel(label: "Stopped", textAlignment: .center, fontSize: 20.0, weight: .bold, textColor: .white)
         label.isAccessibilityElement = false
         
         return label
@@ -92,6 +92,20 @@ class DriveModeViewController: UIViewController {
                 self?.isRecording = $0
             }
             .disposed(by: disposeBag)
+        
+        viewModel
+             .getResultStream()
+             .subscribe(onNext: { [weak self] result in
+                 switch result {
+                 case .success(let message):
+                     break
+                 case .failure(let error):
+                     debugPrint("receive sockt error")
+                     self?.isRecording = false
+                     self?.showErrorAlert(message: error.localizedDescription)
+                 }
+             })
+             .disposed(by: disposeBag)
     }
     
     private func setupViews() {
@@ -133,6 +147,21 @@ class DriveModeViewController: UIViewController {
         ])
     }
     
+    private func showErrorAlert(message: String) {
+        let alert = UIAlertController(
+            title: "Error occur",
+            message: message,
+            preferredStyle: .alert
+        )
+        
+        let confirmAction = UIAlertAction(title: "Confirm", style: .default, handler: nil)
+        alert.addAction(confirmAction)
+        
+        DispatchQueue.main.async { [weak self] in
+            self?.present(alert, animated: true, completion: nil)
+        }
+    }
+    
     private func updatePlayButton() {
         let image = isRecording ? pauseImage : playImage
         let voiceOverHint = isRecording ? String(localized: "PauseGuide") : String(localized: "PlayGuide")
@@ -143,9 +172,9 @@ class DriveModeViewController: UIViewController {
     
     private func updateStatusLabel() {
         if isRecording {
-            statusLabel.text = "실행중"
+            statusLabel.text = "Running"
         } else {
-            statusLabel.text = "대기중"
+            statusLabel.text = "Stopped"
         }
     }
     

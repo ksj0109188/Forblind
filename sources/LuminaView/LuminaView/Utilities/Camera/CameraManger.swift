@@ -8,7 +8,6 @@
 import UIKit
 import AVFoundation
 import RxSwift
-//import Starscream
 
 protocol Recodable {
     func startRecord(subject: PublishSubject<CMSampleBuffer>)
@@ -112,11 +111,11 @@ extension CameraManger: AVCaptureVideoDataOutputSampleBufferDelegate {
             return
         }
         
-        let width = CVPixelBufferGetWidth(pixelBuffer)
-        let height = CVPixelBufferGetHeight(pixelBuffer)
-        let bytesPerRow = CVPixelBufferGetBytesPerRow(pixelBuffer)
-        let totalBytes = bytesPerRow * height
-        let timestamp = CMSampleBufferGetPresentationTimeStamp(sampleBuffer)
+//        let width = CVPixelBufferGetWidth(pixelBuffer)
+//        let height = CVPixelBufferGetHeight(pixelBuffer)
+//        let bytesPerRow = CVPixelBufferGetBytesPerRow(pixelBuffer)
+//        let totalBytes = bytesPerRow * height
+//        let timestamp = CMSampleBufferGetPresentationTimeStamp(sampleBuffer)
         
         cameraDataOutputSubject?.onNext(sampleBuffer)
     }

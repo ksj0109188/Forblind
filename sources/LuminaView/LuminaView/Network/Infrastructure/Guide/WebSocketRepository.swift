@@ -20,19 +20,22 @@ final class WebSocketRepository: GuideAPIWebRepository, SendableWebSocket {
     private var isSocketconnected: Bool = false
     let encoder: CameraEncodable = HEVCEncoder()
     var resultStream: PublishSubject<Result<String, Error>>?
+    var encodingSubject: PublishSubject<Data>?
+    let requestStream: PublishSubject<CMSampleBuffer>?
     
     deinit {
         debugPrint("WebSocketRepository is Deinited")
     }
     
-    func setupApiConnect(requestStream: RxSwift.PublishSubject<CMSampleBuffer>) {
-        let encodingSubject = PublishSubject<Data>()
+    func setupAPIConnect(requestStream: RxSwift.PublishSubject<CMSampleBuffer>) {
+        encodingSubject = PublishSubject<Data>()
         
         requestStream
             .observe(on: ConcurrentDispatchQueueScheduler(qos: .userInitiated))
             .flatMap { [weak self] buffer -> Observable<Data> in
                 guard let self = self else { return Observable.empty() }
                 return Observable.create { observer in
+                    debugPrint("requestStream flat map")
                     self.encoder.encodeAndReturnData(sampleBuffer: buffer) { encodedData in
                         if let data = encodedData {
                             observer.onNext(data)
@@ -42,12 +45,13 @@ final class WebSocketRepository: GuideAPIWebRepository, SendableWebSocket {
                     return Disposables.create()
                 }
             }
-            .subscribe(onNext: { encodingSubject.onNext($0) })
+            .subscribe(onNext: { encodingSubject?.onNext($0) })
             .disposed(by: disposeBag)
-        
-        encodingSubject
+        //TODO: 일시 정지에도 계속 살아있음 이는 reqeustStream도 마찬가지 일듯
+        encodingSubject?
             .buffer(timeSpan: .seconds(5), count: Int.max, scheduler: ConcurrentDispatchQueueScheduler(qos: .userInitiated))
             .subscribe(onNext: { [weak self] encodedChunks in
+                debugPrint("encodingSubject subscribe")
                 guard let self = self else { return }
                 let mergedData = Data(encodedChunks.joined())
                 if isSocketconnected {
@@ -55,6 +59,10 @@ final class WebSocketRepository: GuideAPIWebRepository, SendableWebSocket {
                 }
             })
             .disposed(by: disposeBag)
+    }
+    
+    func stopAPIConnect() {
+        encodingSubject = nil
     }
     
     func setupResultStream(resultStream: PublishSubject<Result<String, Error>>) {
@@ -76,6 +84,7 @@ final class WebSocketRepository: GuideAPIWebRepository, SendableWebSocket {
     func sendToWebSocket(data: Data) {
         print("sendToWebSocket", data)
         guard !isSocketconnected else {
+            resultStream?.onNext(.failure(WebSocketErrorTypes.disconnected))
             debugPrint("isSocketconnected property is false")
             return
         }
@@ -96,8 +105,6 @@ final class WebSocketRepository: GuideAPIWebRepository, SendableWebSocket {
                 "isLastChunk": isLastChunk,
                 "data": chunk.base64EncodedString() // 청크를 Base64로 인코딩
             ]
-            
-            
             let jsonData = try! JSONSerialization.data(withJSONObject: metadata)
             
             socket.write(data: jsonData)
@@ -115,23 +122,29 @@ extension WebSocketRepository: WebSocketDelegate {
             print("WebSocket is connected: \(headers)")
         case .disconnected(let reason, let code):
             isSocketconnected = false
+            resultStream?.onNext(.failure(WebSocketErrorTypes.disconnected))
             print("WebSocket is disconnected: \(reason) with code: \(code)")
         case .text(let string):
-            guard let resultStream = resultStream else {
-                isSocketconnected = false
-                return
-            }
-            resultStream.onNext(.success(string))
+            isSocketconnected = true
+            resultStream?.onNext(.success(string))
         case .binary(let data):
             print("Received data: \(data)")
         case .error(let error):
             isSocketconnected = false
+            resultStream?.onNext(.failure(WebSocketErrorTypes.serverError))
             print("WebSocket encountered an error: \(error?.localizedDescription ?? "")")
         default:
             isSocketconnected = false
+            resultStream?.onNext(.failure(WebSocketErrorTypes.undefinedError))
             print("didReceive default case")
             break
         }
     }
 }
 
+enum WebSocketErrorTypes: Error {
+    case disconnected
+    case connectionFailed
+    case serverError
+    case undefinedError
+}
