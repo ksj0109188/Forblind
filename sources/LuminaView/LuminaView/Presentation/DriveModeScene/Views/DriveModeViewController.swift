@@ -94,7 +94,7 @@ class DriveModeViewController: UIViewController {
             .disposed(by: disposeBag)
         
         viewModel
-             .getResultStream()
+            .getResultStream()?
              .subscribe(onNext: { [weak self] result in
                  switch result {
                  case .success(let message):

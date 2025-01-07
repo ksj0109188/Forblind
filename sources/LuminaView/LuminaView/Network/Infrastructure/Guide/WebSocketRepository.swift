@@ -21,7 +21,7 @@ final class WebSocketRepository: GuideAPIWebRepository, SendableWebSocket {
     let encoder: CameraEncodable = HEVCEncoder()
     var resultStream: PublishSubject<Result<String, Error>>?
     var encodingSubject: PublishSubject<Data>?
-    let requestStream: PublishSubject<CMSampleBuffer>?
+    var requestStream: PublishSubject<CMSampleBuffer>?
     
     deinit {
         debugPrint("WebSocketRepository is Deinited")
@@ -45,7 +45,7 @@ final class WebSocketRepository: GuideAPIWebRepository, SendableWebSocket {
                     return Disposables.create()
                 }
             }
-            .subscribe(onNext: { encodingSubject?.onNext($0) })
+            .subscribe(onNext: { self.encodingSubject?.onNext($0) })
             .disposed(by: disposeBag)
         //TODO: 일시 정지에도 계속 살아있음 이는 reqeustStream도 마찬가지 일듯
         encodingSubject?

@@ -45,7 +45,7 @@ final class DriveModeViewModel {
     
     private func createResultOberver() {
         resultStream?
-        .subscribe(onNext: { result in
+            .subscribe(onNext: { [weak self] result in
             switch result {
             case .success(let content):
                 debugPrint("result stream", content)
@@ -55,7 +55,8 @@ final class DriveModeViewModel {
                 
                 synthesizer.speak(utterance)
             case .failure(let error):
-                debugPrint(error)
+                debugPrint("createResultOberver method", error)
+                self?.stopRecord()
             }
         })
         .disposed(by: disposeBag)
@@ -128,7 +129,7 @@ final class DriveModeViewModel {
         return cameraManager.getCameraStatusStream()
     }
     
-    func getResultStream() -> PublishSubject<Result<String, Error>> {
+    func getResultStream() -> PublishSubject<Result<String, Error>>? {
         return resultStream
     }
     

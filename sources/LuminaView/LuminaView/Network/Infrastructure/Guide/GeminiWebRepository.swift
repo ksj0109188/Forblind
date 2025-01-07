@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import GoogleGenerativeAI
 import RxSwift
 import CoreMedia
 
