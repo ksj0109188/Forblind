@@ -110,7 +110,6 @@ final class DriveModeViewModel {
     func stopRecord() {
         cameraManager.stopRecord()
         requestStream = nil
-        resultStream = nil
     }
     
     func setCameraPreview(view: UIView) {

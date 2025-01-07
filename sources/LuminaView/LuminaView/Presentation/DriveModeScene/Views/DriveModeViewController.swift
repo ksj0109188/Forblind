@@ -92,20 +92,6 @@ class DriveModeViewController: UIViewController {
                 self?.isRecording = $0
             }
             .disposed(by: disposeBag)
-        
-        viewModel
-            .getResultStream()?
-             .subscribe(onNext: { [weak self] result in
-                 switch result {
-                 case .success(let message):
-                     break
-                 case .failure(let error):
-                     debugPrint("receive sockt error")
-                     self?.isRecording = false
-                     self?.showErrorAlert(message: error.localizedDescription)
-                 }
-             })
-             .disposed(by: disposeBag)
     }
     
     private func setupViews() {
@@ -192,6 +178,19 @@ class DriveModeViewController: UIViewController {
             isRecording = false
         } else {
             viewModel.startRecordFlow()
+            viewModel
+                .getResultStream()?
+                 .subscribe(onNext: { [weak self] result in
+                     switch result {
+                     case .success(let message):
+                         break
+                     case .failure(let error):
+                         debugPrint("receive sockt error")
+                         self?.isRecording = false
+                         self?.showErrorAlert(message: error.localizedDescription)
+                     }
+                 })
+                 .disposed(by: disposeBag)
             isRecording = true
         }
     }

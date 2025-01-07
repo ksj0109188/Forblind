@@ -15,7 +15,7 @@ protocol SendableWebSocket: AnyObject {
 }
 
 final class WebSocketRepository: GuideAPIWebRepository, SendableWebSocket {
-    private let disposeBag = DisposeBag()
+    private var disposeBag = DisposeBag()
     private var socket: WebSocket
     private var isSocketconnected: Bool = false
     let encoder: CameraEncodable = HEVCEncoder()
@@ -62,7 +62,8 @@ final class WebSocketRepository: GuideAPIWebRepository, SendableWebSocket {
     }
     
     func stopAPIConnect() {
-        encodingSubject = nil
+        encodingSubject?.onCompleted()
+        requestStream?.onCompleted()
     }
     
     func setupResultStream(resultStream: PublishSubject<Result<String, Error>>) {
@@ -123,6 +124,7 @@ extension WebSocketRepository: WebSocketDelegate {
         case .disconnected(let reason, let code):
             isSocketconnected = false
             resultStream?.onNext(.failure(WebSocketErrorTypes.disconnected))
+            stopAPIConnect()
             print("WebSocket is disconnected: \(reason) with code: \(code)")
         case .text(let string):
             isSocketconnected = true
@@ -132,10 +134,12 @@ extension WebSocketRepository: WebSocketDelegate {
         case .error(let error):
             isSocketconnected = false
             resultStream?.onNext(.failure(WebSocketErrorTypes.serverError))
+            stopAPIConnect()
             print("WebSocket encountered an error: \(error?.localizedDescription ?? "")")
         default:
             isSocketconnected = false
             resultStream?.onNext(.failure(WebSocketErrorTypes.undefinedError))
+            stopAPIConnect()
             print("didReceive default case")
             break
         }
