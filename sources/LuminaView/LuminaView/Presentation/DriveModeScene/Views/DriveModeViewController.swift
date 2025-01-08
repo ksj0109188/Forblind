@@ -32,7 +32,7 @@ class DriveModeViewController: UIViewController {
     }()
     
     private lazy var statusLabel: CommonCustomLabel = {
-        let label = CommonCustomLabel(label: "대기중", textAlignment: .center, fontSize: 20.0, weight: .bold, textColor: .white)
+        let label = CommonCustomLabel(label: "Stopped", textAlignment: .center, fontSize: 20.0, weight: .bold, textColor: .white)
         label.isAccessibilityElement = false
         
         return label
@@ -106,7 +106,7 @@ class DriveModeViewController: UIViewController {
         let safeArea = view.safeAreaLayoutGuide
         let padding = 20.0
         let frame = view.frame
-
+        
         NSLayoutConstraint.activate([
             progressView.view.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: frame.height / 10),
             progressView.view.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
@@ -133,6 +133,21 @@ class DriveModeViewController: UIViewController {
         ])
     }
     
+    private func showErrorAlert(message: String) {
+        let alert = UIAlertController(
+            title: "Error occur",
+            message: message,
+            preferredStyle: .alert
+        )
+        
+        let confirmAction = UIAlertAction(title: "Confirm", style: .default, handler: nil)
+        alert.addAction(confirmAction)
+        
+        DispatchQueue.main.async { [weak self] in
+            self?.present(alert, animated: true, completion: nil)
+        }
+    }
+    
     private func updatePlayButton() {
         let image = isRecording ? pauseImage : playImage
         let voiceOverHint = isRecording ? String(localized: "PauseGuide") : String(localized: "PlayGuide")
@@ -143,9 +158,9 @@ class DriveModeViewController: UIViewController {
     
     private func updateStatusLabel() {
         if isRecording {
-            statusLabel.text = "실행중"
+            statusLabel.text = "Running"
         } else {
-            statusLabel.text = "대기중"
+            statusLabel.text = "Stopped"
         }
     }
     
@@ -162,7 +177,14 @@ class DriveModeViewController: UIViewController {
             viewModel.stopRecord()
             isRecording = false
         } else {
-            viewModel.startRecordFlow(viewController: self)
+            viewModel.startRecordFlow()
+            viewModel
+                .getResultStream()?
+                .subscribe(onError: { [weak self] error in
+                    self?.isRecording = false
+                    self?.showErrorAlert(message: error.localizedDescription)
+                })
+                .disposed(by: disposeBag)
             isRecording = true
         }
     }

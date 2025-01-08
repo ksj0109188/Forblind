@@ -6,13 +6,12 @@
 //
 
 import UIKit
-import GoogleGenerativeAI
 import RxSwift
 import CoreMedia
 
 protocol GuideAPIWebRepository {
-    func setupApiConnect(requestStream: PublishSubject<CMSampleBuffer>)
-    func setupResultStream(resultStream: PublishSubject<Result<String, Error>>) 
+    func setupAPIConnect(requestStream: PublishSubject<CMSampleBuffer>)
+    func setupResultStream(resultStream: PublishSubject<String>) 
 }
 
 

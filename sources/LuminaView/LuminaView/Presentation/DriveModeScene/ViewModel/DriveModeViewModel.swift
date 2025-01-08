@@ -29,6 +29,8 @@ final class DriveModeViewModel {
     let cameraManager: Recodable
     private let disposeBag = DisposeBag()
     private let actions: DriveModeViewModelActions
+    private var resultStream: PublishSubject<String>?
+    private var requestStream: PublishSubject<CMSampleBuffer>?
     
     init(fetchGuideUseCase: FetchGuideUseCase, checkFreeTrialUseCase: CheckFreeTrialUseCase, updateFreeTrialUseCase: UpdateFreeTrialUseCase, fetchUserInfoUseCase: FetchUserInfoUseCase, checkLoginUseCase: CheckLoginUseCase, cameraManager: Recodable, actions: DriveModeViewModelActions) {
         self.fetchGuideUseCase = fetchGuideUseCase
@@ -40,20 +42,16 @@ final class DriveModeViewModel {
         self.actions = actions
     }
     
-    private func makeObservableResult(stream: PublishSubject<Result<String, Error>>) {
-        stream
-            .subscribe(onNext: { result in
-                switch result {
-                case .success(let content):
-                    debugPrint("result stream", content)
-                    //TODO: 별도의 Uitility Manager로 해당 기능을 관리해야함
-                    let utterance = AVSpeechUtterance(string: content)
-                    let synthesizer = AVSpeechSynthesizer()
-                    
-                    synthesizer.speak(utterance)
-                case .failure(let error):
-                    debugPrint(error)
-                }
+    private func createResultOberver() {
+        resultStream?
+            .subscribe(onNext: { content in
+                //TODO: 별도의 Uitility Manager로 해당 기능을 관리해야함
+                let utterance = AVSpeechUtterance(string: content)
+                let synthesizer = AVSpeechSynthesizer()
+                
+                synthesizer.speak(utterance)
+            }, onError: { [weak self] error in
+                self?.stopRecord()
             })
             .disposed(by: disposeBag)
     }
@@ -66,7 +64,7 @@ final class DriveModeViewModel {
         updateFreeTrialUseCase.execute(requestValue: FreeTrialUseCaseRequestValue(entity: .init(remainCount: 10), limitCount: 10))
     }
     
-    func startRecordFlow(viewController: UIViewController) {
+    func startRecordFlow() {
         guard !isFreeTrial() else {
             startRecord()
             return
@@ -91,25 +89,26 @@ final class DriveModeViewModel {
         }
     }
     
+    //MARK: 소캣 연결이 안 됐으면 시작을 하면 안되징
     private func startRecord() {
-        let requestStream = PublishSubject<CMSampleBuffer>()
-        let resultStream = PublishSubject<Result<String, Error>>()
+        requestStream = PublishSubject<CMSampleBuffer>()
+        resultStream = PublishSubject<String>()
         
-        makeObservableResult(stream: resultStream)
-        fetchGuideUseCase.execute(requestStream: requestStream, resultStream: resultStream)
-        cameraManager.startRecord(subject: requestStream)
+        createResultOberver()
+        
+        fetchGuideUseCase.execute(requestStream: requestStream!,
+                                  resultStream: resultStream!)
+        cameraManager.startRecord(subject: requestStream!)
     }
     
     func stopRecord() {
         cameraManager.stopRecord()
+        requestStream = nil
+        resultStream = nil
     }
     
     func setCameraPreview(view: UIView) {
         cameraManager.setPreview(view: view)
-    }
-    
-    func getCameraStatusStream() -> PublishSubject<Bool> {
-        return cameraManager.getCameraStatusStream()
     }
     
     func showCameraPreview() {
@@ -118,6 +117,14 @@ final class DriveModeViewModel {
     
     func stopCameraPreview() {
         actions.dismissCameraPreview()
+    }
+    
+    func getCameraStatusStream() -> PublishSubject<Bool> {
+        return cameraManager.getCameraStatusStream()
+    }
+    
+    func getResultStream() -> PublishSubject<String>? {
+        return resultStream
     }
     
 }

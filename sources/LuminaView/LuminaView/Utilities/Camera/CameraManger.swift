@@ -8,7 +8,6 @@
 import UIKit
 import AVFoundation
 import RxSwift
-//import Starscream
 
 protocol Recodable {
     func startRecord(subject: PublishSubject<CMSampleBuffer>)
@@ -85,10 +84,10 @@ final class CameraManger: NSObject, Recodable {
     }
     
     func setPreview(view: UIView) {
-        videoPreviewLayer!.videoGravity = .resizeAspectFill
-        videoPreviewLayer!.frame = view.layer.bounds
+        videoPreviewLayer?.videoGravity = .resizeAspectFill
+        videoPreviewLayer?.frame = view.layer.bounds
         
-        view.layer.addSublayer(videoPreviewLayer!)
+        view.layer.addSublayer(videoPreviewLayer ?? CALayer())
     }
     
     func removePreview() {
@@ -112,11 +111,11 @@ extension CameraManger: AVCaptureVideoDataOutputSampleBufferDelegate {
             return
         }
         
-        let width = CVPixelBufferGetWidth(pixelBuffer)
-        let height = CVPixelBufferGetHeight(pixelBuffer)
-        let bytesPerRow = CVPixelBufferGetBytesPerRow(pixelBuffer)
-        let totalBytes = bytesPerRow * height
-        let timestamp = CMSampleBufferGetPresentationTimeStamp(sampleBuffer)
+//        let width = CVPixelBufferGetWidth(pixelBuffer)
+//        let height = CVPixelBufferGetHeight(pixelBuffer)
+//        let bytesPerRow = CVPixelBufferGetBytesPerRow(pixelBuffer)
+//        let totalBytes = bytesPerRow * height
+//        let timestamp = CMSampleBufferGetPresentationTimeStamp(sampleBuffer)
         
         cameraDataOutputSubject?.onNext(sampleBuffer)
     }
