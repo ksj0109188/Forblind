@@ -11,7 +11,7 @@ import CoreMedia
 
 protocol GuideAPIWebRepository {
     func setupAPIConnect(requestStream: PublishSubject<CMSampleBuffer>)
-    func setupResultStream(resultStream: PublishSubject<Result<String, Error>>) 
+    func setupResultStream(resultStream: PublishSubject<String>) 
 }
 
 

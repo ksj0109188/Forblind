@@ -29,7 +29,7 @@ final class DriveModeViewModel {
     let cameraManager: Recodable
     private let disposeBag = DisposeBag()
     private let actions: DriveModeViewModelActions
-    private var resultStream: PublishSubject<Result<String, Error>>?
+    private var resultStream: PublishSubject<String>?
     private var requestStream: PublishSubject<CMSampleBuffer>?
     
     init(fetchGuideUseCase: FetchGuideUseCase, checkFreeTrialUseCase: CheckFreeTrialUseCase, updateFreeTrialUseCase: UpdateFreeTrialUseCase, fetchUserInfoUseCase: FetchUserInfoUseCase, checkLoginUseCase: CheckLoginUseCase, cameraManager: Recodable, actions: DriveModeViewModelActions) {
@@ -40,26 +40,20 @@ final class DriveModeViewModel {
         self.checkLoginUseCase = checkLoginUseCase
         self.cameraManager = cameraManager
         self.actions = actions
-        
     }
     
     private func createResultOberver() {
         resultStream?
-            .subscribe(onNext: { [weak self] result in
-            switch result {
-            case .success(let content):
-                debugPrint("result stream", content)
+            .subscribe(onNext: { content in
                 //TODO: 별도의 Uitility Manager로 해당 기능을 관리해야함
                 let utterance = AVSpeechUtterance(string: content)
                 let synthesizer = AVSpeechSynthesizer()
                 
                 synthesizer.speak(utterance)
-            case .failure(let error):
-                debugPrint("createResultOberver method", error)
+            }, onError: { [weak self] error in
                 self?.stopRecord()
-            }
-        })
-        .disposed(by: disposeBag)
+            })
+            .disposed(by: disposeBag)
     }
     
     private func isFreeTrial() -> Bool {
@@ -98,7 +92,7 @@ final class DriveModeViewModel {
     //MARK: 소캣 연결이 안 됐으면 시작을 하면 안되징
     private func startRecord() {
         requestStream = PublishSubject<CMSampleBuffer>()
-        resultStream = PublishSubject<Result<String, Error>>()
+        resultStream = PublishSubject<String>()
         
         createResultOberver()
         
@@ -110,12 +104,13 @@ final class DriveModeViewModel {
     func stopRecord() {
         cameraManager.stopRecord()
         requestStream = nil
+        resultStream = nil
     }
     
     func setCameraPreview(view: UIView) {
         cameraManager.setPreview(view: view)
     }
-        
+    
     func showCameraPreview() {
         actions.showCameraPreview(self)
     }
@@ -128,7 +123,7 @@ final class DriveModeViewModel {
         return cameraManager.getCameraStatusStream()
     }
     
-    func getResultStream() -> PublishSubject<Result<String, Error>>? {
+    func getResultStream() -> PublishSubject<String>? {
         return resultStream
     }
     

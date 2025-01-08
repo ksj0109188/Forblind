@@ -106,7 +106,7 @@ class DriveModeViewController: UIViewController {
         let safeArea = view.safeAreaLayoutGuide
         let padding = 20.0
         let frame = view.frame
-
+        
         NSLayoutConstraint.activate([
             progressView.view.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: frame.height / 10),
             progressView.view.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
@@ -180,17 +180,11 @@ class DriveModeViewController: UIViewController {
             viewModel.startRecordFlow()
             viewModel
                 .getResultStream()?
-                 .subscribe(onNext: { [weak self] result in
-                     switch result {
-                     case .success(let message):
-                         break
-                     case .failure(let error):
-                         debugPrint("receive sockt error")
-                         self?.isRecording = false
-                         self?.showErrorAlert(message: error.localizedDescription)
-                     }
-                 })
-                 .disposed(by: disposeBag)
+                .subscribe(onError: { [weak self] error in
+                    self?.isRecording = false
+                    self?.showErrorAlert(message: error.localizedDescription)
+                })
+                .disposed(by: disposeBag)
             isRecording = true
         }
     }

@@ -18,16 +18,31 @@ final class WebSocketRepository: GuideAPIWebRepository, SendableWebSocket {
     private var disposeBag = DisposeBag()
     private var socket: WebSocket
     private var isSocketconnected: Bool = false
+    private var request: URLRequest
     let encoder: CameraEncodable = HEVCEncoder()
-    var resultStream: PublishSubject<Result<String, Error>>?
+    var resultStream: PublishSubject<String>?
     var encodingSubject: PublishSubject<Data>?
     var requestStream: PublishSubject<CMSampleBuffer>?
+    
+    init(config: WebSocketAPIConfig) {
+        let url = URL(string: config.url)!
+        var request = URLRequest(url: url)
+        
+        request.timeoutInterval = 10
+        
+        self.request = request
+        //TODO: Third party 말고 URLSession.websocket을 사용해 연결 하도록 처리히자.
+        socket = WebSocket(request: request)
+        socket.delegate = self
+    }
     
     deinit {
         debugPrint("WebSocketRepository is Deinited")
     }
     
     func setupAPIConnect(requestStream: RxSwift.PublishSubject<CMSampleBuffer>) {
+        
+        reconnectWebSocket()
         encodingSubject = PublishSubject<Data>()
         
         requestStream
@@ -54,38 +69,34 @@ final class WebSocketRepository: GuideAPIWebRepository, SendableWebSocket {
                 debugPrint("encodingSubject subscribe")
                 guard let self = self else { return }
                 let mergedData = Data(encodedChunks.joined())
-                if isSocketconnected {
-                    self.sendToWebSocket(data: mergedData)
-                }
+                self.sendToWebSocket(data: mergedData)
             })
             .disposed(by: disposeBag)
     }
     
     func stopAPIConnect() {
+        debugPrint("stopAPIConnect")
         encodingSubject?.onCompleted()
+        encodingSubject = nil
         requestStream?.onCompleted()
+        socket.disconnect()
     }
     
-    func setupResultStream(resultStream: PublishSubject<Result<String, Error>>) {
+    func setupResultStream(resultStream: PublishSubject<String>) {
         self.resultStream = resultStream
     }
     
-    init(config: WebSocketAPIConfig) {
-        let url = URL(string: config.url)!
-        var request = URLRequest(url: url)
-        
-        request.timeoutInterval = 10
-        //TODO: Third party 말고 URLSession.websocket을 사용해 연결 하도록 처리히자.
+    func reconnectWebSocket() {
+        socket.disconnect()
         socket = WebSocket(request: request)
         socket.delegate = self
-        
         socket.connect()
     }
     
     func sendToWebSocket(data: Data) {
         print("sendToWebSocket", data)
         guard !isSocketconnected else {
-            resultStream?.onNext(.failure(WebSocketErrorTypes.disconnected))
+            resultStream?.onError(WebSocketErrorTypes.disconnected)
             debugPrint("isSocketconnected property is false")
             return
         }
@@ -117,28 +128,29 @@ final class WebSocketRepository: GuideAPIWebRepository, SendableWebSocket {
 
 extension WebSocketRepository: WebSocketDelegate {
     func didReceive(event: Starscream.WebSocketEvent, client: any Starscream.WebSocketClient) {
+        
         switch event {
         case .connected(let headers):
             isSocketconnected = true
             print("WebSocket is connected: \(headers)")
         case .disconnected(let reason, let code):
             isSocketconnected = false
-            resultStream?.onNext(.failure(WebSocketErrorTypes.disconnected))
+            resultStream?.onError(WebSocketErrorTypes.disconnected)
             stopAPIConnect()
             print("WebSocket is disconnected: \(reason) with code: \(code)")
         case .text(let string):
             isSocketconnected = true
-            resultStream?.onNext(.success(string))
+            resultStream?.onNext(string)
         case .binary(let data):
             print("Received data: \(data)")
         case .error(let error):
             isSocketconnected = false
-            resultStream?.onNext(.failure(WebSocketErrorTypes.serverError))
+            resultStream?.onError(WebSocketErrorTypes.serverError)
             stopAPIConnect()
             print("WebSocket encountered an error: \(error?.localizedDescription ?? "")")
         default:
             isSocketconnected = false
-            resultStream?.onNext(.failure(WebSocketErrorTypes.undefinedError))
+            resultStream?.onError(WebSocketErrorTypes.undefinedError)
             stopAPIConnect()
             print("didReceive default case")
             break

@@ -84,10 +84,10 @@ final class CameraManger: NSObject, Recodable {
     }
     
     func setPreview(view: UIView) {
-        videoPreviewLayer!.videoGravity = .resizeAspectFill
-        videoPreviewLayer!.frame = view.layer.bounds
+        videoPreviewLayer?.videoGravity = .resizeAspectFill
+        videoPreviewLayer?.frame = view.layer.bounds
         
-        view.layer.addSublayer(videoPreviewLayer!)
+        view.layer.addSublayer(videoPreviewLayer ?? CALayer())
     }
     
     func removePreview() {
