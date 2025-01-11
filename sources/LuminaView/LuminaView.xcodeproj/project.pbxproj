@@ -113,6 +113,8 @@
 		AEA89F622CF5AE2F00B0E5FD /* Login */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Login; sourceTree = "<group>"; };
 		AEB4BACA2D1582E600FF21F4 /* Payment */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Payment; sourceTree = "<group>"; };
 		AEB4BACE2D15849B00FF21F4 /* Infrastructure */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Infrastructure; sourceTree = "<group>"; };
+		AEBABCCD2D30232800F578E7 /* Usage */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Usage; sourceTree = "<group>"; };
+		AEBABCD02D3024D800F578E7 /* Usage */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Usage; sourceTree = "<group>"; };
 		AED660E72CEDBAA400DA7EBC /* UserInfo */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = UserInfo; sourceTree = "<group>"; };
 		AEF36E182CEDEF6D0044D4D3 /* Guide */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Guide; sourceTree = "<group>"; };
 		AEF36E192CEDEF750044D4D3 /* FreeTrial */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = FreeTrial; sourceTree = "<group>"; };
@@ -308,6 +310,7 @@
 		96586BE42C3D1A2B007039FB /* UseCase */ = {
 			isa = PBXGroup;
 			children = (
+				AEBABCD02D3024D800F578E7 /* Usage */,
 				AEB4BACA2D1582E600FF21F4 /* Payment */,
 				AEA89F622CF5AE2F00B0E5FD /* Login */,
 				AEF36E182CEDEF6D0044D4D3 /* Guide */,
@@ -320,6 +323,7 @@
 		96586BE62C3D1A3F007039FB /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
+				AEBABCCD2D30232800F578E7 /* Usage */,
 				AED660E72CEDBAA400DA7EBC /* UserInfo */,
 				3B1399962CC0F4D900E1292F /* FreeTrial */,
 				AE2B05FA2D1C76C1009709E3 /* Payment */,
@@ -383,6 +387,8 @@
 				AEA89F622CF5AE2F00B0E5FD /* Login */,
 				AEB4BACA2D1582E600FF21F4 /* Payment */,
 				AEB4BACE2D15849B00FF21F4 /* Infrastructure */,
+				AEBABCCD2D30232800F578E7 /* Usage */,
+				AEBABCD02D3024D800F578E7 /* Usage */,
 				AED660E72CEDBAA400DA7EBC /* UserInfo */,
 				AEF36E182CEDEF6D0044D4D3 /* Guide */,
 				AEF36E192CEDEF750044D4D3 /* FreeTrial */,

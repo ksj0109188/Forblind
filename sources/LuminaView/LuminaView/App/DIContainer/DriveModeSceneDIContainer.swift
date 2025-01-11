@@ -13,6 +13,8 @@ final class DriveModeSceneDIContainer: DriveModeFlowCoordinatorDependencies {
         let freeTrialRepository: FreeTrialRepository
         let userInfoRepository: UserInfoRepository
         let loginRepository: LoginRepository
+        let localUsageRepository: LocalUsageRepository
+        let remoteUsageRepository: RemoteUsageRepository
         let cameraManager: Recodable
     }
     
@@ -48,12 +50,23 @@ final class DriveModeSceneDIContainer: DriveModeFlowCoordinatorDependencies {
         CheckLoginUseCase(repository: dependencies.loginRepository)
     }
     
+    func makeSaveTempUsageUsecase() -> SaveTempUsageUsecase {
+        SaveTempUsageUsecase(repository: dependencies.localUsageRepository)
+    }
+    
+    func makeDecreaseUsageInfoUseCase() -> DecreaseUsageInfoUseCase {
+        DecreaseUsageInfoUseCase(repository: dependencies.remoteUsageRepository)
+    }
+    
     // MARK: ViewModel
     func makeDriveModeViewModel(actions: DriveModeViewModelActions) -> DriveModeViewModel {
         let viewModel = DriveModeViewModel(fetchGuideUseCase: makeDriveModeUsecase(),
                                            checkFreeTrialUseCase: makeCheckFreeTrialUsecase(),
                                            updateFreeTrialUseCase: makeUpdateFreeTrialUsecase(),
-                                           fetchUserInfoUseCase: makefetchUserInfoUseCase(), checkLoginUseCase: makeCheckLoginUseCase(),
+                                           fetchUserInfoUseCase: makefetchUserInfoUseCase(),
+                                           checkLoginUseCase: makeCheckLoginUseCase(),
+                                           saveTempUsageUsecase: makeSaveTempUsageUsecase(),
+                                           decreaseUsageInfoUseCase: makeDecreaseUsageInfoUseCase(),
                                            cameraManager: makeCameraManager(),
                                            actions: actions)
         

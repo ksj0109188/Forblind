@@ -8,7 +8,7 @@
 import Foundation
 import Firebase
 
-final class FirebaseUserInfoRepository: UserInfoRepository {
+final class FirebaseUserInfoRepository: UserInfoRepository, RemoteUsageRepository {
     private let db = Firestore.firestore()
     
     func fetchUserInfo(uid: String, completion: @escaping (Result<UserInfo, Error>) -> Void) {
@@ -47,7 +47,7 @@ final class FirebaseUserInfoRepository: UserInfoRepository {
         }
     }
     
-    func updateUsage(paymentInfo: PaymentInfo, completion: @escaping (Result<Bool, any Error>) -> Void) {
+    func registerUsage(paymentInfo: PaymentInfo, completion: @escaping (Result<Bool, any Error>) -> Void) {
         let documentRef = db.collection("User").document(paymentInfo.userUID)
            
            documentRef.updateData([
@@ -62,6 +62,27 @@ final class FirebaseUserInfoRepository: UserInfoRepository {
                    completion(.success(true))
                }
            }
+    }
+    
+    func decreaseUsage(userInfo: UserInfo, decreaseUsageSeconds: Int, completion: @escaping (Result<Bool, any Error>) -> Void) {
+        guard let uid = userInfo.id else {
+            completion(.failure(FirebaseError.invalidData))
+            return
+        }
+        
+        let documentRef = db.collection("User").document(uid)
+        
+        documentRef.updateData([
+            "remainUsageSeconds": FieldValue.increment(Double(-userInfo.remainUsageSeconds))
+        ]) { error in
+            if let error = error {
+                print("Error updating user data: \(error.localizedDescription)")
+                completion(.failure(error))
+            } else {
+                print("User data successfully updated!")
+                completion(.success(true))
+            }
+        }
     }
 }
 

@@ -41,7 +41,6 @@ final class WebSocketRepository: GuideAPIWebRepository, SendableWebSocket {
     }
     
     func setupAPIConnect(requestStream: RxSwift.PublishSubject<CMSampleBuffer>) {
-        
         reconnectWebSocket()
         encodingSubject = PublishSubject<Data>()
         
@@ -50,7 +49,6 @@ final class WebSocketRepository: GuideAPIWebRepository, SendableWebSocket {
             .flatMap { [weak self] buffer -> Observable<Data> in
                 guard let self = self else { return Observable.empty() }
                 return Observable.create { observer in
-                    debugPrint("requestStream flat map")
                     self.encoder.encodeAndReturnData(sampleBuffer: buffer) { encodedData in
                         if let data = encodedData {
                             observer.onNext(data)
