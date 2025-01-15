@@ -34,6 +34,10 @@ final class DriveModeSceneDIContainer: DriveModeFlowCoordinatorDependencies {
         FetchGuideUseCase(guideAPIWebRepository: dependencies.guideAPIWebRepository)
     }
     
+    func makeStopDriveModeUsecase() -> StopGuideUseCase {
+        StopGuideUseCase(repository: dependencies.guideAPIWebRepository)
+    }
+    
     func makeCheckFreeTrialUsecase() -> CheckFreeTrialUseCase {
         CheckFreeTrialUseCase(repository: dependencies.freeTrialRepository)
     }
@@ -61,6 +65,7 @@ final class DriveModeSceneDIContainer: DriveModeFlowCoordinatorDependencies {
     // MARK: ViewModel
     func makeDriveModeViewModel(actions: DriveModeViewModelActions) -> DriveModeViewModel {
         let viewModel = DriveModeViewModel(fetchGuideUseCase: makeDriveModeUsecase(),
+                                           stopGuideUseCase: makeStopDriveModeUsecase(),
                                            checkFreeTrialUseCase: makeCheckFreeTrialUsecase(),
                                            updateFreeTrialUseCase: makeUpdateFreeTrialUsecase(),
                                            fetchUserInfoUseCase: makefetchUserInfoUseCase(),

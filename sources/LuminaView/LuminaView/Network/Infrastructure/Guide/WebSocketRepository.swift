@@ -17,7 +17,6 @@ protocol SendableWebSocket: AnyObject {
 final class WebSocketRepository: GuideAPIWebRepository, SendableWebSocket {
     private var disposeBag = DisposeBag()
     private var socket: WebSocket
-    private var isSocketconnected: Bool = false
     private var request: URLRequest
     let encoder: CameraEncodable = HEVCEncoder()
     var resultStream: PublishSubject<String>?
@@ -60,7 +59,7 @@ final class WebSocketRepository: GuideAPIWebRepository, SendableWebSocket {
             }
             .subscribe(onNext: { self.encodingSubject?.onNext($0) })
             .disposed(by: disposeBag)
-        //TODO: 일시 정지에도 계속 살아있음 이는 reqeustStream도 마찬가지 일듯
+        
         encodingSubject?
             .buffer(timeSpan: .seconds(5), count: Int.max, scheduler: ConcurrentDispatchQueueScheduler(qos: .userInitiated))
             .subscribe(onNext: { [weak self] encodedChunks in
@@ -93,11 +92,7 @@ final class WebSocketRepository: GuideAPIWebRepository, SendableWebSocket {
     
     func sendToWebSocket(data: Data) {
         print("sendToWebSocket", data)
-        guard !isSocketconnected else {
-            resultStream?.onError(WebSocketErrorTypes.disconnected)
-            debugPrint("isSocketconnected property is false")
-            return
-        }
+
         let chunkSize = 4000  // 청크 크기를 WebSocket의 버퍼 크기보다 작게 설정
         var offset = 0
         let totalChunks = (data.count + chunkSize - 1) / chunkSize  // 전체 청크 수 계산
@@ -126,31 +121,27 @@ final class WebSocketRepository: GuideAPIWebRepository, SendableWebSocket {
 
 extension WebSocketRepository: WebSocketDelegate {
     func didReceive(event: Starscream.WebSocketEvent, client: any Starscream.WebSocketClient) {
-        
         switch event {
         case .connected(let headers):
-            isSocketconnected = true
-            print("WebSocket is connected: \(headers)")
+            debugPrint("WebSocket is connected: \(headers)")
         case .disconnected(let reason, let code):
-            isSocketconnected = false
             resultStream?.onError(WebSocketErrorTypes.disconnected)
             stopAPIConnect()
-            print("WebSocket is disconnected: \(reason) with code: \(code)")
+            debugPrint("WebSocket is disconnected: \(reason) with code: \(code)")
         case .text(let string):
-            isSocketconnected = true
             resultStream?.onNext(string)
         case .binary(let data):
-            print("Received data: \(data)")
+            debugPrint("Received data: \(data)")
         case .error(let error):
-            isSocketconnected = false
             resultStream?.onError(WebSocketErrorTypes.serverError)
             stopAPIConnect()
-            print("WebSocket encountered an error: \(error?.localizedDescription ?? "")")
+            debugPrint("WebSocket encountered an error: \(error?.localizedDescription ?? "")")
+        case .viabilityChanged(let _):
+            break
         default:
-            isSocketconnected = false
             resultStream?.onError(WebSocketErrorTypes.undefinedError)
             stopAPIConnect()
-            print("didReceive default case")
+            debugPrint("didReceive default case")
             break
         }
     }

@@ -19,22 +19,22 @@ struct DriveModeViewModelActions {
 }
 
 final class DriveModeViewModel {
-    var isRecording: PublishSubject<Bool> = PublishSubject()
-    let fetchGuideUseCase: FetchGuideUseCase
-    let checkFreeTrialUseCase: CheckFreeTrialUseCase
-    let updateFreeTrialUseCase: UpdateFreeTrialUseCase
-    let fetchUserInfoUseCase: FetchUserInfoUseCase
-    let checkLoginUseCase: CheckLoginUseCase
-    let saveTempUsageUsecase: SaveTempUsageUsecase
-    let decreaseUsageInfoUseCase: DecreaseUsageInfoUseCase
-    let cameraManager: Recodable
+    private var isRecording: PublishSubject<Bool> = PublishSubject()
+    private let fetchGuideUseCase: FetchGuideUseCase
+    private let stopGuideUseCase: StopGuideUseCase
+    private let checkFreeTrialUseCase: CheckFreeTrialUseCase
+    private let updateFreeTrialUseCase: UpdateFreeTrialUseCase
+    private let fetchUserInfoUseCase: FetchUserInfoUseCase
+    private let checkLoginUseCase: CheckLoginUseCase
+    private let saveTempUsageUsecase: SaveTempUsageUsecase
+    private let decreaseUsageInfoUseCase: DecreaseUsageInfoUseCase
+    private let cameraManager: Recodable
     private var userInfo: UserInfo?
     private let disposeBag = DisposeBag()
     private let actions: DriveModeViewModelActions
-    private var resultStream: PublishSubject<String>?
-    private var requestStream: PublishSubject<CMSampleBuffer>?
     
     init(fetchGuideUseCase: FetchGuideUseCase,
+         stopGuideUseCase: StopGuideUseCase,
          checkFreeTrialUseCase: CheckFreeTrialUseCase,
          updateFreeTrialUseCase: UpdateFreeTrialUseCase,
          fetchUserInfoUseCase: FetchUserInfoUseCase,
@@ -44,6 +44,7 @@ final class DriveModeViewModel {
          cameraManager: Recodable,
          actions: DriveModeViewModelActions) {
         self.fetchGuideUseCase = fetchGuideUseCase
+        self.stopGuideUseCase = stopGuideUseCase
         self.checkFreeTrialUseCase = checkFreeTrialUseCase
         self.updateFreeTrialUseCase = updateFreeTrialUseCase
         self.fetchUserInfoUseCase = fetchUserInfoUseCase
@@ -54,8 +55,8 @@ final class DriveModeViewModel {
         self.actions = actions
     }
     
-    private func createResultObserver() {
-        resultStream?
+    private func createResultObserver(stream : PublishSubject<String>) {
+        stream
             .subscribe(onNext: { [weak self] content in
                 self?.handleContent(content)
                 
@@ -78,20 +79,18 @@ final class DriveModeViewModel {
         updateFreeTrialUseCase.execute(requestValue: FreeTrialUseCaseRequestValue(entity: .init(remainCount: 10), limitCount: 10))
     }
     
-    private func startRecord() {
-        requestStream = PublishSubject<CMSampleBuffer>()
-        resultStream = PublishSubject<String>()
+    private func startRecord(requestStream: PublishSubject<CMSampleBuffer>, resultStream: PublishSubject<String>) {
+        createResultObserver(stream: resultStream)
         
-        createResultObserver()
+        fetchGuideUseCase.execute(requestStream: requestStream,
+                                  resultStream: resultStream)
+        cameraManager.startRecord(subject: requestStream)
         
-        fetchGuideUseCase.execute(requestStream: requestStream!,
-                                  resultStream: resultStream!)
-        cameraManager.startRecord(subject: requestStream!)
     }
     
     private func handleContent(_ content: String) {
         guard let originUserInfo = userInfo else {
-            stopRecord()
+            stopRecordFlow()
             return
         }
         
@@ -104,7 +103,7 @@ final class DriveModeViewModel {
     }
     
     private func handleError(_ error: Error) {
-        stopRecord()
+        stopRecordFlow()
         debugPrint("Error occurred: \(error)")
     }
     
@@ -120,10 +119,14 @@ final class DriveModeViewModel {
     }
     
     
-    func startRecordFlow() {
+    func startRecordFlow() -> PublishSubject<String>  {
+        let requestStream = PublishSubject<CMSampleBuffer>()
+        let resultStream = PublishSubject<String>()
+        
         guard !isFreeTrial() else {
-            startRecord()
-            return
+            startRecord(requestStream: requestStream,
+                               resultStream: resultStream)
+            return resultStream
         }
         
         if let uid = checkLoginUseCase.exec() {
@@ -132,7 +135,7 @@ final class DriveModeViewModel {
                 case .success(let userInfo):
                     self?.userInfo = userInfo
                     if userInfo.remainUsageSeconds > 0 {
-                        self?.startRecord()
+                        self?.startRecord(requestStream: requestStream, resultStream: resultStream)
                     } else {
                         self?.stopRecord()
                         self?.actions.showPaymentScene()
@@ -144,12 +147,19 @@ final class DriveModeViewModel {
         } else {
             actions.presetionLoginView()
         }
+        
+        return resultStream
+    }
+    
+    func stopRecordFlow() {
+        stopGuideUseCase.execute()
+        stopRecord()
     }
     
     func stopRecord() {
         cameraManager.stopRecord()
-        requestStream = nil
-        resultStream = nil
+//        requestStream = nil
+//        resultStream = nil
     }
     
     func setCameraPreview(view: UIView) {
@@ -168,8 +178,8 @@ final class DriveModeViewModel {
         return cameraManager.getCameraStatusStream()
     }
     
-    func getResultStream() -> PublishSubject<String>? {
-        return resultStream
-    }
+//    func getResultStream() -> PublishSubject<String>? {
+//        return resultStream
+//    }
     
 }

@@ -21,9 +21,4 @@ final class FetchGuideUseCase {
         repository.setupAPIConnect(requestStream: requestStream)
         repository.setupResultStream(resultStream: resultStream)
     }
-    
-    func stop() {
-        
-    }
-
 }
