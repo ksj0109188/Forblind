@@ -19,39 +19,54 @@ struct DriveModeViewModelActions {
 }
 
 final class DriveModeViewModel {
-    var isRecording: PublishSubject<Bool> = PublishSubject()
-    //TODO: 네이밍 다시 생각해보기
-    let fetchGuideUseCase: FetchGuideUseCase
-    let checkFreeTrialUseCase: CheckFreeTrialUseCase
-    let updateFreeTrialUseCase: UpdateFreeTrialUseCase
-    let fetchUserInfoUseCase: FetchUserInfoUseCase
-    let checkLoginUseCase: CheckLoginUseCase
-    let cameraManager: Recodable
+    private var isRecording: PublishSubject<Bool> = PublishSubject()
+    private let fetchGuideUseCase: FetchGuideUseCase
+    private let stopGuideUseCase: StopGuideUseCase
+    private let checkFreeTrialUseCase: CheckFreeTrialUseCase
+    private let updateFreeTrialUseCase: UpdateFreeTrialUseCase
+    private let fetchUserInfoUseCase: FetchUserInfoUseCase
+    private let checkLoginUseCase: CheckLoginUseCase
+    private let saveTempUsageUsecase: SaveTempUsageUsecase
+    private let decreaseUsageInfoUseCase: DecreaseUsageInfoUseCase
+    private let cameraManager: Recodable
+    private var userInfo: UserInfo?
     private let disposeBag = DisposeBag()
     private let actions: DriveModeViewModelActions
-    private var resultStream: PublishSubject<String>?
-    private var requestStream: PublishSubject<CMSampleBuffer>?
     
-    init(fetchGuideUseCase: FetchGuideUseCase, checkFreeTrialUseCase: CheckFreeTrialUseCase, updateFreeTrialUseCase: UpdateFreeTrialUseCase, fetchUserInfoUseCase: FetchUserInfoUseCase, checkLoginUseCase: CheckLoginUseCase, cameraManager: Recodable, actions: DriveModeViewModelActions) {
+    init(fetchGuideUseCase: FetchGuideUseCase,
+         stopGuideUseCase: StopGuideUseCase,
+         checkFreeTrialUseCase: CheckFreeTrialUseCase,
+         updateFreeTrialUseCase: UpdateFreeTrialUseCase,
+         fetchUserInfoUseCase: FetchUserInfoUseCase,
+         checkLoginUseCase: CheckLoginUseCase,
+         saveTempUsageUsecase: SaveTempUsageUsecase,
+         decreaseUsageInfoUseCase: DecreaseUsageInfoUseCase,
+         cameraManager: Recodable,
+         actions: DriveModeViewModelActions) {
         self.fetchGuideUseCase = fetchGuideUseCase
+        self.stopGuideUseCase = stopGuideUseCase
         self.checkFreeTrialUseCase = checkFreeTrialUseCase
         self.updateFreeTrialUseCase = updateFreeTrialUseCase
         self.fetchUserInfoUseCase = fetchUserInfoUseCase
         self.checkLoginUseCase = checkLoginUseCase
+        self.saveTempUsageUsecase = saveTempUsageUsecase
+        self.decreaseUsageInfoUseCase = decreaseUsageInfoUseCase
         self.cameraManager = cameraManager
         self.actions = actions
     }
     
-    private func createResultOberver() {
-        resultStream?
-            .subscribe(onNext: { content in
+    private func createResultObserver(stream : PublishSubject<String>) {
+        stream
+            .subscribe(onNext: { [weak self] content in
+                self?.handleContent(content)
+                
                 //TODO: 별도의 Uitility Manager로 해당 기능을 관리해야함
                 let utterance = AVSpeechUtterance(string: content)
                 let synthesizer = AVSpeechSynthesizer()
                 
                 synthesizer.speak(utterance)
             }, onError: { [weak self] error in
-                self?.stopRecord()
+                self?.handleError(error)
             })
             .disposed(by: disposeBag)
     }
@@ -64,18 +79,63 @@ final class DriveModeViewModel {
         updateFreeTrialUseCase.execute(requestValue: FreeTrialUseCaseRequestValue(entity: .init(remainCount: 10), limitCount: 10))
     }
     
-    func startRecordFlow() {
-        guard !isFreeTrial() else {
-            startRecord()
+    private func startRecord(requestStream: PublishSubject<CMSampleBuffer>, resultStream: PublishSubject<String>) {
+        createResultObserver(stream: resultStream)
+        
+        fetchGuideUseCase.execute(requestStream: requestStream,
+                                  resultStream: resultStream)
+        cameraManager.startRecord(subject: requestStream)
+        
+    }
+    
+    private func handleContent(_ content: String) {
+        guard let originUserInfo = userInfo else {
+            stopRecordFlow()
             return
+        }
+        
+        let localUsage = saveTempUsageUsecase.exec()
+        
+        if originUserInfo.remainUsageSeconds <= localUsage {
+            stopRecord()
+            updateUsageInfo(originUserInfo, localUsage)
+        }
+    }
+    
+    private func handleError(_ error: Error) {
+        stopRecordFlow()
+        debugPrint("Error occurred: \(error)")
+    }
+    
+    private func updateUsageInfo(_ userInfo: UserInfo, _ localUsage: Int) {
+        decreaseUsageInfoUseCase.execute(userInfo: userInfo, decreaseUsageSeconds: localUsage) { result in
+            switch result {
+            case .success(let success):
+                debugPrint("Usage info updated successfully: \(success)")
+            case .failure(let failure):
+                debugPrint("Failed to update usage info: \(failure)")
+            }
+        }
+    }
+    
+    
+    func startRecordFlow() -> PublishSubject<String>  {
+        let requestStream = PublishSubject<CMSampleBuffer>()
+        let resultStream = PublishSubject<String>()
+        
+        guard !isFreeTrial() else {
+            startRecord(requestStream: requestStream,
+                               resultStream: resultStream)
+            return resultStream
         }
         
         if let uid = checkLoginUseCase.exec() {
             fetchUserInfoUseCase.execute(uid: uid) {[weak self] result in
                 switch result {
                 case .success(let userInfo):
+                    self?.userInfo = userInfo
                     if userInfo.remainUsageSeconds > 0 {
-                        self?.startRecord()
+                        self?.startRecord(requestStream: requestStream, resultStream: resultStream)
                     } else {
                         self?.stopRecord()
                         self?.actions.showPaymentScene()
@@ -87,24 +147,19 @@ final class DriveModeViewModel {
         } else {
             actions.presetionLoginView()
         }
+        
+        return resultStream
     }
     
-    //MARK: 소캣 연결이 안 됐으면 시작을 하면 안되징
-    private func startRecord() {
-        requestStream = PublishSubject<CMSampleBuffer>()
-        resultStream = PublishSubject<String>()
-        
-        createResultOberver()
-        
-        fetchGuideUseCase.execute(requestStream: requestStream!,
-                                  resultStream: resultStream!)
-        cameraManager.startRecord(subject: requestStream!)
+    func stopRecordFlow() {
+        stopGuideUseCase.execute()
+        stopRecord()
     }
     
     func stopRecord() {
         cameraManager.stopRecord()
-        requestStream = nil
-        resultStream = nil
+//        requestStream = nil
+//        resultStream = nil
     }
     
     func setCameraPreview(view: UIView) {
@@ -123,8 +178,8 @@ final class DriveModeViewModel {
         return cameraManager.getCameraStatusStream()
     }
     
-    func getResultStream() -> PublishSubject<String>? {
-        return resultStream
-    }
+//    func getResultStream() -> PublishSubject<String>? {
+//        return resultStream
+//    }
     
 }

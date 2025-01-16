@@ -17,7 +17,7 @@ final class PaymentViewModel {
     private let purchaseUseCase: InAppPurchaseUseCase
     private let checkLogin: CheckLoginUseCase
     private let createPaymentInfoUseCase: CreatePaymentInfoUseCase
-    private let updateUsageInfoUseCase: UpdateUsageInfoUseCase
+    private let updateUsageInfoUseCase: RegisterUsageInfoUseCase
     
     var products: Observable<[Product]> {
         return productsRelay.asObservable()
@@ -26,7 +26,7 @@ final class PaymentViewModel {
     init(purchaseUseCase: InAppPurchaseUseCase,
          checkLogin: CheckLoginUseCase,
          createPaymentInfoUseCase: CreatePaymentInfoUseCase,
-         updateUsageInfoUseCase: UpdateUsageInfoUseCase) {
+         updateUsageInfoUseCase: RegisterUsageInfoUseCase) {
         self.purchaseUseCase = purchaseUseCase
         self.checkLogin = checkLogin
         self.createPaymentInfoUseCase = createPaymentInfoUseCase
@@ -57,7 +57,6 @@ final class PaymentViewModel {
                                       productID: transcation.productID,
                                       usageSeconds: usage,
                                       userUID: userUID)
-        
         
         createPaymentInfoUseCase.execute(paymentInfo: paymentInfo) { result in
             switch result {

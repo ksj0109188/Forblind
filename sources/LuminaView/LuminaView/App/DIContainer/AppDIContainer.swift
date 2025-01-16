@@ -23,6 +23,14 @@ final class AppDIContainer {
         return FirebaseUserInfoRepository()
     }()
     
+    lazy var remoteUsageRepository: RemoteUsageRepository = {
+        return FirebaseUserInfoRepository()
+    }()
+    
+    lazy var localUsageRepository: LocalUsageRepository = {
+        return DefaultLocalUsageRepository()
+    }()
+    
     lazy var inAppPurchaseService: PaymentService = {
         return AppleInAppPurchaseService()
     }()
@@ -44,6 +52,8 @@ final class AppDIContainer {
                                                                   freeTrialRepository: freeTrialService,
                                                                   userInfoRepository: userInfoService,
                                                                   loginRepository: loginService,
+                                                                  localUsageRepository: localUsageRepository,
+                                                                  remoteUsageRepository: remoteUsageRepository,
                                                                   cameraManager: CameraManger())
         
         return DriveModeSceneDIContainer(dependencies:  dependencies)
@@ -59,7 +69,8 @@ final class AppDIContainer {
         let dependencies = PaymentSceneDIContainer.Dependencies(inAppPurchaseService: inAppPurchaseService,
                                                                 loginRepository: loginService,
                                                                 paymentRepository: paymentRepository,
-                                                                userInfoRepository: userInfoService)
+                                                                userInfoRepository: userInfoService,
+                                                                remoteUsageRepository: remoteUsageRepository)
         
         return PaymentSceneDIContainer(dependencies: dependencies)
     }

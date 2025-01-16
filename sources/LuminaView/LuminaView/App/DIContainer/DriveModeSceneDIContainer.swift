@@ -13,6 +13,8 @@ final class DriveModeSceneDIContainer: DriveModeFlowCoordinatorDependencies {
         let freeTrialRepository: FreeTrialRepository
         let userInfoRepository: UserInfoRepository
         let loginRepository: LoginRepository
+        let localUsageRepository: LocalUsageRepository
+        let remoteUsageRepository: RemoteUsageRepository
         let cameraManager: Recodable
     }
     
@@ -32,6 +34,10 @@ final class DriveModeSceneDIContainer: DriveModeFlowCoordinatorDependencies {
         FetchGuideUseCase(guideAPIWebRepository: dependencies.guideAPIWebRepository)
     }
     
+    func makeStopDriveModeUsecase() -> StopGuideUseCase {
+        StopGuideUseCase(repository: dependencies.guideAPIWebRepository)
+    }
+    
     func makeCheckFreeTrialUsecase() -> CheckFreeTrialUseCase {
         CheckFreeTrialUseCase(repository: dependencies.freeTrialRepository)
     }
@@ -48,12 +54,24 @@ final class DriveModeSceneDIContainer: DriveModeFlowCoordinatorDependencies {
         CheckLoginUseCase(repository: dependencies.loginRepository)
     }
     
+    func makeSaveTempUsageUsecase() -> SaveTempUsageUsecase {
+        SaveTempUsageUsecase(repository: dependencies.localUsageRepository)
+    }
+    
+    func makeDecreaseUsageInfoUseCase() -> DecreaseUsageInfoUseCase {
+        DecreaseUsageInfoUseCase(repository: dependencies.remoteUsageRepository)
+    }
+    
     // MARK: ViewModel
     func makeDriveModeViewModel(actions: DriveModeViewModelActions) -> DriveModeViewModel {
         let viewModel = DriveModeViewModel(fetchGuideUseCase: makeDriveModeUsecase(),
+                                           stopGuideUseCase: makeStopDriveModeUsecase(),
                                            checkFreeTrialUseCase: makeCheckFreeTrialUsecase(),
                                            updateFreeTrialUseCase: makeUpdateFreeTrialUsecase(),
-                                           fetchUserInfoUseCase: makefetchUserInfoUseCase(), checkLoginUseCase: makeCheckLoginUseCase(),
+                                           fetchUserInfoUseCase: makefetchUserInfoUseCase(),
+                                           checkLoginUseCase: makeCheckLoginUseCase(),
+                                           saveTempUsageUsecase: makeSaveTempUsageUsecase(),
+                                           decreaseUsageInfoUseCase: makeDecreaseUsageInfoUseCase(),
                                            cameraManager: makeCameraManager(),
                                            actions: actions)
         

@@ -6,7 +6,6 @@
 //
 
 import Foundation
-//import Starscream
 
 struct WebSocketAPIConfig {
     let url: String

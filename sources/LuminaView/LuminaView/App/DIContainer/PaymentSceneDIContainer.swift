@@ -14,6 +14,7 @@ final class PaymentSceneDIContainer: PaymentSceneFlowCoordinatorDependencies {
         let loginRepository: LoginRepository
         let paymentRepository: PaymentRepository
         let userInfoRepository: UserInfoRepository
+        let remoteUsageRepository: RemoteUsageRepository
     }
     
     private let dependencies: Dependencies
@@ -35,8 +36,8 @@ final class PaymentSceneDIContainer: PaymentSceneFlowCoordinatorDependencies {
         CreatePaymentInfoUseCase(repository: dependencies.paymentRepository)
     }
     
-    func makeUpdateUsageInfoUseCase() -> UpdateUsageInfoUseCase {
-        UpdateUsageInfoUseCase(repository: dependencies.userInfoRepository)
+    func makeUpdateUsageInfoUseCase() -> RegisterUsageInfoUseCase {
+        RegisterUsageInfoUseCase(repository: dependencies.remoteUsageRepository)
     }
     
     // MARK: ViewModel

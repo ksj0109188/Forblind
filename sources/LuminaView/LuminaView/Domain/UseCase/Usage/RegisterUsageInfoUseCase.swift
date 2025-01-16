@@ -7,14 +7,14 @@
 
 import Foundation
 
-final class UpdateUsageInfoUseCase {
-    let repository: UserInfoRepository
+final class RegisterUsageInfoUseCase {
+    let repository: RemoteUsageRepository
     
-    init(repository: UserInfoRepository) {
+    init(repository: RemoteUsageRepository) {
         self.repository = repository
     }
     
     func execute(paymentInfo: PaymentInfo, completion: @escaping (Result<Bool, Error>) -> Void) {
-        repository.updateUsage(paymentInfo: paymentInfo, completion: completion)
+        repository.registerUsage(paymentInfo: paymentInfo, completion: completion)
     }
 }

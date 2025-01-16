@@ -178,9 +178,8 @@ class DriveModeViewController: UIViewController {
             isRecording = false
         } else {
             viewModel.startRecordFlow()
-            viewModel
-                .getResultStream()?
                 .subscribe(onError: { [weak self] error in
+                    debugPrint("viewController resultStream error: \(error)")
                     self?.isRecording = false
                     self?.showErrorAlert(message: error.localizedDescription)
                 })
