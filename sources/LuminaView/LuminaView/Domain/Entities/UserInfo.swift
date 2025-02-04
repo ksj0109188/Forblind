@@ -12,4 +12,12 @@ struct UserInfo: Identifiable, Codable {
     @DocumentID var id: String?
     var payments: [String]?
     var remainUsageSeconds: Int
+    
+    var remainUsageString: String {
+        let hours = remainUsageSeconds / 3600
+        let minutes = (remainUsageSeconds % 3600) / 60
+        let seconds = remainUsageSeconds % 60
+        
+        return String(format: "%02dHour %02dMinute %02dsecond", hours, minutes, seconds)
+    }
 }

@@ -178,8 +178,20 @@ final class DriveModeViewModel {
         return cameraManager.getCameraStatusStream()
     }
     
-//    func getResultStream() -> PublishSubject<String>? {
-//        return resultStream
-//    }
+    func showUserInfo(completion: @escaping (UserInfo) -> Void) {
+        guard let uid = checkLoginUseCase.exec() else {
+            actions.presetionLoginView()
+            return
+        }
+        
+        fetchUserInfoUseCase.execute(uid: uid) { result in
+            switch result {
+            case .success(let userInfo):
+                completion(userInfo)
+            case .failure:
+                break
+            }
+        }
+    }
     
 }

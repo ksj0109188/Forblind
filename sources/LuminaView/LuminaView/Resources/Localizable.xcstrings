@@ -58,6 +58,9 @@
           }
         }
       }
+    },
+    "showUserInfo" : {
+
     }
   },
   "version" : "1.0"
