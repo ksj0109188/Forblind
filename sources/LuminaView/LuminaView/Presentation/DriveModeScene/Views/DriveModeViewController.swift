@@ -76,6 +76,19 @@ class DriveModeViewController: UIViewController {
         return button
     }()
     
+    private lazy var showUserInfoButton: UIButton = {
+        let button = UIButton()
+        let configuration = UIImage.SymbolConfiguration(font: .systemFont(ofSize: 24.0))
+        let image = UIImage(systemName: "info.circle", withConfiguration: configuration)?.withTintColor(.white, renderingMode: .alwaysOriginal)
+        
+        button.addTarget(self, action: #selector(showUserInfo), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setImage(image, for: .normal)
+        button.accessibilityLabel = String(localized: "showUserInfo")
+        
+        return button
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
@@ -95,7 +108,7 @@ class DriveModeViewController: UIViewController {
     }
     
     private func setupViews() {
-        view.addSubviews(statusLabel, playButton, showCameraPreviewButton, progressView.view)
+        view.addSubviews(statusLabel, playButton, showCameraPreviewButton, showUserInfoButton, progressView.view)
     }
     
     private func setVoiceOverAccessConfig() {
@@ -131,6 +144,11 @@ class DriveModeViewController: UIViewController {
             showCameraPreviewButton.topAnchor.constraint(equalTo: safeArea.topAnchor),
             showCameraPreviewButton.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
         ])
+        
+        NSLayoutConstraint.activate([
+            showUserInfoButton.topAnchor.constraint(equalTo: safeArea.topAnchor),
+            showUserInfoButton.trailingAnchor.constraint(equalTo: showCameraPreviewButton.leadingAnchor, constant: -padding)
+        ])
     }
     
     private func showErrorAlert(message: String) {
@@ -139,6 +157,17 @@ class DriveModeViewController: UIViewController {
             message: message,
             preferredStyle: .alert
         )
+        
+        let confirmAction = UIAlertAction(title: "Confirm", style: .default, handler: nil)
+        alert.addAction(confirmAction)
+        
+        DispatchQueue.main.async { [weak self] in
+            self?.present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    private func showUserInfoSheet(userInfo: UserInfo) {
+        let alert = UIAlertController(title: "User information", message: "remain usage: \(userInfo.remainUsageString)", preferredStyle: .actionSheet)
         
         let confirmAction = UIAlertAction(title: "Confirm", style: .default, handler: nil)
         alert.addAction(confirmAction)
@@ -190,5 +219,9 @@ class DriveModeViewController: UIViewController {
     
     @objc private func showCameraPreview() {
         viewModel.showCameraPreview()
+    }
+    
+    @objc private func showUserInfo() {
+        viewModel.showUserInfo(completion: showUserInfoSheet)
     }
 }
