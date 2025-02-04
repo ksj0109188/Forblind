@@ -18,6 +18,6 @@ struct UserInfo: Identifiable, Codable {
         let minutes = (remainUsageSeconds % 3600) / 60
         let seconds = remainUsageSeconds % 60
         
-        return String(format: "%02d시간 %02d분 %02d초", hours, minutes, seconds)
+        return String(format: "%02dHour %02dMinute %02dsecond", hours, minutes, seconds)
     }
 }
