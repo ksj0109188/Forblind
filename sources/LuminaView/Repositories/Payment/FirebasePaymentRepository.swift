@@ -16,7 +16,7 @@ final class FirebasePaymentRepository: PaymentRepository {
         
         let paymentData: [String: Any] = [
             "ProductID": paymentInfo.productID,
-            "UsageSeconds" : paymentInfo.usageSeconds
+            "UsageSeconds" : paymentInfo.usageSeconds,
         ]
         
         //MARK: 결제 정보 업데이트와 사용량 정보 업데이트 트랜잭션 분리

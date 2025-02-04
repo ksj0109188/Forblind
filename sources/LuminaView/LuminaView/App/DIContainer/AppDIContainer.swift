@@ -54,7 +54,7 @@ final class AppDIContainer {
                                                                   loginRepository: loginService,
                                                                   localUsageRepository: localUsageRepository,
                                                                   remoteUsageRepository: remoteUsageRepository,
-                                                                  cameraManager: CameraManger())
+                                                                  cameraManager: CameraManger(), speakManager: SpeakManager())
         
         return DriveModeSceneDIContainer(dependencies:  dependencies)
     }

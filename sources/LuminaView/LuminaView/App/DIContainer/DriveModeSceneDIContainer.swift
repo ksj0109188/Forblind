@@ -16,6 +16,7 @@ final class DriveModeSceneDIContainer: DriveModeFlowCoordinatorDependencies {
         let localUsageRepository: LocalUsageRepository
         let remoteUsageRepository: RemoteUsageRepository
         let cameraManager: Recodable
+        let speakManager: Speakable
     }
     
     private let dependencies: Dependencies
@@ -27,6 +28,10 @@ final class DriveModeSceneDIContainer: DriveModeFlowCoordinatorDependencies {
     // MARK: Utilites
     func makeCameraManager() -> Recodable {
         return dependencies.cameraManager
+    }
+    
+    func makeSpeakManager() -> Speakable {
+        return dependencies.speakManager
     }
     
     // MARK: UseCase
@@ -72,9 +77,9 @@ final class DriveModeSceneDIContainer: DriveModeFlowCoordinatorDependencies {
                                            checkLoginUseCase: makeCheckLoginUseCase(),
                                            saveTempUsageUsecase: makeSaveTempUsageUsecase(),
                                            decreaseUsageInfoUseCase: makeDecreaseUsageInfoUseCase(),
-                                           cameraManager: makeCameraManager(),
+                                           cameraManager: makeCameraManager(), speakerManager: makeSpeakManager(),
                                            actions: actions)
-        
+            
         return viewModel
     }
     

@@ -8,7 +8,6 @@
 import UIKit
 import RxSwift
 import CoreMedia
-import AVFAudio
 
 struct DriveModeViewModelActions {
     let showCameraPreview: (_ viewModel: DriveModeViewModel) -> Void
@@ -29,6 +28,7 @@ final class DriveModeViewModel {
     private let saveTempUsageUsecase: SaveTempUsageUsecase
     private let decreaseUsageInfoUseCase: DecreaseUsageInfoUseCase
     private let cameraManager: Recodable
+    private let speakerManager: Speakable
     private var userInfo: UserInfo?
     private let disposeBag = DisposeBag()
     private let actions: DriveModeViewModelActions
@@ -42,6 +42,7 @@ final class DriveModeViewModel {
          saveTempUsageUsecase: SaveTempUsageUsecase,
          decreaseUsageInfoUseCase: DecreaseUsageInfoUseCase,
          cameraManager: Recodable,
+         speakerManager: Speakable,
          actions: DriveModeViewModelActions) {
         self.fetchGuideUseCase = fetchGuideUseCase
         self.stopGuideUseCase = stopGuideUseCase
@@ -52,6 +53,7 @@ final class DriveModeViewModel {
         self.saveTempUsageUsecase = saveTempUsageUsecase
         self.decreaseUsageInfoUseCase = decreaseUsageInfoUseCase
         self.cameraManager = cameraManager
+        self.speakerManager = speakerManager
         self.actions = actions
     }
     
@@ -59,12 +61,7 @@ final class DriveModeViewModel {
         stream
             .subscribe(onNext: { [weak self] content in
                 self?.handleContent(content)
-                
-                //TODO: 별도의 Uitility Manager로 해당 기능을 관리해야함
-                let utterance = AVSpeechUtterance(string: content)
-                let synthesizer = AVSpeechSynthesizer()
-                
-                synthesizer.speak(utterance)
+
             }, onError: { [weak self] error in
                 self?.handleError(error)
             })
@@ -89,11 +86,13 @@ final class DriveModeViewModel {
     }
     
     private func handleContent(_ content: String) {
+        speakerManager.speak(content: content)
+        
         guard let originUserInfo = userInfo else {
             stopRecordFlow()
             return
         }
-        
+
         let localUsage = saveTempUsageUsecase.exec()
         
         if originUserInfo.remainUsageSeconds <= localUsage {
@@ -156,10 +155,8 @@ final class DriveModeViewModel {
         stopRecord()
     }
     
-    func stopRecord() {
+    private func stopRecord() {
         cameraManager.stopRecord()
-//        requestStream = nil
-//        resultStream = nil
     }
     
     func setCameraPreview(view: UIView) {

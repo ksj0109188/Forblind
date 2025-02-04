@@ -33,7 +33,7 @@ final class AppleInAppPurchaseService: PaymentService {
     }
     
     func purchase(product: Product) async throws -> Transaction? {
-        
+        //TODO:   변경필요
         let token = convertUIDToUUID(firebaseUID: "hNJNPsWCkecp4qvGBoO7YjrmKBu1")
         
         let result = try await product.purchase(options: [.appAccountToken(token)])

@@ -110,6 +110,7 @@
 		AE0B951C2CFF0D6400FBE47E /* Payment */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Payment; sourceTree = "<group>"; };
 		AE0B95292CFF3CAD00FBE47E /* Product */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Product; sourceTree = "<group>"; };
 		AE2B05FA2D1C76C1009709E3 /* Payment */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Payment; sourceTree = "<group>"; };
+		AE6293F12D3910E3002CA61B /* AVSpeak */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = AVSpeak; sourceTree = "<group>"; };
 		AEA89F622CF5AE2F00B0E5FD /* Login */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Login; sourceTree = "<group>"; };
 		AEB4BACA2D1582E600FF21F4 /* Payment */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Payment; sourceTree = "<group>"; };
 		AEB4BACE2D15849B00FF21F4 /* Infrastructure */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Infrastructure; sourceTree = "<group>"; };
@@ -213,6 +214,7 @@
 		3B37927D2C46885100375767 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				AE6293F12D3910E3002CA61B /* AVSpeak */,
 				AE0B95292CFF3CAD00FBE47E /* Product */,
 				3B2C81A02CB7E8FC00E79FA1 /* Login */,
 				3B8F1E342C9C542200A54EC4 /* View */,
@@ -384,6 +386,7 @@
 				AE0B951C2CFF0D6400FBE47E /* Payment */,
 				AE0B95292CFF3CAD00FBE47E /* Product */,
 				AE2B05FA2D1C76C1009709E3 /* Payment */,
+				AE6293F12D3910E3002CA61B /* AVSpeak */,
 				AEA89F622CF5AE2F00B0E5FD /* Login */,
 				AEB4BACA2D1582E600FF21F4 /* Payment */,
 				AEB4BACE2D15849B00FF21F4 /* Infrastructure */,

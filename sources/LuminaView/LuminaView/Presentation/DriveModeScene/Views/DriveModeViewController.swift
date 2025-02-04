@@ -174,7 +174,7 @@ class DriveModeViewController: UIViewController {
     
     @objc private func toggleRecordButton() {
         if isRecording {
-            viewModel.stopRecord()
+            viewModel.stopRecordFlow()
             isRecording = false
         } else {
             viewModel.startRecordFlow()
